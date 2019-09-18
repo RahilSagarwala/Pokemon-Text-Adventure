@@ -64,7 +64,7 @@ public class MainGame {
 		titlePanel.setBounds(240, 50, 800, 70);
 		titlePanel.setBackground(Color.black);
 		titlePanelLabel = new JLabel();
-		titlePanelLabel = new JLabel("Pokemon Text Audio Game");
+		titlePanelLabel = new JLabel("Pokémon Text Audio Game");
 		titlePanelLabel.setForeground(Color.LIGHT_GRAY);
 		titlePanelLabel.setFont(titleFont);	
 		titlePanel.add(titlePanelLabel);

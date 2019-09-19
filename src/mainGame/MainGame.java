@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
@@ -35,20 +36,21 @@ public class MainGame {
     JPanel cards, namesPanel, titlePanel, containerPanel, buttonPanel, buttonContainerPanel, feedbackPanel, frontBoxPanel, backBoxPanel, logoPanel, 
     mainButtonsPanel, borderPanel, namesTitleContainerPanel;
     JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
-    JLabel namesLabel; 
-	JLabel titlePanelLabel;
+    JLabel namesLabel, titleLabel;
 	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
 	
 	OptionsButtonHandler optionsButtonPress = new OptionsButtonHandler();
 	TradeButtonHandler tradeButtonPress = new TradeButtonHandler();
 	ContinueButtonHandler continueButtonPress = new ContinueButtonHandler();
 	NewGameButtonHandler newGameButtonPress = new NewGameButtonHandler();
+	FeedbackButtonHandler feedbackButtonPress = new FeedbackButtonHandler();
 	
     final static String mainScreenString = "mainscreen";
     final static String optionsString = "options";
     final static String tradeString = "trade";
     final static String continueString = "continue";
     final static String newGameString = "newgame";
+    final static String feedbackString = "feedback";
 	
 	
     public void addContent(Container pane) {
@@ -59,7 +61,9 @@ public class MainGame {
         JPanel tradePanel = new JPanel();
         JPanel continuePanel = new JPanel();
         JPanel newGamePanel = new JPanel();
-        mainScreenPanel.setLayout(new BorderLayout());
+        JPanel feedbackPanel = new JPanel();
+
+        mainScreenPanel.setLayout(new GridBagLayout());
         mainScreenPanel.setBackground(Color.black); 
         cards = new JPanel(new CardLayout());
         cards.add(mainScreenPanel, mainScreenString);
@@ -67,12 +71,14 @@ public class MainGame {
         cards.add(tradePanel, tradeString);
         cards.add(continuePanel, continueString);
         cards.add(newGamePanel, newGameString);
+        cards.add(feedbackPanel, feedbackString);
         pane.add(cards);
         
         optionsPanel.setBackground(Color.black);
         tradePanel.setBackground(Color.black);
         continuePanel.setBackground(Color.black);
         newGamePanel.setBackground(Color.black);
+        feedbackPanel.setBackground(Color.black);
         
         
         
@@ -90,11 +96,11 @@ public class MainGame {
         
 		titlePanel = new JPanel();
 		titlePanel.setBackground(Color.black);
-		titlePanelLabel = new JLabel();
-		titlePanelLabel = new JLabel("Pokémon Text Audio Game");
-		titlePanelLabel.setForeground(Color.LIGHT_GRAY);
-		titlePanelLabel.setFont(titleFont);	
-		titlePanel.add(titlePanelLabel);
+		titleLabel = new JLabel();
+		titleLabel = new JLabel("Pokémon Text Audio Game");
+		titleLabel.setForeground(Color.LIGHT_GRAY);
+		titleLabel.setFont(titleFont);	
+		titlePanel.add(titleLabel);
 		
 		namesPanel = new JPanel();
 		namesPanel.setBackground(Color.black);
@@ -102,18 +108,6 @@ public class MainGame {
 		namesLabel.setForeground(Color.LIGHT_GRAY);
 		namesLabel.setFont(italicNormalFont);
 		namesPanel.add(namesLabel);
-		
-		JPanel namesTitleContainterPanel = new JPanel(new GridLayout(2,1));
-		namesTitleContainterPanel.add(titlePanel);
-		namesTitleContainterPanel.add(namesPanel);
-		
-		
-		
-		JPanel buttonContainerPanel = new JPanel();
-		JPanel mainButtonsPanel = new JPanel();
-		mainButtonsPanel.setBounds(275, 200, 700, 400);
-		mainButtonsPanel.setBackground(Color.black);
-		mainButtonsPanel.setLayout(new GridLayout(5,1));
 		
 		newGameButton = new JButton("New Game");
 		newGameButton.setBackground(Color.DARK_GRAY);
@@ -143,23 +137,17 @@ public class MainGame {
 		
 		
 		feedbackButton = new JButton("Feedback");
-		feedbackButton.setPreferredSize(new Dimension(200,100));
 		feedbackButton.setBackground(Color.DARK_GRAY);
 		feedbackButton.setForeground(Color.cyan);
 		feedbackButton.setFont(buttonFont);
+		feedbackButton.addActionListener(feedbackButtonPress);
 		
+		feedbackButton.setPreferredSize(new Dimension(400,100));
+		newGameButton.setPreferredSize(new Dimension(400,100));
+		continueButton.setPreferredSize(new Dimension(400,100));
+		tradeButton.setPreferredSize(new Dimension(400,100));
+		optionsButton.setPreferredSize(new Dimension(400,100));
 		
-		newGameButton.setPreferredSize(new Dimension(200,100));
-		continueButton.setPreferredSize(new Dimension(200,100));
-		tradeButton.setPreferredSize(new Dimension(200,100));
-		optionsButton.setPreferredSize(new Dimension(200,100));
-		mainButtonsPanel.add(newGameButton);
-		mainButtonsPanel.add(continueButton);
-		mainButtonsPanel.add(tradeButton);
-		mainButtonsPanel.add(optionsButton);
-		mainButtonsPanel.add(feedbackButton);
-		buttonContainerPanel.add(mainButtonsPanel);
-		buttonContainerPanel.setBackground(Color.black);
 		
 		//Add an image
 		frontBoxPanel = new JPanel();
@@ -169,15 +157,44 @@ public class MainGame {
 		
 		//Add an image
 		logoPanel = new JPanel();
-
 		
-		mainScreenPanel.add(buttonContainerPanel, BorderLayout.SOUTH);
-		mainScreenPanel.add(namesTitleContainterPanel, BorderLayout.NORTH);
- 
+		//GridLayout
+		GridBagConstraints gb = new GridBagConstraints();
+		
+		mainScreenPanel.setBorder(new EmptyBorder(0, -1, 0, -1));
+		
+		
+		
+		gb.gridx=0;
+		gb.gridy=0;
+		mainScreenPanel.add(titlePanel,gb);
+		
+		
+		gb.gridx=0;
+		gb.gridy=1;
+		mainScreenPanel.add(namesPanel,gb);
+		
+		gb.gridx=0;
+		gb.gridy=2;
+		mainScreenPanel.add(newGameButton,gb);
+		
+		gb.gridx=0;
+		gb.gridy=3;
+		mainScreenPanel.add(continueButton,gb);
+		
+		gb.gridx=0;
+		gb.gridy=4;
+		mainScreenPanel.add(tradeButton,gb);
+		
+		gb.gridx=0;
+		gb.gridy=5;
+		mainScreenPanel.add(optionsButton,gb);	
+		
+		gb.gridx=0;
+		gb.gridy=6;
+		mainScreenPanel.add(feedbackButton,gb);
     
     }
-     
-
      
 
     private static void createWindow() {
@@ -187,7 +204,7 @@ public class MainGame {
         MainGame demo = new MainGame();
         demo.addContent(frame.getContentPane());
         frame.setSize(1280, 680);
-//        frame.pack();
+        frame.pack();
         frame.setVisible(true);
     }
     
@@ -225,6 +242,15 @@ public class NewGameButtonHandler implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 		CardLayout cl = (CardLayout) cards.getLayout();
 		cl.show(cards, "newgame");
+		
+	}
+}
+
+public class FeedbackButtonHandler implements ActionListener{
+	
+	public void actionPerformed(ActionEvent event){
+		CardLayout cl = (CardLayout) cards.getLayout();
+		cl.show(cards, "feedback");
 		
 	}
 }

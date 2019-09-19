@@ -16,7 +16,6 @@ import javax.swing.ImageIcon;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -33,8 +32,7 @@ import javax.swing.ImageIcon;
 
 public class MainGame {
 	JFrame window;
-    JPanel cards, namesPanel, titlePanel, containerPanel, buttonPanel, buttonContainerPanel, feedbackPanel, frontBoxPanel, backBoxPanel, logoPanel, 
-    mainButtonsPanel, borderPanel, namesTitleContainerPanel;
+    JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel;
     JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
     JLabel namesLabel, titleLabel;
 	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
@@ -45,40 +43,46 @@ public class MainGame {
 	NewGameButtonHandler newGameButtonPress = new NewGameButtonHandler();
 	FeedbackButtonHandler feedbackButtonPress = new FeedbackButtonHandler();
 	
-    final static String mainScreenString = "mainscreen";
-    final static String optionsString = "options";
-    final static String tradeString = "trade";
-    final static String continueString = "continue";
-    final static String newGameString = "newgame";
-    final static String feedbackString = "feedback";
-	
+	final static String mainScreenString = "mainscreen";
+    JPanel mainScreenPanel = new JPanel();
+    
+
+    public void createWindow() {
+        
+        JFrame frame = new JFrame("Pokémon Text Audio Game");	
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MainGame mainGameScreen = new MainGame();
+        mainGameScreen.addContent(frame.getContentPane());
+        frame.setSize(1280, 680);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    
 	
     public void addContent(Container pane) {
 
     	//Card Layout
-        JPanel mainScreenPanel = new JPanel();
-        JPanel optionsPanel = new JPanel();
-        JPanel tradePanel = new JPanel();
-        JPanel continuePanel = new JPanel();
-        JPanel newGamePanel = new JPanel();
-        JPanel feedbackPanel = new JPanel();
+       
+        NewGame newGameClass = new NewGame();
+        Options optionsClass = new Options();
+        Trade tradeClass = new Trade();
+        Feedback feedbackClass = new Feedback();
+        Continue continueClass = new Continue();
 
         mainScreenPanel.setLayout(new GridBagLayout());
         mainScreenPanel.setBackground(Color.black); 
-        cards = new JPanel(new CardLayout());
-        cards.add(mainScreenPanel, mainScreenString);
-        cards.add(optionsPanel, optionsString);
-        cards.add(tradePanel, tradeString);
-        cards.add(continuePanel, continueString);
-        cards.add(newGamePanel, newGameString);
-        cards.add(feedbackPanel, feedbackString);
-        pane.add(cards);
         
-        optionsPanel.setBackground(Color.black);
-        tradePanel.setBackground(Color.black);
-        continuePanel.setBackground(Color.black);
-        newGamePanel.setBackground(Color.black);
-        feedbackPanel.setBackground(Color.black);
+        cards = new JPanel(new CardLayout());
+        
+        cards.add(mainScreenPanel, mainScreenString);
+        cards.add(optionsClass.getPanel(), optionsClass.getString());
+        cards.add(tradeClass.getPanel(), tradeClass.getString());
+        cards.add(continueClass.getPanel(), continueClass.getString());
+        cards.add(feedbackClass.getPanel(), feedbackClass.getString());
+        cards.add(newGameClass.getPanel(), newGameClass.getString());
+        
+        pane.add(cards);
+ 
         
         
         
@@ -159,11 +163,7 @@ public class MainGame {
 		logoPanel = new JPanel();
 		
 		//GridLayout
-		GridBagConstraints gb = new GridBagConstraints();
-		
-		mainScreenPanel.setBorder(new EmptyBorder(0, -1, 0, -1));
-		
-		
+		GridBagConstraints gb = new GridBagConstraints();		
 		
 		gb.gridx=0;
 		gb.gridy=0;
@@ -196,17 +196,6 @@ public class MainGame {
     
     }
      
-
-    private static void createWindow() {
-    
-        JFrame frame = new JFrame("Pokémon Text Audio Game");	
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainGame demo = new MainGame();
-        demo.addContent(frame.getContentPane());
-        frame.setSize(1280, 680);
-        frame.pack();
-        frame.setVisible(true);
-    }
     
 public class OptionsButtonHandler implements ActionListener{
 		
@@ -233,6 +222,7 @@ public class ContinueButtonHandler implements ActionListener{
 		CardLayout cl = (CardLayout) cards.getLayout();
 		cl.show(cards, "continue");
 		
+		
 	}
 }
  
@@ -256,9 +246,5 @@ public class FeedbackButtonHandler implements ActionListener{
 }
  
      
-    public static void main(String[] args) {
-       
-                createWindow();
-            }
  
 }

@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+
+import mainGame.MainGame.OptionsButtonHandler;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
@@ -30,27 +33,30 @@ import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class Feedback extends MainGame {
+public class Feedback extends JPanel {
 	
-	String feedbackString = "feedback";
-	JPanel feedbackPanel = new JPanel();
-    
+	JButton returnButton;
+	CardLayout cl;
+    JPanel cards;
+    Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
 	
-	public void addContent() {
+	public Feedback (final CardLayout layout, final JPanel cards) {
+		 this.cl = layout;
+	     this.cards = cards;
+	     JButton returnButton = new JButton("Return");
+	     returnButton.setPreferredSize(new Dimension(150,75));
+		 add(returnButton);
+		 setBackground(Color.black);
+		 returnButton.setBackground(Color.DARK_GRAY);
+		 returnButton.setForeground(Color.cyan);
+		 returnButton.setFont(buttonFont);
 		 
-		
-		feedbackPanel.setBackground(Color.black);
-		
-	
+		 returnButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                layout.show(cards, "mainscreen");
+	            }
+	        });
 	}
 	
-	public String getString() {
-		return feedbackString;
-	}
-	
-	public JPanel getPanel() {
-		addContent();
-		return feedbackPanel;
-	}
 
 }

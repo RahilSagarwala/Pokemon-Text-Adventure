@@ -44,48 +44,32 @@ public class MainGame {
 	FeedbackButtonHandler feedbackButtonPress = new FeedbackButtonHandler();
 	
 	final static String mainScreenString = "mainscreen";
-    JPanel mainScreenPanel = new JPanel();
+    JPanel mainScreenPanel;
+    CardLayout cl;
     
-
-    public void createWindow() {
-        
-        JFrame frame = new JFrame("Pokémon Text Audio Game");	
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainGame mainGameScreen = new MainGame();
-        mainGameScreen.addContent(frame.getContentPane());
-        frame.setSize(1280, 680);
-        frame.pack();
-        frame.setVisible(true);
-    }
+    Options options;
+    Trade trade;
+    NewGame newGame;
+    Continue continu;
+    Feedback feedback;
     
-	
-    public void addContent(Container pane) {
-
-    	//Card Layout
-       
-        NewGame newGameClass = new NewGame();
-        Options optionsClass = new Options();
-        Trade tradeClass = new Trade();
-        Feedback feedbackClass = new Feedback();
-        Continue continueClass = new Continue();
-
-        mainScreenPanel.setLayout(new GridBagLayout());
-        mainScreenPanel.setBackground(Color.black); 
-        
-        cards = new JPanel(new CardLayout());
-        
-        cards.add(mainScreenPanel, mainScreenString);
-        cards.add(optionsClass.getPanel(), optionsClass.getString());
-        cards.add(tradeClass.getPanel(), tradeClass.getString());
-        cards.add(continueClass.getPanel(), continueClass.getString());
-        cards.add(feedbackClass.getPanel(), feedbackClass.getString());
-        cards.add(newGameClass.getPanel(), newGameClass.getString());
-        
-        pane.add(cards);
- 
+    
+    
+    public MainGame() {
+    	window = new JFrame("Pokémon Text Audio Game");	
+    	cards = new JPanel();
+    	mainScreenPanel = new JPanel();
+    	cl = new CardLayout();
+    	options = new Options(cl, cards);
+    	trade = new Trade(cl, cards);
+    	newGame = new NewGame(cl, cards);
+    	continu = new Continue(cl, cards);
+    	feedback = new Feedback(cl, cards);
         
         
+        cards.setLayout(cl);
         
+         
         //Title Font
     	try {
 		    titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts//PokemonHollow.ttf")).deriveFont(55f);
@@ -163,6 +147,8 @@ public class MainGame {
 		logoPanel = new JPanel();
 		
 		//GridLayout
+        mainScreenPanel.setLayout(new GridBagLayout());
+        mainScreenPanel.setBackground(Color.black); 
 		GridBagConstraints gb = new GridBagConstraints();		
 		
 		gb.gridx=0;
@@ -194,13 +180,31 @@ public class MainGame {
 		gb.gridy=6;
 		mainScreenPanel.add(feedbackButton,gb);
     
+    	
+	    cards.add(mainScreenPanel, "mainscreen");
+        cards.add(options, "options");
+        cards.add(newGame, "newgame");
+        cards.add(continu, "continue");
+        cards.add(trade, "trade");
+        cards.add(feedback, "feedback");
+       
+        
+        
+        cl.show(cards, "mainscreen");
+    	window.add(cards);
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        window.pack();
+        window.setVisible(true);
     }
+
+	
+
      
     
 public class OptionsButtonHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
-			CardLayout cl = (CardLayout) cards.getLayout();
+			cl = (CardLayout) cards.getLayout();
 			cl.show(cards, "options");
 			
 		}
@@ -209,8 +213,9 @@ public class OptionsButtonHandler implements ActionListener{
 public class TradeButtonHandler implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event){
-		CardLayout cl = (CardLayout) cards.getLayout();
+		cl = (CardLayout) cards.getLayout();
 		cl.show(cards, "trade");
+		
 		
 	}
 }
@@ -219,7 +224,7 @@ public class TradeButtonHandler implements ActionListener{
 public class ContinueButtonHandler implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event){
-		CardLayout cl = (CardLayout) cards.getLayout();
+		cl = (CardLayout) cards.getLayout();
 		cl.show(cards, "continue");
 		
 		
@@ -230,7 +235,7 @@ public class ContinueButtonHandler implements ActionListener{
 public class NewGameButtonHandler implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event){
-		CardLayout cl = (CardLayout) cards.getLayout();
+		cl = (CardLayout) cards.getLayout();
 		cl.show(cards, "newgame");
 		
 	}
@@ -239,12 +244,14 @@ public class NewGameButtonHandler implements ActionListener{
 public class FeedbackButtonHandler implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event){
-		CardLayout cl = (CardLayout) cards.getLayout();
+		cl = (CardLayout) cards.getLayout();
 		cl.show(cards, "feedback");
 		
 	}
 }
  
-     
+public static void main(String[] args) {
+	new MainGame();
+}
  
 }

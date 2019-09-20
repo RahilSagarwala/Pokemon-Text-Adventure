@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+
+import mainGame.MainGame.OptionsButtonHandler;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
@@ -30,27 +33,30 @@ import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class Continue extends MainGame {
+public class Continue extends JPanel {
 	
-	String continueString = "continue";
-	JPanel continuePanel = new JPanel();
-    
+	JButton returnButton;
+	CardLayout cl;
+    JPanel cards;
+    Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
 	
-	public void addContent() {
+	public Continue (final CardLayout layout, final JPanel cards) {
+		 this.cl = layout;
+	     this.cards = cards;
+	     JButton returnButton = new JButton("Return");
+	     returnButton.setPreferredSize(new Dimension(150,75));
+		 add(returnButton);
+		 setBackground(Color.black);
+		 returnButton.setBackground(Color.DARK_GRAY);
+		 returnButton.setForeground(Color.cyan);
+		 returnButton.setFont(buttonFont);
 		 
-		
-		continuePanel.setBackground(Color.black);
-		
-	
+		 returnButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                layout.show(cards, "mainscreen");
+	            }
+	        });
 	}
 	
-	public String getString() {
-		return continueString;
-	}
-	
-	public JPanel getPanel() {
-		addContent();
-		return continuePanel;
-	}
 
 }

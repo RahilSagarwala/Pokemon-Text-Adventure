@@ -54,6 +54,7 @@ public class Trade extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                layout.show(cards, "mainscreen");
+
 	            }
 	        });
 	}

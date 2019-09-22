@@ -1,18 +1,18 @@
 package mainGame;
 
 import java.awt.event.ActionEvent;
+import java.io.*;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import java.io.InputStream;
+
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.View;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -21,13 +21,18 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 
 public class MainGame {
@@ -61,6 +66,7 @@ public class MainGame {
     	mainScreenPanel = new JPanel();
     	cl = new CardLayout();
     	options = new Options(cl, cards);
+//    	options.setLayout(new GridBagLayout());
     	trade = new Trade(cl, cards);
     	newGame = new NewGame(cl, cards);
     	continu = new Continue(cl, cards);
@@ -146,7 +152,7 @@ public class MainGame {
 		//Add an image
 		logoPanel = new JPanel();
 		
-		//GridLayout
+		//GridBagLayout
         mainScreenPanel.setLayout(new GridBagLayout());
         mainScreenPanel.setBackground(Color.black); 
 		GridBagConstraints gb = new GridBagConstraints();		
@@ -193,8 +199,11 @@ public class MainGame {
         cl.show(cards, "mainscreen");
     	window.add(cards);
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.pack();
+        window.setSize(1280, 680);
+//        window.pack();
         window.setVisible(true);
+        
+  
     }
 
 	
@@ -204,10 +213,13 @@ public class MainGame {
 public class OptionsButtonHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
+			
 			cl = (CardLayout) cards.getLayout();
 			cl.show(cards, "options");
 			
+			
 		}
+		
 	}
 
 public class TradeButtonHandler implements ActionListener{
@@ -219,6 +231,8 @@ public class TradeButtonHandler implements ActionListener{
 		
 	}
 }
+
+
  
 
 public class ContinueButtonHandler implements ActionListener{
@@ -249,9 +263,13 @@ public class FeedbackButtonHandler implements ActionListener{
 		
 	}
 }
- 
+
 public static void main(String[] args) {
 	new MainGame();
+	
+	
+}
+
+
 }
  
-}

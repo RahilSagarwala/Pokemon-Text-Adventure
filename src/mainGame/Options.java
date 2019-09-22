@@ -184,16 +184,20 @@ public class Options extends JPanel {
 		 add(largeFontButton,gb);
 	
 		 
+		 
+		 
+
+		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                
+	                layout.show(cards, "mainscreen");
 	            				}	
 	            			}
 				 		);
 		 
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                
+	              
 	            				}	
 	            			}
 				 		);

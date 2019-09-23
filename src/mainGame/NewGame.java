@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import locations.StartScreen;
 import mainGame.MainGame.OptionsButtonHandler;
 
 import javax.imageio.ImageIO;
@@ -40,6 +41,8 @@ public class NewGame extends JPanel {
     JPanel cards;
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JLabel newGameLabel, blankLabel;
+    StartScreen ss;
+    JTextArea screenTextArea;
 	
 	public NewGame(final CardLayout layout, final JPanel cards) {
 		 this.cl = layout;
@@ -107,6 +110,19 @@ public class NewGame extends JPanel {
 		 
 		 yesButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	              
+	           	 JTextArea screenTextArea = new JTextArea("*An image of a man in a lab coat appears.* \n\n Oak: Hello there! "
+	     		 		+ "Welcome to the world of POKEMON! My name is OAK!\r\n" + 
+	     		 		"            People call me the POKEMON PROF!");
+
+	     		 
+	     				 
+	           	screenTextArea.setForeground(Color.cyan);
+	           	screenTextArea.setBackground(Color.black);
+	           	screenTextArea.setFont(buttonFont);
+	                ss = new StartScreen(cl,cards,buttonFont, screenTextArea,false,"1", false);
+	                ss.timerStart(screenTextArea.getText());
+	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");
 	            }
 	        });

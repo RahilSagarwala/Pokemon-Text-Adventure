@@ -58,6 +58,7 @@ public class MainGame {
     StartScreen startScreen;
     ConfirmContinue confirmContinue;
     String chosenSave = "";
+    JTextArea startScreenTextArea = new JTextArea();
     
     
     public MainGame() {
@@ -69,9 +70,11 @@ public class MainGame {
     	newGame = new NewGame(cl, cards);
     	continu = new ContinueGame(cl, cards);
     	feedback = new Feedback(cl, cards);
-    	startScreen = new StartScreen(cl,cards,buttonFont);
+    	startScreen = new StartScreen(cl,cards,buttonFont, startScreenTextArea, false, "1", false);
     	
         cards.setLayout(cl);
+        
+        
         
          
         //Title Font
@@ -93,6 +96,7 @@ public class MainGame {
 		titleLabel.setForeground(Color.LIGHT_GRAY);
 		titleLabel.setFont(titleFont);	
 		titlePanel.add(titleLabel);
+
 		
 		namesPanel = new JPanel();
 		namesPanel.setBackground(Color.black);
@@ -100,6 +104,8 @@ public class MainGame {
 		namesLabel.setForeground(Color.LIGHT_GRAY);
 		namesLabel.setFont(italicNormalFont);
 		namesPanel.add(namesLabel);
+		
+		
 		
 		newGameButton = new JButton("New Game");
 		newGameButton.setBackground(Color.DARK_GRAY);
@@ -264,11 +270,6 @@ public class FeedbackButtonHandler implements ActionListener{
 	}
 }
 
-//public static void main(String[] args) {
-//	new MainGame();
-//	
-//	
-//}
 
 
 }

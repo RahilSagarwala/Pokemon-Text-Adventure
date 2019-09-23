@@ -41,6 +41,7 @@ public class Options extends JPanel {
     JPanel cards;
     JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel;
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
+    ConfirmContinue confirmContinue;
 	
 	public Options (final CardLayout layout, final JPanel cards) {
 		 this.cl = layout;
@@ -197,7 +198,10 @@ public class Options extends JPanel {
 		 
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	              
+	            	    layout.show(cards, "confirmcontinue");
+		                cards.add(confirmContinue, "confirmcontinue");
+		                layout.show(cards, "confirmcontinue");    
+		                layout.show(cards, "confirmcontinue");
 	            				}	
 	            			}
 				 		);

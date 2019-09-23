@@ -29,12 +29,12 @@ import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import locations.StartScreen;;
+import locations.StartScreen;
 
 
 
 public class MainGame {
-	JFrame window;
+
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel;
     JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
     JLabel namesLabel, titleLabel;
@@ -57,11 +57,10 @@ public class MainGame {
     Feedback feedback;
     StartScreen startScreen;
     ConfirmContinue confirmContinue;
-    String chosenSave;
+    String chosenSave = "";
     
     
     public MainGame() {
-    	window = new JFrame("Pokémon Text Audio Game");	
     	cards = new JPanel();
     	mainScreenPanel = new JPanel();
     	cl = new CardLayout();
@@ -71,9 +70,7 @@ public class MainGame {
     	continu = new ContinueGame(cl, cards);
     	feedback = new Feedback(cl, cards);
     	startScreen = new StartScreen(cl,cards);
-    	confirmContinue = new ConfirmContinue(cl,cards);
-        
-        
+    	
         cards.setLayout(cl);
         
          
@@ -195,18 +192,19 @@ public class MainGame {
         cards.add(trade, "trade");
         cards.add(feedback, "feedback");
         cards.add(startScreen, "startscreen");
-        cards.add(confirmContinue, "confirmcontinue");
        
         
         
         cl.show(cards, "mainscreen");
-    	window.add(cards);
-        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.setSize(1280, 680);
-//        window.pack();
-        window.setVisible(true);
         
-  
+    }
+    
+    public JPanel getCards() {
+    	return cards;
+    }
+    
+    public void setSaveName(String name) {
+    	chosenSave = name;
     }
 
 	
@@ -266,11 +264,11 @@ public class FeedbackButtonHandler implements ActionListener{
 	}
 }
 
-public static void main(String[] args) {
-	new MainGame();
-	
-	
-}
+//public static void main(String[] args) {
+//	new MainGame();
+//	
+//	
+//}
 
 
 }

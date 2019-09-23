@@ -8,11 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.View;
 import javax.imageio.ImageIO;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -21,7 +19,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -32,6 +29,7 @@ import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import locations.StartScreen;;
 
 
 
@@ -55,10 +53,11 @@ public class MainGame {
     Options options;
     Trade trade;
     NewGame newGame;
-    Continue continu;
+    ContinueGame continu;
     Feedback feedback;
-    
-    //testing
+    StartScreen startScreen;
+    ConfirmContinue confirmContinue;
+    String chosenSave;
     
     
     public MainGame() {
@@ -67,11 +66,12 @@ public class MainGame {
     	mainScreenPanel = new JPanel();
     	cl = new CardLayout();
     	options = new Options(cl, cards);
-//    	options.setLayout(new GridBagLayout());
     	trade = new Trade(cl, cards);
     	newGame = new NewGame(cl, cards);
-    	continu = new Continue(cl, cards);
+    	continu = new ContinueGame(cl, cards);
     	feedback = new Feedback(cl, cards);
+    	startScreen = new StartScreen(cl,cards);
+    	confirmContinue = new ConfirmContinue(cl,cards);
         
         
         cards.setLayout(cl);
@@ -194,6 +194,8 @@ public class MainGame {
         cards.add(continu, "continue");
         cards.add(trade, "trade");
         cards.add(feedback, "feedback");
+        cards.add(startScreen, "startscreen");
+        cards.add(confirmContinue, "confirmcontinue");
        
         
         
@@ -214,7 +216,6 @@ public class MainGame {
 public class OptionsButtonHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
-			
 			cl = (CardLayout) cards.getLayout();
 			cl.show(cards, "options");
 			

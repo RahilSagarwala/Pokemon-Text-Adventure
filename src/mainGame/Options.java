@@ -32,6 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import locations.StartScreen;
 
 public class Options extends JPanel {
 	
@@ -41,7 +42,10 @@ public class Options extends JPanel {
     JPanel cards;
     JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel;
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
-    ConfirmContinue confirmContinue;
+    StartScreen startScreen;
+    Font smallFont = new Font("SANS_SERIF", Font.BOLD, 20);
+    Font mediumFont = new Font("SANS_SERIF", Font.BOLD, 25);
+    Font largeFont = new Font("SANS_SERIF", Font.BOLD, 30);
 	
 	public Options (final CardLayout layout, final JPanel cards) {
 		 this.cl = layout;
@@ -184,9 +188,6 @@ public class Options extends JPanel {
 	     gb.insets = new Insets(0,15,0,0);
 		 add(largeFontButton,gb);
 	
-		 
-		 
-		 
 
 		 
 		 returnButton.addActionListener(new ActionListener() {
@@ -198,16 +199,17 @@ public class Options extends JPanel {
 		 
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	    layout.show(cards, "confirmcontinue");
-		                cards.add(confirmContinue, "confirmcontinue");
-		                layout.show(cards, "confirmcontinue");    
-		                layout.show(cards, "confirmcontinue");
+	            	    startScreen = new StartScreen(cl,cards, smallFont);
+		                cards.add(startScreen, "startscreen");
+		               
 	            				}	
 	            			}
 				 		);
 		 
 		 mediumFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	startScreen = new StartScreen(cl,cards, mediumFont);
+	                cards.add(startScreen, "startscreen");
 	                
 	            				}	
 	            			}
@@ -217,6 +219,8 @@ public class Options extends JPanel {
 		 
 		 largeFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	startScreen = new StartScreen(cl,cards, largeFont);
+	                cards.add(startScreen, "startscreen");
 	                
 	            				}	
 	            			}

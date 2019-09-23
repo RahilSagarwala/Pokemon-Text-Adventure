@@ -49,13 +49,15 @@ public class StartScreen extends JPanel {
 	
 	CardLayout cl;
     JPanel cards;
+    Font textAreaFont = new Font("SANS_SERIF", Font.BOLD, 30);
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JTextArea startScreen1;
     JButton nextButton1, nextButton2;
 	
-	public StartScreen(final CardLayout layout, final JPanel cards) {
+	public StartScreen(final CardLayout layout, final JPanel cards, Font font) {
 		 this.cl = layout;
 	     this.cards = cards;
+	     this.textAreaFont = font;
 		 setBackground(Color.black);
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
@@ -64,7 +66,7 @@ public class StartScreen extends JPanel {
 		 		"            People call me the POKEMON PROF!");
 		 startScreen1.setForeground(Color.cyan);
 		 startScreen1.setBackground(Color.black);
-		 startScreen1.setFont(buttonFont);
+		 startScreen1.setFont(textAreaFont);
 		 
 		 JButton nextButton1 = new JButton("Next");
 		 nextButton1.setPreferredSize(new Dimension(150,75));
@@ -85,7 +87,7 @@ public class StartScreen extends JPanel {
 		 
 		 nextButton1.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                startScreen1.setText("*An image of a Nidorino appears.\r\n" + 
+	             startScreen1.setText("*An image of a Nidorino appears.*\r\n" + 
 	                		"Oak       : This world is inhabited by creatures called POKEMON! For some\r\n" + 
 	                		"            people, POKEMON are pets. Others use them for fights. Myself...\r\n" + 
 	                		"            I study POKEMON as a profession.");

@@ -69,7 +69,7 @@ public class MainGame {
     	newGame = new NewGame(cl, cards);
     	continu = new ContinueGame(cl, cards);
     	feedback = new Feedback(cl, cards);
-    	startScreen = new StartScreen(cl,cards);
+    	startScreen = new StartScreen(cl,cards,buttonFont);
     	
         cards.setLayout(cl);
         

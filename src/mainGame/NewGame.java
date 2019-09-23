@@ -43,6 +43,7 @@ public class NewGame extends JPanel {
     JLabel newGameLabel, blankLabel;
     StartScreen ss;
     JTextArea screenTextArea;
+    Player player;
 	
 	public NewGame(final CardLayout layout, final JPanel cards) {
 		 this.cl = layout;
@@ -120,7 +121,7 @@ public class NewGame extends JPanel {
 	           	screenTextArea.setForeground(Color.cyan);
 	           	screenTextArea.setBackground(Color.black);
 	           	screenTextArea.setFont(buttonFont);
-	                ss = new StartScreen(cl,cards,buttonFont, screenTextArea,false,"1", false);
+	                ss = new StartScreen(cl,cards,buttonFont, screenTextArea,false,"1", false, player);
 	                ss.timerStart(screenTextArea.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");

@@ -47,6 +47,7 @@ public class Options extends JPanel {
     Font mediumFont = new Font("SANS_SERIF", Font.BOLD, 25);
     Font largeFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JTextArea startScreenTextArea = new JTextArea();
+    Player player;
 	
 	public Options (final CardLayout layout, final JPanel cards) {
 		 this.cl = layout;
@@ -200,7 +201,7 @@ public class Options extends JPanel {
 		 
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	    startScreen = new StartScreen(cl,cards, smallFont, startScreenTextArea, false, "1", false);
+	            	    startScreen = new StartScreen(cl,cards, smallFont, startScreenTextArea, false, "1", false, player);
 		                cards.add(startScreen, "startscreen");
 		               
 	            				}	
@@ -209,7 +210,7 @@ public class Options extends JPanel {
 		 
 		 mediumFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	startScreen = new StartScreen(cl,cards, mediumFont, startScreenTextArea, false, "1", false);
+	            	startScreen = new StartScreen(cl,cards, mediumFont, startScreenTextArea, false, "1", false, player);
 	                cards.add(startScreen, "startscreen");
 	                
 	            				}	
@@ -220,7 +221,7 @@ public class Options extends JPanel {
 		 
 		 largeFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	startScreen = new StartScreen(cl,cards, largeFont, startScreenTextArea, false, "1", false);
+	            	startScreen = new StartScreen(cl,cards, largeFont, startScreenTextArea, false, "1", false, player);
 	                cards.add(startScreen, "startscreen");
 	                
 	            				}	

@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import mainGame.Player;
 
 public class StartScreen extends JPanel {
 	
@@ -48,6 +49,7 @@ public class StartScreen extends JPanel {
     Timer tm;
     Boolean finish = false, nameOptionsBool = false;
     String screen;
+    Player player;
     
 	public void timerStart(String text){
 		
@@ -86,10 +88,9 @@ public class StartScreen extends JPanel {
     
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool) {
+			Boolean nameOptionsBool, Player player) {
 		
-		
-			     
+		 this.player = player;     
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -116,25 +117,25 @@ public class StartScreen extends JPanel {
 		 JButton name1 = new JButton("RED");
 		 name1.setPreferredSize(new Dimension(200,75));
 		 name1.setBackground(Color.DARK_GRAY);
-		 name1.setForeground(Color.cyan);
+		 name1.setForeground(Color.red);
 		 name1.setFont(buttonFont);
 		 
 		 JButton name2 = new JButton("BLUE");
 		 name2.setPreferredSize(new Dimension(200,75));
 		 name2.setBackground(Color.DARK_GRAY);
-		 name2.setForeground(Color.cyan);
+		 name2.setForeground(Color.blue);
 		 name2.setFont(buttonFont);
 		 
 		 JButton name3 = new JButton("GREEN");
 		 name3.setPreferredSize(new Dimension(200,75));
 		 name3.setBackground(Color.DARK_GRAY);
-		 name3.setForeground(Color.cyan);
+		 name3.setForeground(Color.green);
 		 name3.setFont(buttonFont);
 		 
 		 JButton name4 = new JButton("YELLOW");
 		 name4.setPreferredSize(new Dimension(200,75));
 		 name4.setBackground(Color.DARK_GRAY);
-		 name4.setForeground(Color.cyan);
+		 name4.setForeground(Color.yellow);
 		 name4.setFont(buttonFont);
 		 
 		 JPanel nameOptionsPanel = new JPanel();
@@ -165,12 +166,12 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	       		 
 	       		startScreenText1.setText("*An image of a Nidorino appears.*\r\n" + 
-                		"Oak       : This world is inhabited by creatures called POKEMON! For some\r\n" + 
+                		"Oak: This world is inhabited by creatures called POKEMON! For some\r\n" + 
                 		"            people, POKEMON are pets. Others use them for fights. Myself...\r\n" + 
                 		"            I study POKEMON as a profession.");
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player);
 	       		 ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");     
@@ -184,12 +185,12 @@ public class StartScreen extends JPanel {
 			 nextButton1.addActionListener(new ActionListener() {
 		            public void actionPerformed(ActionEvent e) {
 		       		 
-		       		startScreenText1.setText("* - An image of a boy (the player's character) appears.\r\n" + 
+		       		startScreenText1.setText("*An image of a boy (the player's character) appears.*\r\n" + 
 		       				"\r\n" + 
-		       				"Oak       : First, what is your name?");
+		       				"Oak: First, what is your name?");
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true);
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player);
 		       		 ss.timerStart(startScreenText1.getText());
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");     
@@ -198,8 +199,111 @@ public class StartScreen extends JPanel {
 		            }
 		        });
 			 break;
-		 
+	 
+		 case "4":
+			 
+			 nextButton1.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		       		 
+		       		startScreenText1.setText("*An image of another boy appears.*\r\n" +  
+		       				"Oak: This is my grandson. He's been your rival since you were a baby.\r\n" + 
+		       				"\r\n" + 
+		       				" ...Erm, what is his name again?\r\n" 
+		       				);
+
+		       		
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player);
+		       		    ss.timerStart(startScreenText1.getText());
+		                cards.add(ss, "startscreen");
+		                layout.show(cards, "startscreen");     
+	             
+		                
+		            }
+		        });
+			 
 		 }
+		  switch(screen) {
+		  case "3":
+		 name1.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	Player player = new Player();
+	            	player.setName("RED");
+	            	
+	       		 
+	       		startScreenText1.setText("Oak: Right! So your name is " + player.getName()
+	       				);
+
+	       		
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss.timerStart(startScreenText1.getText());
+	                cards.add(ss, "startscreen");
+	                layout.show(cards, "startscreen");     
+          
+	                
+	            }
+	        });
+		 
+		 name2.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	Player player = new Player();
+	            	player.setName("BLUE");
+	            	
+	       		 
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() +"!\r\n" + 
+		       				"\r\n" + 
+		       				"*An image of another boy appears.*");
+
+	       		
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss.timerStart(startScreenText1.getText());
+	                cards.add(ss, "startscreen");
+	                layout.show(cards, "startscreen");     
+       
+	                
+	            }
+	        });
+		 
+		 name3.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	Player player = new Player();
+	            	player.setName("GREEN");
+	            	
+	       		 
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() +"!\r\n" + 
+		       				"\r\n" + 
+		       				"*An image of another boy appears.*");
+
+	       		
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss.timerStart(startScreenText1.getText());
+	                cards.add(ss, "startscreen");
+	                layout.show(cards, "startscreen");     
+       
+	                
+	            }
+	        });
+		 
+		 name4.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	Player player = new Player();
+	            	player.setName("YELLOW");
+	            	
+	       		 
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() +"!\r\n" + 
+		       				"\r\n" + 
+		       				"*An image of another boy appears.*");
+
+	       		
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss.timerStart(startScreenText1.getText());
+	                cards.add(ss, "startscreen");
+	                layout.show(cards, "startscreen");     
+       
+	                
+	            }
+	        });
+		 
+		  }
 		 
 		 
 	

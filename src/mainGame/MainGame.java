@@ -59,6 +59,7 @@ public class MainGame {
     ConfirmContinue confirmContinue;
     String chosenSave = "";
     JTextArea startScreenTextArea = new JTextArea();
+    Player player;
     
     
     public MainGame() {
@@ -70,7 +71,8 @@ public class MainGame {
     	newGame = new NewGame(cl, cards);
     	continu = new ContinueGame(cl, cards);
     	feedback = new Feedback(cl, cards);
-    	startScreen = new StartScreen(cl,cards,buttonFont, startScreenTextArea, false, "1", false);
+    	player = new Player("");
+    	startScreen = new StartScreen(cl,cards,buttonFont, startScreenTextArea, false, "1", false, player);
     	
         cards.setLayout(cl);
         

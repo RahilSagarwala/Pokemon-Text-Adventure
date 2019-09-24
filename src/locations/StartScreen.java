@@ -52,12 +52,14 @@ public class StartScreen extends JPanel {
     Player player;
     String language, nextText, redText, greenText, blueText, yellowText;
     Options options;
+    int textSpeed;
+    
     
 	public void timerStart(String text){
 		
 		count = 0;
 		
-		tm = new Timer(75, new ActionListener() {
+		tm = new Timer(textSpeed, new ActionListener() {
 			  
 				
 			  public void actionPerformed(ActionEvent arg0) {
@@ -90,7 +92,7 @@ public class StartScreen extends JPanel {
     
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player, Boolean setVisible, String language) {
+			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed) {
 		
 		 this.player = player;     
 		 this.cl = layout;
@@ -102,6 +104,7 @@ public class StartScreen extends JPanel {
 	     this.nameOptionsBool = nameOptionsBool;
 	     this.setVisible = setVisible;
 	     this.language = language;
+	     this.textSpeed = textSpeed;
 	     
 		 setBackground(Color.black);
 		 setLayout(new GridBagLayout());
@@ -127,8 +130,6 @@ public class StartScreen extends JPanel {
 			 greenText = "グリーン";
 			 yellowText = "イエロー";
 		 }
-		 
-		 System.out.println(language);
 		 
 		 JButton nextButton1 = new JButton(nextText);
 		 nextButton1.setPreferredSize(new Dimension(150,75));
@@ -195,7 +196,7 @@ public class StartScreen extends JPanel {
 	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language);
+	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language, textSpeed);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -219,7 +220,7 @@ public class StartScreen extends JPanel {
                 		"Oak: This world is inhabited by creatures called POKEMON! For some\r\n" + 
                 		"            people, POKEMON are pets. Others use them for fights. Myself...\r\n" + 
                 		"            I study POKEMON as a profession.");
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language, textSpeed);
 	            }
 	            else {
 	            	startScreenText1.setText(" わたしの なまえは オーキド みんなからは ポケモン はかせと したれれて おるよ\r\n" + 
@@ -227,7 +228,7 @@ public class StartScreen extends JPanel {
 	            			"この せかいには ポケット モンスターと よばれる\r\n" + 
 	            			"\r\n" + 
 	            			"いきもの たちが いたるところに すんでいる！ ");
-		       		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language);
+		       		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language, textSpeed);
    
 	            }
 	            
@@ -249,13 +250,13 @@ public class StartScreen extends JPanel {
 		       		startScreenText1.setText("*An image of a boy (the player's character) appears.*\r\n" + 
 		       				"\r\n" + 
 		       				"Oak: First, what is your name?");
-		       	 ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player,false, "English");
+		       	 ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player,false, "English", textSpeed);
 		            	}
 		            	else {
 		            		startScreenText1.setText("その ポケモン という いきものを ひとは ぺツトに  したり しょうぶに つかったリ。。。\r\n" + 
 		            				"そして。。。わたしは この ポケモンの けんきゅを してる というわけだ \r\n" + 
 		            				"では はじめに きみの なまえを おしえて もらおう！");
-				       	 ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player,false, "Japanese");
+				       	 ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player,false, "Japanese", textSpeed);
 		            	}
 
 		       		   
@@ -280,14 +281,14 @@ public class StartScreen extends JPanel {
 		       				"\r\n" + 
 		       				" ...Erm, what is his name again?\r\n" 
 		       				);
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player, false, "English");
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player, false, "English", textSpeed);
 		       		    
 		            	}
 		            	
 		            	else {
 		            		startScreenText1.setText("こいつは わたしの まご きみの おさななじみであリ ライバル である\r\n" + 
 		            				"。。。えーと？ なまえ わ なんで いつたかな？");
-		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player, false, "Japanese");
+		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player, false, "Japanese", textSpeed);
 		            		
 		            		
 		            	}
@@ -313,7 +314,7 @@ public class StartScreen extends JPanel {
 		       				);
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English");
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English", textSpeed);
 	       		    
 	            	}
 	            	
@@ -325,7 +326,7 @@ public class StartScreen extends JPanel {
 		            	startScreenText1.setText("ふむ。。。" + player.getName() + " と いうんだな！");
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese");
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese", textSpeed);
 	            		
 	            	}
 	       		    ss.timerStart(startScreenText1.getText());
@@ -350,7 +351,7 @@ public class StartScreen extends JPanel {
 		       				);
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English");
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English", textSpeed);
 	       		    
 	            	}
 	            	
@@ -361,7 +362,7 @@ public class StartScreen extends JPanel {
 	            		startScreenText1.setText("ふむ。。。" + player.getName() +  " と いうんだな！");
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese");
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese", textSpeed);
 	            	}
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
@@ -382,7 +383,7 @@ public class StartScreen extends JPanel {
 	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + ".");
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English");
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English", textSpeed);
 	       		    
 	            	}
 	            	
@@ -394,7 +395,7 @@ public class StartScreen extends JPanel {
 	            		startScreenText1.setText("ふむ。。。" + player.getName() +  " と いうんだな！");
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese");
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese", textSpeed);
 	            	}
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
@@ -414,7 +415,7 @@ public class StartScreen extends JPanel {
 	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + ".");
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English");
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "English", textSpeed);
 	       		    
 	            	}
 	            	
@@ -426,7 +427,7 @@ public class StartScreen extends JPanel {
 	            		startScreenText1.setText("ふむ。。。" + player.getName() +  " と いうんだな！");
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese");
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true, "Japanese", textSpeed);
 	            	}
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");

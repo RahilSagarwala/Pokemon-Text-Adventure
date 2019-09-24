@@ -61,13 +61,15 @@ public class MainGame extends JPanel {
     Player player;
     Font font;
     String language;
+    int textSpeed;
     
     
-    public MainGame(final CardLayout layout, final JPanel cards, Font font, String language) {
+    public MainGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
 	    this.language = language;
+	    this.textSpeed = textSpeed;
     	
 	    setLayout(new GridBagLayout());
         setBackground(Color.black); 
@@ -192,13 +194,13 @@ public class MainGame extends JPanel {
 			
 			 public void actionPerformed(ActionEvent e) {
 				 if (font == null) {
-					 newGame = new NewGame(cl, cards, buttonFont, language);
+					 newGame = new NewGame(cl, cards, buttonFont, language, textSpeed);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 					
 				 }
 				 else {
-					newGame = new NewGame(cl, cards, font, language);
+					newGame = new NewGame(cl, cards, font, language, textSpeed);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 }
@@ -209,7 +211,7 @@ public class MainGame extends JPanel {
 		 optionsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language);
+					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

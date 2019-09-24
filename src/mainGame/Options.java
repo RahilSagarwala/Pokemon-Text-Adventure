@@ -56,11 +56,12 @@ public class Options extends JPanel {
 	Boolean nameOptionsBool;
 	Player player;
 	Boolean setVisible;
+	int textSpeed1;
     
     
 	
 	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player, Boolean setVisible, String language) {
+			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -71,6 +72,7 @@ public class Options extends JPanel {
 	     this.player = player;
 	     this.setVisible = setVisible;
 	     this.language1 = language;
+	     this.textSpeed1 = textSpeed;
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 setBackground(Color.black);
@@ -240,7 +242,7 @@ public class Options extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
-	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1);
+	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1);
 //	            		 startScreen.timerStart(startScreenTextArea.getText());
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
@@ -264,7 +266,7 @@ public class Options extends JPanel {
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            		font = smallFont;
-	            	    mg = new MainGame(cl, cards, font, language1);
+	            	    mg = new MainGame(cl, cards, font, language1, textSpeed1);
 	            	    cards.add(mg, "mainscreen");    
 		               
 	            				}	
@@ -274,7 +276,7 @@ public class Options extends JPanel {
 		 mediumFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	font= mediumFont;
-	            	 mg = new MainGame(cl, cards, font, language1);
+	            	 mg = new MainGame(cl, cards, font, language1, textSpeed1);
 	            	 cards.add(mg, "mainscreen");
 	                
 	                
@@ -287,7 +289,7 @@ public class Options extends JPanel {
 		 largeFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	font = largeFont;
-	            	 mg = new MainGame(cl, cards, font, language1);
+	            	 mg = new MainGame(cl, cards, font, language1, textSpeed1);
 	            	    cards.add(mg, "mainscreen");
 	                
 	            				}	
@@ -296,7 +298,7 @@ public class Options extends JPanel {
 		 
 		 englishButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	 mg = new MainGame(cl, cards, font, "English");
+	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1);
 	            	 language1 = "English";
 	            	    cards.add(mg, "mainscreen");
 	                
@@ -306,7 +308,7 @@ public class Options extends JPanel {
 		 
 		 japaneseButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	 mg = new MainGame(cl, cards, font, "Japanese");
+	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1);
 	            	 language1 = "Japanese";
 	            	 cards.add(mg, "mainscreen");
 	                
@@ -344,14 +346,14 @@ public class Options extends JPanel {
 		 
 		 slowTextSpeedButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	               
+	            		textSpeed1 = 100;
 	            				}	
 	            			}
 				 		);
 		 
 		 fastTextSpeedButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                
+	            	textSpeed1 = 50;
 	            				}	
 	            			}
 				 		);

@@ -45,12 +45,14 @@ public class NewGame extends JPanel {
     Player player;
     Font font;
     String language;
+    int textSpeed;
 	
-	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language) {
+	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
 	     this.language = language;
+	     this.textSpeed = textSpeed;
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 
@@ -126,7 +128,7 @@ public class NewGame extends JPanel {
 	           	screenTextArea.setForeground(Color.cyan);
 	           	screenTextArea.setBackground(Color.black);
 	           	screenTextArea.setFont(font);
-	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, "English");
+	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, "English", textSpeed);
 	                ss.timerStart(screenTextArea.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");
@@ -139,7 +141,7 @@ public class NewGame extends JPanel {
 	 	           	screenTextArea.setForeground(Color.cyan);
 	 	           	screenTextArea.setBackground(Color.black);
 	 	           	screenTextArea.setFont(font);
-	 	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true,"Japanese");
+	 	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true,"Japanese", textSpeed);
 	 	                ss.timerStart(screenTextArea.getText());
 	 	                cards.add(ss, "startscreen");
 	 	                layout.show(cards, "startscreen");

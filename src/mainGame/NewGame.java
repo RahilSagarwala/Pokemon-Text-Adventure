@@ -124,7 +124,7 @@ public class NewGame extends JPanel {
 	           	screenTextArea.setForeground(Color.cyan);
 	           	screenTextArea.setBackground(Color.black);
 	           	screenTextArea.setFont(font);
-	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true);
+	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, "English");
 	                ss.timerStart(screenTextArea.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");
@@ -132,12 +132,12 @@ public class NewGame extends JPanel {
 	         
 	         else {
 	        	 
-	        	 JTextArea screenTextArea = new JTextArea("はじめまして!  ポケッ モンスタ- のせかいへ ようこそ!");
+	        	 JTextArea screenTextArea = new JTextArea("はじめまして！  ポケッ モンスタ- のせかいへ ようこそ！");
 	 	     				 
 	 	           	screenTextArea.setForeground(Color.cyan);
 	 	           	screenTextArea.setBackground(Color.black);
 	 	           	screenTextArea.setFont(font);
-	 	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true);
+	 	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true,"Japanese");
 	 	                ss.timerStart(screenTextArea.getText());
 	 	                cards.add(ss, "startscreen");
 	 	                layout.show(cards, "startscreen");

@@ -40,10 +40,9 @@ public class MainGame extends JPanel {
     JLabel namesLabel, titleLabel;
 	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
 	
-	OptionsButtonHandler optionsButtonPress = new OptionsButtonHandler();
+
 	TradeButtonHandler tradeButtonPress = new TradeButtonHandler();
 	ContinueButtonHandler continueButtonPress = new ContinueButtonHandler();
-//	NewGameButtonHandler newGameButtonPress = new NewGameButtonHandler();
 	FeedbackButtonHandler feedbackButtonPress = new FeedbackButtonHandler();
 	
 	JPanel mainScreenPanel;
@@ -130,7 +129,6 @@ public class MainGame extends JPanel {
 		optionsButton.setBackground(Color.DARK_GRAY);
 		optionsButton.setForeground(Color.cyan);
 		optionsButton.setFont(buttonFont);
-		optionsButton.addActionListener(optionsButtonPress);
 		
 		
 		feedbackButton = new JButton("Feedback");
@@ -207,20 +205,20 @@ public class MainGame extends JPanel {
 					
 	            }
 	        });
+		 
+		 optionsButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language);
+					cards.add(options, "options");
+					cl.show(cards, "options");
+					
+	            }
+	        });
         
     }
 
   
-public class OptionsButtonHandler implements ActionListener{
-		
-		public void actionPerformed(ActionEvent event){
-			cl = (CardLayout) cards.getLayout();
-			cl.show(cards, "options");
-			
-			
-		}
-		
-	}
 
 public class TradeButtonHandler implements ActionListener{
 	

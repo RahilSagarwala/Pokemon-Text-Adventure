@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
-import mainGame.MainGame.OptionsButtonHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -44,22 +43,34 @@ public class Options extends JPanel {
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     StartScreen startScreen;
     Font smallFont = new Font("SANS_SERIF", Font.BOLD, 10);
-    Font mediumFont = new Font("SANS_SERIF", Font.BOLD, 25);
+    Font mediumFont = new Font("SANS_SERIF", Font.BOLD, 30);
     Font largeFont = new Font("SANS_SERIF", Font.BOLD, 50);
     JTextArea startScreenTextArea = new JTextArea();
-    Player player;
-    Font font;
+    Font font = new Font("SANS_SERIF", Font.BOLD, 30);
     MainGame mg;
-    String language;
+    String language1;
+    String position;
+    JTextArea textArea;
+    Boolean finish;
+    String screen;
+	Boolean nameOptionsBool;
+	Player player;
+	Boolean setVisible;
     
-    public Font getFont() {
-    	return font;
-    }
     
 	
-	public Options (final CardLayout layout, final JPanel cards) {
+	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
+			Boolean nameOptionsBool, Player player, Boolean setVisible, String language) {
 		 this.cl = layout;
 	     this.cards = cards;
+	     this.position = position;
+	     this.startScreenTextArea = textArea;
+	     this.finish = finish;
+	     this.screen = screen;
+	     this.nameOptionsBool = nameOptionsBool;
+	     this.player = player;
+	     this.setVisible = setVisible;
+	     this.language1 = language;
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 setBackground(Color.black);
@@ -228,7 +239,23 @@ public class Options extends JPanel {
 		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                layout.show(cards, "mainscreen");
+	            	if (position == "startscreen") {
+	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1);
+//	            		 startScreen.timerStart(startScreenTextArea.getText());
+		            	    cards.add(startScreen, "startscreen");
+		            	    layout.show(cards, "startscreen");
+	            	}		
+	            	
+	            	else {
+	            		  layout.show(cards, position);
+	            	}
+	              
+	            	
+	            	 
+	        	  
+	        	    
+	        	
+	        	  
 	                
 	            				}	
 	            			}
@@ -237,7 +264,7 @@ public class Options extends JPanel {
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            		font = smallFont;
-	            	    mg = new MainGame(cl, cards, font, language);
+	            	    mg = new MainGame(cl, cards, font, language1);
 	            	    cards.add(mg, "mainscreen");    
 		               
 	            				}	
@@ -247,7 +274,7 @@ public class Options extends JPanel {
 		 mediumFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	font= mediumFont;
-	            	 mg = new MainGame(cl, cards, font, language);
+	            	 mg = new MainGame(cl, cards, font, language1);
 	            	 cards.add(mg, "mainscreen");
 	                
 	                
@@ -260,7 +287,7 @@ public class Options extends JPanel {
 		 largeFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	font = largeFont;
-	            	 mg = new MainGame(cl, cards, font, language);
+	            	 mg = new MainGame(cl, cards, font, language1);
 	            	    cards.add(mg, "mainscreen");
 	                
 	            				}	
@@ -279,7 +306,8 @@ public class Options extends JPanel {
 		 japaneseButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "Japanese");
-	            	    cards.add(mg, "mainscreen");
+	            	 language1 = "Japanese";
+	            	 cards.add(mg, "mainscreen");
 	                
 	            				}	
 	            			}

@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import locations.StartScreen;
-import mainGame.MainGame.OptionsButtonHandler;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -71,7 +71,7 @@ public class NewGame extends JPanel {
 		 noButton.setFont(font);
 		 noButton.setPreferredSize(new Dimension(400,100));
 		 
-		 JLabel newGameLabel = new JLabel("Start a new game?");
+		 JLabel newGameLabel = new JLabel("Start New Game?");
 		 newGameLabel.setFont(font);
 		 newGameLabel.setForeground(Color.cyan);
 		 
@@ -81,6 +81,8 @@ public class NewGame extends JPanel {
 		 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
+		 
+		 
 		 
 		 gb.gridx=0;
 	     gb.gridy=1;

@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
-import mainGame.MainGame.OptionsButtonHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;

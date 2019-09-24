@@ -17,7 +17,7 @@ import java.io.IOException;
 import javax.swing.border.EmptyBorder;
 
 import mainGame.ConfirmContinue;
-import mainGame.MainGame.OptionsButtonHandler;
+import mainGame.Options;
 
 import javax.imageio.ImageIO;
 
@@ -41,7 +41,7 @@ public class StartScreen extends JPanel {
     Font textAreaFont = new Font("SANS_SERIF", Font.BOLD, 30);
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JTextArea startScreenText1;
-    JButton nextButton1, nextButton2, name1, name2, name3, name4;
+    JButton nextButton1, nextButton2, name1, name2, name3, name4, optionsButton;
     int count = 0;
     int stringLength = 0;
     String stringText;
@@ -51,6 +51,7 @@ public class StartScreen extends JPanel {
     String screen;
     Player player;
     String language, nextText, redText, greenText, blueText, yellowText;
+    Options options;
     
 	public void timerStart(String text){
 		
@@ -167,19 +168,41 @@ public class StartScreen extends JPanel {
 		 nameOptionsPanel.add(name4);
 		 nameOptionsPanel.setVisible(nameOptionsBool);
 		 
+		 
+		 JButton optionsButton = new JButton("Options");
+		 optionsButton.setPreferredSize(new Dimension(200,75));
+		 optionsButton.setBackground(Color.DARK_GRAY);
+		 optionsButton.setForeground(Color.cyan);
+		 optionsButton.setFont(buttonFont);
 
- 
 		 gb.gridx=0;
 	     gb.gridy=0;
+		 add(optionsButton, gb);
+		 gb.gridx=0;
+	     gb.gridy=1;
 	     gb.weighty=1;
 		 add(startScreenText1, gb);
 	     gb.gridx=0;
-	     gb.gridy=1;
+	     gb.gridy=2;
 	     add(nameOptionsPanel, gb);
 	     gb.gridx=0;
-	     gb.gridy=2;
+	     gb.gridy=4;
 	     add(nextButton1, gb);
 	     
+	     
+	     optionsButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language);
+					cards.add(options, "options");
+					cl.show(cards, "options");
+					
+		
+	            	
+          
+	                
+	            }
+	        });
 	  
 	     
 	 

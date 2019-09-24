@@ -62,6 +62,7 @@ public class MainGame extends JPanel {
     Font font;
     String language;
     int textSpeed;
+    String fullText2;
     
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
@@ -211,7 +212,7 @@ public class MainGame extends JPanel {
 		 optionsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed);
+					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

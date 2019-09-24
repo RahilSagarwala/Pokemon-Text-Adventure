@@ -46,6 +46,7 @@ public class NewGame extends JPanel {
     Font font;
     String language;
     int textSpeed;
+    String fullText2;
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
 		 this.cl = layout;
@@ -121,32 +122,28 @@ public class NewGame extends JPanel {
 	            	
 	         if (language == "English") { 
 	         
-           	 JTextArea screenTextArea = new JTextArea("*An image of a man in a lab coat appears.* \n\n Oak: Hello there! "
-     		 		+ "Welcome to the world of POKEMON! My name is OAK!\r\n" + 
-     		 		"            People call me the POKEMON PROF!");
+
+           	 fullText2 = "*An image of a man in a lab coat appears.* \n\n Oak: Hello there! "
+      		 		+ "Welcome to the world of POKEMON! My name is OAK!\r\n" + 
+      		 		"            People call me the POKEMON PROF!";
 	     				 
-	           	screenTextArea.setForeground(Color.cyan);
-	           	screenTextArea.setBackground(Color.black);
-	           	screenTextArea.setFont(font);
-	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, "English", textSpeed);
-	                ss.timerStart(screenTextArea.getText());
-	                cards.add(ss, "startscreen");
-	                layout.show(cards, "startscreen");
+	          
+	               
 	         }
 	         
 	         else {
 	        	 
-	        	 JTextArea screenTextArea = new JTextArea("はじめまして！  ポケッ モンスタ- のせかいへ ようこそ！");
+	        	
+	        	 fullText2 = "はじめまして！  ポケッ モンスタ- のせかいへ ようこそ！";
 	 	     				 
-	 	           	screenTextArea.setForeground(Color.cyan);
-	 	           	screenTextArea.setBackground(Color.black);
-	 	           	screenTextArea.setFont(font);
-	 	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true,"Japanese", textSpeed);
-	 	                ss.timerStart(screenTextArea.getText());
-	 	                cards.add(ss, "startscreen");
-	 	                layout.show(cards, "startscreen");
+	
 	        	 
 	         }
+	         
+	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, fullText2);
+             ss.timerStart(fullText2, false);
+             cards.add(ss, "startscreen");
+             layout.show(cards, "startscreen");
 	            }
 	        });
 	}

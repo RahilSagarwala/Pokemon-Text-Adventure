@@ -57,11 +57,12 @@ public class Options extends JPanel {
 	Player player;
 	Boolean setVisible;
 	int textSpeed1;
+	String fullText2;
     
     
 	
 	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed) {
+			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed, String fullText) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -73,6 +74,7 @@ public class Options extends JPanel {
 	     this.setVisible = setVisible;
 	     this.language1 = language;
 	     this.textSpeed1 = textSpeed;
+	     this.fullText2 = fullText;
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 setBackground(Color.black);
@@ -242,8 +244,9 @@ public class Options extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
-	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1);
-//	            		 startScreen.timerStart(startScreenTextArea.getText());
+	            		
+	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
+	            		 startScreen.timerStart(fullText2, false);
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 	            	}		

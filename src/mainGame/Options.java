@@ -297,6 +297,7 @@ public class Options extends JPanel {
 		 englishButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "English");
+	            	 language1 = "English";
 	            	    cards.add(mg, "mainscreen");
 	                
 	            				}	

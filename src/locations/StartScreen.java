@@ -128,6 +128,8 @@ public class StartScreen extends JPanel {
 			 yellowText = "イエロー";
 		 }
 		 
+		 System.out.println(language);
+		 
 		 JButton nextButton1 = new JButton(nextText);
 		 nextButton1.setPreferredSize(new Dimension(150,75));
 		 nextButton1.setBackground(Color.DARK_GRAY);
@@ -217,7 +219,7 @@ public class StartScreen extends JPanel {
                 		"Oak: This world is inhabited by creatures called POKEMON! For some\r\n" + 
                 		"            people, POKEMON are pets. Others use them for fights. Myself...\r\n" + 
                 		"            I study POKEMON as a profession.");
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, "English");
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language);
 	            }
 	            else {
 	            	startScreenText1.setText(" わたしの なまえは オーキド みんなからは ポケモン はかせと したれれて おるよ\r\n" + 
@@ -225,7 +227,7 @@ public class StartScreen extends JPanel {
 	            			"この せかいには ポケット モンスターと よばれる\r\n" + 
 	            			"\r\n" + 
 	            			"いきもの たちが いたるところに すんでいる！ ");
-		       		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, "Japanese");
+		       		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language);
    
 	            }
 	            

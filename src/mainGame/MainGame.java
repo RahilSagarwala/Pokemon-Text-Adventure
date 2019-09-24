@@ -33,7 +33,7 @@ import locations.StartScreen;
 
 
 
-public class MainGame {
+public class MainGame extends JPanel {
 
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel;
     JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
@@ -43,11 +43,11 @@ public class MainGame {
 	OptionsButtonHandler optionsButtonPress = new OptionsButtonHandler();
 	TradeButtonHandler tradeButtonPress = new TradeButtonHandler();
 	ContinueButtonHandler continueButtonPress = new ContinueButtonHandler();
-	NewGameButtonHandler newGameButtonPress = new NewGameButtonHandler();
+//	NewGameButtonHandler newGameButtonPress = new NewGameButtonHandler();
 	FeedbackButtonHandler feedbackButtonPress = new FeedbackButtonHandler();
 	
+	JPanel mainScreenPanel;
 	final static String mainScreenString = "mainscreen";
-    JPanel mainScreenPanel;
     CardLayout cl;
     
     Options options;
@@ -60,24 +60,21 @@ public class MainGame {
     String chosenSave = "";
     JTextArea startScreenTextArea = new JTextArea();
     Player player;
+    Font font;
+    String language;
     
     
-    public MainGame() {
-    	cards = new JPanel();
-    	mainScreenPanel = new JPanel();
-    	cl = new CardLayout();
-    	options = new Options(cl, cards);
-    	trade = new Trade(cl, cards);
-    	newGame = new NewGame(cl, cards);
-    	continu = new ContinueGame(cl, cards);
-    	feedback = new Feedback(cl, cards);
-    	player = new Player("");
-    	startScreen = new StartScreen(cl,cards,buttonFont, startScreenTextArea, false, "1", false, player);
+    public MainGame(final CardLayout layout, final JPanel cards, Font font, String language) {
+    	this.cl = layout;
+	    this.cards = cards;
+	    this.font = font;
+	    this.language = language;
     	
-        cards.setLayout(cl);
+	    setLayout(new GridBagLayout());
+        setBackground(Color.black); 
         
-        
-        
+   
+      
          
         //Title Font
     	try {
@@ -99,6 +96,7 @@ public class MainGame {
 		titleLabel.setFont(titleFont);	
 		titlePanel.add(titleLabel);
 
+
 		
 		namesPanel = new JPanel();
 		namesPanel.setBackground(Color.black);
@@ -113,7 +111,6 @@ public class MainGame {
 		newGameButton.setBackground(Color.DARK_GRAY);
 		newGameButton.setForeground(Color.cyan);
 		newGameButton.setFont(buttonFont);
-		newGameButton.addActionListener(newGameButtonPress);
 		
 		
 		continueButton = new JButton("Continue");
@@ -159,66 +156,61 @@ public class MainGame {
 		logoPanel = new JPanel();
 		
 		//GridBagLayout
-        mainScreenPanel.setLayout(new GridBagLayout());
-        mainScreenPanel.setBackground(Color.black); 
+       
 		GridBagConstraints gb = new GridBagConstraints();		
 		
 		gb.gridx=0;
 		gb.gridy=0;
-		mainScreenPanel.add(titlePanel,gb);
+		add(titlePanel,gb);
 		
 		
 		gb.gridx=0;
 		gb.gridy=1;
-		mainScreenPanel.add(namesPanel,gb);
+		add(namesPanel,gb);
 		
 		gb.gridx=0;
 		gb.gridy=2;
-		mainScreenPanel.add(newGameButton,gb);
+		add(newGameButton,gb);
+		
+		
 		
 		gb.gridx=0;
 		gb.gridy=3;
-		mainScreenPanel.add(continueButton,gb);
+		add(continueButton,gb);
 		
 		gb.gridx=0;
 		gb.gridy=4;
-		mainScreenPanel.add(tradeButton,gb);
+		add(tradeButton,gb);
 		
 		gb.gridx=0;
 		gb.gridy=5;
-		mainScreenPanel.add(optionsButton,gb);	
+		add(optionsButton,gb);	
 		
 		gb.gridx=0;
 		gb.gridy=6;
-		mainScreenPanel.add(feedbackButton,gb);
-    
-    	
-	    cards.add(mainScreenPanel, "mainscreen");
-        cards.add(options, "options");
-        cards.add(newGame, "newgame");
-        cards.add(continu, "continue");
-        cards.add(trade, "trade");
-        cards.add(feedback, "feedback");
-        cards.add(startScreen, "startscreen");
-       
+		add(feedbackButton,gb); 
+		
+		 newGameButton.addActionListener(new ActionListener() {
+			
+			 public void actionPerformed(ActionEvent e) {
+				 if (font == null) {
+					 newGame = new NewGame(cl, cards, buttonFont, language);
+					 cards.add(newGame, "newgame");
+					cl.show(cards, "newgame");
+					
+				 }
+				 else {
+					newGame = new NewGame(cl, cards, font, language);
+					 cards.add(newGame, "newgame");
+					cl.show(cards, "newgame");
+				 }
+					
+	            }
+	        });
         
-        
-        cl.show(cards, "mainscreen");
-        
-    }
-    
-    public JPanel getCards() {
-    	return cards;
-    }
-    
-    public void setSaveName(String name) {
-    	chosenSave = name;
     }
 
-	
-
-     
-    
+  
 public class OptionsButtonHandler implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
@@ -254,14 +246,6 @@ public class ContinueButtonHandler implements ActionListener{
 }
  
 
-public class NewGameButtonHandler implements ActionListener{
-	
-	public void actionPerformed(ActionEvent event){
-		cl = (CardLayout) cards.getLayout();
-		cl.show(cards, "newgame");
-		
-	}
-}
 
 public class FeedbackButtonHandler implements ActionListener{
 	

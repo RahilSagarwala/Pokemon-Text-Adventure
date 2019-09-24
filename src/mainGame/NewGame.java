@@ -39,41 +39,44 @@ public class NewGame extends JPanel {
 	JButton returnButton, yesButton, noButton;
 	CardLayout cl;
     JPanel cards;
-    Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JLabel newGameLabel, blankLabel;
     StartScreen ss;
     JTextArea screenTextArea;
     Player player;
+    Font font;
+    String language;
 	
-	public NewGame(final CardLayout layout, final JPanel cards) {
+	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language) {
 		 this.cl = layout;
 	     this.cards = cards;
+	     this.font=font;
+	     this.language = language;
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 
 		 setBackground(Color.black);
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
-		 returnButton.setFont(buttonFont);
+		 returnButton.setFont(font);
 		 
 		 JButton yesButton = new JButton("Yes");
 		 yesButton.setBackground(Color.DARK_GRAY);
 		 yesButton.setForeground(Color.cyan);
-		 yesButton.setFont(buttonFont);
+		 yesButton.setFont(font);
 		 yesButton.setPreferredSize(new Dimension(400,100));
 		 
 		 JButton noButton = new JButton("No");
 		 noButton.setBackground(Color.DARK_GRAY);
 		 noButton.setForeground(Color.cyan);
-		 noButton.setFont(buttonFont);
+		 noButton.setFont(font);
 		 noButton.setPreferredSize(new Dimension(400,100));
 		 
 		 JLabel newGameLabel = new JLabel("Start a new game?");
-		 newGameLabel.setFont(buttonFont);
+		 newGameLabel.setFont(font);
 		 newGameLabel.setForeground(Color.cyan);
 		 
 		 JLabel blankLabel = new JLabel("");
-		 blankLabel.setFont(buttonFont);
+		 blankLabel.setFont(font);
 		 blankLabel.setForeground(Color.cyan);
 		 
 		 setLayout(new GridBagLayout());
@@ -111,20 +114,35 @@ public class NewGame extends JPanel {
 		 
 		 yesButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	              
-	           	 JTextArea screenTextArea = new JTextArea("*An image of a man in a lab coat appears.* \n\n Oak: Hello there! "
-	     		 		+ "Welcome to the world of POKEMON! My name is OAK!\r\n" + 
-	     		 		"            People call me the POKEMON PROF!");
-
-	     		 
+	            	
+	         if (language == "English") { 
+	         
+           	 JTextArea screenTextArea = new JTextArea("*An image of a man in a lab coat appears.* \n\n Oak: Hello there! "
+     		 		+ "Welcome to the world of POKEMON! My name is OAK!\r\n" + 
+     		 		"            People call me the POKEMON PROF!");
 	     				 
 	           	screenTextArea.setForeground(Color.cyan);
 	           	screenTextArea.setBackground(Color.black);
-	           	screenTextArea.setFont(buttonFont);
-	                ss = new StartScreen(cl,cards,buttonFont, screenTextArea,false,"1", false, player);
+	           	screenTextArea.setFont(font);
+	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true);
 	                ss.timerStart(screenTextArea.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");
+	         }
+	         
+	         else {
+	        	 
+	        	 JTextArea screenTextArea = new JTextArea("はじめまして!  ポケッ モンスタ- のせかいへ ようこそ!");
+	 	     				 
+	 	           	screenTextArea.setForeground(Color.cyan);
+	 	           	screenTextArea.setBackground(Color.black);
+	 	           	screenTextArea.setFont(font);
+	 	                ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true);
+	 	                ss.timerStart(screenTextArea.getText());
+	 	                cards.add(ss, "startscreen");
+	 	                layout.show(cards, "startscreen");
+	        	 
+	         }
 	            }
 	        });
 	}

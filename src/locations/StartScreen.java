@@ -47,7 +47,7 @@ public class StartScreen extends JPanel {
     String stringText;
     StartScreen ss;
     Timer tm;
-    Boolean finish = false, nameOptionsBool = false;
+    Boolean finish = false, nameOptionsBool = false, setVisible = true;
     String screen;
     Player player;
     
@@ -88,7 +88,7 @@ public class StartScreen extends JPanel {
     
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player) {
+			Boolean nameOptionsBool, Player player, Boolean setVisible) {
 		
 		 this.player = player;     
 		 this.cl = layout;
@@ -98,6 +98,7 @@ public class StartScreen extends JPanel {
 	     this.finish = finish;
 	     this.screen = screen;
 	     this.nameOptionsBool = nameOptionsBool;
+	     this.setVisible = setVisible;
 	     
 		 setBackground(Color.black);
 		 setLayout(new GridBagLayout());
@@ -113,6 +114,8 @@ public class StartScreen extends JPanel {
 		 nextButton1.setBackground(Color.DARK_GRAY);
 		 nextButton1.setForeground(Color.cyan);
 		 nextButton1.setFont(buttonFont);
+		 nextButton1.setVisible(setVisible);
+		
 		 
 		 JButton name1 = new JButton("RED");
 		 name1.setPreferredSize(new Dimension(200,75));
@@ -144,6 +147,7 @@ public class StartScreen extends JPanel {
 		 nameOptionsPanel.add(name2);
 		 nameOptionsPanel.add(name3);
 		 nameOptionsPanel.add(name4);
+		 nameOptionsPanel.setVisible(nameOptionsBool);
 		 
 
  
@@ -158,7 +162,8 @@ public class StartScreen extends JPanel {
 	     gb.gridy=2;
 	     add(nextButton1, gb);
 	     
-	     nameOptionsPanel.setVisible(nameOptionsBool);
+	  
+	     
 	 
 		 switch (screen) {
 		 case "1":
@@ -171,7 +176,7 @@ public class StartScreen extends JPanel {
                 		"            I study POKEMON as a profession.");
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true);
 	       		 ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");     
@@ -190,7 +195,7 @@ public class StartScreen extends JPanel {
 		       				"Oak: First, what is your name?");
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player);
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player,false);
 		       		 ss.timerStart(startScreenText1.getText());
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");     
@@ -212,7 +217,7 @@ public class StartScreen extends JPanel {
 		       				);
 
 		       		
-		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player);
+		       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player, false);
 		       		    ss.timerStart(startScreenText1.getText());
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");     
@@ -234,10 +239,11 @@ public class StartScreen extends JPanel {
 		       				);
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true);
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
-	                layout.show(cards, "startscreen");    
+	                layout.show(cards, "startscreen"); 
+	                
           
 	                
 	            }
@@ -253,7 +259,7 @@ public class StartScreen extends JPanel {
 		       				);
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true);
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");     
@@ -271,7 +277,7 @@ public class StartScreen extends JPanel {
 	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + ".");
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true);
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");     
@@ -288,7 +294,7 @@ public class StartScreen extends JPanel {
 	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + ".");
 
 	       		
-	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
+	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player, true);
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");     

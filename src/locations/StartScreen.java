@@ -226,18 +226,18 @@ public class StartScreen extends JPanel {
 		  case "3":
 		 name1.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Player player = new Player();
-	            	player.setName("RED");
+	            	Player player = new Player("RED");
 	            	
-	       		 
-	       		startScreenText1.setText("Oak: Right! So your name is " + player.getName()
-	       				);
+	            	
+		       		 
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + "."
+		       				);
 
 	       		
 	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
 	       		    ss.timerStart(startScreenText1.getText());
 	                cards.add(ss, "startscreen");
-	                layout.show(cards, "startscreen");     
+	                layout.show(cards, "startscreen");    
           
 	                
 	            }
@@ -245,13 +245,12 @@ public class StartScreen extends JPanel {
 		 
 		 name2.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Player player = new Player();
-	            	player.setName("BLUE");
+	            	Player player = new Player("BLUE");
+	            	
 	            	
 	       		 
-	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() +"!\r\n" + 
-		       				"\r\n" + 
-		       				"*An image of another boy appears.*");
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + "."
+		       				);
 
 	       		
 	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
@@ -265,13 +264,11 @@ public class StartScreen extends JPanel {
 		 
 		 name3.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Player player = new Player();
-	            	player.setName("GREEN");
+	            	Player player = new Player("GREEN");
+	         
 	            	
 	       		 
-	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() +"!\r\n" + 
-		       				"\r\n" + 
-		       				"*An image of another boy appears.*");
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + ".");
 
 	       		
 	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
@@ -285,13 +282,10 @@ public class StartScreen extends JPanel {
 		 
 		 name4.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Player player = new Player();
-	            	player.setName("YELLOW");
+	            	Player player = new Player("YELLOW");
 	            	
 	       		 
-	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() +"!\r\n" + 
-		       				"\r\n" + 
-		       				"*An image of another boy appears.*");
+	            	startScreenText1.setText("Oak: Right! So your name is " + player.getName() + ".");
 
 	       		
 	       		    ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player);
@@ -302,6 +296,41 @@ public class StartScreen extends JPanel {
 	                
 	            }
 	        });
+		 
+		
+		 
+		  case "5":
+				 name1.addActionListener(new ActionListener() {
+			            public void actionPerformed(ActionEvent e) {
+			            
+		          
+			                
+			            }
+			        });
+				 
+				 name2.addActionListener(new ActionListener() {
+			            public void actionPerformed(ActionEvent e) {
+ 
+		       
+			                
+			            }
+			        });
+				 
+				 name3.addActionListener(new ActionListener() {
+			            public void actionPerformed(ActionEvent e) {
+ 
+		       
+			                
+			            }
+			        });
+				 
+				 name4.addActionListener(new ActionListener() {
+			            public void actionPerformed(ActionEvent e) {
+
+			                
+			            }
+			        });
+				 break;
 		 
 		  }
 		 

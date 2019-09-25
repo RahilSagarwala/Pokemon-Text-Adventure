@@ -51,11 +51,12 @@ public class StartScreen extends JPanel {
 		tm = new Timer(textSpeed, new ActionListener() {
 			
 	    public void actionPerformed(ActionEvent arg0) {
-
+	    		
+	    	   stringLength = 0;
 			   stringLength = text2.length();
 			
 			   count++;
-			   if(count > stringLength) {
+			   if(count > stringLength || stringLength == 0) {
 				   		 
 				    finish = true;	
 			   } 	

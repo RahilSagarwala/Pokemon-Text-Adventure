@@ -11,16 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-
 import locations.StartScreen;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -33,6 +29,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import Trainer.Player;
+import Trainer.Rival;
 
 public class NewGame extends JPanel {
 	
@@ -47,6 +45,7 @@ public class NewGame extends JPanel {
     String language;
     int textSpeed;
     String fullText2;
+    Rival rival;
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
 		 this.cl = layout;
@@ -121,7 +120,7 @@ public class NewGame extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            		         
 	         
-	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, "");
+	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, "", rival, false);
             
              cards.add(ss, "startscreen");
              layout.show(cards, "startscreen");

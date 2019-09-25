@@ -5,48 +5,41 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.border.EmptyBorder;
-
 import mainGame.ConfirmContinue;
 import mainGame.Options;
-
 import javax.imageio.ImageIO;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import mainGame.Player;
+import Trainer.Player;
+import Trainer.Rival;
 
 public class StartScreen extends JPanel {
 	
 	CardLayout cl;
-    JPanel cards, nameOptionsPanel;
+    JPanel cards, nameOptionsPanel, nameOptionsPanel2;
     Font textAreaFont = new Font("SANS_SERIF", Font.BOLD, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
-    
     JTextArea startScreenText1;
-    JButton nextButton1, nextButton2, name1, name2, name3, name4, optionsButton;
+    JButton nextButton1, nextButton2, name1, name2, name3, name4, optionsButton, name5, name6, name7, name8;
     int count = 0, stringLength = 0, textSpeed;
     StartScreen ss;
     Timer tm;
-    Boolean finish, nameOptionsBool = false, setVisible = true, stopTimer;
-    Player player2;
+    Boolean finish, nameOptionsBool = false, setVisible = true, stopTimer, nameOptionsBool2 = false;
+    Player player;
+    Rival rival;
     String language, nextText, redText, greenText, blueText, yellowText, stringText, screen, fullText2;
     Options options;
 
@@ -94,10 +87,10 @@ public class StartScreen extends JPanel {
 
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed, String fullText) {
+			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2, Boolean nameOptionsBool2) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
-		 this.player2 = player;     
+		 this.player = player2;     
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -109,6 +102,8 @@ public class StartScreen extends JPanel {
 	     this.language = language;
 	     this.textSpeed = textSpeed;
 	     this.fullText2 = fullText;
+	     this.rival = rival2;
+	     this.nameOptionsBool2 = nameOptionsBool2;
 	     
 	     //Extension of JFrame, set layout and attributes for layout
 		 setBackground(Color.black);
@@ -175,7 +170,7 @@ public class StartScreen extends JPanel {
     		 
     	 case "4":
     		
-         	fullText2 = "Oak: Right! So your name is " + player2.getName() + ".";
+         	fullText2 = "Oak: Right! So your name is " + player.getName() + ".";
     		 break;
     		 
     	 case "5":
@@ -183,29 +178,22 @@ public class StartScreen extends JPanel {
 	       				"Oak: This is my grandson. He's been your rival since you were a baby.\r\n" + 
 	       				"\r\n" + 
 	       				" ...Erm, what is his name again?\r\n";
+    
     		 break;
     		 
     	 case "6":
-    		 fullText2 = "";
+    		 fullText2 = "Oak: That's right! I remember now! His name is " + rival.getName() +"!\r\n";    		 
+    		
     		 break;
     		 
     	 case "7":
-    		 fullText2 = "";
-    		 break;
-    		 
-    	 case "8":
-    		 fullText2 = "";
-    		 break;
-    		 
-    	 case "9":
-    		 fullText2 = "";
-    		 break;
-    		 
-    	 case "10":
-    		 fullText2 = "";
-    		 break;
+    		 fullText2 = "* " + player.getName() +"'s image reappears.*\r\n" + 
+    		 		"\r\n" + 
+    		 		"Oak: " + player.getName() +"!" + " Your very own POKEMON legend is about to unfold! A world of\r\n" + 
+    		 		"            dreams and adventures with POKEMON awaits! Let's go!";    		 
     		
-    	
+    		 break;
+
     	 }
      }
 	         //Japanese main text
@@ -228,7 +216,7 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "4": 
-	        		 fullText2 = "ふむ。。。" + player2.getName() +  " と いうんだな！";
+	        		 fullText2 = "ふむ。。。" + player.getName() +  " と いうんだな！";
 	        		 break;
 	        		 
 	        	 case "5":
@@ -236,26 +224,19 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "6":
-	        		 fullText2 = "";
+	        		 fullText2 = "そうだ そうだ! おもいだしたぞ " + rival.getName() + " という なまえだ";
 	        		 break;
 	        		 
 	        	 case "7":
-	        		 fullText2 = "";
+	        		 fullText2 = player.getName() + "! いよいよ これから きみの ものがたリの よじまリだ! ゆめと ぼうけんと! ポケ\r\n" + 
+	        		 		"\r\n" + 
+	        		 		"ットモンスタ-の せかいへ! レッツ ゴ-!";
 	        		 break;
 	        		 
-	        	 case "8":
-	        		 fullText2 = "";
-	        		 break;
-	        		 
-	        	 case "9":
-	        		 fullText2 = "";
-	        		 break;
-	        		 
-	        	 case "10":
-	        		 fullText2 = "";
-	        		 break;
 	        		
 	        	 }
+	        	 
+	        	 
 	         }
 	        	 
 	         
@@ -303,6 +284,39 @@ public class StartScreen extends JPanel {
 		 nameOptionsPanel.add(name3);
 		 nameOptionsPanel.add(name4);
 		 nameOptionsPanel.setVisible(nameOptionsBool);
+		
+		 
+		 JButton name5 = new JButton(redText);
+		 name5.setPreferredSize(new Dimension(200,75));
+		 name5.setBackground(Color.DARK_GRAY);
+		 name5.setForeground(Color.red);
+		 name5.setFont(buttonFont);
+		 
+		 JButton name6 = new JButton(blueText);
+		 name6.setPreferredSize(new Dimension(200,75));
+		 name6.setBackground(Color.DARK_GRAY);
+		 name6.setForeground(Color.blue);
+		 name6.setFont(buttonFont);
+		 
+		 JButton name7 = new JButton(greenText);
+		 name7.setPreferredSize(new Dimension(200,75));
+		 name7.setBackground(Color.DARK_GRAY);
+		 name7.setForeground(Color.green);
+		 name7.setFont(buttonFont);
+		 
+		 JButton name8 = new JButton(yellowText);
+		 name8.setPreferredSize(new Dimension(200,75));
+		 name8.setBackground(Color.DARK_GRAY);
+		 name8.setForeground(Color.yellow);
+		 name8.setFont(buttonFont);
+		 
+		 JPanel nameOptionsPanel2 = new JPanel();
+		 nameOptionsPanel2.setLayout(new GridLayout(1,4));
+		 nameOptionsPanel2.add(name5);
+		 nameOptionsPanel2.add(name6);
+		 nameOptionsPanel2.add(name7);
+		 nameOptionsPanel2.add(name8);
+		 nameOptionsPanel2.setVisible(nameOptionsBool2);
 		 
 	
 		 gb.gridx=0;
@@ -316,6 +330,9 @@ public class StartScreen extends JPanel {
 	     gb.gridy=2;
 	     add(nameOptionsPanel, gb);
 	     gb.gridx=0;
+	     gb.gridy=2;
+	     add(nameOptionsPanel2, gb);
+	     gb.gridx=0;
 	     gb.gridy=4;
 	     add(nextButton1, gb);
 	     
@@ -323,7 +340,7 @@ public class StartScreen extends JPanel {
 	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player2, setVisible, language, textSpeed, fullText2);
+	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language, textSpeed, fullText2, rival);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					timerStart(fullText2, true);
@@ -338,7 +355,7 @@ public class StartScreen extends JPanel {
 		 nextButton1.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	
-		       	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player2, true, language, textSpeed,fullText2);
+		       	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "2", false, player, true, language, textSpeed,fullText2, rival, false);
                 cards.add(ss, "startscreen");
                 layout.show(cards, "startscreen");  
              
@@ -350,7 +367,7 @@ public class StartScreen extends JPanel {
 		 case "2":
 			 nextButton1.addActionListener(new ActionListener() {
 		            public void actionPerformed(ActionEvent e) {
-		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player2, false, language, textSpeed,fullText2);
+		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "3", true, player, false, language, textSpeed,fullText2, rival, false);
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
 	             
@@ -367,13 +384,48 @@ public class StartScreen extends JPanel {
 		            public void actionPerformed(ActionEvent e) {
 		            	
 		            	
-		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", true, player2, false, language, textSpeed,fullText2);
+		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "5", false, player, false, language, textSpeed,fullText2, rival, true);	
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
-	             
+             
 		                
 		            }
 		        });
+			 break;
+			 
+		 	case "6":
+			 
+			 nextButton1.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		            	
+		            	
+		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "7", false, player, true, language, textSpeed,fullText2, rival, false);	
+		                cards.add(ss, "startscreen");
+		                layout.show(cards, "startscreen");  
+             
+		                
+		            }
+		        });
+			 break;
+			 
+			//Change Location to PalletTownYourHouse
+		 	case "7":
+			 
+			 nextButton1.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		            	
+		            	
+//		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "7", false, player, true, language, textSpeed,fullText2, rival, false);	
+//		                cards.add(ss, "startscreen");
+//		                layout.show(cards, "startscreen");  
+          
+		                
+		            }
+		        });
+			 break;
+			 
+			 
+			 
 			 
 		 }
 		 
@@ -384,17 +436,19 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            
 	            	if (language == "English") {
-	            	player2 = new Player("RED");
+	            	Player player3 = new Player("RED");
+	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
+	            	 
 
 	            	}
 	            	
 	            	else {
 	            		
-	            	 	player2 = new Player("レッド ");	       		    
-	            		
+	            	 	Player player3 = new Player("レッド ");	       		    
+	            	 	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 	            	}
 	            	
-	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player2, true, language, textSpeed,fullText2);
+	           
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");  
   
@@ -407,17 +461,18 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	if (language == "English") {
-	            	player2 = new Player("BLUE");
-
+	            	Player player3 = new Player("BLUE");
+	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 	            	}
 	            	
 	            	else {
-	            	player2 = new Player("ブルー");
+	            	Player player3 = new Player("ブルー");
+	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 
 	            		
 	            	}
 	       		   
-	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player2, true, language, textSpeed,fullText2);
+	            	
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");    
        
@@ -429,17 +484,19 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	if (language == "English") {
-	            		player2 = new Player("GREEN");
+	            		Player player3 = new Player("GREEN");
+	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 	       		    
 	            	}
 	            	
 	            	else {
-	            		 player2 = new Player("グリーン");
+	            		Player player3 = new Player("グリーン");
+	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 	
 	            	}
 	       		    
 	             
-	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player2, true, language, textSpeed,fullText2);
+	            	
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");  
 	                
@@ -450,17 +507,19 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	if (language == "English") {
-	            	player2 = new Player("YELLOW");
+	            	Player player3 = new Player("YELLOW");
+	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 	         
 	       		    
 	            	}
 	            	
 	            	else {
-	            		player2 = new Player("イエロー"); 
+	            		Player player3 = new Player("イエロー"); 
+	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player3, true, language, textSpeed,fullText2, rival, false);
 	            
 	            	}
 	       		   
-	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "4", false, player2, true, language, textSpeed,fullText2);
+	            	
 	                cards.add(ss, "startscreen");
 	                layout.show(cards, "startscreen");  
        
@@ -468,87 +527,88 @@ public class StartScreen extends JPanel {
 	            }
 	        });
 		 
-		
+		 
 		 //Action Listener for Rival NPC Trainer's name
 		  case "5":
-				 name1.addActionListener(new ActionListener() {
+				 name5.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
 			            
 			            	if (language == "English") {
-				            	player2 = new Player("BLUE");
+				            	rival = new Rival("RED");
 
 				            	}
 				            	
 				            	else {
-				            	player2 = new Player("ブルー");
+				            	rival = new Rival("レッド");				            					       		 
 
 				            		
 				            	}
 				       		   
-				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player, true, language, textSpeed,fullText2, rival, false);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
 			            }
 			        });
 				 
-				 name2.addActionListener(new ActionListener() {
+				 name6.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
  
 			            	if (language == "English") {
-				            	player2 = new Player("BLUE");
+				            	rival = new Rival("BLUE");
 
 				            	}
 				            	
 				            	else {
-				            	player2 = new Player("ブルー");
+				            	rival = new Rival("ブルー");
 
 				            		
 				            	}
 				       		   
-				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player, true, language, textSpeed,fullText2, rival, false);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
 			            }
 			        });
 				 
-				 name3.addActionListener(new ActionListener() {
+				 name7.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
  
 			            	if (language == "English") {
-				            	player2 = new Player("BLUE");
+				            	rival = new Rival("GREEN");
 
 				            	}
 				            	
 				            	else {
-				            	player2 = new Player("ブルー");
+				            	rival = new Rival("グリーン");
+				            			
 
 				            		
 				            	}
-				       		   
-				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				       		    
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player, true, language, textSpeed,fullText2, rival, false);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
 			            }
 			        });
 				 
-				 name4.addActionListener(new ActionListener() {
+				 name8.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
 
 			            	if (language == "English") {
-				            	player2 = new Player("BLUE");
+				            	rival = new Rival("YELLOW");
 
 				            	}
 				            	
 				            	else {
-				            	player2 = new Player("ブルー");
+				            	rival = new Rival("イエロー");
 
 				            		
 				            	}
 				       		   
-				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player, true, language, textSpeed,fullText2, rival, false);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			            }

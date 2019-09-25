@@ -11,14 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;

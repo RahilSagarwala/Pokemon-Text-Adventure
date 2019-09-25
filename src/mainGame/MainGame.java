@@ -30,6 +30,8 @@ import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import locations.StartScreen;
+import Trainer.Player;
+import Trainer.Rival;
 
 
 
@@ -63,6 +65,7 @@ public class MainGame extends JPanel {
     String language;
     int textSpeed;
     String fullText2;
+    Rival rival;
     
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
@@ -215,7 +218,7 @@ public class MainGame extends JPanel {
 		 optionsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2);
+					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2, rival);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

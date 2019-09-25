@@ -11,14 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -32,6 +29,8 @@ import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import locations.StartScreen;
+import Trainer.Player;
+import Trainer.Rival;
 
 public class Options extends JPanel {
 	
@@ -58,11 +57,12 @@ public class Options extends JPanel {
 	Boolean setVisible;
 	int textSpeed1;
 	String fullText2;
+	Rival rival;
     
     
 	
 	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed, String fullText) {
+			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -70,11 +70,12 @@ public class Options extends JPanel {
 	     this.finish = finish;
 	     this.screen = screen;
 	     this.nameOptionsBool = nameOptionsBool;
-	     this.player = player;
+	     this.player = player2;
 	     this.setVisible = setVisible;
 	     this.language1 = language;
 	     this.textSpeed1 = textSpeed;
 	     this.fullText2 = fullText;
+	     this.rival = rival2;
 	     
 	     
 	     //Create GUI
@@ -248,7 +249,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
 	            		
-	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
+	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    
@@ -301,7 +302,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1);
 	            	 language1 = "English";
-	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
+	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 	            	 startScreen.timerStart(fullText2, false);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
@@ -316,7 +317,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1);
 	            	 language1 = "Japanese";
-	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
+	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 	            	 startScreen.timerStart(fullText2, false);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");

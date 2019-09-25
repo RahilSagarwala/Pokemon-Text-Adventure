@@ -38,44 +38,33 @@ public class StartScreen extends JPanel {
 	
 	CardLayout cl;
     JPanel cards, nameOptionsPanel;
-    Font textAreaFont = new Font("SANS_SERIF", Font.BOLD, 30);
-    Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
+    Font textAreaFont = new Font("SANS_SERIF", Font.BOLD, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
+    
     JTextArea startScreenText1;
     JButton nextButton1, nextButton2, name1, name2, name3, name4, optionsButton;
-    int count = 0;
-    int stringLength = 0;
-    String stringText;
+    int count = 0, stringLength = 0, textSpeed;
     StartScreen ss;
     Timer tm;
-    Boolean finish, nameOptionsBool = false, setVisible = true;
-    String screen;
+    Boolean finish, nameOptionsBool = false, setVisible = true, stopTimer;
     Player player2;
-    String language, nextText, redText, greenText, blueText, yellowText;
+    String language, nextText, redText, greenText, blueText, yellowText, stringText, screen, fullText2;
     Options options;
-    int textSpeed;
-    Boolean stopTimer;
-    String fullText2;
-    String optionsButtonText;
+
     
 	public void timerStart(String text, Boolean stopTimer){
 		String text2 = text;
 		count = 0;
-		
-		
+
 		tm = new Timer(textSpeed, new ActionListener() {
-	
+			
 	    public void actionPerformed(ActionEvent arg0) {
-	 	  
-	
+
 			   stringLength = text2.length();
 			
 			   count++;
 			   if(count > stringLength) {
-				   		
-				    
+				   		 
 				    finish = true;	
-				    
-	
 			   } 	
 			   
 			   else {
@@ -130,7 +119,13 @@ public class StartScreen extends JPanel {
 		 startScreenText1.setBackground(Color.black);
 		 startScreenText1.setFont(textAreaFont);
 	
+		 //Create Options Button first before other buttons in order to access size and text
+		 JButton optionsButton = new JButton();
+		 optionsButton.setBackground(Color.DARK_GRAY);
+		 optionsButton.setForeground(Color.cyan);
+		 optionsButton.setFont(buttonFont);
 		 
+
 		 //Elements not used dynamically have their text changed based off of language
 		 if (language == "English") {
 			 nextText = "Next";
@@ -138,7 +133,8 @@ public class StartScreen extends JPanel {
 			 redText = "RED";
 			 greenText = "GREEN";
 			 yellowText = "YELLOW";
-			 optionsButtonText = "Options";	 
+			 optionsButton.setText("Options");	
+			 optionsButton.setPreferredSize(new Dimension(200,75));
 		 }	 
 		 else {
 			 
@@ -147,8 +143,10 @@ public class StartScreen extends JPanel {
 			 redText = "レッド";
 			 greenText = "グリーン";
 			 yellowText = "イエロー";
-			 optionsButtonText = "せっていを かえる ";
+			 optionsButton.setText("せっていを かえる ");
+			 optionsButton.setPreferredSize(new Dimension(300,75));
 		 }
+		 
 		 
 	
 	 //Screen values are initialized on button click action listeners below
@@ -187,6 +185,26 @@ public class StartScreen extends JPanel {
 	       				" ...Erm, what is his name again?\r\n";
     		 break;
     		 
+    	 case "6":
+    		 fullText2 = "";
+    		 break;
+    		 
+    	 case "7":
+    		 fullText2 = "";
+    		 break;
+    		 
+    	 case "8":
+    		 fullText2 = "";
+    		 break;
+    		 
+    	 case "9":
+    		 fullText2 = "";
+    		 break;
+    		 
+    	 case "10":
+    		 fullText2 = "";
+    		 break;
+    		
     	
     	 }
      }
@@ -215,6 +233,26 @@ public class StartScreen extends JPanel {
 	        		 
 	        	 case "5":
 	        		 fullText2 = "こいつは わたしの まご きみの おさななじみであリ ライバル である\r\n" + "。。。えーと？ なまえ わ なんで いつたかな？";
+	        		 break;
+	        		 
+	        	 case "6":
+	        		 fullText2 = "";
+	        		 break;
+	        		 
+	        	 case "7":
+	        		 fullText2 = "";
+	        		 break;
+	        		 
+	        	 case "8":
+	        		 fullText2 = "";
+	        		 break;
+	        		 
+	        	 case "9":
+	        		 fullText2 = "";
+	        		 break;
+	        		 
+	        	 case "10":
+	        		 fullText2 = "";
 	        		 break;
 	        		
 	        	 }
@@ -266,13 +304,7 @@ public class StartScreen extends JPanel {
 		 nameOptionsPanel.add(name4);
 		 nameOptionsPanel.setVisible(nameOptionsBool);
 		 
-		 
-		 JButton optionsButton = new JButton(optionsButtonText);
-		 optionsButton.setPreferredSize(new Dimension(200,75));
-		 optionsButton.setBackground(Color.DARK_GRAY);
-		 optionsButton.setForeground(Color.cyan);
-		 optionsButton.setFont(buttonFont);
-
+	
 		 gb.gridx=0;
 	     gb.gridy=0;
 		 add(optionsButton, gb);
@@ -350,7 +382,7 @@ public class StartScreen extends JPanel {
 		  case "3":
 		 name1.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	
+	            
 	            	if (language == "English") {
 	            	player2 = new Player("RED");
 
@@ -442,7 +474,20 @@ public class StartScreen extends JPanel {
 				 name1.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
 			            
-		          
+			            	if (language == "English") {
+				            	player2 = new Player("BLUE");
+
+				            	}
+				            	
+				            	else {
+				            	player2 = new Player("ブルー");
+
+				            		
+				            	}
+				       		   
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				                cards.add(ss, "startscreen");
+				                layout.show(cards, "startscreen");  
 			                
 			            }
 			        });
@@ -450,7 +495,20 @@ public class StartScreen extends JPanel {
 				 name2.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
  
-		       
+			            	if (language == "English") {
+				            	player2 = new Player("BLUE");
+
+				            	}
+				            	
+				            	else {
+				            	player2 = new Player("ブルー");
+
+				            		
+				            	}
+				       		   
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				                cards.add(ss, "startscreen");
+				                layout.show(cards, "startscreen");  
 			                
 			            }
 			        });
@@ -458,7 +516,20 @@ public class StartScreen extends JPanel {
 				 name3.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
  
-		       
+			            	if (language == "English") {
+				            	player2 = new Player("BLUE");
+
+				            	}
+				            	
+				            	else {
+				            	player2 = new Player("ブルー");
+
+				            		
+				            	}
+				       		   
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				                cards.add(ss, "startscreen");
+				                layout.show(cards, "startscreen");  
 			                
 			            }
 			        });
@@ -466,7 +537,20 @@ public class StartScreen extends JPanel {
 				 name4.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {
 
-			                
+			            	if (language == "English") {
+				            	player2 = new Player("BLUE");
+
+				            	}
+				            	
+				            	else {
+				            	player2 = new Player("ブルー");
+
+				            		
+				            	}
+				       		   
+				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, false, "6", false, player2, true, language, textSpeed,fullText2);
+				                cards.add(ss, "startscreen");
+				                layout.show(cards, "startscreen");  
 			            }
 			        });
 				 break;

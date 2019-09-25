@@ -88,8 +88,8 @@ public class MainGame extends JPanel {
 		} catch(FontFormatException e) {
 		    e.printStackTrace();
 		}
-   
-        
+    	
+    	//Create GUI
 		titlePanel = new JPanel();
 		titlePanel.setBackground(Color.black);
 		titleLabel = new JLabel();
@@ -158,6 +158,8 @@ public class MainGame extends JPanel {
 		
 		//GridBagLayout
        
+		
+		//Add GUI Elements to GridBagLayout
 		GridBagConstraints gb = new GridBagConstraints();		
 		
 		gb.gridx=0;
@@ -191,6 +193,7 @@ public class MainGame extends JPanel {
 		gb.gridy=6;
 		add(feedbackButton,gb); 
 		
+		
 		 newGameButton.addActionListener(new ActionListener() {
 			
 			 public void actionPerformed(ActionEvent e) {
@@ -223,6 +226,7 @@ public class MainGame extends JPanel {
 
   
 
+    //Need to redo these as above action listeners
 public class TradeButtonHandler implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event){

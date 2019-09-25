@@ -107,6 +107,7 @@ public class StartScreen extends JPanel {
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, JTextArea textArea, Boolean finish, String screen,
 			Boolean nameOptionsBool, Player player, Boolean setVisible, String language, int textSpeed, String fullText) {
 		
+		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.player2 = player;     
 		 this.cl = layout;
 	     this.cards = cards;
@@ -120,7 +121,7 @@ public class StartScreen extends JPanel {
 	     this.textSpeed = textSpeed;
 	     this.fullText2 = fullText;
 	     
-	     
+	     //Extension of JFrame, set layout and attributes for layout
 		 setBackground(Color.black);
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
@@ -129,17 +130,16 @@ public class StartScreen extends JPanel {
 		 startScreenText1.setBackground(Color.black);
 		 startScreenText1.setFont(textAreaFont);
 	
-
+		 
+		 //Elements not used dynamically have their text changed based off of language
 		 if (language == "English") {
 			 nextText = "Next";
 			 blueText = "BLUE";
 			 redText = "RED";
 			 greenText = "GREEN";
 			 yellowText = "YELLOW";
-			 optionsButtonText = "Options";
-			 
-		 }
-		 
+			 optionsButtonText = "Options";	 
+		 }	 
 		 else {
 			 
 			 nextText = "つぎ ";
@@ -150,8 +150,10 @@ public class StartScreen extends JPanel {
 			 optionsButtonText = "せっていを かえる ";
 		 }
 		 
-		
-		 
+	
+	 //Screen values are initialized on button click action listeners below
+		 //fullText2 is used within Timer
+	//English main Text
      if (language == "English") { 
     	 switch (screen) {
     	 
@@ -188,7 +190,7 @@ public class StartScreen extends JPanel {
     	
     	 }
      }
-	         
+	         //Japanese main text
 	         else {
 	        	 switch(screen) {
 	        	 case "1":
@@ -219,11 +221,11 @@ public class StartScreen extends JPanel {
 	         }
 	        	 
 	         
-		 
+		 //Start timer with stopTimer value set to false. Only true when going into options from this screen to stop any overlay issues
      	 timerStart(fullText2, false);
      	 
      	 
-		 
+		 //GUI Setup 
 		 JButton nextButton1 = new JButton(nextText);
 		 nextButton1.setPreferredSize(new Dimension(150,75));
 		 nextButton1.setBackground(Color.DARK_GRAY);
@@ -285,7 +287,7 @@ public class StartScreen extends JPanel {
 	     gb.gridy=4;
 	     add(nextButton1, gb);
 	     
-	     
+	     //Options Button recreates Options object and shows Options screen with all values already included in StartScreen class (passed on)
 	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
@@ -293,16 +295,12 @@ public class StartScreen extends JPanel {
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					timerStart(fullText2, true);
-					
-		
-	            	
-          
 	                
 	            }
 	        });
 	  
 	     
-	 
+	     //Next button click recreates and shows current screen with updated value for screen string
 		 switch (screen) {
 		 case "1":
 		 nextButton1.addActionListener(new ActionListener() {
@@ -346,6 +344,8 @@ public class StartScreen extends JPanel {
 		        });
 			 
 		 }
+		 
+		 //Action listener for name buttons: create player object, set its name, initialize current screen, and show updated screen
 		  switch(screen) {
 		  case "3":
 		 name1.addActionListener(new ActionListener() {
@@ -437,7 +437,7 @@ public class StartScreen extends JPanel {
 	        });
 		 
 		
-		 
+		 //Action Listener for Rival NPC Trainer's name
 		  case "5":
 				 name1.addActionListener(new ActionListener() {
 			            public void actionPerformed(ActionEvent e) {

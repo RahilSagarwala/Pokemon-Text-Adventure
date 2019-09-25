@@ -75,6 +75,9 @@ public class Options extends JPanel {
 	     this.language1 = language;
 	     this.textSpeed1 = textSpeed;
 	     this.fullText2 = fullText;
+	     
+	     
+	     //Create GUI
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 setBackground(Color.black);
@@ -82,8 +85,7 @@ public class Options extends JPanel {
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(buttonFont);
 		 
-		 
-		 
+		
 		 JLabel optionsLabel = new JLabel("Options");
 		 optionsLabel.setFont(buttonFont);
 		 optionsLabel.setForeground(Color.cyan);
@@ -168,6 +170,7 @@ public class Options extends JPanel {
 		 fastTextSpeedButton.setForeground(Color.cyan);
 		 
 		 
+		 //Add to GridBagLayout with coordinates
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 //Column 1
@@ -240,7 +243,7 @@ public class Options extends JPanel {
 		 add(largeFontButton,gb);
 	
 
-		 
+		 //Each screen has a position, thus Options knows where to return to
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
@@ -252,8 +255,7 @@ public class Options extends JPanel {
 	            	}		
 	            	
 	            	else {
-	            		  layout.show(cards, position);
-	            		  System.out.println(language1);
+	            		  layout.show(cards, position);	            	
 	            	}	            
 	        	  
 	                
@@ -261,6 +263,7 @@ public class Options extends JPanel {
 	            			}
 				 		);
 		 
+		 //All subsequent Action Listeners must update any relevant screen with new variables
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            		font = smallFont;
@@ -352,6 +355,8 @@ public class Options extends JPanel {
 	            			}
 				 		);
 		 
+		 //The higher the number, the slower the speed
+		 //Initialized in UI Class as default
 		 slowTextSpeedButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            		textSpeed1 = 100;

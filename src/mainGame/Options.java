@@ -246,20 +246,15 @@ public class Options extends JPanel {
 	            	if (position == "startscreen") {
 	            		
 	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
-	            		 startScreen.timerStart(fullText2, false);
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
+		            	    
 	            	}		
 	            	
 	            	else {
 	            		  layout.show(cards, position);
-	            	}
-	              
-	            	
-	            	 
-	        	  
-	        	    
-	        	
+	            		  System.out.println(language1);
+	            	}	            
 	        	  
 	                
 	            				}	
@@ -303,7 +298,12 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1);
 	            	 language1 = "English";
-	            	    cards.add(mg, "mainscreen");
+	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
+	            	 startScreen.timerStart(fullText2, false);
+	            	 cards.add(mg, "mainscreen");
+	            	 cards.add(startScreen, "startscreen");
+	            
+	            	   
 	                
 	            				}	
 	            			}
@@ -313,7 +313,12 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1);
 	            	 language1 = "Japanese";
+	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2);
+	            	 startScreen.timerStart(fullText2, false);
 	            	 cards.add(mg, "mainscreen");
+	            	 cards.add(startScreen, "startscreen");
+	            	
+	            	   
 	                
 	            				}	
 	            			}

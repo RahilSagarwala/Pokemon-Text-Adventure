@@ -119,29 +119,10 @@ public class NewGame extends JPanel {
 		 
 		 yesButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	
-	         if (language == "English") { 
+	            		         
 	         
-
-           	 fullText2 = "*An image of a man in a lab coat appears.* \n\n Oak: Hello there! "
-      		 		+ "Welcome to the world of POKEMON! My name is OAK!\r\n" + 
-      		 		"            People call me the POKEMON PROF!";
-	     				 
-	          
-	               
-	         }
-	         
-	         else {
-	        	 
-	        	
-	        	 fullText2 = "はじめまして！  ポケッ モンスタ- のせかいへ ようこそ！";
-	 	     				 
-	
-	        	 
-	         }
-	         
-	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, fullText2);
-             ss.timerStart(fullText2, false);
+	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, "");
+            
              cards.add(ss, "startscreen");
              layout.show(cards, "startscreen");
 	            }

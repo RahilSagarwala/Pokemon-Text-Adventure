@@ -50,7 +50,7 @@ public class Options extends JPanel {
     JTextArea textArea;
     Boolean finish;
     String screen;
-	Boolean nameOptionsBool;
+	Boolean nameOptionsBool, nameOptionsBool2;
 	Player player;
 	Boolean setVisible;
 	int textSpeed1;
@@ -62,7 +62,7 @@ public class Options extends JPanel {
 	
 	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
 			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2, Font font,
-			Boolean stopTimer1) {
+			Boolean stopTimer1, Boolean nameOptionsBool2) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -78,6 +78,7 @@ public class Options extends JPanel {
 	     this.rival = rival2;
 	     this.font1 = font;
 	     this.stopTimer = stopTimer1;
+	     this.nameOptionsBool2 = nameOptionsBool2;
 	     
 	     
 	     //Create GUI
@@ -262,7 +263,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
 	            		
-	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
+	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2, stopTimer);
 	            		
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
@@ -414,7 +415,6 @@ public class Options extends JPanel {
 	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
-	            	 System.out.println(stopTimer);
 	            				}	
 	            			}
 				 		);

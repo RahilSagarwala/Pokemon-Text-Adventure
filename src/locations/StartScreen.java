@@ -102,6 +102,8 @@ public class StartScreen extends JPanel {
 	}
 
 		}
+	
+	
 
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, JTextArea textArea, Boolean finish, String screen,
@@ -365,7 +367,7 @@ public class StartScreen extends JPanel {
 	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language, textSpeed, fullText2, rival, font, stopTimer);
+	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language, textSpeed, fullText2, rival, font, stopTimer, nameOptionsBool2);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					timerStart(fullText2, true);

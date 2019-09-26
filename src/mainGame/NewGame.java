@@ -46,13 +46,18 @@ public class NewGame extends JPanel {
     int textSpeed;
     String fullText2;
     Rival rival;
+    Boolean stopTimer;
+    
 	
-	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
+	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
 	     this.language = language;
 	     this.textSpeed = textSpeed;
+	     this.stopTimer = stopTimer;
+	     
+	     
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
 		 
@@ -120,8 +125,9 @@ public class NewGame extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            		         
 	         
-	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, "", rival, false);
+	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, "", rival, false, stopTimer);
             
+	         
              cards.add(ss, "startscreen");
              layout.show(cards, "startscreen");
 	            }

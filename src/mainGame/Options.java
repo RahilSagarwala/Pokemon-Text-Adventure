@@ -35,7 +35,8 @@ import Trainer.Rival;
 public class Options extends JPanel {
 	
 	JButton returnButton, smallFontButton, mediumFontButton, largeFontButton, onSoundtrackButton, offSoundtrackButton, 
-	onTextToSpeechButton, offTextToSpeechButton, slowTextSpeedButton, fastTextSpeedButton, englishButton, japaneseButton;
+	onTextToSpeechButton, offTextToSpeechButton, slowTextSpeedButton, fastTextSpeedButton, englishButton, japaneseButton,
+	timerOffButton;
 	CardLayout cl;
     JPanel cards;
     JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel, languageLabel;
@@ -55,11 +56,13 @@ public class Options extends JPanel {
 	int textSpeed1;
 	String fullText2;
 	Rival rival;
+	Boolean stopTimer;
     
     
 	
 	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2, Font font) {
+			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2, Font font,
+			Boolean stopTimer1) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -74,6 +77,7 @@ public class Options extends JPanel {
 	     this.fullText2 = fullText;
 	     this.rival = rival2;
 	     this.font1 = font;
+	     this.stopTimer = stopTimer1;
 	     
 	     
 	     //Create GUI
@@ -168,6 +172,12 @@ public class Options extends JPanel {
 		 fastTextSpeedButton.setBackground(Color.DARK_GRAY);
 		 fastTextSpeedButton.setForeground(Color.cyan);
 		 
+		 JButton timerOffButton = new JButton("OFF");
+		 timerOffButton.setFont(buttonFont);
+		 timerOffButton.setPreferredSize(new Dimension(400,100));
+		 timerOffButton.setBackground(Color.DARK_GRAY);
+		 timerOffButton.setForeground(Color.cyan);
+		 
 		 
 		 //Add to GridBagLayout with coordinates
 		 setLayout(new GridBagLayout());
@@ -233,6 +243,7 @@ public class Options extends JPanel {
 		 gb.gridx=2;
 	     gb.gridy=6;
 		 add(japaneseButton,gb);
+	
 		 
 		 
 		 //Column 4
@@ -240,6 +251,10 @@ public class Options extends JPanel {
 	     gb.gridy=2;
 	     gb.insets = new Insets(0,15,0,0);
 		 add(largeFontButton,gb);
+		 gb.gridx=3;
+	     gb.gridy=5;
+	     gb.insets = new Insets(0,-10,0,0);
+		 add(timerOffButton,gb);
 	
 
 		 //Each screen has a position, thus Options knows where to return to
@@ -247,7 +262,8 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
 	            		
-	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
+	            		
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    
@@ -266,8 +282,12 @@ public class Options extends JPanel {
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            		font1 = new Font("SANS_SERIF", Font.BOLD, 10);
-	            	    mg = new MainGame(cl, cards, font1, language1, textSpeed1);
-	            	    startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            	    mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer);
+	            	    
+	            	    startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen,
+	            	    		nameOptionsBool, player,setVisible,language1, textSpeed1, 
+	            	    		fullText2, rival, false, stopTimer);
+	            	    
 	            	    cards.add(mg, "mainscreen");  
 	            	    cards.add(startScreen, "startscreen"); 
 	            	    
@@ -280,8 +300,8 @@ public class Options extends JPanel {
 		 mediumFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	font1 = new Font("SANS_SERIF", Font.BOLD, 30);
-	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1);
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");    
 	                
@@ -295,7 +315,7 @@ public class Options extends JPanel {
 		 largeFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	font1 = new Font("SANS_SERIF", Font.BOLD, 50);
-	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1);
+	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer);
 	            	    cards.add(mg, "mainscreen");
 	                
 	            				}	
@@ -304,10 +324,9 @@ public class Options extends JPanel {
 		 
 		 englishButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1);
+	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1, stopTimer);
 	            	 language1 = "English";
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
-	            	 startScreen.timerStart(fullText2, false);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            
@@ -319,10 +338,9 @@ public class Options extends JPanel {
 		 
 		 japaneseButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1);
+	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1, stopTimer);
 	            	 language1 = "Japanese";
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
-	            	 startScreen.timerStart(fullText2, false);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            	
@@ -365,6 +383,13 @@ public class Options extends JPanel {
 		 slowTextSpeedButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            		textSpeed1 = 100;
+	    
+	            		stopTimer = false;
+		            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer);
+		            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
+		            	 cards.add(mg, "mainscreen");
+		            	 cards.add(startScreen, "startscreen");
+		            	
 	            				}	
 	            			}
 				 		);
@@ -372,9 +397,28 @@ public class Options extends JPanel {
 		 fastTextSpeedButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	textSpeed1 = 50;
+	            	stopTimer = false;
+	            	
+	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
+	            	 cards.add(mg, "mainscreen");
+	            	 cards.add(startScreen, "startscreen");
+	            	
 	            				}	
 	            			}
 				 		);
+		 timerOffButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	 stopTimer = true;
+	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
+	            	 cards.add(mg, "mainscreen");
+	            	 cards.add(startScreen, "startscreen");
+	            	 System.out.println(stopTimer);
+	            				}	
+	            			}
+				 		);
+		 
 	}
 	
 

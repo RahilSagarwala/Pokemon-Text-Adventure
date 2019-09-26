@@ -66,14 +66,18 @@ public class MainGame extends JPanel {
     int textSpeed;
     String fullText2;
     Rival rival;
+    Boolean stopTimer;
     
     
-    public MainGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed) {
+    public MainGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
 	    this.language = language;
 	    this.textSpeed = textSpeed;
+	    this.stopTimer = stopTimer;
+	    
+	   
     	
 	    setLayout(new GridBagLayout());
         setBackground(Color.black); 
@@ -201,13 +205,13 @@ public class MainGame extends JPanel {
 			
 			 public void actionPerformed(ActionEvent e) {
 				 if (font == null) {
-					 newGame = new NewGame(cl, cards, buttonFont, language, textSpeed);
+					 newGame = new NewGame(cl, cards, buttonFont, language, textSpeed, stopTimer);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 					
 				 }
 				 else {
-					newGame = new NewGame(cl, cards, font, language, textSpeed);
+					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 }
@@ -218,7 +222,7 @@ public class MainGame extends JPanel {
 		 optionsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2, rival, font);
+					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2, rival, font, stopTimer);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

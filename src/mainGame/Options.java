@@ -41,11 +41,8 @@ public class Options extends JPanel {
     JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel, languageLabel;
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     StartScreen startScreen;
-    Font smallFont = new Font("SANS_SERIF", Font.BOLD, 10);
-    Font mediumFont = new Font("SANS_SERIF", Font.BOLD, 30);
-    Font largeFont = new Font("SANS_SERIF", Font.BOLD, 50);
     JTextArea startScreenTextArea = new JTextArea();
-    Font font = new Font("SANS_SERIF", Font.BOLD, 30);
+    Font font1;
     MainGame mg;
     String language1;
     String position;
@@ -62,7 +59,7 @@ public class Options extends JPanel {
     
 	
 	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2) {
+			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2, Font font) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -76,6 +73,7 @@ public class Options extends JPanel {
 	     this.textSpeed1 = textSpeed;
 	     this.fullText2 = fullText;
 	     this.rival = rival2;
+	     this.font1 = font;
 	     
 	     
 	     //Create GUI
@@ -249,7 +247,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
 	            		
-	            		 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    
@@ -267,9 +265,13 @@ public class Options extends JPanel {
 		 //All subsequent Action Listeners must update any relevant screen with new variables
 		 smallFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            		font = smallFont;
-	            	    mg = new MainGame(cl, cards, font, language1, textSpeed1);
-	            	    cards.add(mg, "mainscreen");    
+	            		font1 = new Font("SANS_SERIF", Font.BOLD, 10);
+	            	    mg = new MainGame(cl, cards, font1, language1, textSpeed1);
+	            	    startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            	    cards.add(mg, "mainscreen");  
+	            	    cards.add(startScreen, "startscreen"); 
+	            	    
+	            	  
 		               
 	            				}	
 	            			}
@@ -277,9 +279,11 @@ public class Options extends JPanel {
 		 
 		 mediumFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	font= mediumFont;
-	            	 mg = new MainGame(cl, cards, font, language1, textSpeed1);
+	            	font1 = new Font("SANS_SERIF", Font.BOLD, 30);
+	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 	            	 cards.add(mg, "mainscreen");
+	            	 cards.add(startScreen, "startscreen");    
 	                
 	                
 	            				}	
@@ -290,8 +294,8 @@ public class Options extends JPanel {
 		 
 		 largeFontButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	font = largeFont;
-	            	 mg = new MainGame(cl, cards, font, language1, textSpeed1);
+	            	font1 = new Font("SANS_SERIF", Font.BOLD, 50);
+	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1);
 	            	    cards.add(mg, "mainscreen");
 	                
 	            				}	
@@ -302,7 +306,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1);
 	            	 language1 = "English";
-	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 	            	 startScreen.timerStart(fullText2, false);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
@@ -317,7 +321,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1);
 	            	 language1 = "Japanese";
-	            	 startScreen = new StartScreen(cl, cards, font, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false);
 	            	 startScreen.timerStart(fullText2, false);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");

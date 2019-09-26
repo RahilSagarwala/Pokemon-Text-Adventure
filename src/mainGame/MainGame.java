@@ -218,7 +218,7 @@ public class MainGame extends JPanel {
 		 optionsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2, rival);
+					options = new Options(cl, cards,"mainscreen", startScreenTextArea, false, "1", false, player, true, language, textSpeed, fullText2, rival, font);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

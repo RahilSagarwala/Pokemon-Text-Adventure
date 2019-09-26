@@ -341,7 +341,7 @@ public class StartScreen extends JPanel {
 	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language, textSpeed, fullText2, rival);
+	            	options = new Options(cl, cards,"startscreen", startScreenText1, finish, screen, nameOptionsBool, player, setVisible, language, textSpeed, fullText2, rival, font);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					timerStart(fullText2, true);

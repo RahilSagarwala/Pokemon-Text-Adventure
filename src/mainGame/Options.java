@@ -263,8 +263,7 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
 	            		
-	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2, stopTimer);
-	            		
+	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2, stopTimer);	          
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    

@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.View;
 import javax.imageio.ImageIO;
@@ -42,10 +44,6 @@ public class MainGame extends JPanel {
     JLabel namesLabel, titleLabel;
 	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
 	
-
-	TradeButtonHandler tradeButtonPress = new TradeButtonHandler();
-	ContinueButtonHandler continueButtonPress = new ContinueButtonHandler();
-	FeedbackButtonHandler feedbackButtonPress = new FeedbackButtonHandler();
 	
 	JPanel mainScreenPanel;
 	final static String mainScreenString = "mainscreen";
@@ -55,7 +53,6 @@ public class MainGame extends JPanel {
     Trade trade;
     NewGame newGame;
     ContinueGame continu;
-    Feedback feedback;
     StartScreen startScreen;
     ConfirmContinue confirmContinue;
     String chosenSave = "";
@@ -87,7 +84,8 @@ public class MainGame extends JPanel {
          
         //Title Font
     	try {
-		    titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts//PokemonHollow.ttf")).deriveFont(55f);
+		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
+		            this.getClass().getClassLoader().getResourceAsStream("PokemonHollow.ttf")).deriveFont(55f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    ge.registerFont(titleFont);
 		} catch (IOException e) {
@@ -126,13 +124,11 @@ public class MainGame extends JPanel {
 		continueButton.setBackground(Color.DARK_GRAY);
 		continueButton.setForeground(Color.cyan);
 		continueButton.setFont(buttonFont);
-		continueButton.addActionListener(continueButtonPress);
 		
 		tradeButton = new JButton("Trade");
 		tradeButton.setBackground(Color.DARK_GRAY);
 		tradeButton.setForeground(Color.cyan);
 		tradeButton.setFont(buttonFont);
-		tradeButton.addActionListener(tradeButtonPress);
 	
 		
 		optionsButton = new JButton("Options");
@@ -145,7 +141,6 @@ public class MainGame extends JPanel {
 		feedbackButton.setBackground(Color.DARK_GRAY);
 		feedbackButton.setForeground(Color.cyan);
 		feedbackButton.setFont(buttonFont);
-		feedbackButton.addActionListener(feedbackButtonPress);
 		
 		feedbackButton.setPreferredSize(new Dimension(400,100));
 		newGameButton.setPreferredSize(new Dimension(400,100));
@@ -228,45 +223,35 @@ public class MainGame extends JPanel {
 					
 	            }
 	        });
+		 
+		 feedbackButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+				 try {
+					    Desktop.getDesktop().browse(new URL("http://rsagarwala.infprojects.fhsu.edu/PokemonTextAudioGame/").toURI());
+					} catch (Exception ex) {}
+					
+	            }
+	        });
         
+		 tradeButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+				 	cl = (CardLayout) cards.getLayout();
+					cl.show(cards, "trade");
+					
+	            }
+	        });
+		 
+		 continueButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+				 cl = (CardLayout) cards.getLayout();
+					cl.show(cards, "continue");
+					
+	            }
+	        });
     }
-
-  
-
-    //Need to redo these as above action listeners
-public class TradeButtonHandler implements ActionListener{
-	
-	public void actionPerformed(ActionEvent event){
-		cl = (CardLayout) cards.getLayout();
-		cl.show(cards, "trade");
-		
-		
-	}
-}
-
-
- 
-
-public class ContinueButtonHandler implements ActionListener{
-	
-	public void actionPerformed(ActionEvent event){
-		cl = (CardLayout) cards.getLayout();
-		cl.show(cards, "continue");
-		
-		
-	}
-}
- 
-
-
-public class FeedbackButtonHandler implements ActionListener{
-	
-	public void actionPerformed(ActionEvent event){
-		cl = (CardLayout) cards.getLayout();
-		cl.show(cards, "feedback");
-		
-	}
-}
 
 
 

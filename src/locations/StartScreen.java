@@ -8,6 +8,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import locations.PalletTownYourHouse;
+import mainGame.TimerClass;
 
 public class StartScreen extends JPanel {
 	
@@ -25,68 +26,7 @@ public class StartScreen extends JPanel {
     String language, nextText, redText, greenText, blueText, yellowText, stringText, screen, fullText2;
     Options options;
     PalletTownYourHouse palletTownYourHouse;
-
-    
-	public void timerStart(String text,Boolean stopTimer){
-		String text2 = text;
-		count = 0;
-		
-	
-		
-		if (stopTimer) {
-			tm = new Timer(textSpeed, new ActionListener() {
-				
-			    public void actionPerformed(ActionEvent arg0) {
-			    	
-
-			    	 startScreenText1.setText(text2);
-			    	}
-
-					 });
-				
-				 if (finish == true) {
-					
-					   tm.stop();
-				   }
-			
-			  tm.start();
-		}
-		
-		else {
-		tm = new Timer(textSpeed, new ActionListener() {
-			
-	    public void actionPerformed(ActionEvent arg0) {
-	    	
-
-	    	   stringLength = 0;
-			   stringLength = text2.length();
-			
-			   count++;
-			   if(count > stringLength || stringLength == 0) {
-				   		 
-				    finish = true;	
-			   } 	
-			   
-			   else {
-				   
-			    startScreenText1.setText(text2.substring(0,count));
-			    finish = false;
-					   }
-	    	}
-
-			 });
-		
-		 if (finish == true) {
-			
-			   tm.stop();
-		   }
-	
-	  tm.start();
-	}
-
-		}
-	
-	
+    TimerClass timerClass;
 
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, 
@@ -356,8 +296,7 @@ public class StartScreen extends JPanel {
 	         
 		 //Start timer with stopTimer value set to false. Only true when going into options from this screen to stop any overlay issues
 
-     	 
-         timerStart(fullText2, stopTimer);
+         timerClass = new TimerClass(fullText2, stopTimer, textSpeed , startScreenText1);
 
   
      	 
@@ -463,7 +402,7 @@ public class StartScreen extends JPanel {
 	            			rival, font, stopTimer, nameOptionsBool2);
 					cards.add(options, "options");
 					cl.show(cards, "options");
-					timerStart(fullText2, true);
+					
 	                
 	            }
 	        });

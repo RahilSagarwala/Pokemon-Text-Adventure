@@ -125,7 +125,9 @@ public class NewGame extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            		         
 	         
-	         ss = new StartScreen(cl,cards,font, screenTextArea,false,"1", false, player,true, language, textSpeed, "", rival, false, stopTimer);
+	         ss = new StartScreen(cl,cards,font, screenTextArea
+	        		 ,"1", false, player, true, language, textSpeed, "",
+	        		 rival, false, stopTimer);
             
 	         
              cards.add(ss, "startscreen");

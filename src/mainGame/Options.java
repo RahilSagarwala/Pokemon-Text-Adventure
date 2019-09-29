@@ -48,7 +48,6 @@ public class Options extends JPanel {
     String language1;
     String position;
     JTextArea textArea;
-    Boolean finish;
     String screen;
 	Boolean nameOptionsBool, nameOptionsBool2;
 	Player player;
@@ -60,14 +59,14 @@ public class Options extends JPanel {
     
     
 	
-	public Options (final CardLayout layout, final JPanel cards, String position, JTextArea textArea, Boolean finish, String screen,
-			Boolean nameOptionsBool, Player player2, Boolean setVisible, String language, int textSpeed, String fullText, Rival rival2, Font font,
-			Boolean stopTimer1, Boolean nameOptionsBool2) {
+	public Options (final CardLayout layout, final JPanel cards, String position,
+			JTextArea textArea, String screen, Boolean nameOptionsBool,
+			Player player2, Boolean setVisible, String language, int textSpeed, String fullText,
+			Rival rival2, Font font, Boolean stopTimer1, Boolean nameOptionsBool2) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
 	     this.startScreenTextArea = textArea;
-	     this.finish = finish;
 	     this.screen = screen;
 	     this.nameOptionsBool = nameOptionsBool;
 	     this.player = player2;
@@ -263,7 +262,9 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (position == "startscreen") {
 	            		
-	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2, stopTimer);	          
+	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, nameOptionsBool,
+	            				 player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2,
+	            				 stopTimer);	          
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    
@@ -284,7 +285,7 @@ public class Options extends JPanel {
 	            		font1 = new Font("SANS_SERIF", Font.BOLD, 10);
 	            	    mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer);
 	            	    
-	            	    startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen,
+	            	    startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen,
 	            	    		nameOptionsBool, player,setVisible,language1, textSpeed1, 
 	            	    		fullText2, rival, false, stopTimer);
 	            	    
@@ -301,7 +302,9 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	font1 = new Font("SANS_SERIF", Font.BOLD, 30);
 	            	 mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer);
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen,
+	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2,
+	            			 rival, false, stopTimer);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");    
 	                
@@ -326,7 +329,9 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "English", textSpeed1, stopTimer);
 	            	 language1 = "English";
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
+	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, 
+	            			 rival, false, stopTimer);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            
@@ -340,7 +345,9 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 mg = new MainGame(cl, cards, font, "Japanese", textSpeed1, stopTimer);
 	            	 language1 = "Japanese";
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, stopTimer);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen,
+	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2,
+	            			 rival, false, stopTimer);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            	
@@ -386,7 +393,9 @@ public class Options extends JPanel {
 	    
 	            		stopTimer = false;
 		            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer);
-		            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
+		            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
+		            			 nameOptionsBool, player,setVisible,language1, textSpeed1,
+		            			 fullText2, rival, false, true);
 		            	 cards.add(mg, "mainscreen");
 		            	 cards.add(startScreen, "startscreen");
 		            	
@@ -400,7 +409,9 @@ public class Options extends JPanel {
 	            	stopTimer = false;
 	            	
 	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer);
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen,
+	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2,
+	            			 rival, false, true);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            	
@@ -411,7 +422,9 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	 stopTimer = true;
 	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer);
-	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,finish,screen, nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2, rival, false, true);
+	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
+	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, 
+	            			 fullText2, rival, false, true);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            				}	

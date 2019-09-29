@@ -59,7 +59,7 @@ public class PalletTownYourHouse extends JPanel {
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
-	     JButton locationButton = new JButton(location);
+	     JButton locationButton = new JButton();
 	     locationButton.setPreferredSize(new Dimension(200,75));
 	     locationButton.setBackground(Color.DARK_GRAY);
 		 locationButton.setForeground(Color.cyan);

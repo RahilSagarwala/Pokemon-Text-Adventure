@@ -7,8 +7,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 
-
-public class PalletTownRivalHouse extends JPanel {
+public class Battle extends JPanel {
 	
 	CardLayout cl;
 	JPanel cards;
@@ -20,11 +19,10 @@ public class PalletTownRivalHouse extends JPanel {
 	Rival rival;
 	JButton locationButton;
 	
-	public PalletTownRivalHouse(final CardLayout layout, final JPanel cards, 
+
+	public Battle(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2) {
-		
-		
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -41,6 +39,9 @@ public class PalletTownRivalHouse extends JPanel {
 	     setBackground(Color.black);
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
+		
+		
+		
 	}
 
 }

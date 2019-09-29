@@ -2,33 +2,9 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
-import locations.StartScreen;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
 
@@ -42,9 +18,8 @@ public class NewGame extends JPanel {
     JTextArea screenTextArea;
     Player player;
     Font font;
-    String language;
+    String language, fullText2;
     int textSpeed;
-    String fullText2;
     Rival rival;
     Boolean stopTimer;
     

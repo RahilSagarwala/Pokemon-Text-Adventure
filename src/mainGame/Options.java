@@ -2,32 +2,8 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
@@ -40,24 +16,17 @@ public class Options extends JPanel {
 	CardLayout cl;
     JPanel cards;
     JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel, languageLabel;
-    Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
+    Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font1;
     StartScreen startScreen;
     JTextArea startScreenTextArea = new JTextArea();
-    Font font1;
     MainGame mg;
-    String language1;
-    String position;
+    String language1, position, fullText2, screen;
     JTextArea textArea;
-    String screen;
-	Boolean nameOptionsBool, nameOptionsBool2;
+	Boolean nameOptionsBool, nameOptionsBool2, stopTimer, setVisible;
 	Player player;
-	Boolean setVisible;
 	int textSpeed1;
-	String fullText2;
 	Rival rival;
-	Boolean stopTimer;
-    
-    
+	
 	
 	public Options (final CardLayout layout, final JPanel cards, String position,
 			JTextArea textArea, String screen, Boolean nameOptionsBool,

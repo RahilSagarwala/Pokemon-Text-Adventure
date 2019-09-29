@@ -2,31 +2,10 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.border.EmptyBorder;
-import mainGame.ConfirmContinue;
-import mainGame.Options;
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import Trainer.Player;
 import Trainer.Rival;
-import locations.PalletTownYourHouse;
 
 public class PalletTownYourHouse extends JPanel {
 	

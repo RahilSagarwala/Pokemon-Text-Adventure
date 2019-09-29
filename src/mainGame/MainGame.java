@@ -1,67 +1,35 @@
 package mainGame;
 
-import java.awt.event.ActionEvent;
-import java.io.*;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.View;
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineListener;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import java.awt.*;
+import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
 
 
-
 public class MainGame extends JPanel {
 
-    JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel;
+    JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel, mainScreenPanel;
     JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
     JLabel namesLabel, titleLabel;
-	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
-	
-	
-	JPanel mainScreenPanel;
+	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), 
+			buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font;
 	final static String mainScreenString = "mainscreen";
     CardLayout cl;
-    
     Options options;
     Trade trade;
     NewGame newGame;
     ContinueGame continu;
     StartScreen startScreen;
     ConfirmContinue confirmContinue;
-    String chosenSave = "";
+    String chosenSave = "", fullText2, language;
     JTextArea startScreenTextArea = new JTextArea();
     Player player;
-    Font font;
-    String language;
     int textSpeed;
-    String fullText2;
     Rival rival;
     Boolean stopTimer;
     

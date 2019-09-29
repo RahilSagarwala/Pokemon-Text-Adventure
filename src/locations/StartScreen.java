@@ -232,6 +232,26 @@ public class StartScreen extends JPanel {
     		 break;
     		 
     	 case "7":
+    		 
+    		 if (player.getName() == "ブルー") {
+  				player.setName("BLUE");
+  			}
+
+  			if (player.getName() == "レッド") {	
+  				player.setName("RED");
+  			}
+
+  			if (player.getName() == "グリーン") {
+  				player.setName("GREEN");
+  			}
+
+  			if (player.getName() == "イエロー") {
+  				player.setName("YELLOW");
+  			}
+     		 
+     		 
+    		 
+    		 
     		 fullText2 = "* " + player.getName() +"'s image reappears.*\r\n" + 
     		 		"\r\n" + 
     		 		"Oak: " + player.getName() +"!" + " Your very own POKEMON legend is about to unfold! A world of\r\n" + 
@@ -306,6 +326,22 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "7":
+	        		 if (player.getName() == "BLUE") {
+		      				player.setName("ブルー");	
+		      			}
+		        		 
+		        		 if (player.getName() == "RED") {
+		     				player.setName("レッド");
+		     			}
+		     			
+		     			if (player.getName() == "GREEN") {
+		     				player.setName("グリーン");
+		     			}
+		     			
+		     			if (player.getName() == "YELLOW") {
+		     				player.setName("イエロー");
+		     			}
+	        		 
 	        		 fullText2 = player.getName() + "! いよいよ これから きみの ものがたリの よじまリだ! ゆめと ぼうけんと! ポケ\r\n" + 
 	        		 		"\r\n" + 
 	        		 		"ットモンスタ-の せかいへ! レッツ ゴ-!";

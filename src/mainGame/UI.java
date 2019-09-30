@@ -15,14 +15,14 @@ import locations.Battle;
 public class UI {
 	
 	JFrame window;
-	JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel;
+	JPanel cards;
     JTextArea startScreenTextArea = new JTextArea(); 
     final static String mainScreenString = "mainscreen";
     CardLayout cl;
     Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30),
-    		buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font;
+    		buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font = new Font("SANS_SERIF", Font.BOLD, 30);
     String language = "English", position = "mainscreen", fullText2="", chosenSave = "";
-    int textSpeed = 50;
+    int textSpeed = 50, buttonWidth = 150, buttonHeight = 75;
     Boolean stopTimer = false;
     MainGame mg;
     Options options;
@@ -39,6 +39,9 @@ public class UI {
     Battle battle;
     Rival rival;
     Player player;
+    Float titleSize = 55f;
+    
+   
     
 
     
@@ -46,17 +49,31 @@ public class UI {
     //Initializes every screen and sets as card layout
     //Called from main method below
 	public UI() {
+		
+	
+		
+		
+		
 		cards = new JPanel();
+		
+		
+		 
+	
+		
+		
     	cl = new CardLayout();
-    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer);
+   	   window = new JFrame("Pokémon Text Audio Game");
+	   
+    	
+    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight);
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
-    			font, stopTimer, false);
+    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight);
     	trade = new Trade(cl, cards);
     	continu = new ContinueGame(cl, cards);
     	player = new Player("");
-     	newGame = new NewGame(cl, cards, buttonFont,language, textSpeed, stopTimer);
-    	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, "English", textSpeed, fullText2, rival, false, false);   	
+     	newGame = new NewGame(cl, cards, buttonFont,language, textSpeed, stopTimer, buttonWidth, buttonHeight);
+    	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, "English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
         		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse");
     	palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, font, 
@@ -70,6 +87,7 @@ public class UI {
     	battle = new Battle(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "battle");
     	
+  
     	
         cards.setLayout(cl);
         cards.add(mg, "mainscreen");
@@ -83,16 +101,18 @@ public class UI {
         cards.add(palletTownLab, "pallettownlab");
         cards.add(palletTownHouse3, "pallettownhouse3");
         cards.add(route1, "route1");
+      
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//		cards.setSize(screenSize.width, screenSize.height);
         
-        
-        cl.show(cards, "mainscreen");
-        
-        window = new JFrame("Pokémon Text Audio Game");	
+	   	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    window.setSize(1280, 680);
+	    window.setVisible(true);
     	window.add(cards);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setSize(1280, 680);
-//        window.pack();
-        window.setVisible(true);
+//    	window.pack();
+    	cl.show(cards, "mainscreen");
+      
+        
 	
 		
 		

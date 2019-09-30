@@ -19,39 +19,47 @@ public class NewGame extends JPanel {
     Player player;
     Font font;
     String language, fullText2;
-    int textSpeed;
+    int textSpeed, buttonWidth, buttonHeight;
     Rival rival;
     Boolean stopTimer;
+
     
 	
-	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer) {
+	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer,
+			int buttonWidth, int buttonHeight) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
 	     this.language = language;
 	     this.textSpeed = textSpeed;
 	     this.stopTimer = stopTimer;
+	     this.buttonWidth = buttonWidth;
+	     this.buttonHeight = buttonHeight;
 	     
 	     
 	     JButton returnButton = new JButton("Return");
-		 returnButton.setPreferredSize(new Dimension(150,75));
+		
 		 
 		 setBackground(Color.black);
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
+		 returnButton.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
 		 returnButton.setFont(font);
 		 
 		 JButton yesButton = new JButton("Yes");
 		 yesButton.setBackground(Color.DARK_GRAY);
 		 yesButton.setForeground(Color.cyan);
+		 yesButton.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
 		 yesButton.setFont(font);
-		 yesButton.setPreferredSize(new Dimension(400,100));
+		 
 		 
 		 JButton noButton = new JButton("No");
 		 noButton.setBackground(Color.DARK_GRAY);
 		 noButton.setForeground(Color.cyan);
+		 noButton.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+		
 		 noButton.setFont(font);
-		 noButton.setPreferredSize(new Dimension(400,100));
+		
 		 
 		 JLabel newGameLabel = new JLabel("Start New Game?");
 		 newGameLabel.setFont(font);
@@ -102,7 +110,7 @@ public class NewGame extends JPanel {
 	         
 	         ss = new StartScreen(cl,cards,font, screenTextArea
 	        		 ,"1", false, player, true, language, textSpeed, "",
-	        		 rival, false, stopTimer);
+	        		 rival, false, stopTimer, buttonWidth, buttonHeight);
             
 	         
              cards.add(ss, "startscreen");

@@ -17,7 +17,7 @@ public class StartScreen extends JPanel {
     Font textAreaFont = new Font("SANS_SERIF", Font.BOLD, 30), buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JTextArea startScreenText1;
     JButton nextButton1, nextButton2, name1, name2, name3, name4, optionsButton, name5, name6, name7, name8;
-    int count = 0, stringLength = 0, textSpeed;
+    int count = 0, stringLength = 0, textSpeed, buttonWidth, buttonHeight;
     StartScreen ss;
     Timer tm;
     Boolean finish = true, nameOptionsBool = false, setVisible = true, stopTimer, nameOptionsBool2 = false;
@@ -33,7 +33,7 @@ public class StartScreen extends JPanel {
 			JTextArea textArea, String screen,
 			Boolean nameOptionsBool, Player player2, Boolean setVisible, 
 			String language, int textSpeed, String fullText, 
-			Rival rival2, Boolean nameOptionsBool2, Boolean stopTimer) {
+			Rival rival2, Boolean nameOptionsBool2, Boolean stopTimer, int buttonWidth, int buttonHeight) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.player = player2;     
@@ -49,7 +49,9 @@ public class StartScreen extends JPanel {
 	     this.fullText2 = fullText;
 	     this.rival = rival2;
 	     this.nameOptionsBool2 = nameOptionsBool2;
-//	     this.stopTimer = stopTimer;
+	     this.buttonWidth = buttonWidth;
+	     this.buttonHeight = buttonHeight;
+	     
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
@@ -59,13 +61,14 @@ public class StartScreen extends JPanel {
 		 startScreenText1 = new JTextArea();		 
 		 startScreenText1.setForeground(Color.cyan);
 		 startScreenText1.setBackground(Color.black);
-		 startScreenText1.setFont(textAreaFont);
+		 startScreenText1.setFont(font);
 	
 		 //Create Options Button first before other buttons in order to access size and text
 		 JButton optionsButton = new JButton();
 		 optionsButton.setBackground(Color.DARK_GRAY);
 		 optionsButton.setForeground(Color.cyan);
-		 optionsButton.setFont(buttonFont);
+		 optionsButton.setFont(font);
+		
 		 
 
 		 //Elements not used dynamically have their text changed based off of language
@@ -303,10 +306,10 @@ public class StartScreen extends JPanel {
      	 
 		 //GUI Setup 
 		 JButton nextButton1 = new JButton(nextText);
-		 nextButton1.setPreferredSize(new Dimension(150,75));
 		 nextButton1.setBackground(Color.DARK_GRAY);
 		 nextButton1.setForeground(Color.cyan);
-		 nextButton1.setFont(buttonFont);
+		 nextButton1.setPreferredSize(new Dimension(150,75));
+		 nextButton1.setFont(font);
 		 nextButton1.setVisible(setVisible);
 		
 		 
@@ -314,25 +317,25 @@ public class StartScreen extends JPanel {
 		 name1.setPreferredSize(new Dimension(200,75));
 		 name1.setBackground(Color.DARK_GRAY);
 		 name1.setForeground(Color.red);
-		 name1.setFont(buttonFont);
+		 name1.setFont(font);
 		 
 		 JButton name2 = new JButton(blueText);
 		 name2.setPreferredSize(new Dimension(200,75));
 		 name2.setBackground(Color.DARK_GRAY);
 		 name2.setForeground(Color.blue);
-		 name2.setFont(buttonFont);
+		 name2.setFont(font);
 		 
 		 JButton name3 = new JButton(greenText);
 		 name3.setPreferredSize(new Dimension(200,75));
 		 name3.setBackground(Color.DARK_GRAY);
 		 name3.setForeground(Color.green);
-		 name3.setFont(buttonFont);
+		 name3.setFont(font);
 		 
 		 JButton name4 = new JButton(yellowText);
 		 name4.setPreferredSize(new Dimension(200,75));
 		 name4.setBackground(Color.DARK_GRAY);
 		 name4.setForeground(Color.yellow);
-		 name4.setFont(buttonFont);
+		 name4.setFont(font);
 		 
 		 JPanel nameOptionsPanel = new JPanel();
 		 nameOptionsPanel.setLayout(new GridLayout(1,4));
@@ -347,25 +350,25 @@ public class StartScreen extends JPanel {
 		 name5.setPreferredSize(new Dimension(200,75));
 		 name5.setBackground(Color.DARK_GRAY);
 		 name5.setForeground(Color.red);
-		 name5.setFont(buttonFont);
+		 name5.setFont(font);
 		 
 		 JButton name6 = new JButton(blueText);
 		 name6.setPreferredSize(new Dimension(200,75));
 		 name6.setBackground(Color.DARK_GRAY);
 		 name6.setForeground(Color.blue);
-		 name6.setFont(buttonFont);
+		 name6.setFont(font);
 		 
 		 JButton name7 = new JButton(greenText);
 		 name7.setPreferredSize(new Dimension(200,75));
 		 name7.setBackground(Color.DARK_GRAY);
 		 name7.setForeground(Color.green);
-		 name7.setFont(buttonFont);
+		 name7.setFont(font);
 		 
 		 JButton name8 = new JButton(yellowText);
 		 name8.setPreferredSize(new Dimension(200,75));
 		 name8.setBackground(Color.DARK_GRAY);
 		 name8.setForeground(Color.yellow);
-		 name8.setFont(buttonFont);
+		 name8.setFont(font);
 		 
 		 JPanel nameOptionsPanel2 = new JPanel();
 		 nameOptionsPanel2.setLayout(new GridLayout(1,4));
@@ -378,6 +381,7 @@ public class StartScreen extends JPanel {
 	
 		 gb.gridx=0;
 	     gb.gridy=0;
+	     gb.weightx = 1;
 		 add(optionsButton, gb);
 		 gb.gridx=0;
 	     gb.gridy=1;
@@ -385,12 +389,15 @@ public class StartScreen extends JPanel {
 		 add(startScreenText1, gb);
 	     gb.gridx=0;
 	     gb.gridy=2;
+	     gb.weightx = 1;
+	     gb.weighty = 1;
 	     add(nameOptionsPanel, gb);
 	     gb.gridx=0;
 	     gb.gridy=2;
 	     add(nameOptionsPanel2, gb);
 	     gb.gridx=0;
 	     gb.gridy=4;
+	     gb.weightx = 1;
 	     add(nextButton1, gb);
 	     
 	     //Options Button recreates Options object and shows Options screen with all values already included in StartScreen class (passed on)
@@ -399,7 +406,7 @@ public class StartScreen extends JPanel {
 	            	
 	            	options = new Options(cl, cards,"startscreen", startScreenText1, screen, 
 	            			nameOptionsBool, player, setVisible, language, textSpeed, fullText2,
-	            			rival, font, stopTimer, nameOptionsBool2);
+	            			rival, font, stopTimer, nameOptionsBool2, 55f, buttonWidth, buttonHeight);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -417,7 +424,7 @@ public class StartScreen extends JPanel {
 		       	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,
 		       			"2", false, player, true,
 		       			language, textSpeed,fullText2, rival,
-		       			false, stopTimer);
+		       			false, stopTimer, buttonWidth, buttonHeight);
                 cards.add(ss, "startscreen");
                 layout.show(cards, "startscreen");  
              
@@ -431,7 +438,7 @@ public class StartScreen extends JPanel {
 		            public void actionPerformed(ActionEvent e) {
 		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "3",
 		            			true, player, false, language, textSpeed,
-		            			fullText2, rival, false, stopTimer);
+		            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
 	             
@@ -450,7 +457,7 @@ public class StartScreen extends JPanel {
 		            	
 		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "5",
 		            			false, player, false, language, textSpeed,
-		            			fullText2, rival, true, stopTimer);	
+		            			fullText2, rival, true, stopTimer, buttonWidth, buttonHeight);	
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
              
@@ -467,7 +474,7 @@ public class StartScreen extends JPanel {
 		            	
 		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "7",
 		            			false, player, true, language, textSpeed,
-		            			fullText2, rival, false, stopTimer);	
+		            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);	
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
              
@@ -508,7 +515,7 @@ public class StartScreen extends JPanel {
 	            	Player player3 = new Player("RED");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player3, true, language, textSpeed,
-	            			fullText2, rival, false, stopTimer);
+	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            	 
 
 	            	}
@@ -518,7 +525,7 @@ public class StartScreen extends JPanel {
 	            	 	Player player3 = new Player("レッド ");	       		    
 	            	 	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            	 			false, player3, true, language, textSpeed,
-	            	 			fullText2, rival, false, stopTimer);
+	            	 			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            	}
 	            	
 	           
@@ -537,14 +544,14 @@ public class StartScreen extends JPanel {
 	            	Player player3 = new Player("BLUE");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player3, true, language, textSpeed,
-	            			fullText2, rival, false, stopTimer);
+	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            	}
 	            	
 	            	else {
 	            	Player player3 = new Player("ブルー");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player3, true, language, textSpeed,fullText2,
-	            			rival, false, stopTimer);
+	            			rival, false, stopTimer, buttonWidth, buttonHeight);
 
 	            		
 	            	}
@@ -564,7 +571,7 @@ public class StartScreen extends JPanel {
 	            		Player player3 = new Player("GREEN");
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,"4",
 	            				false, player3, true, language, textSpeed,
-	            				fullText2, rival, false, stopTimer);
+	            				fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            		
 	       		    
 	            	}
@@ -573,7 +580,7 @@ public class StartScreen extends JPanel {
 	            		Player player3 = new Player("グリーン");
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,
 	            				"4", false, player3, true, language, textSpeed,
-	            				fullText2, rival, false, stopTimer);
+	            				fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	
 	            	}
 	       		    
@@ -592,7 +599,7 @@ public class StartScreen extends JPanel {
 	            	Player player3 = new Player("YELLOW");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player3, true, language, textSpeed,fullText2,
-	            			rival, false, stopTimer);
+	            			rival, false, stopTimer, buttonWidth, buttonHeight);
 	         
 	       		    
 	            	}
@@ -601,7 +608,7 @@ public class StartScreen extends JPanel {
 	            		Player player3 = new Player("イエロー"); 
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            				false, player3, true, language, textSpeed,fullText2,
-	            				rival, false, stopTimer);
+	            				rival, false, stopTimer, buttonWidth, buttonHeight);
 	            
 	            	}
 	       		   
@@ -632,7 +639,7 @@ public class StartScreen extends JPanel {
 				       		   
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "6",
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer);
+				            			rival, false, stopTimer, buttonWidth, buttonHeight);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
@@ -655,7 +662,7 @@ public class StartScreen extends JPanel {
 				       		   
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,"6",
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer);
+				            			rival, false, stopTimer, buttonWidth, buttonHeight);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
@@ -679,7 +686,7 @@ public class StartScreen extends JPanel {
 				       		    
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "6",
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer);
+				            			rival, false, stopTimer, buttonWidth, buttonHeight);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
@@ -702,7 +709,7 @@ public class StartScreen extends JPanel {
 				       		   
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "6", 
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer);
+				            			rival, false, stopTimer, buttonWidth, buttonHeight);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			            }

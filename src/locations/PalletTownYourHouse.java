@@ -85,13 +85,15 @@ public class PalletTownYourHouse extends JPanel {
 	     
 	     else {
 	    	 locationLabel.setText("<html>ロケーション :<br> わたしのうち<html>");
-	    	 talkToMomButton.setText("ははとはなす");
-	    	 goOutsideButton.setText("そとにいく");
+	    	 talkToMomButton.setText("おかあさんとはなす");
+	    	 goOutsideButton.setText("そとにでいく");
 	    	 playSnesButton.setText("<html>スーパーファミコン<br>をする<html>");
 	    	 watchTvButton.setText("てれびおみる");
 	    	 menuButton.setText("メニユー");
 	    	 playSnesButton.setPreferredSize(new Dimension(325,100));
 	    	 watchTvButton.setPreferredSize(new Dimension(225,75));
+	    	 talkToMomButton.setPreferredSize(new Dimension(350,75));
+	    	 goOutsideButton.setPreferredSize(new Dimension(225,75));
 	    	 
 	     }
 		 
@@ -99,6 +101,7 @@ public class PalletTownYourHouse extends JPanel {
 		 gb.gridx = 0;
 		 gb.gridy = 2;
 		 gb.weightx = 1;
+		 gb.insets = new Insets(-75,0,0,0);
 		 add(watchTvButton, gb);
 		
 		 
@@ -127,6 +130,7 @@ public class PalletTownYourHouse extends JPanel {
 		 gb.gridx = 2;
 		 gb.gridy = 2;
 		 add(playSnesButton, gb);
+	
 		 
 		 talkToMomButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

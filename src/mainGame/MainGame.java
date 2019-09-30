@@ -29,23 +29,29 @@ public class MainGame extends JPanel {
     String chosenSave = "", fullText2, language;
     JTextArea startScreenTextArea = new JTextArea();
     Player player;
-    int textSpeed;
+    int textSpeed, buttonWidth, buttonHeight;
     Rival rival;
     Boolean stopTimer;
+    Float titleSize;
     
     
-    public MainGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer) {
+    public MainGame(final CardLayout layout, final JPanel cards, Font font, 
+    		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
 	    this.language = language;
 	    this.textSpeed = textSpeed;
 	    this.stopTimer = stopTimer;
+	    this.titleSize = titleSize;
+	    this.buttonWidth = buttonWidth;
+	    this.buttonHeight = buttonHeight;
 	    
 	   
     	
 	    setLayout(new GridBagLayout());
         setBackground(Color.black); 
+        
         
    
       
@@ -53,7 +59,7 @@ public class MainGame extends JPanel {
         //Title Font
     	try {
 		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
-		            this.getClass().getClassLoader().getResourceAsStream("PokemonHollow.ttf")).deriveFont(55f);
+		            this.getClass().getClassLoader().getResourceAsStream("PokemonHollow.ttf")).deriveFont(titleSize);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    ge.registerFont(titleFont);
 		} catch (IOException e) {
@@ -74,41 +80,47 @@ public class MainGame extends JPanel {
 
 		
 		namesPanel = new JPanel();
+		namesPanel.setLayout(new BorderLayout());
 		namesPanel.setBackground(Color.black);
 		namesLabel = new JLabel("By: Rahil Sagarwala, Gary Ray, Chad Mendenhall, and Luis Siavchay");
 		namesLabel.setForeground(Color.LIGHT_GRAY);
-		namesLabel.setFont(italicNormalFont);
+		namesLabel.setFont(font);
 		namesPanel.add(namesLabel);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    this.setSize(screenSize.width, screenSize.height);
+		
 		
 		
 		
 		newGameButton = new JButton("New Game");
 		newGameButton.setBackground(Color.DARK_GRAY);
 		newGameButton.setForeground(Color.cyan);
-		newGameButton.setFont(buttonFont);
+		newGameButton.setFont(font);
 		
 		
 		continueButton = new JButton("Continue");
 		continueButton.setBackground(Color.DARK_GRAY);
 		continueButton.setForeground(Color.cyan);
-		continueButton.setFont(buttonFont);
+		continueButton.setFont(font);
 		
 		tradeButton = new JButton("Trade");
 		tradeButton.setBackground(Color.DARK_GRAY);
 		tradeButton.setForeground(Color.cyan);
-		tradeButton.setFont(buttonFont);
+		tradeButton.setFont(font);
 	
 		
 		optionsButton = new JButton("Options");
 		optionsButton.setBackground(Color.DARK_GRAY);
 		optionsButton.setForeground(Color.cyan);
-		optionsButton.setFont(buttonFont);
+		optionsButton.setFont(font);
 		
 		
 		feedbackButton = new JButton("Feedback");
 		feedbackButton.setBackground(Color.DARK_GRAY);
 		feedbackButton.setForeground(Color.cyan);
-		feedbackButton.setFont(buttonFont);
+		feedbackButton.setFont(font);
+		
 		
 		feedbackButton.setPreferredSize(new Dimension(400,100));
 		newGameButton.setPreferredSize(new Dimension(400,100));
@@ -143,9 +155,7 @@ public class MainGame extends JPanel {
 		
 		gb.gridx=0;
 		gb.gridy=2;
-		add(newGameButton,gb);
-		
-		
+		add(newGameButton,gb);	
 		
 		gb.gridx=0;
 		gb.gridy=3;
@@ -168,13 +178,13 @@ public class MainGame extends JPanel {
 			
 			 public void actionPerformed(ActionEvent e) {
 				 if (font == null) {
-					 newGame = new NewGame(cl, cards, buttonFont, language, textSpeed, stopTimer);
+					 newGame = new NewGame(cl, cards, buttonFont, language, textSpeed, stopTimer, buttonWidth, buttonHeight);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 					
 				 }
 				 else {
-					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer);
+					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth, buttonHeight);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 }
@@ -187,7 +197,7 @@ public class MainGame extends JPanel {
 			 public void actionPerformed(ActionEvent e) {
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
-							false, stopTimer);
+							false, stopTimer, titleSize, buttonWidth, buttonHeight);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -221,6 +231,8 @@ public class MainGame extends JPanel {
 					
 	            }
 	        });
+		 
+		 
     }
 
 

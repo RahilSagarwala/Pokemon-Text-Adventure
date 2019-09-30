@@ -1,6 +1,9 @@
 package mainGame;
 
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -12,15 +15,14 @@ import locations.PalletTownLab;
 import locations.Route1;
 import locations.Battle;
 
-public class UI {
+public class UI implements ComponentListener {
 	
 	JFrame window;
 	JPanel cards;
     JTextArea startScreenTextArea = new JTextArea(); 
     final static String mainScreenString = "mainscreen";
     CardLayout cl;
-    Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30),
-    		buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font = new Font("SANS_SERIF", Font.BOLD, 30);
+    Font font = new Font("SANS_SERIF", Font.BOLD, 30);
     String language = "English", position = "mainscreen", fullText2="", chosenSave = "";
     int textSpeed = 50, buttonWidth = 150, buttonHeight = 75;
     Boolean stopTimer = false;
@@ -40,14 +42,51 @@ public class UI {
     Rival rival;
     Player player;
     Float titleSize = 55f;
+
     
    
     
 
     
-    //Creates window
-    //Initializes every screen and sets as card layout
-    //Called from main method below
+    
+    public void componentHidden(ComponentEvent e) {
+
+    }
+
+    public void componentMoved(ComponentEvent e) {
+
+    }
+
+    public void componentResized(ComponentEvent e) {
+    		
+    	
+            int width = window.getWidth();
+            font = new Font("SANS_SERIF", Font.BOLD, width/ 50);
+            
+       
+//            options = new Options(cl, cards, position, startScreenTextArea, "1", 
+//        			false, player, true, "English", textSpeed, fullText2, rival, 
+//        			font, stopTimer, false, titleSize, buttonWidth, buttonHeight);
+//            cards.add(options, "options");   
+            
+      
+        	   mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight);
+               cards.add(mg, "mainscreen");
+//          
+//        	   cl.show(cards, "mainscreen");
+//               
+//           
+//   
+//            
+//            window.getContentPane().revalidate();
+            
+
+    }
+
+    public void componentShown(ComponentEvent e) {
+
+    }
+    
 	public UI() {
 		
 	
@@ -56,8 +95,6 @@ public class UI {
 		
 		cards = new JPanel();
 		
-		
-		 
 	
 		
 		
@@ -72,7 +109,7 @@ public class UI {
     	trade = new Trade(cl, cards);
     	continu = new ContinueGame(cl, cards);
     	player = new Player("");
-     	newGame = new NewGame(cl, cards, buttonFont,language, textSpeed, stopTimer, buttonWidth, buttonHeight);
+     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight);
     	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, "English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
         		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse");
@@ -107,9 +144,11 @@ public class UI {
         
 	   	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    window.setSize(1280, 680);
+	   
 	    window.setVisible(true);
     	window.add(cards);
 //    	window.pack();
+    	 window.addComponentListener(this);
     	cl.show(cards, "mainscreen");
       
         
@@ -117,6 +156,7 @@ public class UI {
 		
 		
 	}
+	
 	
 	public static void main(String[] args) {
 		

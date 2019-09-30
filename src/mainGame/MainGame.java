@@ -51,6 +51,10 @@ public class MainGame extends JPanel {
     	
 	    setLayout(new GridBagLayout());
         setBackground(Color.black); 
+     
+       
+        
+       
         
         
    
@@ -177,17 +181,12 @@ public class MainGame extends JPanel {
 		 newGameButton.addActionListener(new ActionListener() {
 			
 			 public void actionPerformed(ActionEvent e) {
-				 if (font == null) {
-					 newGame = new NewGame(cl, cards, buttonFont, language, textSpeed, stopTimer, buttonWidth, buttonHeight);
-					 cards.add(newGame, "newgame");
-					cl.show(cards, "newgame");
-					
-				 }
-				 else {
+				
+				 
 					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth, buttonHeight);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
-				 }
+				 
 					
 	            }
 	        });

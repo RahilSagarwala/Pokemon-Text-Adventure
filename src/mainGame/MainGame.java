@@ -15,9 +15,9 @@ public class MainGame extends JPanel {
 
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel, mainScreenPanel;
     JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
-    JLabel namesLabel, titleLabel;
-	Font titleFont, italicNormalFont = new Font("SANS_SERIF", Font.ITALIC, 30), 
-			buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font;
+    JLabel namesLabel, titleLabel, logoLabel;
+	Font titleFont, italicFont = new Font("SANS_SERIF", Font.ITALIC, 25), 
+			buttonFont = new Font("SANS_SERIF", Font.BOLD, 10), font;
 	final static String mainScreenString = "mainscreen";
     CardLayout cl;
     Options options;
@@ -33,6 +33,8 @@ public class MainGame extends JPanel {
     Rival rival;
     Boolean stopTimer;
     Float titleSize;
+    ImageIcon logoIcon;
+    
     
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, 
@@ -88,7 +90,7 @@ public class MainGame extends JPanel {
 		namesPanel.setBackground(Color.black);
 		namesLabel = new JLabel("By: Rahil Sagarwala, Gary Ray, Chad Mendenhall, and Luis Siavchay");
 		namesLabel.setForeground(Color.LIGHT_GRAY);
-		namesLabel.setFont(font);
+		namesLabel.setFont(italicFont);
 		namesPanel.add(namesLabel);
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -130,35 +132,37 @@ public class MainGame extends JPanel {
 		newGameButton.setPreferredSize(new Dimension(400,100));
 		continueButton.setPreferredSize(new Dimension(400,100));
 		tradeButton.setPreferredSize(new Dimension(400,100));
-		optionsButton.setPreferredSize(new Dimension(400,100));
+		optionsButton.setPreferredSize(new Dimension(400,80));
 		
 		
-		//Add an image
-		frontBoxPanel = new JPanel();
-		
-		//Add an image
-		backBoxPanel = new JPanel();
-		
-		//Add an image
-		logoPanel = new JPanel();
+
+		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("logo.jpg"));
+		 logoLabel = new JLabel(logoIcon);
+		  
+
 		
 		//GridBagLayout
-       
-		
 		//Add GUI Elements to GridBagLayout
-		GridBagConstraints gb = new GridBagConstraints();		
+		GridBagConstraints gb = new GridBagConstraints();
 		
+		gb.gridx=2;
+		gb.insets = new Insets(0,100,0,0);
+		add(logoLabel,gb);
+
+		gb.insets = new Insets(-70,225,0,0);
 		gb.gridx=0;
-		gb.gridy=0;
+		gb.gridy=0;	
 		add(titlePanel,gb);
 		
 		
 		gb.gridx=0;
 		gb.gridy=1;
+
 		add(namesPanel,gb);
 		
 		gb.gridx=0;
 		gb.gridy=2;
+		gb.insets = new Insets(0,300,0,0);
 		add(newGameButton,gb);	
 		
 		gb.gridx=0;

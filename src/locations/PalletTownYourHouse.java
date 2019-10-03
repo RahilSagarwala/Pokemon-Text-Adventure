@@ -17,8 +17,10 @@ public class PalletTownYourHouse extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
-	JButton locationButton, talktoMomButton;
+	JButton menuButton, goOutsideButton, playSnesButton, watchTvButton, talktoMomButton;
 	JLabel locationLabel;
+	Dialogue dialogue;
+	MenuScreen menu;
 	
 	public PalletTownYourHouse(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -134,23 +136,31 @@ public class PalletTownYourHouse extends JPanel {
 		 
 		 talkToMomButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-            	
-//	                cards.add(ss, "startscreen");
-//	                layout.show(cards, "startscreen");  	                
+	            	
+	            	dialogue = new Dialogue(cl, cards, textAreaFont, "talktomom", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownyourhouse");
+	            	cards.add(dialogue, "dialogue");
+	                layout.show(cards, "dialogue");  	                
 	            }
 	        });
 		 
 		 watchTvButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-
+	            	dialogue = new Dialogue(cl, cards, textAreaFont, "watchtv", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownyourhouse");
+	            	cards.add(dialogue, "dialogue");
+	                layout.show(cards, "dialogue");  	
 	            	
 	            }
 	        });
 		 
 		 playSnesButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-
 	            	
+	            	dialogue = new Dialogue(cl, cards, textAreaFont, "playsenes", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownyourhouse");
+	            	cards.add(dialogue, "dialogue");
+	                layout.show(cards, "dialogue");  	
 	            }
 	        });
 		 
@@ -163,7 +173,10 @@ public class PalletTownYourHouse extends JPanel {
 		 
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-
+	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownyourhouse");
+	            	cards.add(menu, "menu");
+	                layout.show(cards, "menu");  
 	            	
 	            }
 	        });

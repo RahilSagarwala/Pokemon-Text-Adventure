@@ -18,7 +18,7 @@ public class PalletTownLab extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
-	JButton locationButton;
+	JButton lmenuButton;
 	
 	public PalletTownLab (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 

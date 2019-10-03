@@ -14,6 +14,9 @@ import locations.PalletTownHouse3;
 import locations.PalletTownLab;
 import locations.Route1;
 import locations.Battle;
+import locations.Dialogue;
+import locations.Outside;
+import locations.MenuScreen;
 
 public class UI implements ComponentListener {
 	
@@ -42,6 +45,9 @@ public class UI implements ComponentListener {
     Rival rival;
     Player player;
     Float titleSize = 55f;
+    Dialogue dialogue;
+    Outside outside;
+    MenuScreen menu;
 
     
    
@@ -105,7 +111,7 @@ public class UI implements ComponentListener {
     	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight);
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
-    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight);
+    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false);
     	trade = new Trade(cl, cards);
     	continu = new ContinueGame(cl, cards);
     	player = new Player("");
@@ -113,16 +119,22 @@ public class UI implements ComponentListener {
     	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, "English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
         		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse");
+    	outside = new Outside(cl, cards, font, 
+        		"9", language, textSpeed, player, rival, stopTimer, "outside");
     	palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, font, 
-        		"9", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse");
+        		"10", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse");
     	palletTownHouse3 = new PalletTownHouse3(cl, cards, font, 
-        		"10", language, textSpeed, player, rival, stopTimer, "pallettownhouse3s");
+        		"11", language, textSpeed, player, rival, stopTimer, "pallettownhouse3");
     	palletTownLab = new PalletTownLab(cl, cards, font, 
-        		"11", language, textSpeed, player, rival, stopTimer, "pallettownlab");
+        		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab");
     	route1 = new Route1(cl, cards, font, 
-        		"12", language, textSpeed, player, rival, stopTimer, "route1");
+        		"13", language, textSpeed, player, rival, stopTimer, "route1");
     	battle = new Battle(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "battle");
+    	dialogue = new Dialogue(cl, cards, font, 
+        		"", language, textSpeed, player, rival, stopTimer, "dialogue"); 	
+    	menu = new MenuScreen(cl, cards, font, 
+        		"", language, textSpeed, player, rival, stopTimer, "menu");
     	
   
     	
@@ -138,6 +150,9 @@ public class UI implements ComponentListener {
         cards.add(palletTownLab, "pallettownlab");
         cards.add(palletTownHouse3, "pallettownhouse3");
         cards.add(route1, "route1");
+        cards.add(dialogue, "dialogue");
+        cards.add(outside, "outside");
+        cards.add(menu, "menu");
       
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //		cards.setSize(screenSize.width, screenSize.height);

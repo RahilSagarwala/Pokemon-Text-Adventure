@@ -17,7 +17,6 @@ public class Battle extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
-	JButton locationButton;
 	
 
 	public Battle(final CardLayout layout, final JPanel cards, 

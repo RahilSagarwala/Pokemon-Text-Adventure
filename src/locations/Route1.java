@@ -17,7 +17,7 @@ public class Route1 extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
-	JButton locationButton;
+	JButton menuButton;
 
 	public Route1(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 

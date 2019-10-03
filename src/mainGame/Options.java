@@ -7,6 +7,7 @@ import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
+import locations.MenuScreen;
 
 public class Options extends JPanel {
 	
@@ -22,7 +23,7 @@ public class Options extends JPanel {
     MainGame mg;
     String language1, position, fullText2, screen;
     JTextArea textArea;
-	Boolean nameOptionsBool, nameOptionsBool2, stopTimer, setVisible;
+	Boolean nameOptionsBool, nameOptionsBool2, stopTimer, setVisible, isMenu;
 	Player player;
 	int textSpeed1, buttonWidth, buttonHeight;
 	Rival rival;
@@ -33,7 +34,7 @@ public class Options extends JPanel {
 			JTextArea textArea, String screen, Boolean nameOptionsBool,
 			Player player2, Boolean setVisible, String language, int textSpeed, String fullText,
 			Rival rival2, Font font, Boolean stopTimer1, Boolean nameOptionsBool2, Float titleSize2,
-			int buttonWidth2, int buttonHeight2) {
+			int buttonWidth2, int buttonHeight2, Boolean isMenu2) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -52,6 +53,7 @@ public class Options extends JPanel {
 	     this.titleSize = titleSize2;
 	     this.buttonWidth = buttonWidth2;
 	     this.buttonHeight = buttonHeight2;
+	     this.isMenu = isMenu2;
 	     
 	     
 	     //Create GUI
@@ -234,19 +236,29 @@ public class Options extends JPanel {
 		 //Each screen has a position, thus Options knows where to return to
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	if (position == "startscreen") {
-	            		
+	            	switch(position) {
+	            	case "startscreen":
 	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, nameOptionsBool,
 	            				 player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2,
 	            				 stopTimer, buttonWidth, buttonHeight);	          
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    
-	            	}		
 	            	
-	            	else {
-	            		  layout.show(cards, position);	            	
-	            	}	            
+	            	
+	            	case "mainscreen":
+	            		  layout.show(cards, position);	  
+	            		  
+	            	case "menu":	            		
+	            		
+	            		MenuScreen menu = new MenuScreen(cl, cards, font1, screen, language1, textSpeed1, player,
+	            				rival, stopTimer, screen);
+	            		cards.add(menu, "menu");
+	            	    layout.show(cards, "menu");
+	            		           	
+	            }
+	            	
+	            		            
 	        	  
 	                
 	            				}	
@@ -272,7 +284,7 @@ public class Options extends JPanel {
 	            	    
 	            	   Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
-	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight);
+	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -299,7 +311,7 @@ public class Options extends JPanel {
 	            	 
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
-	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight);
+	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -323,7 +335,7 @@ public class Options extends JPanel {
 	            	    
 	            	    Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
-	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight);
+	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -344,7 +356,7 @@ public class Options extends JPanel {
 	            	 
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
-	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight);
+	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -367,7 +379,7 @@ public class Options extends JPanel {
 	            	 
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
-	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight);
+	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");

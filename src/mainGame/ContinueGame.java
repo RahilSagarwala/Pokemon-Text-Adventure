@@ -13,16 +13,10 @@ public class ContinueGame extends JPanel {
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JLabel chooseSaveLabel;
     ConfirmContinue cc;
-    String saveName;
     ConfirmContinue confirmContinue;
-
-    public String getSaveName() {
-    	return saveName;
-    }
 
 	
 	public ContinueGame (final CardLayout layout, final JPanel cards) {
-		 saveName = "testing";
 		 this.cl = layout;
 	     this.cards = cards;
 	     setBackground(Color.black);

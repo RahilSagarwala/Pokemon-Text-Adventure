@@ -126,22 +126,23 @@ public class StartScreen extends JPanel {
     		 break;
     		 
     	 case "4":
-    		 if (player.getName() == "ブルー") {
- 				player.setName("BLUE");
- 			}
-
- 			if (player.getName() == "レッド") {	
- 				player.setName("RED");
- 			}
-
- 			if (player.getName() == "グリーン") {
- 				player.setName("GREEN");
- 			}
-
- 			if (player.getName() == "イエロー") {
- 				player.setName("YELLOW");
- 			}
+//    		 if (player.getName() == "ブルー") {
+// 				player.setName("BLUE");
+// 			}
+//
+// 			if (player.getName() == "レッド") {	
+// 				player.setName("RED");
+// 			}
+//
+// 			if (player.getName() == "グリーン") {
+// 				player.setName("GREEN");
+// 			}
+//
+// 			if (player.getName() == "イエロー") {
+// 				player.setName("YELLOW");
+// 			}
     		 
+    		
          	fullText2 = "Oak: Right! So your name is " + player.getName() + ".";
     		 break;
     		 
@@ -154,21 +155,21 @@ public class StartScreen extends JPanel {
     		 break;
     		 
     	 case "6":
-    		 if (rival.getName() == "ブルー") {
-  				rival.setName("BLUE");
-  			}
-
-  			if (rival.getName() == "レッド") {	
-  				rival.setName("RED");
-  			}
-
-  			if (rival.getName() == "グリーン") {
-  				rival.setName("GREEN");
-  			}
-
-  			if (rival.getName() == "イエロー") {
-  				rival.setName("YELLOW");
-  			}
+//    		 if (rival.getName() == "ブルー") {
+//  				rival.setName("BLUE");
+//  			}
+//
+//  			if (rival.getName() == "レッド") {	
+//  				rival.setName("RED");
+//  			}
+//
+//  			if (rival.getName() == "グリーン") {
+//  				rival.setName("GREEN");
+//  			}
+//
+//  			if (rival.getName() == "イエロー") {
+//  				rival.setName("YELLOW");
+//  			}
     		 
     		 fullText2 = "Oak: That's right! I remember now! His name is " + rival.getName() +"!\r\n";    		 
     		
@@ -176,21 +177,21 @@ public class StartScreen extends JPanel {
     		 
     	 case "7":
     		 
-    		 if (player.getName() == "ブルー") {
-  				player.setName("BLUE");
-  			}
-
-  			if (player.getName() == "レッド") {	
-  				player.setName("RED");
-  			}
-
-  			if (player.getName() == "グリーン") {
-  				player.setName("GREEN");
-  			}
-
-  			if (player.getName() == "イエロー") {
-  				player.setName("YELLOW");
-  			}
+//    		 if (player.getName() == "ブルー") {
+//  				player.setName("BLUE");
+//  			}
+//
+//  			if (player.getName() == "レッド") {	
+//  				player.setName("RED");
+//  			}
+//
+//  			if (player.getName() == "グリーン") {
+//  				player.setName("GREEN");
+//  			}
+//
+//  			if (player.getName() == "イエロー") {
+//  				player.setName("YELLOW");
+//  			}
      		 
      		 
     		 
@@ -224,21 +225,21 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "4": 
-	        		 if (player.getName() == "BLUE") {
-	      				player.setName("ブルー");	
-	      			}
-	        		 
-	        		 if (player.getName() == "RED") {
-	     				player.setName("レッド");
-	     			}
-	     			
-	     			if (player.getName() == "GREEN") {
-	     				player.setName("グリーン");
-	     			}
-	     			
-	     			if (player.getName() == "YELLOW") {
-	     				player.setName("イエロー");
-	     			}
+//	        		 if (player.getName() == "BLUE") {
+//	      				player.setName("ブルー");	
+//	      			}
+//	        		 
+//	        		 if (player.getName() == "RED") {
+//	     				player.setName("レッド");
+//	     			}
+//	     			
+//	     			if (player.getName() == "GREEN") {
+//	     				player.setName("グリーン");
+//	     			}
+//	     			
+//	     			if (player.getName() == "YELLOW") {
+//	     				player.setName("イエロー");
+//	     			}
 	         		
 	         	
 	        		 fullText2 = "ふむ。。。" + player.getName() +  " と いうんだな！";
@@ -249,41 +250,41 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "6":
-	        		 if (rival.getName() == "BLUE") {
-		      				rival.setName("ブルー");	
-		      			}
-		        		 
-		        		 if (rival.getName() == "RED") {
-		     				rival.setName("レッド");
-		     			}
-		     			
-		     			if (rival.getName() == "GREEN") {
-		     				rival.setName("グリーン");
-		     			}
-		     			
-		     			if (rival.getName() == "YELLOW") {
-		     				rival.setName("イエロー");
-		     			}
+//	        		 if (rival.getName() == "BLUE") {
+//		      				rival.setName("ブルー");	
+//		      			}
+//		        		 
+//		        		 if (rival.getName() == "RED") {
+//		     				rival.setName("レッド");
+//		     			}
+//		     			
+//		     			if (rival.getName() == "GREEN") {
+//		     				rival.setName("グリーン");
+//		     			}
+//		     			
+//		     			if (rival.getName() == "YELLOW") {
+//		     				rival.setName("イエロー");
+//		     			}
 	        		 
 	        		 fullText2 = "そうだ そうだ! おもいだしたぞ " + rival.getName() + " という なまえだ";
 	        		 break;
 	        		 
 	        	 case "7":
-	        		 if (player.getName() == "BLUE") {
-		      				player.setName("ブルー");	
-		      			}
-		        		 
-		        		 if (player.getName() == "RED") {
-		     				player.setName("レッド");
-		     			}
-		     			
-		     			if (player.getName() == "GREEN") {
-		     				player.setName("グリーン");
-		     			}
-		     			
-		     			if (player.getName() == "YELLOW") {
-		     				player.setName("イエロー");
-		     			}
+//	        		 if (player.getName() == "BLUE") {
+//		      				player.setName("ブルー");	
+//		      			}
+//		        		 
+//		        		 if (player.getName() == "RED") {
+//		     				player.setName("レッド");
+//		     			}
+//		     			
+//		     			if (player.getName() == "GREEN") {
+//		     				player.setName("グリーン");
+//		     			}
+//		     			
+//		     			if (player.getName() == "YELLOW") {
+//		     				player.setName("イエロー");
+//		     			}
 	        		 
 	        		 fullText2 = player.getName() + "! いよいよ これから きみの ものがたリの よじまリだ! ゆめと ぼうけんと! ポケ\r\n" + 
 	        		 		"\r\n" + 
@@ -400,6 +401,8 @@ public class StartScreen extends JPanel {
 	     gb.weightx = 1;
 	     add(nextButton1, gb);
 	     
+	 	 
+	     
 	     //Options Button recreates Options object and shows Options screen with all values already included in StartScreen class (passed on)
 	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
@@ -512,9 +515,9 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            
 	            	if (language == "English") {
-	            	Player player3 = new Player("RED");
+	            	player.setName("RED");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
-	            			false, player3, true, language, textSpeed,
+	            			false, player, true, language, textSpeed,
 	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            	 
 
@@ -522,9 +525,9 @@ public class StartScreen extends JPanel {
 	            	
 	            	else {
 	            		
-	            	 	Player player3 = new Player("レッド ");	       		    
+	            	 	player.setName("レッド ");	       		    
 	            	 	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
-	            	 			false, player3, true, language, textSpeed,
+	            	 			false, player, true, language, textSpeed,
 	            	 			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            	}
 	            	
@@ -541,16 +544,16 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	if (language == "English") {
-	            	Player player3 = new Player("BLUE");
+	            	player.setName("BLUE");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
-	            			false, player3, true, language, textSpeed,
+	            			false, player, true, language, textSpeed,
 	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            	}
 	            	
 	            	else {
-	            	Player player3 = new Player("ブルー");
+	            	player.setName("ブルー");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
-	            			false, player3, true, language, textSpeed,fullText2,
+	            			false, player, true, language, textSpeed,fullText2,
 	            			rival, false, stopTimer, buttonWidth, buttonHeight);
 
 	            		
@@ -568,18 +571,18 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	if (language == "English") {
-	            		Player player3 = new Player("GREEN");
+	            		player.setName("GREEN");
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,"4",
-	            				false, player3, true, language, textSpeed,
+	            				false, player, true, language, textSpeed,
 	            				fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	            		
 	       		    
 	            	}
 	            	
 	            	else {
-	            		Player player3 = new Player("グリーン");
+	            		player.setName("グリーン");
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,
-	            				"4", false, player3, true, language, textSpeed,
+	            				"4", false, player, true, language, textSpeed,
 	            				fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
 	
 	            	}
@@ -596,18 +599,18 @@ public class StartScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	if (language == "English") {
-	            	Player player3 = new Player("YELLOW");
+	            	player.setName("YELLOW");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
-	            			false, player3, true, language, textSpeed,fullText2,
+	            			false, player, true, language, textSpeed,fullText2,
 	            			rival, false, stopTimer, buttonWidth, buttonHeight);
 	         
 	       		    
 	            	}
 	            	
 	            	else {
-	            		Player player3 = new Player("イエロー"); 
+	            		player.setName("イエロー"); 
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
-	            				false, player3, true, language, textSpeed,fullText2,
+	            				false, player, true, language, textSpeed,fullText2,
 	            				rival, false, stopTimer, buttonWidth, buttonHeight);
 	            
 	            	}
@@ -627,12 +630,12 @@ public class StartScreen extends JPanel {
 			            public void actionPerformed(ActionEvent e) {
 			            
 			            	if (language == "English") {
-				            	rival = new Rival("RED");
+				            	rival.setName("RED");
 
 				            	}
 				            	
 				            	else {
-				            	rival = new Rival("レッド");				            					       		 
+				            		rival.setName("レッド");				            					       		 
 
 				            		
 				            	}
@@ -650,12 +653,12 @@ public class StartScreen extends JPanel {
 			            public void actionPerformed(ActionEvent e) {
  
 			            	if (language == "English") {
-				            	rival = new Rival("BLUE");
+				            	rival.setName("BLUE");
 
 				            	}
 				            	
 				            	else {
-				            	rival = new Rival("ブルー");
+				            	rival.setName("ブルー");
 
 				            		
 				            	}
@@ -673,12 +676,12 @@ public class StartScreen extends JPanel {
 			            public void actionPerformed(ActionEvent e) {
  
 			            	if (language == "English") {
-				            	rival = new Rival("GREEN");
+			            		rival.setName("GREEN");
 
 				            	}
 				            	
 				            	else {
-				            	rival = new Rival("グリーン");
+				            		rival.setName("グリーン");
 				            			
 
 				            		
@@ -697,12 +700,12 @@ public class StartScreen extends JPanel {
 			            public void actionPerformed(ActionEvent e) {
 
 			            	if (language == "English") {
-				            	rival = new Rival("YELLOW");
+			            		rival.setName("YELLOW");
 
 				            	}
 				            	
 				            	else {
-				            	rival = new Rival("イエロー");
+				            		rival.setName("イエロー");
 
 				            		
 				            	}

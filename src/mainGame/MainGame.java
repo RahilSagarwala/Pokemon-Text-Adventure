@@ -38,7 +38,8 @@ public class MainGame extends JPanel {
     
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, 
-    		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
+    		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight, 
+    		Player player, Rival rival) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
@@ -48,6 +49,8 @@ public class MainGame extends JPanel {
 	    this.titleSize = titleSize;
 	    this.buttonWidth = buttonWidth;
 	    this.buttonHeight = buttonHeight;
+	    this.player = player;
+	    this.rival = rival;
 	    
 	   
     	
@@ -63,6 +66,7 @@ public class MainGame extends JPanel {
       
          
         //Title Font
+        if (language == "English") {
     	try {
 		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
 		            this.getClass().getClassLoader().getResourceAsStream("PokemonHollow.ttf")).deriveFont(titleSize);
@@ -73,12 +77,25 @@ public class MainGame extends JPanel {
 		} catch(FontFormatException e) {
 		    e.printStackTrace();
 		}
+        }
+        else {
+        	try {
+    		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
+    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(50f);
+    		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    		    ge.registerFont(titleFont);
+    		} catch (IOException e) {
+    		    e.printStackTrace();
+    		} catch(FontFormatException e) {
+    		    e.printStackTrace();
+    		}
+        }
     	
     	//Create GUI
 		titlePanel = new JPanel();
 		titlePanel.setBackground(Color.black);
 		titleLabel = new JLabel();
-		titleLabel = new JLabel("Pok�mon Text Audio Game");
+		titleLabel = new JLabel("Pokémon Text Audio Game");
 		titleLabel.setForeground(Color.LIGHT_GRAY);
 		titleLabel.setFont(titleFont);	
 		titlePanel.add(titleLabel);
@@ -134,9 +151,19 @@ public class MainGame extends JPanel {
 		tradeButton.setPreferredSize(new Dimension(400,100));
 		optionsButton.setPreferredSize(new Dimension(400,80));
 		
+		 if(language == "Japanese") {
+			 feedbackButton.setText("フィードバック");
+			 newGameButton.setText("さいしょからはじめる");
+			 continueButton.setText("つづきからはじめる");
+			 tradeButton.setText("トレード");
+			 optionsButton.setText("せっていを かえる");
+			 titleLabel.setText("<html>ポケットモンスターテキスト<br>- オーディオ ゲーム<html>");
+	
+		 }
+		
 		
 
-		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("logo.jpg"));
+		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("PTTA_logo.png"));
 		 logoLabel = new JLabel(logoIcon);
 		  
 
@@ -145,8 +172,9 @@ public class MainGame extends JPanel {
 		//Add GUI Elements to GridBagLayout
 		GridBagConstraints gb = new GridBagConstraints();
 		
+		gb.gridy=0;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,100,0,0);
+		gb.insets = new Insets(0,80,0,0);
 		add(logoLabel,gb);
 
 		gb.insets = new Insets(-70,225,0,0);
@@ -187,7 +215,7 @@ public class MainGame extends JPanel {
 			 public void actionPerformed(ActionEvent e) {
 				
 				 
-					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth, buttonHeight);
+					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 
@@ -220,7 +248,9 @@ public class MainGame extends JPanel {
 		 tradeButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-				 	cl = (CardLayout) cards.getLayout();
+				    trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+				 			buttonWidth, buttonHeight);
+				 	cards.add(trade, "trade");
 					cl.show(cards, "trade");
 					
 	            }
@@ -229,7 +259,9 @@ public class MainGame extends JPanel {
 		 continueButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
-				 cl = (CardLayout) cards.getLayout();
+				 	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+				 			buttonWidth, buttonHeight);
+				    cards.add(continu, "continue");
 					cl.show(cards, "continue");
 					
 	            }

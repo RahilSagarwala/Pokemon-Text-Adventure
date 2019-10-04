@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.swing.*;
+import Trainer.*;
 
 public class Trade extends JPanel {
 	
@@ -11,20 +12,50 @@ public class Trade extends JPanel {
 	CardLayout cl;
     JPanel cards;
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
+    String language;
+    Font font;
+    int textSpeed;
+    MainGame mg;
+    Player player;
+    Rival rival;
+    Boolean stopTimer;
+    Float titleSize;
+    int buttonWidth;
+    int buttonHeight;
 	
-	public Trade (final CardLayout layout, final JPanel cards) {
+	public Trade (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
+			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
 		 this.cl = layout;
 	     this.cards = cards;
+	     this.language = language;
+	     this.font = font;
+	     this.textSpeed = textSpeed;
+	     this.player = player;
+	     this.rival = rival;
+	     this.stopTimer = stopTimer;
+	     this.titleSize = titleSize;
+	     this.buttonWidth = buttonWidth;
+	     this.buttonHeight = buttonHeight;
+	     
+	     setBackground(Color.black);
+	     
 	     JButton returnButton = new JButton("Return");
 	     returnButton.setPreferredSize(new Dimension(150,75));
-		 add(returnButton);
-		 setBackground(Color.black);
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
-		 returnButton.setFont(buttonFont);
+		 returnButton.setFont(font);
+		 
+		 if(language == "Japanese") {
+			 returnButton.setText("とじる");
+		 }
+		 
+		 add(returnButton);
 		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
+	            			titleSize, buttonWidth, buttonHeight, player, rival);
+	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 
 	            }

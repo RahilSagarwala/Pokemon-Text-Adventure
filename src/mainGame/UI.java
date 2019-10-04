@@ -42,12 +42,12 @@ public class UI implements ComponentListener {
     PalletTownHouse3 palletTownHouse3;
     Route1 route1;
     Battle battle;
-    Rival rival;
-    Player player;
     Float titleSize = 55f;
     Dialogue dialogue;
     Outside outside;
     MenuScreen menu;
+	Player player = new Player("");
+	Rival rival = new Rival("");
 
     
    
@@ -67,16 +67,18 @@ public class UI implements ComponentListener {
     		
     	
             int width = window.getWidth();
-            font = new Font("SANS_SERIF", Font.BOLD, width/ 50);
+            font = new Font("SANS_SERIF", Font.BOLD, width/ 30);
+            titleSize = (float) (width/20);
             
        
 //            options = new Options(cl, cards, position, startScreenTextArea, "1", 
 //        			false, player, true, "English", textSpeed, fullText2, rival, 
-//        			font, stopTimer, false, titleSize, buttonWidth, buttonHeight);
+//        			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false);
 //            cards.add(options, "options");   
             
       
-        	   mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight);
+        	   mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, 
+        			   buttonWidth, buttonHeight, player, rival);
                cards.add(mg, "mainscreen");
 //          
 //        	   cl.show(cards, "mainscreen");
@@ -108,14 +110,19 @@ public class UI implements ComponentListener {
    	   window = new JFrame("Pokémon Text Audio Game");
 	   
     	
-    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight);
+   
+   	   
+    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight, player, rival);
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
     			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false);
-    	trade = new Trade(cl, cards);
-    	continu = new ContinueGame(cl, cards);
-    	player = new Player("");
-     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight);
+    	trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	 			buttonWidth, buttonHeight);
+    	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	 			buttonWidth, buttonHeight);
+    
+  
+     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival);
     	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, "English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
         		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse");

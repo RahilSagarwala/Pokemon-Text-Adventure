@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.swing.*;
+import Trainer.Player;
+import Trainer.Rival;
 
 
 public class ConfirmContinue extends JPanel{
@@ -13,12 +15,34 @@ public class ConfirmContinue extends JPanel{
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30);
     JLabel confirmContinueLabel;
     String saveName = "";
+    String language;
+    Font font;
+    int textSpeed;
+    Player player;
+    Rival rival;
+    Boolean stopTimer;
+    Float titleSize;
+    int buttonWidth;
+    int buttonHeight;
+    ContinueGame continu;
+
     
     
-	public ConfirmContinue (final CardLayout layout, final JPanel cards, String name) {
+	public ConfirmContinue (final CardLayout layout, final JPanel cards, String name, String language, Font font, int textSpeed,
+			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
 		 this.saveName = name;
 		 this.cl = layout;
 	     this.cards = cards;
+	     this.language = language;
+	     this.font = font;
+	     this.textSpeed = textSpeed;
+	     this.player = player;
+	     this.rival = rival;
+	     this.stopTimer = stopTimer;
+	     this.titleSize = titleSize;
+	     this.buttonWidth = buttonWidth;
+	     this.buttonHeight = buttonHeight;
+	     
 	     setBackground(Color.black);
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
@@ -26,23 +50,28 @@ public class ConfirmContinue extends JPanel{
 		 JButton yesButton = new JButton("Yes");
 		 yesButton.setBackground(Color.DARK_GRAY);
 		 yesButton.setForeground(Color.cyan);
-		 yesButton.setFont(buttonFont);
+		 yesButton.setFont(font);
 		 yesButton.setPreferredSize(new Dimension(400,100));
 		 
 		 JButton noButton = new JButton("No");
 		 noButton.setBackground(Color.DARK_GRAY);
 		 noButton.setForeground(Color.cyan);
-		 noButton.setFont(buttonFont);
+		 noButton.setFont(font);
 		 noButton.setPreferredSize(new Dimension(400,100));
 		 
 	
-		 JLabel confirmContinueLabel = new JLabel("Continue " + saveName);
-		 confirmContinueLabel.setFont(buttonFont);
+		 JLabel confirmContinueLabel = new JLabel(saveName);
+		 confirmContinueLabel.setFont(font);
 		 confirmContinueLabel.setForeground(Color.cyan);
 		 
 		 JLabel blankLabel = new JLabel("");
-		 blankLabel.setFont(buttonFont);
+		 blankLabel.setFont(font);
 		 blankLabel.setForeground(Color.cyan);
+		 
+		 if(language == "Japanese") {
+			 yesButton.setText("はい");
+			 noButton.setText("いいえ");
+		 }
 		 
 		 gb.gridx=0;
 	     gb.gridy=1;
@@ -68,6 +97,9 @@ public class ConfirmContinue extends JPanel{
 		 
 		 noButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	        	 			buttonWidth, buttonHeight);
+	            	cards.add(continu, "continue");
 	                layout.show(cards, "continue");
 	            }
 	        });

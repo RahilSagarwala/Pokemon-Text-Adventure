@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.swing.*;
+import Trainer.*;
 
 public class ContinueGame extends JPanel {
 	
@@ -14,11 +15,32 @@ public class ContinueGame extends JPanel {
     JLabel chooseSaveLabel;
     ConfirmContinue cc;
     ConfirmContinue confirmContinue;
+    String language, saveText;
+    Font font;
+    int textSpeed;
+    MainGame mg;
+    Player player;
+    Rival rival;
+    Boolean stopTimer;
+    Float titleSize;
+    int buttonWidth;
+    int buttonHeight;
 
 	
-	public ContinueGame (final CardLayout layout, final JPanel cards) {
+	public ContinueGame (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
+			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
 		 this.cl = layout;
 	     this.cards = cards;
+	     this.language = language;
+	     this.font = font;
+	     this.textSpeed = textSpeed;
+	     this.player = player;
+	     this.rival = rival;
+	     this.stopTimer = stopTimer;
+	     this.titleSize = titleSize;
+	     this.buttonWidth = buttonWidth;
+	     this.buttonHeight = buttonHeight;
+	     
 	     setBackground(Color.black);
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
@@ -31,7 +53,7 @@ public class ContinueGame extends JPanel {
 		 returnButton.setFont(buttonFont);
 		 
 		 JLabel chooseSaveLabel = new JLabel("Choose your save file: ");
-		 chooseSaveLabel.setFont(buttonFont);
+		 chooseSaveLabel.setFont(font);
 		 chooseSaveLabel.setForeground(Color.cyan);
 		 
 		 JButton saveOneButton = new JButton("Save 1");
@@ -44,13 +66,26 @@ public class ContinueGame extends JPanel {
 		 saveTwoButton.setPreferredSize(new Dimension(150,75));
 		 saveTwoButton.setBackground(Color.DARK_GRAY);
 		 saveTwoButton.setForeground(Color.cyan);
-		 saveTwoButton.setFont(buttonFont);
+		 saveTwoButton.setFont(font);
 		 
 		 JButton saveThreeButton = new JButton("Save 3");
 		 saveThreeButton.setPreferredSize(new Dimension(150,75));
 		 saveThreeButton.setBackground(Color.DARK_GRAY);
 		 saveThreeButton.setForeground(Color.cyan);
-		 saveThreeButton.setFont(buttonFont);
+		 saveThreeButton.setFont(font);
+		 
+		 if(language == "Japanese") {
+			 returnButton.setText("とじる");
+			 chooseSaveLabel.setText("どのレポートを ロードしますか？");
+			 saveOneButton.setText("レポート 1");
+			 saveTwoButton.setText("レポート 2");
+			 saveThreeButton.setText("レポート 3");
+			 saveOneButton.setPreferredSize(new Dimension(200,75));
+			 saveTwoButton.setPreferredSize(new Dimension(200,75));
+			 saveThreeButton.setPreferredSize(new Dimension(200,75));
+		 }
+		 
+		
 		 
 		 gb.gridx = 0;
 		 gb.gridy = 0;
@@ -78,6 +113,9 @@ public class ContinueGame extends JPanel {
 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
+	            			titleSize, buttonWidth, buttonHeight, player, rival);
+	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 	                
 	            }
@@ -85,9 +123,21 @@ public class ContinueGame extends JPanel {
 		 
 		 saveOneButton.addActionListener(new ActionListener(){
 	            public void actionPerformed(ActionEvent e) {
-	                confirmContinue = new ConfirmContinue(cl,cards, "Save 1?" );
+	            	
+	            	
+	            	if (language == "English") {
+	            		saveText = "Continue Save 1?";
+	            	}
+	            	else {
+	            		saveText = "レポート　１　 ロードしますか？";
+	            	}
+	            	
+	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	        	 			buttonWidth, buttonHeight);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
+	                
+	                
 	            
 	               
 	            }
@@ -97,7 +147,17 @@ public class ContinueGame extends JPanel {
 		 
 		 saveTwoButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                confirmContinue = new ConfirmContinue(cl,cards, "Save 2?" );
+	            	
+	            	if (language == "English") {
+	            		saveText = "レポート　２　 ロードしますか?";
+	            	}
+	            	else {
+	            		saveText = "";
+	            	}
+	            	
+	            	
+	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	        	 			buttonWidth, buttonHeight);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	              
@@ -108,7 +168,15 @@ public class ContinueGame extends JPanel {
 		 
 		 saveThreeButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                confirmContinue = new ConfirmContinue(cl,cards, "Save 3?" );
+	            	if (language == "English") {
+	            		saveText = "Continue Save 3?";
+	            	}
+	            	else {
+	            		saveText = "レポート　３　 ロードしますか";
+	            	}
+	            	
+	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	        	 			buttonWidth, buttonHeight);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	             

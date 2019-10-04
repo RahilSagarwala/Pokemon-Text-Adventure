@@ -41,6 +41,8 @@ public class PalletTownYourHouse extends JPanel {
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
+	     
+	     
 	     locationLabel = new JLabel();
 		 locationLabel.setForeground(Color.LIGHT_GRAY);
 		 locationLabel.setFont(font);
@@ -86,16 +88,23 @@ public class PalletTownYourHouse extends JPanel {
 	     }
 	     
 	     else {
-	    	 locationLabel.setText("<html>ロケーション :<br> わたしのうち<html>");
+	    	 locationLabel.setText("ロケーション : わたしのうち");
 	    	 talkToMomButton.setText("おかあさんとはなす");
 	    	 goOutsideButton.setText("そとにでいく");
-	    	 playSnesButton.setText("<html>スーパーファミコン<br>をする<html>");
+	    	 playSnesButton.setText("スーパーファミコンをする");
 	    	 watchTvButton.setText("てれびおみる");
 	    	 menuButton.setText("メニユー");
 	    	 playSnesButton.setPreferredSize(new Dimension(325,100));
 	    	 watchTvButton.setPreferredSize(new Dimension(225,75));
 	    	 talkToMomButton.setPreferredSize(new Dimension(350,75));
 	    	 goOutsideButton.setPreferredSize(new Dimension(225,75));
+	    	 font = new Font("SANS_SERIF", Font.BOLD, 25);
+	    	 Font font2 = new Font("SANS_SERIF", Font.BOLD, 20);
+	    	 locationLabel.setFont(font);
+	    	 talkToMomButton.setFont(font);
+	    	 goOutsideButton.setFont(font);
+	    	 playSnesButton.setFont(font2);
+	    	 watchTvButton.setFont(font);
 	    	 
 	     }
 		 

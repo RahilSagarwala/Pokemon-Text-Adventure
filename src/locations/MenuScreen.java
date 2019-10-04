@@ -19,7 +19,7 @@ public class MenuScreen extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
-	JButton returnButton, optionsButton;
+	JButton returnButton, optionsButton, pokemonButton, itemButton, saveButton, playerButton;
 	Options options;
 	
 	public MenuScreen (final CardLayout layout, final JPanel cards, 
@@ -41,20 +41,54 @@ public class MenuScreen extends JPanel {
 	     returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font);
+		 returnButton.setPreferredSize(new Dimension(400,100));
 		 
 		 optionsButton = new JButton();
 	     optionsButton.setBackground(Color.DARK_GRAY);
 		 optionsButton.setForeground(Color.cyan);
 		 optionsButton.setFont(font);
+		 optionsButton.setPreferredSize(new Dimension(400,100));
+		 
+		 pokemonButton = new JButton();
+	     pokemonButton.setBackground(Color.DARK_GRAY);
+		 pokemonButton.setForeground(Color.cyan);
+		 pokemonButton.setFont(font);
+		 pokemonButton.setPreferredSize(new Dimension(400,100));
+		 
+		 itemButton = new JButton();
+	     itemButton.setBackground(Color.DARK_GRAY);
+		 itemButton.setForeground(Color.cyan);
+		 itemButton.setFont(font);
+		 itemButton.setPreferredSize(new Dimension(400,100));
+		 
+		 playerButton = new JButton();
+	     playerButton.setBackground(Color.DARK_GRAY);
+		 playerButton.setForeground(Color.cyan);
+		 playerButton.setFont(font);
+		 playerButton.setPreferredSize(new Dimension(400,100));
+		 
+		 saveButton = new JButton();
+	     saveButton.setBackground(Color.DARK_GRAY);
+		 saveButton.setForeground(Color.cyan);
+		 saveButton.setFont(font);
+		 saveButton.setPreferredSize(new Dimension(400,100));
 		 
 		 if (language == "English") {
-			 returnButton.setText("Return");
-			 optionsButton.setText("Options");
+			 returnButton.setText("EXIT");
+			 optionsButton.setText("OPTION");
+			 pokemonButton.setText("POKéMON");
+			 itemButton.setText("ITEM");
+			 playerButton.setText(player.getName());
+			 saveButton.setText("SAVE");
 		 }
 		 
 		 else {
-			 returnButton.setText("もどる");
+			 returnButton.setText("とじる");
 			 optionsButton.setText("せっていを かえる");
+			 pokemonButton.setText("ポケモン");
+			 itemButton.setText("どうぐ");
+			 playerButton.setText(player.getName());
+			 saveButton.setText("レポート");
 		 }
 	     
 	     
@@ -64,11 +98,27 @@ public class MenuScreen extends JPanel {
 	     
 	     gb.gridx = 0;
 	     gb.gridy = 0;
-	     add(returnButton, gb);
+	     add(pokemonButton, gb);
 	     
 	     gb.gridx = 0;
 	     gb.gridy = 1;
+	     add(itemButton, gb);
+	     
+	     gb.gridx = 0;
+	     gb.gridy = 2;
+	     add(playerButton, gb);
+	     
+	     gb.gridx = 0;
+	     gb.gridy = 3;
+	     add(saveButton, gb);
+	     
+	     gb.gridx = 0;
+	     gb.gridy = 4;
 	     add(optionsButton, gb);
+	     
+	     gb.gridx = 0;
+	     gb.gridy = 5;
+	     add(returnButton, gb);
 	     
 	    returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
@@ -96,6 +146,36 @@ public class MenuScreen extends JPanel {
             			rival, font, false, false, 65f, 0,0, true);
             	cards.add(options, "options");
                 layout.show(cards, "options");  
+            	
+            	
+            }
+        });
+	    
+	    pokemonButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+
+            	
+            }
+        });
+	    
+	    itemButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	
+            	
+            }
+        });
+	    
+	    saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            
+            }
+        });
+	    
+	    playerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
             	
             	
             }

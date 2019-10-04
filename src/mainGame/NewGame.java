@@ -10,7 +10,7 @@ import Trainer.Rival;
 
 public class NewGame extends JPanel {
 	
-	JButton returnButton, yesButton, noButton;
+	JButton yesButton, noButton;
 	CardLayout cl;
     JPanel cards;
     JLabel newGameLabel, blankLabel;
@@ -26,7 +26,7 @@ public class NewGame extends JPanel {
     
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer,
-			int buttonWidth, int buttonHeight) {
+			int buttonWidth, int buttonHeight, Player player, Rival rival) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
@@ -35,16 +35,14 @@ public class NewGame extends JPanel {
 	     this.stopTimer = stopTimer;
 	     this.buttonWidth = buttonWidth;
 	     this.buttonHeight = buttonHeight;
+	     this.player = player;
+	     this.rival = rival;
 	     
 	     
-	     JButton returnButton = new JButton("Return");
 		
 		 
 		 setBackground(Color.black);
-		 returnButton.setBackground(Color.DARK_GRAY);
-		 returnButton.setForeground(Color.cyan);
-		 returnButton.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
-		 returnButton.setFont(font);
+
 		 
 		 JButton yesButton = new JButton("Yes");
 		 yesButton.setBackground(Color.DARK_GRAY);
@@ -57,13 +55,20 @@ public class NewGame extends JPanel {
 		 noButton.setBackground(Color.DARK_GRAY);
 		 noButton.setForeground(Color.cyan);
 		 noButton.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
-		
 		 noButton.setFont(font);
 		
 		 
 		 JLabel newGameLabel = new JLabel("Start New Game?");
 		 newGameLabel.setFont(font);
 		 newGameLabel.setForeground(Color.cyan);
+		 
+		 
+		 if(language == "Japanese") {
+			 newGameLabel.setText("さいしょからはじめる?");
+			 noButton.setText("いいえ");
+			 yesButton.setText("はい");
+		 }
+		 
 		 
 		 JLabel blankLabel = new JLabel("");
 		 blankLabel.setFont(font);

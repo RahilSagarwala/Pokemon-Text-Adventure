@@ -139,7 +139,7 @@ public class UI implements ComponentListener {
     	battle = new Battle(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "battle");
     	dialogue = new Dialogue(cl, cards, font, 
-        		"", language, textSpeed, player, rival, stopTimer, "dialogue"); 	
+        		"", language, textSpeed, player, rival, stopTimer, "dialogue", false); 	
     	menu = new MenuScreen(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "menu");
     	

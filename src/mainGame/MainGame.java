@@ -57,13 +57,7 @@ public class MainGame extends JPanel {
 	    setLayout(new GridBagLayout());
         setBackground(Color.black); 
      
-       
-        
-       
-        
-        
-   
-      
+
          
         //Title Font
         if (language == "English") {
@@ -110,8 +104,8 @@ public class MainGame extends JPanel {
 		namesLabel.setFont(italicFont);
 		namesPanel.add(namesLabel);
 		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    this.setSize(screenSize.width, screenSize.height);
+//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//	    this.setSize(screenSize.width, screenSize.height);
 		
 		
 		

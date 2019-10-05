@@ -447,24 +447,22 @@ public class Options extends JPanel {
 	            	 default: player.setName(player.getName());
 	            		 break;
 	            	 }
-	            	 
+            	 
 
-	            	 
-
-//	            	 switch (rival.getName()) {
-//	            	 case "BLUE": rival.setName("ブルー");
-//	            		 break;
-//	            	 case "RED": rival.setName("レッド");
-//	            		 break;
-//	            	 case "GREEN": rival.setName("グリーン");
-//	            		 break;
-//	            	 case "YELLOW": rival.setName("イエロー");
-//	            		 break;
-//	            	 case "": rival.setName("");
-//            		 break;
-//	            	 default: 
-//	            		 break;
-//	            	 }
+	            	 switch (rival.getName()) {
+	            	 case "BLUE": rival.setName("ブルー");
+	            		 break;
+	            	 case "RED": rival.setName("レッド");
+	            		 break;
+	            	 case "GREEN": rival.setName("グリーン");
+	            		 break;
+	            	 case "YELLOW": rival.setName("イエロー");
+	            		 break;
+	            	 case "": rival.setName("");
+            		 break;
+	            	 default: 
+	            		 break;
+	            	 }
 	            	 
 	     
 	     			

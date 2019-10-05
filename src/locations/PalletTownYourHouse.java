@@ -21,6 +21,7 @@ public class PalletTownYourHouse extends JPanel {
 	JLabel locationLabel;
 	Dialogue dialogue;
 	MenuScreen menu;
+	Outside outside;
 	
 	public PalletTownYourHouse(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -147,7 +148,7 @@ public class PalletTownYourHouse extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	dialogue = new Dialogue(cl, cards, textAreaFont, "talktomom", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse");
+	            			player, rival, stopTimer, "pallettownyourhouse", false);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  	                
 	            }
@@ -156,7 +157,7 @@ public class PalletTownYourHouse extends JPanel {
 		 watchTvButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	dialogue = new Dialogue(cl, cards, textAreaFont, "watchtv", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse");
+	            			player, rival, stopTimer, "pallettownyourhouse", false);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  	
 	            	
@@ -166,8 +167,8 @@ public class PalletTownYourHouse extends JPanel {
 		 playSnesButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	dialogue = new Dialogue(cl, cards, textAreaFont, "playsenes", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse");
+	            	dialogue = new Dialogue(cl, cards, textAreaFont, "playsnes", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownyourhouse", false);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  	
 	            }
@@ -175,7 +176,11 @@ public class PalletTownYourHouse extends JPanel {
 		 
 		 goOutsideButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-
+	            	outside = new Outside(layout, cards, 
+	            			textAreaFont, screen, language, textSpeed, 
+	            			player, rival, stopTimer, "outside");
+	            	cards.add(outside, "outside");
+	            	  layout.show(cards, "outside");  
 	            	
 	            }
 	        });

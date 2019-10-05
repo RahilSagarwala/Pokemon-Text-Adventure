@@ -126,23 +126,7 @@ public class StartScreen extends JPanel {
     		 break;
     		 
     	 case "4":
-//    		 if (player.getName() == "ブルー") {
-// 				player.setName("BLUE");
-// 			}
-//
-// 			if (player.getName() == "レッド") {	
-// 				player.setName("RED");
-// 			}
-//
-// 			if (player.getName() == "グリーン") {
-// 				player.setName("GREEN");
-// 			}
-//
-// 			if (player.getName() == "イエロー") {
-// 				player.setName("YELLOW");
-// 			}
-    		 
-    		
+    		    		
          	fullText2 = "Oak: Right! So your name is " + player.getName() + ".";
     		 break;
     		 
@@ -155,47 +139,13 @@ public class StartScreen extends JPanel {
     		 break;
     		 
     	 case "6":
-//    		 if (rival.getName() == "ブルー") {
-//  				rival.setName("BLUE");
-//  			}
-//
-//  			if (rival.getName() == "レッド") {	
-//  				rival.setName("RED");
-//  			}
-//
-//  			if (rival.getName() == "グリーン") {
-//  				rival.setName("GREEN");
-//  			}
-//
-//  			if (rival.getName() == "イエロー") {
-//  				rival.setName("YELLOW");
-//  			}
     		 
     		 fullText2 = "Oak: That's right! I remember now! His name is " + rival.getName() +"!\r\n";    		 
     		
     		 break;
     		 
     	 case "7":
-    		 
-//    		 if (player.getName() == "ブルー") {
-//  				player.setName("BLUE");
-//  			}
-//
-//  			if (player.getName() == "レッド") {	
-//  				player.setName("RED");
-//  			}
-//
-//  			if (player.getName() == "グリーン") {
-//  				player.setName("GREEN");
-//  			}
-//
-//  			if (player.getName() == "イエロー") {
-//  				player.setName("YELLOW");
-//  			}
-     		 
-     		 
-    		 
-    		 
+	 
     		 fullText2 = "* " + player.getName() +"'s image reappears.*\r\n" + 
     		 		"\r\n" + 
     		 		"Oak: " + player.getName() +"!" + " Your very own POKEMON legend is about to unfold! A world of\r\n" + 
@@ -225,23 +175,7 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "4": 
-//	        		 if (player.getName() == "BLUE") {
-//	      				player.setName("ブルー");	
-//	      			}
-//	        		 
-//	        		 if (player.getName() == "RED") {
-//	     				player.setName("レッド");
-//	     			}
-//	     			
-//	     			if (player.getName() == "GREEN") {
-//	     				player.setName("グリーン");
-//	     			}
-//	     			
-//	     			if (player.getName() == "YELLOW") {
-//	     				player.setName("イエロー");
-//	     			}
-	         		
-	         	
+       	
 	        		 fullText2 = "ふむ。。。" + player.getName() +  " と いうんだな！";
 	        		 break;
 	        		 
@@ -250,42 +184,12 @@ public class StartScreen extends JPanel {
 	        		 break;
 	        		 
 	        	 case "6":
-//	        		 if (rival.getName() == "BLUE") {
-//		      				rival.setName("ブルー");	
-//		      			}
-//		        		 
-//		        		 if (rival.getName() == "RED") {
-//		     				rival.setName("レッド");
-//		     			}
-//		     			
-//		     			if (rival.getName() == "GREEN") {
-//		     				rival.setName("グリーン");
-//		     			}
-//		     			
-//		     			if (rival.getName() == "YELLOW") {
-//		     				rival.setName("イエロー");
-//		     			}
-	        		 
+
 	        		 fullText2 = "そうだ そうだ! おもいだしたぞ " + rival.getName() + " という なまえだ";
 	        		 break;
 	        		 
 	        	 case "7":
-//	        		 if (player.getName() == "BLUE") {
-//		      				player.setName("ブルー");	
-//		      			}
-//		        		 
-//		        		 if (player.getName() == "RED") {
-//		     				player.setName("レッド");
-//		     			}
-//		     			
-//		     			if (player.getName() == "GREEN") {
-//		     				player.setName("グリーン");
-//		     			}
-//		     			
-//		     			if (player.getName() == "YELLOW") {
-//		     				player.setName("イエロー");
-//		     			}
-	        		 
+
 	        		 fullText2 = player.getName() + "! いよいよ これから きみの ものがたリの よじまリだ! ゆめと ぼうけんと! ポケ\r\n" + 
 	        		 		"\r\n" + 
 	        		 		"ットモンスタ-の せかいへ! レッツ ゴ-!";

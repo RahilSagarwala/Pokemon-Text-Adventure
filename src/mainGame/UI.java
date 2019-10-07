@@ -119,11 +119,10 @@ public class UI implements ComponentListener {
     	trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight);
     	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	 			buttonWidth, buttonHeight);
-    
-  
+	 			buttonWidth, buttonHeight); 
      	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival);
-    	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, "English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
+    	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, 
+    			"English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
         		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse");
     	outside = new Outside(cl, cards, font, 

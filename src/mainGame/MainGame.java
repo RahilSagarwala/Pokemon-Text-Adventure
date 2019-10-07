@@ -179,7 +179,6 @@ public class MainGame extends JPanel {
 		
 		gb.gridx=0;
 		gb.gridy=1;
-
 		add(namesPanel,gb);
 		
 		gb.gridx=0;
@@ -209,7 +208,8 @@ public class MainGame extends JPanel {
 			 public void actionPerformed(ActionEvent e) {
 				
 				 
-					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival);
+					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth,
+							buttonHeight, player, rival);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 

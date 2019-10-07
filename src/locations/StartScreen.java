@@ -2,7 +2,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import mainGame.Options;
+import mainGame.*;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;

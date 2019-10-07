@@ -73,7 +73,9 @@ public class Dialogue extends JPanel {
 				 text = player.getName() + " is playing the SNES! ...Okay! It's time to go!";
 				 }
 			 else {
-				 text = "";
+				 text = player.getName() + "は　ファミコンを　してる! "
+				 		+ "\n" + "。。。。。。　。。。。。。"
+				 		+ "\n　よし！　そろそろ　でかけよう！";
 				 }
 			 break;
 		 case "watchtv": 
@@ -82,7 +84,8 @@ public class Dialogue extends JPanel {
 				 		"I better go too.";
 				 }
 			 else {
-				 text = "";
+				 text = "テレビで　えいがを　やってる！\n　おとこのこが　４にん　せんろのうえを　あろいてる　\n　。。。。。。。。。。。。 \n"
+				 		+ "ぼくも　もう　いかなきゃ！ ";
 				 }
 			 break;
 			 
@@ -92,7 +95,8 @@ public class Dialogue extends JPanel {
 				 		"PROF.OAK, next door, is looking for you.";
 				 }
 			 else {
-				 text = "";
+				 text = "おかあさん：　そうね　おとこのこは　いつか \n　たびに　でるもの　なのよ　うん。。。。。。\n　テレビの　はなしよ！"
+				 		+ "そういえば　オーキドはかせが \n　あなたを　よんでたわよ";
 				 }
 			 break;
 		 

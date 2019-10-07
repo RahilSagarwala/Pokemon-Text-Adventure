@@ -129,6 +129,13 @@ public class MenuScreen extends JPanel {
 	            			player, rival, stopTimer, "pallettownyourhouse");
 	            	cards.add(palletTownYourHouse, "pallettownyourhouse");
 	                layout.show(cards, "pallettownyourhouse");  
+	                break;
+	                
+	            	case "pallettownoutside":
+		            	Outside outside = new Outside(cl, cards, textAreaFont, "9", language, textSpeed,
+		            			player, rival, stopTimer, "outside");
+		            	cards.add(outside, "outside");
+		                layout.show(cards, "outside");  
 	            	}
 	            	
 	            }

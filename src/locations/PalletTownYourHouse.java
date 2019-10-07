@@ -79,7 +79,7 @@ public class PalletTownYourHouse extends JPanel {
 	     menuButton.setFont(font);
 	     
 	     if (language == "English") {
-	    	 locationLabel.setText("<html> Location: <br> My House <html>");
+	    	 locationLabel.setText("<html>My House <br> Pallet Town <html>");
 	    	 talkToMomButton.setText("Talk to Mom");
 	    	 goOutsideButton.setText("Go Outside");
 	    	 playSnesButton.setText("Play SNES");
@@ -89,7 +89,7 @@ public class PalletTownYourHouse extends JPanel {
 	     }
 	     
 	     else {
-	    	 locationLabel.setText("ロケーション : わたしのうち");
+	    	 locationLabel.setText("<html>わたしのうち <br> マサラタウン<html>");
 	    	 talkToMomButton.setText("おかあさんとはなす");
 	    	 goOutsideButton.setText("そとにでいく");
 	    	 playSnesButton.setText("スーパーファミコンをする");

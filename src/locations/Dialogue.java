@@ -99,6 +99,25 @@ public class Dialogue extends JPanel {
 				 		+ "そういえば　オーキドはかせが \n　あなたを　よんでたわよ";
 				 }
 			 break;
+			 
+		 case "talktorivalsister": 
+			 if (language == "English") {
+				 text = rival.getName() + "'s Sis: Hi " + player.getName() + "! " + rival.getName() + 
+						 " is out at Grandpa's lab.";
+				 }
+			 else {
+				 text = "";
+				 }
+			 break;
+			 
+		 case "pickupmap": 
+			 if (language == "English") {
+				 text = "It's a big map! This is useful! \n *Map added to inventory*";
+				 }
+			 else {
+				 text = "";
+				 }
+			 break;
 		 
 		 }
 		 
@@ -153,8 +172,20 @@ public class Dialogue extends JPanel {
 	            				player, rival, stopTimer, location);
 	            		cards.add(palletTownYourHouse, "pallettownyourhouse");
 	            	    layout.show(cards, "pallettownyourhouse");
+	            	    break;
+	            	    
+	            	case "pallettownrivalhouse":
+	            		
+	            		PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(layout, cards, 
+	            				font, screen, language, textSpeed, 
+	            				player, rival, stopTimer, location);
+	            		cards.add(palletTownRivalHouse, "pallettownrivalhouse");
+	            	    layout.show(cards, "pallettownrivalhouse");
+	            	    break;
 	            		
 	            	}
+	            	
+	            	
 
 	            	    
 	                

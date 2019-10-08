@@ -17,6 +17,11 @@ import locations.Battle;
 import locations.Dialogue;
 import locations.Outside;
 import locations.MenuScreen;
+import pokemon.*;
+import Trainer.*;
+import items.*;
+import java.io.*; 
+import java.util.*; 
 
 public class UI implements ComponentListener {
 	
@@ -46,8 +51,11 @@ public class UI implements ComponentListener {
     Dialogue dialogue;
     Outside outside;
     MenuScreen menu;
-	Player player = new Player("");
-	Rival rival = new Rival("");
+    ItemSuper itemArray[];
+    ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
+    
+	Player player = new Player("", itemArrayList);
+	Rival rival = new Rival("", itemArrayList);
 
     
    

@@ -21,6 +21,7 @@ public class Outside extends JPanel {
 	Dialogue dialogue;
 	MenuScreen menu;
 	PalletTownYourHouse palletTownYourHouse;
+	int count = 0;
 	
 	public Outside(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -135,7 +136,11 @@ public class Outside extends JPanel {
 		 
 		 rivalHouseButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, textAreaFont, 
+	                		"10", language, textSpeed, player, rival, stopTimer, "Rival House");
+	            	cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 	            	
+	                layout.show(cards, "pallettownrivalhouse");    
 	            	
 	            }
 	        });
@@ -148,6 +153,16 @@ public class Outside extends JPanel {
 		 
 		 route1Button.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
+				 //Go to Dialogue with next button true and pass Lab to next button
+				 if (count == 0) {
+					 count++;
+					 
+				 }
+				 
+				 //Go to Route 1
+				 else {
+					 
+				 }
 				 
 	            }
 	        });

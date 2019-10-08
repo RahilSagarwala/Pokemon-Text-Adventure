@@ -6,7 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
-
+import items.*;
 
 public class PalletTownRivalHouse extends JPanel {
 	
@@ -18,14 +18,15 @@ public class PalletTownRivalHouse extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
-	JButton menuButton;
+	JLabel locationLabel;
+	Dialogue dialogue;
+	MenuScreen menu;
+	PalletTownYourHouse palletTownYourHouse;
+	int count = 0;
 	
-	public PalletTownRivalHouse(final CardLayout layout, final JPanel cards, 
+	public PalletTownRivalHouse (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2) {
-		
-		
-		
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -41,6 +42,148 @@ public class PalletTownRivalHouse extends JPanel {
 	     setBackground(Color.black);
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
+	     
+	     
+	     
+	     locationLabel = new JLabel("<html> Rival House <br> Pallet Town <html>");
+		 locationLabel.setForeground(Color.LIGHT_GRAY);
+		 locationLabel.setFont(font);
+	     
+	     JButton outsideButton = new JButton("Outside");
+	     outsideButton.setPreferredSize(new Dimension(225,75));
+	     outsideButton.setBackground(Color.DARK_GRAY);
+	     outsideButton.setForeground(Color.cyan);
+	     outsideButton.setFont(font);
+	     
+	     JButton talkToRivalSisterButton = new JButton("Talk to " + rival.getName() + "'s sister");
+	     talkToRivalSisterButton.setPreferredSize(new Dimension(400,75));
+	     talkToRivalSisterButton.setBackground(Color.DARK_GRAY);
+	     talkToRivalSisterButton.setForeground(Color.cyan);
+	     talkToRivalSisterButton.setFont(font);
+	     
+	     JButton pickUpMapButton = new JButton("Pick up Map");
+	     pickUpMapButton.setPreferredSize(new Dimension(250,75));
+	     pickUpMapButton.setBackground(Color.DARK_GRAY);
+	     pickUpMapButton.setForeground(Color.cyan);
+	     pickUpMapButton.setFont(font);
+	     
+	     JButton menuButton = new JButton("Menu");
+	     menuButton.setPreferredSize(new Dimension(200,75));
+	     menuButton.setBackground(Color.DARK_GRAY);
+	     menuButton.setForeground(Color.cyan);
+	     menuButton.setFont(font);
+	     
+	     JButton blankButton = new JButton("");
+	     blankButton.setPreferredSize(new Dimension(200,75));
+	     blankButton.setBackground(Color.DARK_GRAY);
+	     blankButton.setForeground(Color.cyan);
+	     blankButton.setFont(font);
+	     
+	     if (language == "Japanese") {
+	  
+	    	 locationLabel.setText("<html>そと <br> マサラタウン<html>");
+	    	 menuButton.setText("メニユー");    
+	    	 pickUpMapButton.setText("ちずをひろう");
+	    	 outsideButton.setText("そとにでいく");
+	    	 talkToRivalSisterButton.setText(rival.getName() + "のおねえさんとはなす");
+	    	 talkToRivalSisterButton.setPreferredSize(new Dimension(500,75));
+	    	
+	    	 
+	     }
+		 
+	    //column 1
+		 gb.gridx = 0;
+		 gb.gridy = 2;
+		 gb.weightx = 1;
+		 gb.insets = new Insets(-75,0,0,0);
+		 add(outsideButton, gb);
+		
+		 
+	     
+	     
+	     //column 2
+		 gb.gridx = 1;
+		 gb.gridy = 0;
+		 gb.weighty =1;
+		 gb.insets = new Insets(0,0,78,0);
+		 add(menuButton, gb);
+		 
+		 gb.gridx = 1;
+		 gb.gridy = 1;
+		
+		 add(talkToRivalSisterButton, gb);
+		 gb.gridx = 1;
+		 gb.gridy = 2;
+		 add(locationLabel, gb);
+		 
+		 gb.gridx = 1;
+		 gb.gridy = 3;
+		 add(blankButton, gb);
+		 
+		 //Column 3
+		//column 3
+		 gb.gridx = 2;
+		 gb.gridy = 2;
+		 add(pickUpMapButton, gb);
+	
+		 
+		 outsideButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	Outside outside = new Outside(layout, cards, 
+	            			textAreaFont, screen, language, textSpeed, 
+	            			player, rival, stopTimer, "outside");
+	            	cards.add(outside, "outside");
+	            	  layout.show(cards, "outside");
+	            	        
+	            }
+	        });
+		 
+		 //Go to Dialogue
+		 talkToRivalSisterButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "talktorivalsister", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownrivalhouse", false);
+	            	cards.add(dialogue, "dialogue");
+	                layout.show(cards, "dialogue"); 
+	            	
+	            }
+	        });
+		 
+		 //Go to Dialogue and add Map to inventory
+		 pickUpMapButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	ItemSuper map = new Map();
+	            	player.addItem(map);
+	            	
+	            	
+//	            	String x = player.getItemNames();
+//	            	System.out.println(x);
+	            	
+	            	
+	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pickupmap", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownrivalhouse", false);
+	            	cards.add(dialogue, "dialogue");
+	                layout.show(cards, "dialogue"); 
+	            	 	
+	            }
+	        });
+		 
+		 
+		 menuButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
+	            			player, rival, stopTimer, "pallettownrivalhouse");
+	            	cards.add(menu, "menu");
+	                layout.show(cards, "menu");  
+	            	
+	            }
+	        });
+		 
+		 
+	     
+	     
 	}
 
 }
+ 

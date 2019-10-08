@@ -177,7 +177,10 @@ public class MenuScreen extends JPanel {
 	    itemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	
+            	Inventory inventory = new Inventory(cl, cards, textAreaFont, "", language, textSpeed,
+            			player, rival, stopTimer, location);
+            	cards.add(inventory, "inventory");
+                layout.show(cards, "inventory");
             	
             }
         });

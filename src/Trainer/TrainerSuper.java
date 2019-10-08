@@ -37,6 +37,12 @@ public class TrainerSuper {
 
 	}
 	
+	public ArrayList<ItemSuper> getItems() {
+
+		return itemArrayList;
+
+	}
+	
 
 	
 }

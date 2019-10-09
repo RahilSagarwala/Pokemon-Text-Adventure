@@ -158,6 +158,17 @@ public class Inventory extends JPanel {
 		            	
 		            }
 		        });
+			 
+			 case "ちず": button.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {  		
+	            		for (int i = 0; i<player.getItems().size(); i++)
+	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
+	            			player.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location);
+	            		}
+	            	  
+		            	
+		            }
+		        });
 			 break;
 			 
 			 

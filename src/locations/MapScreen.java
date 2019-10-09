@@ -63,14 +63,7 @@ public class MapScreen extends JPanel {
          	  
 	            	
 	            }
-	        });
-	    
-	
-		 
-		 
-		 
-		 
-	     
+	        });   
 	     
 	}
 

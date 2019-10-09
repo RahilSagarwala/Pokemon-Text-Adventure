@@ -81,7 +81,7 @@ public class PalletTownRivalHouse extends JPanel {
 	     
 	     if (language == "Japanese") {
 	  
-	    	 locationLabel.setText("<html>そと <br> マサラタウン<html>");
+	    	 locationLabel.setText("<html>ライバル　の　いえ<br> マサラタウン<html>");
 	    	 menuButton.setText("メニユー");    
 	    	 pickUpMapButton.setText("ちずをひろう");
 	    	 outsideButton.setText("そとにでいく");

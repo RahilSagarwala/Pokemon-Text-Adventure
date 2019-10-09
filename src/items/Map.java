@@ -26,7 +26,7 @@ public class Map extends ItemSuper {
 	public void showMap(CardLayout cl, JPanel cards, Font font, String screen, String language, int textSpeed, Player player, Rival rival, Boolean stopTimer, String location) {
 		mapScreen = new MapScreen(cl, cards, 
     			font, screen, language, textSpeed, 
-    			player, rival, stopTimer, "outside");
+    			player, rival, stopTimer, location);
     	cards.add(mapScreen, "mapscreen");
     	  cl.show(cards, "mapscreen"); 
 	}

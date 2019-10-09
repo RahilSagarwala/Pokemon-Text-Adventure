@@ -106,7 +106,8 @@ public class Dialogue extends JPanel {
 						 " is out at Grandpa's lab.";
 				 }
 			 else {
-				 text = "";
+				 text = "こんいちわ " + player.getName() + "くん！" + "\n" +"おとうとの　"+ rival.getName() + "なら"
+			 + "\n" +"おじいちゃんの　けんきゆうじょよ";
 				 }
 			 break;
 			 
@@ -115,7 +116,7 @@ public class Dialogue extends JPanel {
 				 text = "It's a big map! This is useful! \n *Map added to inventory*";
 				 }
 			 else {
-				 text = "";
+				 text = "カントー　ちほうの　ちずだ！。。。。。" + "\n" +"もらえたら　うれしい？";
 				 }
 			 break;
 		 

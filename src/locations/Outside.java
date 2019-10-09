@@ -83,7 +83,7 @@ public class Outside extends JPanel {
 	    	 locationLabel.setText("<html>そと <br> マサラタウン<html>");
 	    	 menuButton.setText("メニユー");    
 	    	 yourHouseButton.setText("わたしのうち");
-	    	 rivalHouseButton.setText(rival.getName() + "のうち");
+	    	 rivalHouseButton.setText(rival.getName() + "いえ");
 	    	 route1Button.setText("ルート1");
 	    	 labButton.setText("ラボ");
 	    	 

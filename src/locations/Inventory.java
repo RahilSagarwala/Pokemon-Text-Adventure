@@ -104,23 +104,11 @@ public class Inventory extends JPanel {
 		 nextPageButton.setBackground(Color.DARK_GRAY);
 		 nextPageButton.setForeground(Color.cyan);
 		 nextPageButton.setFont(font);
-	     
-		 
-
-//	     
+	     	     
 	     
 	     if (language == "Japanese") {
 	    	 returnButton.setText("とじる");
-//	    	 item1Button.setText("");
 	    	 nextPageButton.setText("つぎ");
-//	    	 if (item1Button.getText() == "map") {
-//	    		 item1Button.setText("ちず");
-//	    	 }
-//	    		 
-//	     }
-//	     
-//	     if (language == "English") {
-//	    	 item1Button.setText("map");
 	     }
 	     
 	     gb.gridx=1;
@@ -155,6 +143,26 @@ public class Inventory extends JPanel {
 		 gb.gridx=1;
 	     gb.gridy=7;
 		 add(nextPageButton, gb);
+		 
+		
+		 
+		 for (JButton button : buttonList) {
+			 switch (button.getText()) {
+			 case "Map": button.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {  		
+	            		for (int i = 0; i<player.getItems().size(); i++)
+	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
+	            			System.out.println("Showing the map");
+	            		}
+	            	  
+		            	
+		            }
+		        });
+			 break;
+			 
+			 
+			 }
+		 }
 
 		 
 		 returnButton.addActionListener(new ActionListener() {

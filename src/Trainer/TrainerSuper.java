@@ -31,7 +31,7 @@ public class TrainerSuper {
 		itemArrayList.add(item);
 	}
 	
-	public String getItemNames() {
+	public String getItemNames(String language) {
 	
 		
 		return itemArrayList.get(0).getItemName(language);

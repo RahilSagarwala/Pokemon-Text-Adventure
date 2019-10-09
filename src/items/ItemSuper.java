@@ -4,9 +4,14 @@ public class ItemSuper {
 	String englishName;
 	String japaneseName;
 	String language;
+	int count;
 
-	public ItemSuper() {		
-		
+	public ItemSuper(int count) {		
+		this.count = count;
+	}
+	
+	public int getCount() {
+		return count;
 	}
 	
 	public String getItemName(String theLanguage) {

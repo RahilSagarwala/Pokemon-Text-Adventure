@@ -3,7 +3,6 @@ package mainGame;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -22,6 +21,7 @@ import Trainer.*;
 import items.*;
 import java.io.*; 
 import java.util.*; 
+import locations.MapScreen;
 
 public class UI implements ComponentListener {
 	
@@ -56,6 +56,7 @@ public class UI implements ComponentListener {
     
 	Player player = new Player("", itemArrayList);
 	Rival rival = new Rival("", itemArrayList);
+	MapScreen mapScreen;
 
     
    
@@ -149,6 +150,8 @@ public class UI implements ComponentListener {
         		"", language, textSpeed, player, rival, stopTimer, "dialogue", false); 	
     	menu = new MenuScreen(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "menu");
+    	mapScreen = new MapScreen(cl, cards, font, 
+        		"14", language, textSpeed, player, rival, stopTimer, "mapscreen");
     	
   
     	
@@ -167,6 +170,7 @@ public class UI implements ComponentListener {
         cards.add(dialogue, "dialogue");
         cards.add(outside, "outside");
         cards.add(menu, "menu");
+        cards.add(mapScreen, "mapscreen");
       
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //		cards.setSize(screenSize.width, screenSize.height);

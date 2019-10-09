@@ -7,6 +7,7 @@ import java.util.*;
 
 public class TrainerSuper {
 	String name = "";
+	String language;
 //	ItemSuper itemArray[] = new ItemSuper[100];
 	ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
 
@@ -33,7 +34,7 @@ public class TrainerSuper {
 	public String getItemNames() {
 	
 		
-		return itemArrayList.get(0).getItemName();
+		return itemArrayList.get(0).getItemName(language);
 
 	}
 	

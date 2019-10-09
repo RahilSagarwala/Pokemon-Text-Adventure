@@ -2,6 +2,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -47,6 +48,8 @@ public class Inventory extends JPanel {
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font);
 		 
+		 ArrayList<JButton> buttonList = new ArrayList<JButton>();
+		 
 		 JButton item1Button = new JButton();
 		 item1Button.setPreferredSize(new Dimension(300,75));
 		 item1Button.setBackground(Color.DARK_GRAY);
@@ -83,6 +86,19 @@ public class Inventory extends JPanel {
 		 item6Button.setForeground(Color.cyan);
 		 item6Button.setFont(font);
 		 
+		 buttonList.add(item1Button);
+		 buttonList.add(item2Button);
+		 buttonList.add(item3Button);
+		 buttonList.add(item4Button);
+		 buttonList.add(item5Button);
+		 buttonList.add(item6Button);
+		 
+		 
+		 for (int i = 0; i < player.getItems().size(); i++) {
+		  buttonList.get(i).setText(player.getItems().get(i).getItemName(language));
+		 }
+		
+		
 		 JButton nextPageButton = new JButton("Next Page");
 		 nextPageButton.setPreferredSize(new Dimension(300,75));
 		 nextPageButton.setBackground(Color.DARK_GRAY);
@@ -90,35 +106,21 @@ public class Inventory extends JPanel {
 		 nextPageButton.setFont(font);
 	     
 		 
-	    if (player.getItems().isEmpty()) {
-	    	item1Button.setText("");
-	    	item2Button.setText("");
-	    	item3Button.setText("");
-	    	item4Button.setText("");
-	    	item5Button.setText("");
-	    	item6Button.setText("");
-	    	nextPageButton.setText("");
-	    }
-	    
-	    else {
-	    	item1Button.setText(player.getItems().get(0).getItemName());
-	    }
-	    
-	    //Loop through items array to check for null and set for each button
-//	    for (int i =0; i <= player.getItems().size(); i++) {
-//	    	if (player.getItems().get(i).equals(null))  {
-//	    		
-//	    	}
-//	    	
-//	    	else {
-//	    		
-//	    	}
-//	    }
+
 //	     
 	     
 	     if (language == "Japanese") {
 	    	 returnButton.setText("とじる");
-	    	 item1Button.setText("");
+//	    	 item1Button.setText("");
+	    	 nextPageButton.setText("つぎ");
+//	    	 if (item1Button.getText() == "map") {
+//	    		 item1Button.setText("ちず");
+//	    	 }
+//	    		 
+//	     }
+//	     
+//	     if (language == "English") {
+//	    	 item1Button.setText("map");
 	     }
 	     
 	     gb.gridx=1;

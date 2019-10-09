@@ -1,14 +1,22 @@
 package items;
 
 public class ItemSuper {
-	String name;
+	String englishName;
+	String japaneseName;
+	String language;
 
 	public ItemSuper() {		
 		
 	}
 	
-	public String getItemName() {
-		return name;
+	public String getItemName(String theLanguage) {
+		if (theLanguage == "English") {
+			return englishName;
+		}
+		
+		else {
+			return japaneseName;
+		}
 		
 	}
 

@@ -4,7 +4,10 @@ public class Map extends ItemSuper {
 
 	public Map() {
 		
-		name = "Map";
+		englishName = "Map";
+		japaneseName = "ちず";
 	}
+	
+	
 
 }

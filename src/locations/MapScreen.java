@@ -17,6 +17,8 @@ public class MapScreen extends JPanel {
 	Player player;
 	int textSpeed;
 	Rival rival;
+	ImageIcon mapIcon;
+	JLabel mapLabel;
 	
 	public MapScreen(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -48,10 +50,20 @@ public class MapScreen extends JPanel {
 	    	 returnButton.setText("とじる");
 	     }
 		 
+		 mapIcon = new ImageIcon(this.getClass().getClassLoader().getResource("map.jpg"));
+		 mapLabel = new JLabel(mapIcon);
+		 
+		 JLabel label1 = new JLabel();
+		 label1.setFont(font);
+		 label1.setForeground(Color.cyan);
+	 
 		 gb.gridx=1;
 	     gb.gridy=0;
 	     gb.weighty = 1;
 		 add(returnButton, gb);
+		 gb.gridx=1;
+	     gb.gridy=2;
+		 add(mapLabel, gb);
 		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {  		

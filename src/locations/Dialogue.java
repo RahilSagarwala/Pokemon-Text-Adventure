@@ -119,6 +119,104 @@ public class Dialogue extends JPanel {
 				 text = "カントー　ちほうの　ちずだ！。。。。。" + "\n" +"もらえたら　うれしい？";
 				 }
 			 break;
+			 
+		 case "oakaid1lab": 
+			 if (language == "English") {
+				 text = "I study POKEMON as PROF.OAK'S AIDE.";
+				 }
+			 else {
+				 text ="わたしも　はかせの　じょしゅ" + "\n"+"として　ポケモンを　けんきゅう　してます";
+				 }
+			 break;
+			 
+		 case "oakaid2lab": 
+			 if (language == "English") {
+				 text = "I study POKEMON as PROF.OAK'S AIDE.";
+				 }
+			 else {
+				 text ="わたしも　はかせの　じょしゅ" + "\n"+"として　ポケモンを　けんきゅう　してます";
+				 }
+			 break;
+			 
+		 case "oakaid3lab": 
+			 if (language == "English") {
+				 text = "PROF.OAK is the authority on POKEMON! \n Many POKEMON trainers hold him in high regard!";
+				 }
+			 else {
+				 text =  "ああ　みえても　オーキドはかせは" + "\n"+"ポケモンの　オーキドリテイなの！"+ "\n" + 
+						 "はかせを　そんけいする　ポケモン" + "\n" +"トレーナーモ　おおいわよ！";
+				 }
+			 break;
+			 
+		 case "poster1lab": 
+			 if (language == "English") {
+				 text = "Push START to open the MENU!";
+				 }
+			 else {
+				 text = "スタート　ボタンを　プシュ！"+"\n" + "おすと　メニユーが　ひらくなリ";
+				 }
+			 break;
+			 
+		 case "poster2lab": 
+			 if (language == "English") {
+				 text = "The SAVE option is on the MENU screen.";
+				 }
+			 else {
+				 text = "セーブするには　ポケモン　レポート" + "\n" +"こまめに　かくと　いいなリ";
+				 }
+			 break;
+			 
+		 case "booklab": 
+			 if (language == "English") {
+				 text = "It's encyclopedia-like, but the pages are blank!";
+				 }
+			 else {
+				 text = "ずかん　みたいな　ものが　ある！" + "\n" + "なかは　しろいぺージ　ばっかリだ！";
+				 }
+			 break;
+			 
+		 case "computerlab": 
+			 if (language == "English") {
+				 text = "There's an e-mail message here! ... Calling all POKEMON trainers! \n "
+				 		+ "The elite trainers of POKEMON LEAGUE are ready to take on all \n"
+				 		+ "comers! Bring your best POKEMON and see how you rate as a trainer! \n\n"
+				 		+ "POKEMON LEAGUE HQ INDIGO PLATEAU \n PS: PROF.OAK, please visit us! ...";
+				 }
+			 else {
+				 text = "パソコンを　みると　なんと"+"\n" + "でんしメールが　きていた！"+"\n"+"。。。。。。　。。。。。。　。。。。。。"+"\n"+
+			 "ポケモンを　つよく　そだてて　たたかう"+"\n"+"ポケモン　トレーナー！　ここに　さいきょうの"+"\n"+"トレーナーが　あつまリ　ました"+ "\n"+
+						 "ばしょは　セキエイ　こうだんの"+"\n"+"ポケモン　リーグ　ほんぶ　です！"+"\n"+
+			 "オーキドはかせも　いちど　ごらん　ください。。。。。。。"+"\n"+"ポケモン　リーグ　よリ。。。。。。　。。。。。。　。。。。。。";
+				 }
+			 break;
+			 
+		 case "pokeballlab": 
+			 if (language == "English") {
+				 text = "Those are POKE BALLS. They contain POKEMON!";
+				 }
+			 else {
+				 text = "モンスターボールだ　なかに" + "\n" +"ポケモンが　はいってるぞ！";
+				 }
+			 break;
+			 
+		 case "rivallab": 
+			 if (language == "English") {
+				 text = "Yo " + player.getName() + "! Gramps isn't around!";
+				 }
+			 else {
+				 text = rival.getName()+": なんだー " + player.getName() + "か！" + "\n" + 
+			 "オーキドの　じいさんなら　いねーよ";
+				 }
+			 break;
+			 
+		 case "professoroaklab": 
+			 if (language == "English") {
+				 text = "";
+				 }
+			 else {
+				 text = "";
+				 }
+			 break;
 		 
 		 }
 		 
@@ -183,6 +281,13 @@ public class Dialogue extends JPanel {
 	            		cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 	            	    layout.show(cards, "pallettownrivalhouse");
 	            	    break;
+	            	    
+	            	case "pallettownlab":
+	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "12", language, textSpeed,
+		            			player, rival, stopTimer, "pallettownyourhouse");
+		            	cards.add(palletTownLab, "pallettownlab");
+		                layout.show(cards, "pallettownlab");  
+		                break;
 	            		
 	            	}
 	            	

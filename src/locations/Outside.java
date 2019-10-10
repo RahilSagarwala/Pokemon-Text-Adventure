@@ -147,7 +147,11 @@ public class Outside extends JPanel {
 		 
 		 labButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	 	
+	            	PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
+	                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab");
+	            	cards.add(palletTownLab, "pallettownlab");
+	            	
+	                layout.show(cards, "pallettownlab");
 	            }
 	        });
 		 

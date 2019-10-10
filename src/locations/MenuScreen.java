@@ -144,6 +144,13 @@ public class MenuScreen extends JPanel {
 		            	cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 		                layout.show(cards, "pallettownrivalhouse");  
 		                break;
+		                
+	            	case "pallettownlab":
+	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "12", language, textSpeed,
+		            			player, rival, stopTimer, "pallettownyourhouse");
+		            	cards.add(palletTownLab, "pallettownlab");
+		                layout.show(cards, "pallettownlab");  
+		                break;
 	            	}
 	            	
 	            }

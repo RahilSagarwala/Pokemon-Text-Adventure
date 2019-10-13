@@ -21,12 +21,12 @@ public class NewGame extends JPanel {
     String language, fullText2;
     int textSpeed, buttonWidth, buttonHeight;
     Rival rival;
-    Boolean stopTimer;
+    Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
 
     
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer,
-			int buttonWidth, int buttonHeight, Player player, Rival rival) {
+			int buttonWidth, int buttonHeight, Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
@@ -37,6 +37,8 @@ public class NewGame extends JPanel {
 	     this.buttonHeight = buttonHeight;
 	     this.player = player;
 	     this.rival = rival;
+	     this.professorOakVisited=professorOakVisited;
+	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
 	     
 		
@@ -115,7 +117,7 @@ public class NewGame extends JPanel {
 	         
 	         ss = new StartScreen(cl,cards,font, screenTextArea
 	        		 ,"1", false, player, true, language, textSpeed, "",
-	        		 rival, false, stopTimer, buttonWidth, buttonHeight);
+	        		 rival, false, stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
             
 	         
              cards.add(ss, "startscreen");

@@ -20,7 +20,8 @@ public class StartScreen extends JPanel {
     int count = 0, stringLength = 0, textSpeed, buttonWidth, buttonHeight;
     StartScreen ss;
     Timer tm;
-    Boolean finish = true, nameOptionsBool = false, setVisible = true, stopTimer, nameOptionsBool2 = false;
+    Boolean finish = true, nameOptionsBool = false, setVisible = true, 
+    		stopTimer, nameOptionsBool2 = false, professorOakVisited, labOutsideButtonEnable;
     Player player;
     Rival rival;
     String language, nextText, redText, greenText, blueText, yellowText, stringText, screen, fullText2;
@@ -33,7 +34,8 @@ public class StartScreen extends JPanel {
 			JTextArea textArea, String screen,
 			Boolean nameOptionsBool, Player player2, Boolean setVisible, 
 			String language, int textSpeed, String fullText, 
-			Rival rival2, Boolean nameOptionsBool2, Boolean stopTimer, int buttonWidth, int buttonHeight) {
+			Rival rival2, Boolean nameOptionsBool2, Boolean stopTimer, int buttonWidth, int buttonHeight,
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.player = player2;     
@@ -51,7 +53,8 @@ public class StartScreen extends JPanel {
 	     this.nameOptionsBool2 = nameOptionsBool2;
 	     this.buttonWidth = buttonWidth;
 	     this.buttonHeight = buttonHeight;
-	     
+	     this.professorOakVisited=professorOakVisited;
+	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
@@ -313,7 +316,8 @@ public class StartScreen extends JPanel {
 	            	
 	            	options = new Options(cl, cards,"startscreen", startScreenText1, screen, 
 	            			nameOptionsBool, player, setVisible, language, textSpeed, fullText2,
-	            			rival, font, stopTimer, nameOptionsBool2, 55f, buttonWidth, buttonHeight, false);
+	            			rival, font, stopTimer, nameOptionsBool2, 55f, buttonWidth, buttonHeight, false, 
+	            			professorOakVisited, labOutsideButtonEnable);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -331,7 +335,7 @@ public class StartScreen extends JPanel {
 		       	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,
 		       			"2", false, player, true,
 		       			language, textSpeed,fullText2, rival,
-		       			false, stopTimer, buttonWidth, buttonHeight);
+		       			false, stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
                 cards.add(ss, "startscreen");
                 layout.show(cards, "startscreen");  
              
@@ -345,7 +349,8 @@ public class StartScreen extends JPanel {
 		            public void actionPerformed(ActionEvent e) {
 		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "3",
 		            			true, player, false, language, textSpeed,
-		            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
+		            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight, 
+		            			professorOakVisited, labOutsideButtonEnable);
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
 	             
@@ -364,7 +369,8 @@ public class StartScreen extends JPanel {
 		            	
 		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "5",
 		            			false, player, false, language, textSpeed,
-		            			fullText2, rival, true, stopTimer, buttonWidth, buttonHeight);	
+		            			fullText2, rival, true, stopTimer, buttonWidth, buttonHeight, 
+		            			professorOakVisited, labOutsideButtonEnable);	
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
              
@@ -381,7 +387,8 @@ public class StartScreen extends JPanel {
 		            	
 		            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "7",
 		            			false, player, true, language, textSpeed,
-		            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);	
+		            			fullText2, rival, false, stopTimer, buttonWidth, 
+		            			buttonHeight, professorOakVisited, labOutsideButtonEnable);	
 		                cards.add(ss, "startscreen");
 		                layout.show(cards, "startscreen");  
              
@@ -396,7 +403,8 @@ public class StartScreen extends JPanel {
 			 nextButton1.addActionListener(new ActionListener() {
 		            public void actionPerformed(ActionEvent e) {
 		            	palletTownYourHouse = new PalletTownYourHouse(cl, cards, textAreaFont, 
-		                		"8", language, textSpeed, player, rival, stopTimer, "My House");
+		                		"8", language, textSpeed, player, rival, stopTimer, "My House",
+		                		professorOakVisited, labOutsideButtonEnable);
 		            	cards.add(palletTownYourHouse, "pallettownyourhouse");
 		            	
 		                layout.show(cards, "pallettownyourhouse");
@@ -422,7 +430,8 @@ public class StartScreen extends JPanel {
 	            	player.setName("RED");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player, true, language, textSpeed,
-	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
+	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight, 
+	            			professorOakVisited, labOutsideButtonEnable);
 	            	 
 
 	            	}
@@ -432,7 +441,8 @@ public class StartScreen extends JPanel {
 	            	 	player.setName("レッド ");	       		    
 	            	 	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            	 			false, player, true, language, textSpeed,
-	            	 			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
+	            	 			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight, 
+	            	 			professorOakVisited,labOutsideButtonEnable);
 	            	}
 	            	
 	           
@@ -451,14 +461,16 @@ public class StartScreen extends JPanel {
 	            	player.setName("BLUE");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player, true, language, textSpeed,
-	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
+	            			fullText2, rival, false, stopTimer, buttonWidth, buttonHeight, 
+	            			professorOakVisited, labOutsideButtonEnable);
 	            	}
 	            	
 	            	else {
 	            	player.setName("ブルー");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player, true, language, textSpeed,fullText2,
-	            			rival, false, stopTimer, buttonWidth, buttonHeight);
+	            			rival, false, stopTimer, buttonWidth, buttonHeight, 
+	            			professorOakVisited, labOutsideButtonEnable);
 
 	            		
 	            	}
@@ -478,7 +490,8 @@ public class StartScreen extends JPanel {
 	            		player.setName("GREEN");
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,"4",
 	            				false, player, true, language, textSpeed,
-	            				fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
+	            				fullText2, rival, false, stopTimer, buttonWidth,
+	            				buttonHeight, professorOakVisited, labOutsideButtonEnable);
 	            		
 	       		    
 	            	}
@@ -487,7 +500,8 @@ public class StartScreen extends JPanel {
 	            		player.setName("グリーン");
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,
 	            				"4", false, player, true, language, textSpeed,
-	            				fullText2, rival, false, stopTimer, buttonWidth, buttonHeight);
+	            				fullText2, rival, false, stopTimer, buttonWidth, 
+	            				buttonHeight, professorOakVisited, labOutsideButtonEnable);
 	
 	            	}
 	       		    
@@ -506,7 +520,8 @@ public class StartScreen extends JPanel {
 	            	player.setName("YELLOW");
 	            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            			false, player, true, language, textSpeed,fullText2,
-	            			rival, false, stopTimer, buttonWidth, buttonHeight);
+	            			rival, false, stopTimer, buttonWidth, buttonHeight, 
+	            			professorOakVisited, labOutsideButtonEnable);
 	         
 	       		    
 	            	}
@@ -515,7 +530,8 @@ public class StartScreen extends JPanel {
 	            		player.setName("イエロー"); 
 	            		ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "4",
 	            				false, player, true, language, textSpeed,fullText2,
-	            				rival, false, stopTimer, buttonWidth, buttonHeight);
+	            				rival, false, stopTimer, buttonWidth, buttonHeight, 
+	            				professorOakVisited, labOutsideButtonEnable);
 	            
 	            	}
 	       		   
@@ -546,7 +562,8 @@ public class StartScreen extends JPanel {
 				       		   
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "6",
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer, buttonWidth, buttonHeight);
+				            			rival, false, stopTimer, buttonWidth, buttonHeight, 
+				            			professorOakVisited, labOutsideButtonEnable);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
@@ -569,7 +586,8 @@ public class StartScreen extends JPanel {
 				       		   
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1,"6",
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer, buttonWidth, buttonHeight);
+				            			rival, false, stopTimer, buttonWidth, 
+				            			buttonHeight, professorOakVisited, labOutsideButtonEnable);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
@@ -593,7 +611,8 @@ public class StartScreen extends JPanel {
 				       		    
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "6",
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer, buttonWidth, buttonHeight);
+				            			rival, false, stopTimer, buttonWidth, 
+				            			buttonHeight, professorOakVisited, labOutsideButtonEnable);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			                
@@ -616,7 +635,8 @@ public class StartScreen extends JPanel {
 				       		   
 				            	ss = new StartScreen(cl,cards, textAreaFont, startScreenText1, "6", 
 				            			false, player, true, language, textSpeed,fullText2,
-				            			rival, false, stopTimer, buttonWidth, buttonHeight);
+				            			rival, false, stopTimer, buttonWidth, buttonHeight, 
+				            			professorOakVisited, labOutsideButtonEnable);
 				                cards.add(ss, "startscreen");
 				                layout.show(cards, "startscreen");  
 			            }

@@ -31,7 +31,7 @@ public class MainGame extends JPanel {
     Player player;
     int textSpeed, buttonWidth, buttonHeight;
     Rival rival;
-    Boolean stopTimer;
+    Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     Float titleSize;
     ImageIcon logoIcon;
     
@@ -39,7 +39,7 @@ public class MainGame extends JPanel {
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, 
     		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight, 
-    		Player player, Rival rival) {
+    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
@@ -51,6 +51,8 @@ public class MainGame extends JPanel {
 	    this.buttonHeight = buttonHeight;
 	    this.player = player;
 	    this.rival = rival;
+	    this.professorOakVisited=professorOakVisited;
+	    this.labOutsideButtonEnable=labOutsideButtonEnable;
 	    
 	   
     	
@@ -209,7 +211,7 @@ public class MainGame extends JPanel {
 				
 				 
 					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth,
-							buttonHeight, player, rival);
+							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 
@@ -222,7 +224,7 @@ public class MainGame extends JPanel {
 			 public void actionPerformed(ActionEvent e) {
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
-							false, stopTimer, titleSize, buttonWidth, buttonHeight, false);
+							false, stopTimer, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, labOutsideButtonEnable);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -243,7 +245,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				    trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
 				 	cards.add(trade, "trade");
 					cl.show(cards, "trade");
 					
@@ -254,7 +256,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				 	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
 				    cards.add(continu, "continue");
 					cl.show(cards, "continue");
 					

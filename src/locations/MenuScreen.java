@@ -15,7 +15,7 @@ public class MenuScreen extends JPanel {
 	JPanel cards;
 	Font textAreaFont;
 	String screen, language, location;
-	Boolean stopTimer;
+	Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
 	Player player;
 	int textSpeed;
 	Rival rival;
@@ -24,7 +24,8 @@ public class MenuScreen extends JPanel {
 	
 	public MenuScreen (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
+			Boolean labOutsideButtonEnable) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -36,6 +37,8 @@ public class MenuScreen extends JPanel {
 	     this.rival = rival;
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
+	     this.professorOakVisited=professorOakVisited;
+	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
 	     returnButton = new JButton();
 	     returnButton.setBackground(Color.DARK_GRAY);
@@ -126,30 +129,37 @@ public class MenuScreen extends JPanel {
 	            	switch (location) {
 	            	case "pallettownyourhouse":
 	            	PalletTownYourHouse palletTownYourHouse = new PalletTownYourHouse(cl, cards, textAreaFont, "8", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse");
+	            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(palletTownYourHouse, "pallettownyourhouse");
 	                layout.show(cards, "pallettownyourhouse");  
 	                break;
 	                
 	            	case "pallettownoutside":
 		            	Outside outside = new Outside(cl, cards, textAreaFont, "9", language, textSpeed,
-		            			player, rival, stopTimer, "outside");
+		            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable);
 		            	cards.add(outside, "outside");
 		                layout.show(cards, "outside"); 
 		                break;
 		                
 	            	case "pallettownrivalhouse":
 	            		PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, textAreaFont, "8", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownyourhouse");
+		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable);
 		            	cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 		                layout.show(cards, "pallettownrivalhouse");  
 		                break;
 		                
 	            	case "pallettownlab":
 	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "12", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownyourhouse");
+		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable);
 		            	cards.add(palletTownLab, "pallettownlab");
 		                layout.show(cards, "pallettownlab");  
+		                break;
+		                
+	            	case "route1":
+	            		Route1 route1 = new Route1(cl, cards, textAreaFont, "13", language, textSpeed,
+		            			player, rival, stopTimer, "route1", professorOakVisited);
+		            	cards.add(route1, "route1");
+		                layout.show(cards, "route1");  
 		                break;
 	            	}
 	            	
@@ -165,7 +175,7 @@ public class MenuScreen extends JPanel {
     	
             	
             	options = new Options(cl,cards, "menu", blankTextArea, location, false, player, false, language, textSpeed, "",
-            			rival, font, false, false, 65f, 0,0, true);
+            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, labOutsideButtonEnable);
             	cards.add(options, "options");
                 layout.show(cards, "options");  
             	
@@ -185,7 +195,7 @@ public class MenuScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
             	
             	Inventory inventory = new Inventory(cl, cards, textAreaFont, "", language, textSpeed,
-            			player, rival, stopTimer, location);
+            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
             	cards.add(inventory, "inventory");
                 layout.show(cards, "inventory");
             	

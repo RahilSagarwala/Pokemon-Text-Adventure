@@ -14,7 +14,7 @@ public class PalletTownLab extends JPanel {
 	JPanel cards;
 	Font textAreaFont;
 	String screen, language, location;
-	Boolean stopTimer;
+	Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
 	Player player;
 	int textSpeed;
 	Rival rival;
@@ -22,7 +22,8 @@ public class PalletTownLab extends JPanel {
 	
 	public PalletTownLab (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
+			Boolean labOutsideButtonEnable) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -34,6 +35,8 @@ public class PalletTownLab extends JPanel {
 	     this.rival = rival;
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
+	     this.professorOakVisited = professorOakVisited;
+	     this.labOutsideButtonEnable = labOutsideButtonEnable;
 	     
 	     
 	     setBackground(Color.black);
@@ -100,19 +103,19 @@ public class PalletTownLab extends JPanel {
 	     pokeballButton.setForeground(Color.cyan);
 	     pokeballButton.setFont(font);
 	     
-	     JButton outsideButton = new JButton("Outside");
+	     JButton outsideButton = new JButton("");
 	     outsideButton.setPreferredSize(new Dimension(225,75));
 	     outsideButton.setBackground(Color.DARK_GRAY);
 	     outsideButton.setForeground(Color.cyan);
 	     outsideButton.setFont(font);
 	     
-	     JButton professorOakButton = new JButton("Prof. Oak");
+	     JButton professorOakButton = new JButton();
 	     professorOakButton.setPreferredSize(new Dimension(225,75));
 	     professorOakButton.setBackground(Color.DARK_GRAY);
 	     professorOakButton.setForeground(Color.cyan);
 	     professorOakButton.setFont(font);
 	     
-	     JButton choosePokemonButton = new JButton("Pokemon");
+	     JButton choosePokemonButton = new JButton("");
 	     choosePokemonButton.setPreferredSize(new Dimension(225,75));
 	     choosePokemonButton.setBackground(Color.DARK_GRAY);
 	     choosePokemonButton.setForeground(Color.cyan);
@@ -134,13 +137,37 @@ public class PalletTownLab extends JPanel {
 	    	 computerButton.setText("コンピューター");
 	    	 bookButton.setText("ほん");
 	    	 pokeballButton.setText("モンスターボール");
-	    	 choosePokemonButton.setText("ポケモン");
-	    	 professorOakButton.setText("オーキド");
-	    	 rivalButton.setText(player.getName());
-	    	 outsideButton.setText("そとにでいく");
-	    	 
+	    	 rivalButton.setText(player.getName());  	 
 	    	 computerButton.setPreferredSize(new Dimension(250,75));
 	    	 pokeballButton.setPreferredSize(new Dimension(280,75)); 
+	     }
+	     
+	     if (professorOakVisited) {
+	    	 if (language == "English") {
+	    		 professorOakButton.setText("Prof. Oak");
+	    		 choosePokemonButton.setText("Pokémon");
+	    	 }
+	    	 
+	    	 else {
+	    		 professorOakButton.setText("オーキド");
+	        	 choosePokemonButton.setText("ポケモン");
+	    	 }
+	     }
+	     
+	     
+	     
+	     if (labOutsideButtonEnable == false) {
+	    	 outsideButton.setText("");
+	     }
+	     
+	     else {
+	    	 if (language == "English" ) {
+	    		 outsideButton.setText("Outside");
+	    	 }
+	    	 
+	    	 else {
+	    		 outsideButton.setText("そとにでいく");
+	    	 }
 	     }
 	     
 	     gb.gridx=2;
@@ -208,7 +235,7 @@ public class PalletTownLab extends JPanel {
 	     menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab");
+	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	
@@ -219,7 +246,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid1lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -229,7 +256,7 @@ public class PalletTownLab extends JPanel {
 	     oakAid2Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid2lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -239,7 +266,7 @@ public class PalletTownLab extends JPanel {
 	     oakAid3Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid3lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -250,7 +277,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "poster1lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -259,7 +286,7 @@ public class PalletTownLab extends JPanel {
 	     poster2Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "poster2lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -270,7 +297,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "computerlab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -280,7 +307,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "booklab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -291,7 +318,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pokeballlab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -301,7 +328,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivallab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -309,28 +336,44 @@ public class PalletTownLab extends JPanel {
 	     
 	     professorOakButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	if (professorOakButton.getText() == "Prof. Oak" || professorOakButton.getText() == "オーキド") {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "professoroaklab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
+	            	}
 	            }
 	        });
 	     
 	     choosePokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	if (choosePokemonButton.getText() == "") {
+	            		
+	            	}
 	            	
+	            	else {
+	            		
+	            	}
 	            	
 	            }
 	        });
 	     
 	     outsideButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Outside outside = new Outside(layout, cards, 
-	            			textAreaFont, screen, language, textSpeed, 
-	            			player, rival, stopTimer, "outside");
-	            	cards.add(outside, "outside");
-	            	  layout.show(cards, "outside"); 
+	            	//Player must have chosen Pokemon first
+	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() == 1) {
+	            		//To Dialogue and then Rival Battle. At end of battle, set labOutsideButtonEnable parameter
+	            		//for PalletTownLab to true
+	            	}
+	            	
+	            	else {
+	            	  	Outside outside = new Outside(layout, cards, 
+		            			textAreaFont, screen, language, textSpeed, 
+		            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable);
+		            	cards.add(outside, "outside");
+		            	  layout.show(cards, "outside");
+	            	}
 	            	
 	            }
 	        });

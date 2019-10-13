@@ -19,17 +19,19 @@ public class Dialogue extends JPanel {
 	String screen, language, location;
 	Boolean stopTimer, nextVisible;
 	Player player;
-	int textSpeed;
+	int textSpeed, screenNumber;
 	Rival rival;
 	JButton menuButton, returnButton, nextButton;
 	TimerClass tm;
 	PalletTownYourHouse palletTownYourHouse;
 	JTextArea textArea;
 	String text = "";
+	Boolean professorOakVisited, returnVisible, labOutsideButtonEnable;
 	
 	public Dialogue (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2, Boolean nextVisible) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean nextVisible, Boolean profesorOakVisited,
+			Boolean returnVisible, int screenNumber2, Boolean labOutsideButtonEnable) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -41,6 +43,10 @@ public class Dialogue extends JPanel {
 	     this.rival = rival;
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
+	     this.professorOakVisited=professorOakVisited;
+	     this.returnVisible = returnVisible;
+	     this.screenNumber = screenNumber2;
+	     this.labOutsideButtonEnable = labOutsideButtonEnable;
 	     
 	     setBackground(Color.black);
 	     
@@ -49,6 +55,7 @@ public class Dialogue extends JPanel {
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font);
+		 returnButton.setVisible(returnVisible);
 		 
 		 JButton nextButton = new JButton("Next");
 		 nextButton.setPreferredSize(new Dimension(150,75));
@@ -217,7 +224,67 @@ public class Dialogue extends JPanel {
 				 text = "";
 				 }
 			 break;
-		 
+			 
+		 case "route1oak": 
+			 switch(screenNumber) {
+			 case 0:
+			 if (language == "English") {
+				 text = "* - When trying to leave town via the grassy path to the north:\n" + 
+				 		"\n" + 
+				 		"Oak       : Hey! Wait! Don't go out!\n" + 
+				 		"\n" + 
+				 		"* - Oak approaches Red.\n" + 
+				 		"\n" + 
+				 		"Oak       : It's unsafe! Wild POKEMON live in tall grass! You need your own\n" + 
+				 		"            POKEMON for your protection. I know! Here, come with me!\n" + 
+				 		"\n" + 
+				 		"* - He takes Red to his laboratory. They approach a table upon which three\n" + 
+				 		"    Poke Balls have been placed, and next to which Blue is present.";
+				 }
+			 else {
+				 text = "";
+				 }
+			 break;
+			 
+			 case 1:
+				 if (language == "English") {
+					 text = "Blue      : Gramps! I'm fed up with waiting!\n" + 
+					 		"\n" + 
+					 		"Oak       : BLUE? Let me think... Oh, that's right, I told you to come!\n" + 
+					 		"            Just wait!\n" + 
+					 		"\n" + 
+					 		"            Here, RED! There are 3 POKEMON here! Haha! They are inside the\n" + 
+					 		"            POKE BALLS. When I was young, I was a serious POKEMON trainer.\n" + 
+					 		"            In my old age, I have only 3 left, but you can have one! Choose!\n" + 
+					 		"\n" + 
+					 		"Blue      : Hey! Gramps! What about me?\n" + 
+					 		"\n" + 
+					 		"Oak       : Be patient! BLUE, you can have one too!";
+					 }
+				 else {
+					 text = "";
+					 }
+				 break;
+			 case 2:
+				 if (language == "English") {
+					 text = "* - Before selecting a Pokemon:\n" + 
+					 		"\n" + 
+					 		"Oak       : Now, RED, which POKEMON do you want?\n" + 
+					 		"\n" + 
+					 		"Blue      : Heh, I don't need to be greedy like you! Go ahead and choose, RED!\n" + 
+					 		"\n" + 
+					 		"* - Upon attempting to leave:\n" + 
+					 		"\n" + 
+					 		"Oak       : Hey! Don't go away yet!";
+					 }
+				 else {
+					 text = "";
+					 }
+				 break;
+			 
+			 
+			 }
+			 break;
 		 }
 		 
 		 tm = new TimerClass(text, stopTimer, textSpeed , textArea);
@@ -268,7 +335,7 @@ public class Dialogue extends JPanel {
 	            		
 	            		palletTownYourHouse = new PalletTownYourHouse(layout, cards, 
 	            				font, screen, language, textSpeed, 
-	            				player, rival, stopTimer, location);
+	            				player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
 	            		cards.add(palletTownYourHouse, "pallettownyourhouse");
 	            	    layout.show(cards, "pallettownyourhouse");
 	            	    break;
@@ -277,17 +344,55 @@ public class Dialogue extends JPanel {
 	            		
 	            		PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(layout, cards, 
 	            				font, screen, language, textSpeed, 
-	            				player, rival, stopTimer, location);
+	            				player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
 	            		cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 	            	    layout.show(cards, "pallettownrivalhouse");
 	            	    break;
 	            	    
 	            	case "pallettownlab":
 	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "12", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownyourhouse");
+		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable);
 		            	cards.add(palletTownLab, "pallettownlab");
 		                layout.show(cards, "pallettownlab");  
 		                break;
+	            		
+	            	}
+	            	
+	            	
+
+	            	    
+	                
+	            				}	
+	            			}
+				 		);
+	     
+	     nextButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	
+	            	switch (location) {
+	            	
+	            	case "route1oak":
+	            		
+	            		if (screenNumber == 2) {
+	            			professorOakVisited = true;
+	            			PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
+	    	                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, false);
+	    	            	cards.add(palletTownLab, "pallettownlab");
+	    	            	
+	    	                layout.show(cards, "pallettownlab");
+	    	                cl.show(cards, "pallettownlab"); 
+	            		}
+	            		
+	            		
+	            		else {
+	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "route1oak", language, textSpeed,
+			         			player, rival, stopTimer, "route1oak", true, professorOakVisited, false, screenNumber +1,
+			         			labOutsideButtonEnable);
+			         	cards.add(dialogue, "dialogue");
+			             cl.show(cards, "dialogue"); 
+	            		}
+	            	    
 	            		
 	            	}
 	            	

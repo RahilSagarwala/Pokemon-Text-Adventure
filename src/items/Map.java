@@ -14,6 +14,8 @@ public class Map extends ItemSuper {
 	CardLayout cl;
 	JPanel cards;
 	MapScreen mapScreen;
+	Boolean professorOakVisited;
+	Boolean labOutsideButtonEnable;
 
 
 	public Map(int count) {
@@ -23,10 +25,11 @@ public class Map extends ItemSuper {
 		
 	}
 	
-	public void showMap(CardLayout cl, JPanel cards, Font font, String screen, String language, int textSpeed, Player player, Rival rival, Boolean stopTimer, String location) {
+	public void showMap(CardLayout cl, JPanel cards, Font font, String screen, String language, int textSpeed, Player player, Rival rival, Boolean stopTimer, String location, Boolean professorOakVisited,
+			Boolean labOutsideButtonEnable) {
 		mapScreen = new MapScreen(cl, cards, 
     			font, screen, language, textSpeed, 
-    			player, rival, stopTimer, location);
+    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
     	cards.add(mapScreen, "mapscreen");
     	  cl.show(cards, "mapscreen"); 
 	}

@@ -20,7 +20,7 @@ public class ConfirmContinue extends JPanel{
     int textSpeed;
     Player player;
     Rival rival;
-    Boolean stopTimer;
+    Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     Float titleSize;
     int buttonWidth;
     int buttonHeight;
@@ -29,7 +29,8 @@ public class ConfirmContinue extends JPanel{
     
     
 	public ConfirmContinue (final CardLayout layout, final JPanel cards, String name, String language, Font font, int textSpeed,
-			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
+			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
 		 this.saveName = name;
 		 this.cl = layout;
 	     this.cards = cards;
@@ -42,6 +43,8 @@ public class ConfirmContinue extends JPanel{
 	     this.titleSize = titleSize;
 	     this.buttonWidth = buttonWidth;
 	     this.buttonHeight = buttonHeight;
+	     this.professorOakVisited=professorOakVisited;
+	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
 	     setBackground(Color.black);
 		 setLayout(new GridBagLayout());
@@ -98,7 +101,7 @@ public class ConfirmContinue extends JPanel{
 		 noButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(continu, "continue");
 	                layout.show(cards, "continue");
 	            }

@@ -33,7 +33,7 @@ public class UI implements ComponentListener {
     Font font = new Font("SANS_SERIF", Font.BOLD, 30);
     String language = "English", position = "mainscreen", fullText2="", chosenSave = "";
     int textSpeed = 50, buttonWidth = 150, buttonHeight = 75;
-    Boolean stopTimer = false;
+    Boolean stopTimer = false, professorOakVisited = false, labOutsideButtonEnable = true;
     MainGame mg;
     Options options;
     Trade trade;
@@ -53,21 +53,12 @@ public class UI implements ComponentListener {
     MenuScreen menu;
     ItemSuper itemArray[];
     ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
-    ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6);
-    
+    ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6); 
 	Player player = new Player("", itemArrayList, partyPokemonArrayList);
-	
-	
-	
 	Rival rival = new Rival("", itemArrayList, partyPokemonArrayList);
 	MapScreen mapScreen;
 
-    
-   
-    
 
-    
-    
     public void componentHidden(ComponentEvent e) {
 
     }
@@ -91,7 +82,7 @@ public class UI implements ComponentListener {
             
       
         	   mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, 
-        			   buttonWidth, buttonHeight, player, rival);
+        			   buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
                cards.add(mg, "mainscreen");
 //          
 //        	   cl.show(cards, "mainscreen");
@@ -125,37 +116,37 @@ public class UI implements ComponentListener {
     	
    
    	   
-    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight, player, rival);
+    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
-    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false);
+    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, labOutsideButtonEnable);
     	trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	 			buttonWidth, buttonHeight);
+	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
     	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	 			buttonWidth, buttonHeight); 
-     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival);
+	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable); 
+     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
     	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, 
-    			"English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight);   	
+    			"English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
-        		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse");
+        		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable);
     	outside = new Outside(cl, cards, font, 
-        		"9", language, textSpeed, player, rival, stopTimer, "outside");
+        		"9", language, textSpeed, player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable);
     	palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, font, 
-        		"10", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse");
+        		"10", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable);
     	palletTownHouse3 = new PalletTownHouse3(cl, cards, font, 
         		"11", language, textSpeed, player, rival, stopTimer, "pallettownhouse3");
     	palletTownLab = new PalletTownLab(cl, cards, font, 
-        		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab");
+        		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable);
     	route1 = new Route1(cl, cards, font, 
-        		"13", language, textSpeed, player, rival, stopTimer, "route1");
+        		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited);
     	battle = new Battle(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "battle");
     	dialogue = new Dialogue(cl, cards, font, 
-        		"", language, textSpeed, player, rival, stopTimer, "dialogue", false); 	
+        		"", language, textSpeed, player, rival, stopTimer, "dialogue", false, professorOakVisited, true, 0, labOutsideButtonEnable); 	
     	menu = new MenuScreen(cl, cards, font, 
-        		"", language, textSpeed, player, rival, stopTimer, "menu");
+        		"", language, textSpeed, player, rival, stopTimer, "menu", professorOakVisited, labOutsideButtonEnable);
     	mapScreen = new MapScreen(cl, cards, font, 
-        		"14", language, textSpeed, player, rival, stopTimer, "mapscreen");
+        		"14", language, textSpeed, player, rival, stopTimer, "mapscreen", professorOakVisited, labOutsideButtonEnable);
     	
     	
     	//Example Implementation for dynamic buttons for inventory

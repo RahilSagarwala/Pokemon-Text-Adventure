@@ -18,13 +18,14 @@ public class Trade extends JPanel {
     MainGame mg;
     Player player;
     Rival rival;
-    Boolean stopTimer;
+    Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     Float titleSize;
     int buttonWidth;
     int buttonHeight;
 	
 	public Trade (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
-			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight) {
+			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.language = language;
@@ -36,6 +37,8 @@ public class Trade extends JPanel {
 	     this.titleSize = titleSize;
 	     this.buttonWidth = buttonWidth;
 	     this.buttonHeight = buttonHeight;
+	     this.professorOakVisited=professorOakVisited;
+	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
 	     setBackground(Color.black);
 	     
@@ -54,7 +57,7 @@ public class Trade extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
-	            			titleSize, buttonWidth, buttonHeight, player, rival);
+	            			titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 

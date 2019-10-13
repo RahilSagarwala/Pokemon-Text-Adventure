@@ -13,7 +13,7 @@ public class Outside extends JPanel {
 	JPanel cards;
 	Font textAreaFont;
 	String screen, language, location;
-	Boolean stopTimer;
+	Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
 	Player player;
 	int textSpeed;
 	Rival rival;
@@ -25,7 +25,8 @@ public class Outside extends JPanel {
 	
 	public Outside(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
+			Boolean labOutsideButtonEnable) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -36,6 +37,8 @@ public class Outside extends JPanel {
 	     this.rival = rival;
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
+	     this.professorOakVisited = professorOakVisited;
+	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
 	     
 	     setBackground(Color.black);
@@ -127,7 +130,7 @@ public class Outside extends JPanel {
 		 yourHouseButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	palletTownYourHouse = new PalletTownYourHouse(cl, cards, textAreaFont, 
-	                		"8", language, textSpeed, player, rival, stopTimer, "My House");
+	                		"8", language, textSpeed, player, rival, stopTimer, "My House", professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(palletTownYourHouse, "pallettownyourhouse");
 	            	
 	                layout.show(cards, "pallettownyourhouse");             
@@ -137,7 +140,7 @@ public class Outside extends JPanel {
 		 rivalHouseButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, textAreaFont, 
-	                		"10", language, textSpeed, player, rival, stopTimer, "Rival House");
+	                		"10", language, textSpeed, player, rival, stopTimer, "Rival House", professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 	            	
 	                layout.show(cards, "pallettownrivalhouse");    
@@ -148,7 +151,7 @@ public class Outside extends JPanel {
 		 labButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
-	                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab");
+	                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(palletTownLab, "pallettownlab");
 	            	
 	                layout.show(cards, "pallettownlab");
@@ -157,16 +160,20 @@ public class Outside extends JPanel {
 		 
 		 route1Button.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
-				 //Go to Dialogue with next button true and pass Lab to next button
-				 if (count == 0) {
-					 count++;
-					 
-				 }
-				 
-				 //Go to Route 1
-				 else {
-					 
-				 }
+			     if (professorOakVisited == false) {
+			    	 Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "route1oak", language, textSpeed,
+		         			player, rival, stopTimer, "route1oak", true, professorOakVisited, false, 0, labOutsideButtonEnable);
+		         	cards.add(dialogue, "dialogue");
+		             cl.show(cards, "dialogue"); 
+			     }
+			     else {
+				 Route1 route1 = new Route1(cl, cards, textAreaFont, 
+	                		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited);
+	            	cards.add(route1, "route1");
+	            	
+	                layout.show(cards, "route1");
+			     }
+			
 				 
 	            }
 	        });
@@ -174,7 +181,7 @@ public class Outside extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownoutside");
+	            			player, rival, stopTimer, "pallettownoutside", professorOakVisited, labOutsideButtonEnable);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

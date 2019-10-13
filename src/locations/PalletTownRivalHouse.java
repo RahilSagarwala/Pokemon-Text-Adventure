@@ -152,19 +152,33 @@ public class PalletTownRivalHouse extends JPanel {
 		 //Go to Dialogue and add Map to inventory, check if map already exists
 		 pickUpMapButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	//If inventory is empty, add map
+	              	if (player.getItems().isEmpty()) {
+	              		Map map = new Map(1);
+	              		player.addItem(map);
+	              	}
+	            	
+	            	
+	              	//If inventory contains map, count. If count is equal to size, add map
 	            	int i;
 	            	for (i = 0; i < player.getItems().size(); i++) {
 	            		
 	            	if (player.getItems().get(i).getItemName(language) != "Map" || 
 	            			player.getItems().get(i).getItemName(language) != "ちず") {
 	            	i++;
-	            		}
+	
+	            		}	            	
+	               	if (i == player.getItems().size()-1) {	
+		            	Map map = new Map(1);
+		            	player.addItem(map);
+		            	break;
+		            	
+		            	}
+	             
 	            	}
 	            	
-	            	if (i == player.getItems().size()) {	
-	            	Map map = new Map(1);
-	            	player.addItem(map);
-	            	}
+	     
 	            	
 	            
 	            

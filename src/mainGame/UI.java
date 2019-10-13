@@ -56,6 +56,9 @@ public class UI implements ComponentListener {
     ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6);
     
 	Player player = new Player("", itemArrayList, partyPokemonArrayList);
+	
+	
+	
 	Rival rival = new Rival("", itemArrayList, partyPokemonArrayList);
 	MapScreen mapScreen;
 
@@ -154,6 +157,17 @@ public class UI implements ComponentListener {
     	mapScreen = new MapScreen(cl, cards, font, 
         		"14", language, textSpeed, player, rival, stopTimer, "mapscreen");
     	
+    	
+    	//Example Implementation for dynamic buttons for inventory
+    	
+//    	Potion potion = new Potion(1);
+//    	Potion potion2 = new Potion(1);
+//     	Potion potion3 = new Potion(1);
+//     	Potion potion4 = new Potion(1);
+//    	player.addItem(potion);
+//    	player.addItem(potion2);
+//    	player.addItem(potion3);
+//    	player.addItem(potion4);
   
     	
         cards.setLayout(cl);

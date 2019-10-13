@@ -8,12 +8,13 @@ import java.util.*;
 public class TrainerSuper {
 	String name = "";
 	String language;
-//	ItemSuper itemArray[] = new ItemSuper[100];
 	ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
+	ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6);
 
-	public TrainerSuper(String name, ArrayList<ItemSuper> itemArray) {
+	public TrainerSuper(String name, ArrayList<ItemSuper> itemArray, ArrayList<PokemonSuper> partyPokemonArrayList ) {
 		this.name = name;
 		this.itemArrayList = itemArray;
+		this.partyPokemonArrayList = partyPokemonArrayList;
 		
 	}
 	
@@ -43,7 +44,30 @@ public class TrainerSuper {
 		return itemArrayList;
 
 	}
-	
 
+	public String getPartyPokemonNames(String language) {
+	
+		
+		return partyPokemonArrayList.get(0).getPokemonName(language);
+
+	}
+	
+	public ArrayList<PokemonSuper> getPartyPokemonArrayList() {
+
+		return partyPokemonArrayList;
+
+	}
+	
+	public void addPokemonToParty(PokemonSuper pokemon) {
+		partyPokemonArrayList.add(pokemon);
+	}
+	
+	
+	
+	//Need to add Pokemon to 1 of 12 boxes that hold 30 Pokemon each
+	public void addPokemonToBox(PokemonSuper pokemon) {
+		
+	}
+	
 	
 }

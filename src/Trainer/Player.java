@@ -20,15 +20,9 @@ public class Player extends TrainerSuper {
 
 	
 	
-	public Player(String name, ArrayList<ItemSuper> itemArrayList) {
+	public Player(String name, ArrayList<ItemSuper> itemArrayList, ArrayList<PokemonSuper> partyPokemonArrayList) {
 	
-		super(name, itemArrayList);
-	}
-	
-	public void showMap(CardLayout cl, JPanel cards, Font font, String screen, String language, int textSpeed, Player player, Rival rival, Boolean stopTimer, String location) {
-		Map map = new Map(i);
-		map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location);
-		
+		super(name, itemArrayList, partyPokemonArrayList);
 	}
 
 }

@@ -53,9 +53,10 @@ public class UI implements ComponentListener {
     MenuScreen menu;
     ItemSuper itemArray[];
     ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
+    ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6);
     
-	Player player = new Player("", itemArrayList);
-	Rival rival = new Rival("", itemArrayList);
+	Player player = new Player("", itemArrayList, partyPokemonArrayList);
+	Rival rival = new Rival("", itemArrayList, partyPokemonArrayList);
 	MapScreen mapScreen;
 
     

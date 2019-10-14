@@ -6,7 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.*;
 
-public class Trade extends JPanel {
+public class Logo extends JPanel {
 	
 	JButton returnButton;
 	CardLayout cl;
@@ -22,8 +22,10 @@ public class Trade extends JPanel {
     Float titleSize;
     int buttonWidth;
     int buttonHeight;
+    ImageIcon logoIcon;
+    JLabel logoLabel;
 	
-	public Trade (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
+	public Logo (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
 			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
 		 this.cl = layout;
@@ -43,7 +45,7 @@ public class Trade extends JPanel {
 	     setBackground(Color.black);
 	     
 	     JButton returnButton = new JButton("Return");
-	     returnButton.setPreferredSize(new Dimension(200,75));
+	     returnButton.setPreferredSize(new Dimension(50,75));
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font);
@@ -52,11 +54,20 @@ public class Trade extends JPanel {
 			 returnButton.setText("とじる");
 		 }
 		 
+		 
+		 logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("mainLogoStarters3.png"));
+		 logoLabel = new JLabel(logoIcon);
+		 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 gb.gridx = 0;
 		 gb.gridy = 0;
 		 add(returnButton, gb);
+		 
+		 gb.gridx = 0;
+		 gb.gridy = 1;
+		 add(logoLabel, gb);
+		 
 		 
 		 
 		 

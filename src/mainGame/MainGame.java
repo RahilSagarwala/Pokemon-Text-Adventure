@@ -77,7 +77,7 @@ public class MainGame extends JPanel {
         else {
         	try {
     		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
-    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(65f);
+    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(60f);
     		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     		    ge.registerFont(titleFont);
     		} catch (IOException e) {
@@ -140,12 +140,18 @@ public class MainGame extends JPanel {
 		feedbackButton.setForeground(Color.cyan);
 		feedbackButton.setFont(font);
 		
+		JButton expandLogoButton = new JButton("Full Size");
+		expandLogoButton.setBackground(Color.DARK_GRAY);
+		expandLogoButton.setForeground(Color.cyan);
+		expandLogoButton.setFont(font);
+		expandLogoButton.setPreferredSize(new Dimension(160,40));
+		
 		
 		feedbackButton.setPreferredSize(new Dimension(400,100));
 		newGameButton.setPreferredSize(new Dimension(400,100));
 		continueButton.setPreferredSize(new Dimension(400,100));
 		creditsButton.setPreferredSize(new Dimension(400,100));
-		optionsButton.setPreferredSize(new Dimension(400,80));
+		optionsButton.setPreferredSize(new Dimension(400,100));
 		
 		 if(language == "Japanese") {
 			 feedbackButton.setText("フィードバック");
@@ -153,18 +159,17 @@ public class MainGame extends JPanel {
 			 continueButton.setText("つづきからはじめる");
 			 creditsButton.setText("エンドクレジット");
 			 optionsButton.setText("せっていを かえる");
+			 expandLogoButton.setText("フルサイズ");
+			 expandLogoButton.setPreferredSize(new Dimension(171,40));
+			 Font f = new Font("SANS_SERIF", Font.BOLD, 26);
+			 expandLogoButton.setFont(f);
 			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
-	
-				feedbackButton.setPreferredSize(new Dimension(400,100));
-				newGameButton.setPreferredSize(new Dimension(400,100));
-				continueButton.setPreferredSize(new Dimension(400,100));
-				creditsButton.setPreferredSize(new Dimension(400,100));
-				optionsButton.setPreferredSize(new Dimension(400,100));
 		 }
+		 
 		
 		
 
-		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("logo4.png"));
+		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("mainLogoStarters2.png"));
 		 logoLabel = new JLabel(logoIcon);
 		  
 
@@ -178,10 +183,16 @@ public class MainGame extends JPanel {
 		gb.gridx=2;
 		gb.insets = new Insets(0,80,0,0);
 		add(logoLabel,gb);
+		
+		gb.gridy=1;	
+		gb.gridx=2;
+		gb.insets = new Insets(0,80,-75,0);
+		add(expandLogoButton,gb);
 
-		gb.insets = new Insets(0,225,0,0);	
+
 		gb.gridx=0;
 		gb.gridy=0;	
+		gb.insets = new Insets(0,225,0,0);
 //		gb.weighty = 1;
 		add(titlePanel,gb);
 		
@@ -192,11 +203,10 @@ public class MainGame extends JPanel {
 //		gb.insets = new Insets(-8,0,0,0);
 //		add(namesPanel,gb);
 		
-//		gb.weighty = 1;
+		gb.weighty = 1;
 		gb.gridx=0;
 		gb.gridy=2;
-		gb.insets = new Insets(0,300,0,0);
-//		gb.insets = new Insets(-75,0,0,0);
+		gb.insets = new Insets(-100,250,-90,0);
 		add(newGameButton,gb);	
 		
 		gb.gridx=0;
@@ -259,6 +269,17 @@ public class MainGame extends JPanel {
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
 				 	cards.add(trade, "trade");
 					cl.show(cards, "trade");
+					
+	            }
+	        });
+		 
+		 expandLogoButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+				    Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+				 	cards.add(logo, "logo");
+					cl.show(cards, "logo");
 					
 	            }
 	        });

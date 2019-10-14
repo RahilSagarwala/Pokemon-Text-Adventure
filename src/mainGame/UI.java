@@ -47,7 +47,7 @@ public class UI implements ComponentListener {
     PalletTownHouse3 palletTownHouse3;
     Route1 route1;
     Battle battle;
-    Float titleSize = 55f;
+    Float titleSize = 60f;
     Dialogue dialogue;
     Outside outside;
     MenuScreen menu;

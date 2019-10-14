@@ -14,7 +14,7 @@ import Trainer.Rival;
 public class MainGame extends JPanel {
 
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel, mainScreenPanel;
-    JButton feedbackButton, newGameButton, continueButton, tradeButton, optionsButton;
+    JButton feedbackButton, newGameButton, continueButton, creditsButton, optionsButton;
     JLabel namesLabel, titleLabel, logoLabel;
 	Font titleFont, italicFont = new Font("SANS_SERIF", Font.ITALIC, 25), 
 			buttonFont = new Font("SANS_SERIF", Font.BOLD, 10), font;
@@ -123,10 +123,10 @@ public class MainGame extends JPanel {
 		continueButton.setForeground(Color.cyan);
 		continueButton.setFont(font);
 		
-		tradeButton = new JButton("Trade");
-		tradeButton.setBackground(Color.DARK_GRAY);
-		tradeButton.setForeground(Color.cyan);
-		tradeButton.setFont(font);
+		creditsButton = new JButton("Credits");
+		creditsButton.setBackground(Color.DARK_GRAY);
+		creditsButton.setForeground(Color.cyan);
+		creditsButton.setFont(font);
 	
 		
 		optionsButton = new JButton("Options");
@@ -144,14 +144,14 @@ public class MainGame extends JPanel {
 		feedbackButton.setPreferredSize(new Dimension(400,100));
 		newGameButton.setPreferredSize(new Dimension(400,100));
 		continueButton.setPreferredSize(new Dimension(400,100));
-		tradeButton.setPreferredSize(new Dimension(400,100));
+		creditsButton.setPreferredSize(new Dimension(400,100));
 		optionsButton.setPreferredSize(new Dimension(400,80));
 		
 		 if(language == "Japanese") {
 			 feedbackButton.setText("フィードバック");
 			 newGameButton.setText("さいしょからはじめる");
 			 continueButton.setText("つづきからはじめる");
-			 tradeButton.setText("トレード");
+			 creditsButton.setText("エンドクレジット");
 			 optionsButton.setText("せっていを かえる");
 			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
 	
@@ -194,11 +194,11 @@ public class MainGame extends JPanel {
 		add(continueButton,gb);
 		
 		gb.gridx=0;
-		gb.gridy=4;
-		add(tradeButton,gb);
+		gb.gridy=5;
+		add(creditsButton,gb);
 		
 		gb.gridx=0;
-		gb.gridy=5;
+		gb.gridy=4;
 		add(optionsButton,gb);	
 		
 		gb.gridx=0;
@@ -242,7 +242,7 @@ public class MainGame extends JPanel {
 	            }
 	        });
         
-		 tradeButton.addActionListener(new ActionListener() {
+		 creditsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
 				    trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 

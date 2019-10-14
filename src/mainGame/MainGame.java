@@ -141,11 +141,11 @@ public class MainGame extends JPanel {
 		feedbackButton.setFont(font);
 		
 		
-		feedbackButton.setPreferredSize(new Dimension(400,100));
-		newGameButton.setPreferredSize(new Dimension(400,100));
-		continueButton.setPreferredSize(new Dimension(400,100));
-		creditsButton.setPreferredSize(new Dimension(400,100));
-		optionsButton.setPreferredSize(new Dimension(400,80));
+		feedbackButton.setPreferredSize(new Dimension(400,109));
+		newGameButton.setPreferredSize(new Dimension(400,109));
+		continueButton.setPreferredSize(new Dimension(400,109));
+		creditsButton.setPreferredSize(new Dimension(400,109));
+		optionsButton.setPreferredSize(new Dimension(400,109));
 		
 		 if(language == "Japanese") {
 			 feedbackButton.setText("フィードバック");
@@ -159,8 +159,8 @@ public class MainGame extends JPanel {
 		
 		
 
-		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("PTTA_logo.png"));
-		 logoLabel = new JLabel(logoIcon);
+//		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("PTTA_logo.png"));
+//		 logoLabel = new JLabel(logoIcon);
 		  
 
 		
@@ -169,24 +169,28 @@ public class MainGame extends JPanel {
 		GridBagConstraints gb = new GridBagConstraints();
 		
 		
-		gb.gridy=0;	
-		gb.gridx=2;
-		gb.insets = new Insets(0,80,0,0);
-		add(logoLabel,gb);
+//		gb.gridy=0;	
+//		gb.gridx=2;
+//		gb.insets = new Insets(0,80,0,0);
+//		add(logoLabel,gb);
 
-		gb.insets = new Insets(-70,225,0,0);
+//		gb.insets = new Insets(-70,225,0,0);
+		gb.insets = new Insets(0,0,0,0);
 		gb.gridx=0;
 		gb.gridy=0;	
 		add(titlePanel,gb);
 		
 		
-		gb.gridx=0;
-		gb.gridy=1;
-		add(namesPanel,gb);
+//		gb.gridx=0;
+//		gb.gridy=1;			
+//		gb.insets = new Insets(-8,0,0,0);
+//		add(namesPanel,gb);
 		
+//		gb.weighty = 1;
 		gb.gridx=0;
 		gb.gridy=2;
-		gb.insets = new Insets(0,300,0,0);
+//		gb.insets = new Insets(0,300,0,0);
+//		gb.insets = new Insets(8,0,0,0);
 		add(newGameButton,gb);	
 		
 		gb.gridx=0;

@@ -141,11 +141,11 @@ public class MainGame extends JPanel {
 		feedbackButton.setFont(font);
 		
 		
-		feedbackButton.setPreferredSize(new Dimension(400,109));
-		newGameButton.setPreferredSize(new Dimension(400,109));
-		continueButton.setPreferredSize(new Dimension(400,109));
-		creditsButton.setPreferredSize(new Dimension(400,109));
-		optionsButton.setPreferredSize(new Dimension(400,109));
+		feedbackButton.setPreferredSize(new Dimension(400,100));
+		newGameButton.setPreferredSize(new Dimension(400,100));
+		continueButton.setPreferredSize(new Dimension(400,100));
+		creditsButton.setPreferredSize(new Dimension(400,100));
+		optionsButton.setPreferredSize(new Dimension(400,100));
 		
 		 if(language == "Japanese") {
 			 feedbackButton.setText("フィードバック");
@@ -180,10 +180,13 @@ public class MainGame extends JPanel {
 //		add(logoLabel,gb);
 
 //		gb.insets = new Insets(-70,225,0,0);
-		gb.insets = new Insets(0,0,0,0);
+		
+		
 		gb.gridx=0;
 		gb.gridy=0;	
+		gb.weighty = 1;
 		add(titlePanel,gb);
+		
 		
 		
 //		gb.gridx=0;
@@ -195,7 +198,7 @@ public class MainGame extends JPanel {
 		gb.gridx=0;
 		gb.gridy=2;
 //		gb.insets = new Insets(0,300,0,0);
-//		gb.insets = new Insets(8,0,0,0);
+//		gb.insets = new Insets(-75,0,0,0);
 		add(newGameButton,gb);	
 		
 		gb.gridx=0;

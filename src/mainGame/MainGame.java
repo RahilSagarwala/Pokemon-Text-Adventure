@@ -77,7 +77,7 @@ public class MainGame extends JPanel {
         else {
         	try {
     		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
-    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(50f);
+    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(65f);
     		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     		    ge.registerFont(titleFont);
     		} catch (IOException e) {
@@ -145,7 +145,7 @@ public class MainGame extends JPanel {
 		newGameButton.setPreferredSize(new Dimension(400,100));
 		continueButton.setPreferredSize(new Dimension(400,100));
 		creditsButton.setPreferredSize(new Dimension(400,100));
-		optionsButton.setPreferredSize(new Dimension(400,100));
+		optionsButton.setPreferredSize(new Dimension(400,80));
 		
 		 if(language == "Japanese") {
 			 feedbackButton.setText("フィードバック");
@@ -164,8 +164,8 @@ public class MainGame extends JPanel {
 		
 		
 
-//		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("PTTA_logo.png"));
-//		 logoLabel = new JLabel(logoIcon);
+		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("logo4.png"));
+		 logoLabel = new JLabel(logoIcon);
 		  
 
 		
@@ -174,17 +174,15 @@ public class MainGame extends JPanel {
 		GridBagConstraints gb = new GridBagConstraints();
 		
 		
-//		gb.gridy=0;	
-//		gb.gridx=2;
-//		gb.insets = new Insets(0,80,0,0);
-//		add(logoLabel,gb);
+		gb.gridy=0;	
+		gb.gridx=2;
+		gb.insets = new Insets(0,80,0,0);
+		add(logoLabel,gb);
 
-//		gb.insets = new Insets(-70,225,0,0);
-		
-		
+		gb.insets = new Insets(0,225,0,0);	
 		gb.gridx=0;
 		gb.gridy=0;	
-		gb.weighty = 1;
+//		gb.weighty = 1;
 		add(titlePanel,gb);
 		
 		
@@ -197,7 +195,7 @@ public class MainGame extends JPanel {
 //		gb.weighty = 1;
 		gb.gridx=0;
 		gb.gridy=2;
-//		gb.insets = new Insets(0,300,0,0);
+		gb.insets = new Insets(0,300,0,0);
 //		gb.insets = new Insets(-75,0,0,0);
 		add(newGameButton,gb);	
 		

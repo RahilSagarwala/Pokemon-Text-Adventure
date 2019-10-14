@@ -103,7 +103,7 @@ public class PalletTownLab extends JPanel {
 	     pokeballButton.setForeground(Color.cyan);
 	     pokeballButton.setFont(font);
 	     
-	     JButton outsideButton = new JButton("");
+	     JButton outsideButton = new JButton("Outside");
 	     outsideButton.setPreferredSize(new Dimension(225,75));
 	     outsideButton.setBackground(Color.DARK_GRAY);
 	     outsideButton.setForeground(Color.cyan);
@@ -137,7 +137,8 @@ public class PalletTownLab extends JPanel {
 	    	 computerButton.setText("コンピューター");
 	    	 bookButton.setText("ほん");
 	    	 pokeballButton.setText("モンスターボール");
-	    	 rivalButton.setText(player.getName());  	 
+	    	 rivalButton.setText(player.getName()); 
+	    	 outsideButton.setText("そとにでいく");
 	    	 computerButton.setPreferredSize(new Dimension(250,75));
 	    	 pokeballButton.setPreferredSize(new Dimension(280,75)); 
 	     }
@@ -154,21 +155,6 @@ public class PalletTownLab extends JPanel {
 	    	 }
 	     }
 	     
-	     
-	     
-	     if (labOutsideButtonEnable == false) {
-	    	 outsideButton.setText("");
-	     }
-	     
-	     else {
-	    	 if (language == "English" ) {
-	    		 outsideButton.setText("Outside");
-	    	 }
-	    	 
-	    	 else {
-	    		 outsideButton.setText("そとにでいく");
-	    	 }
-	     }
 	     
 	     gb.gridx=2;
 	     gb.gridy=0;
@@ -365,6 +351,10 @@ public class PalletTownLab extends JPanel {
 	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() == 1) {
 	            		//To Dialogue and then Rival Battle. At end of battle, set labOutsideButtonEnable parameter
 	            		//for PalletTownLab to true
+	            	}
+	            	
+	            	else if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() != 1) {
+	            		return;
 	            	}
 	            	
 	            	else {

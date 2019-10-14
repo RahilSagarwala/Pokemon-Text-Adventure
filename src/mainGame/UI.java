@@ -124,6 +124,8 @@ public class UI implements ComponentListener {
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
     	Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+    	Logo2 logo2 = new Logo2(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
     	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable); 
      	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
@@ -182,6 +184,7 @@ public class UI implements ComponentListener {
         cards.add(menu, "menu");
         cards.add(mapScreen, "mapscreen");
         cards.add(logo, "logo");
+        cards.add(logo2, "logo2");
       
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //		cards.setSize(screenSize.width, screenSize.height);

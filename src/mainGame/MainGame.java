@@ -15,7 +15,7 @@ public class MainGame extends JPanel {
 
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel, mainScreenPanel;
     JButton feedbackButton, newGameButton, continueButton, creditsButton, optionsButton;
-    JLabel namesLabel, titleLabel, logoLabel;
+    JLabel namesLabel, titleLabel, logoLabel, logoLabel2;
 	Font titleFont, italicFont = new Font("SANS_SERIF", Font.ITALIC, 25), 
 			buttonFont = new Font("SANS_SERIF", Font.BOLD, 10), font;
 	final static String mainScreenString = "mainscreen";
@@ -33,7 +33,7 @@ public class MainGame extends JPanel {
     Rival rival;
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     Float titleSize;
-    ImageIcon logoIcon;
+    ImageIcon logoIcon, logoIcon2;
     
     
     
@@ -146,6 +146,12 @@ public class MainGame extends JPanel {
 		expandLogoButton.setFont(font);
 		expandLogoButton.setPreferredSize(new Dimension(160,40));
 		
+		JButton expandLogoButton2 = new JButton("Full Size");
+		expandLogoButton2.setBackground(Color.DARK_GRAY);
+		expandLogoButton2.setForeground(Color.cyan);
+		expandLogoButton2.setFont(font);
+		expandLogoButton2.setPreferredSize(new Dimension(160,40));
+		
 		
 		feedbackButton.setPreferredSize(new Dimension(400,100));
 		newGameButton.setPreferredSize(new Dimension(400,100));
@@ -161,6 +167,8 @@ public class MainGame extends JPanel {
 			 optionsButton.setText("せっていを かえる");
 			 expandLogoButton.setText("フルサイズ");
 			 expandLogoButton.setPreferredSize(new Dimension(171,40));
+			 expandLogoButton2.setText("フルサイズ");
+			 expandLogoButton2.setPreferredSize(new Dimension(171,40));
 			 Font f = new Font("SANS_SERIF", Font.BOLD, 26);
 			 expandLogoButton.setFont(f);
 			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
@@ -171,6 +179,8 @@ public class MainGame extends JPanel {
 
 		logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("mainLogoStarters2.png"));
 		 logoLabel = new JLabel(logoIcon);
+			logoIcon2 = new ImageIcon(this.getClass().getClassLoader().getResource("logo1.png"));
+			 logoLabel2 = new JLabel(logoIcon2);
 		  
 
 		
@@ -184,10 +194,20 @@ public class MainGame extends JPanel {
 		gb.insets = new Insets(0,80,0,0);
 		add(logoLabel,gb);
 		
+		gb.gridy=0;	
+		gb.gridx=2;
+		gb.insets = new Insets(0,-2110,0,0);
+		add(logoLabel2,gb);
+		
 		gb.gridy=1;	
 		gb.gridx=2;
 		gb.insets = new Insets(0,80,-75,0);
 		add(expandLogoButton,gb);
+		
+		gb.gridy=1;	
+		gb.gridx=2;
+		gb.insets = new Insets(0,-2110,-75,0);
+		add(expandLogoButton2,gb);
 
 
 		gb.gridx=0;
@@ -280,6 +300,17 @@ public class MainGame extends JPanel {
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
 				 	cards.add(logo, "logo");
 					cl.show(cards, "logo");
+					
+	            }
+	        });
+		 
+		 expandLogoButton2.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+				    Logo2 logo2 = new Logo2(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+				 	cards.add(logo2, "logo2");
+					cl.show(cards, "logo2");
 					
 	            }
 	        });

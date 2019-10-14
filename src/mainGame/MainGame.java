@@ -155,6 +155,11 @@ public class MainGame extends JPanel {
 			 optionsButton.setText("せっていを かえる");
 			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
 	
+				feedbackButton.setPreferredSize(new Dimension(400,100));
+				newGameButton.setPreferredSize(new Dimension(400,100));
+				continueButton.setPreferredSize(new Dimension(400,100));
+				creditsButton.setPreferredSize(new Dimension(400,100));
+				optionsButton.setPreferredSize(new Dimension(400,100));
 		 }
 		
 		

@@ -168,6 +168,7 @@ public class MainGame extends JPanel {
 		//Add GUI Elements to GridBagLayout
 		GridBagConstraints gb = new GridBagConstraints();
 		
+		
 		gb.gridy=0;	
 		gb.gridx=2;
 		gb.insets = new Insets(0,80,0,0);

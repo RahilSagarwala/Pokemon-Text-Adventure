@@ -149,6 +149,8 @@ public class UI implements ComponentListener {
         		"14", language, textSpeed, player, rival, stopTimer, "mapscreen", professorOakVisited, labOutsideButtonEnable);
     	
     	
+    
+    	
     	//Example Implementation for dynamic buttons for inventory
     	
 //    	Potion potion = new Potion(1);

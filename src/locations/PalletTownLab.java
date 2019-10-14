@@ -201,6 +201,8 @@ public class PalletTownLab extends JPanel {
 	     gb.gridy=2;
 	     add(computerButton, gb);
 	     
+
+	     
 	     gb.gridx=3;
 	     gb.gridy=3;
 	     add(pokeballButton, gb);

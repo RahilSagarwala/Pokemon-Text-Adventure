@@ -40,6 +40,7 @@ public class NewGame extends JPanel {
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     
+
 	     
 		
 		 

@@ -41,8 +41,6 @@ public class Route1 extends JPanel {
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
 
-	     
-	     
 	     JButton menuButton = new JButton("Menu");
 	     menuButton.setPreferredSize(new Dimension(200,75));
 	     menuButton.setBackground(Color.DARK_GRAY);

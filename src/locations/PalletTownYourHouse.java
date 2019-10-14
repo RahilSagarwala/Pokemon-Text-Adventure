@@ -81,6 +81,8 @@ public class PalletTownYourHouse extends JPanel {
 	     menuButton.setForeground(Color.cyan);
 	     menuButton.setFont(font);
 	     
+
+	     
 	     if (language == "English") {
 	    	 locationLabel.setText("<html>My House <br> Pallet Town <html>");
 	    	 talkToMomButton.setText("Talk to Mom");

@@ -75,6 +75,7 @@ public class Outside extends JPanel {
 	     route1Button.setForeground(Color.cyan);
 	     route1Button.setFont(font);
 	     
+	     
 	     JButton menuButton = new JButton("Menu");
 	     menuButton.setPreferredSize(new Dimension(200,75));
 	     menuButton.setBackground(Color.DARK_GRAY);

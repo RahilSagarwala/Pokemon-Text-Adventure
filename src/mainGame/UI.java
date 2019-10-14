@@ -111,7 +111,7 @@ public class UI implements ComponentListener {
 		
 		
     	cl = new CardLayout();
-   	   window = new JFrame("Pokémon Text Audio Game");
+   	   window = new JFrame("Pokémon Text Adventure");
 	   
     	
    

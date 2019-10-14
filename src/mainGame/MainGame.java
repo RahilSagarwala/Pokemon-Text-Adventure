@@ -91,7 +91,7 @@ public class MainGame extends JPanel {
 		titlePanel = new JPanel();
 		titlePanel.setBackground(Color.black);
 		titleLabel = new JLabel();
-		titleLabel = new JLabel("Pokémon Text Audio Game");
+		titleLabel = new JLabel("Pokémon Text Adventure ");
 		titleLabel.setForeground(Color.LIGHT_GRAY);
 		titleLabel.setFont(titleFont);	
 		titlePanel.add(titleLabel);
@@ -153,7 +153,7 @@ public class MainGame extends JPanel {
 			 continueButton.setText("つづきからはじめる");
 			 tradeButton.setText("トレード");
 			 optionsButton.setText("せっていを かえる");
-			 titleLabel.setText("<html>ポケットモンスターテキスト<br>- オーディオ ゲーム<html>");
+			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
 	
 		 }
 		

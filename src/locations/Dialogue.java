@@ -218,7 +218,7 @@ public class Dialogue extends JPanel {
 			 
 		 case "professoroaklab": 
 			 if (language == "English") {
-				 text = "";
+				 text = "Oak: If a wild POKEMON appears, your POKEMON can fight against it!";
 				 }
 			 else {
 				 text = "";
@@ -229,17 +229,17 @@ public class Dialogue extends JPanel {
 			 switch(screenNumber) {
 			 case 0:
 			 if (language == "English") {
-				 text = "* - When trying to leave town via the grassy path to the north:\n" + 
+				 text = "*When trying to leave town via the grassy path to the north* \n" + 
 				 		"\n" + 
-				 		"Oak       : Hey! Wait! Don't go out!\n" + 
+				 		"Oak: Hey! Wait! Don't go out!\n" + 
 				 		"\n" + 
-				 		"* - Oak approaches Red.\n" + 
+				 		"* - Oak approaches " + player.getName() + ".\n" + 
 				 		"\n" + 
-				 		"Oak       : It's unsafe! Wild POKEMON live in tall grass! You need your own\n" + 
+				 		"Oak: It's unsafe! Wild POKEMON live in tall grass! You need your own\n" + 
 				 		"            POKEMON for your protection. I know! Here, come with me!\n" + 
 				 		"\n" + 
-				 		"* - He takes Red to his laboratory. They approach a table upon which three\n" + 
-				 		"    Poke Balls have been placed, and next to which Blue is present.";
+				 		"*He takes " + player.getName() + " to his laboratory. They approach a table upon which three\n" + 
+				 		"    Poke Balls have been placed, and next to which " + rival.getName() + " is present.*";
 				 }
 			 else {
 				 text = "";
@@ -248,18 +248,18 @@ public class Dialogue extends JPanel {
 			 
 			 case 1:
 				 if (language == "English") {
-					 text = "Blue      : Gramps! I'm fed up with waiting!\n" + 
+					 text = rival.getName() + ": Gramps! I'm fed up with waiting!\n" + 
 					 		"\n" + 
-					 		"Oak       : BLUE? Let me think... Oh, that's right, I told you to come!\n" + 
+					 		"Oak: " + rival.getName() + "? Let me think... Oh, that's right, I told you to come!\n" + 
 					 		"            Just wait!\n" + 
 					 		"\n" + 
-					 		"            Here, RED! There are 3 POKEMON here! Haha! They are inside the\n" + 
+					 		"            Here," + player.getName() + "! There are 3 POKEMON here! Haha! They are inside the\n" + 
 					 		"            POKE BALLS. When I was young, I was a serious POKEMON trainer.\n" + 
 					 		"            In my old age, I have only 3 left, but you can have one! Choose!\n" + 
 					 		"\n" + 
-					 		"Blue      : Hey! Gramps! What about me?\n" + 
+					 		rival.getName() + ": Hey! Gramps! What about me?\n" + 
 					 		"\n" + 
-					 		"Oak       : Be patient! BLUE, you can have one too!";
+					 		"Oak: Be patient! " +rival.getName() + ", you can have one too!";
 					 }
 				 else {
 					 text = "";
@@ -267,15 +267,10 @@ public class Dialogue extends JPanel {
 				 break;
 			 case 2:
 				 if (language == "English") {
-					 text = "* - Before selecting a Pokemon:\n" + 
+					 text = "Oak: Now, " + player.getName() + ", which POKEMON do you want?\n" + 
 					 		"\n" + 
-					 		"Oak       : Now, RED, which POKEMON do you want?\n" + 
-					 		"\n" + 
-					 		"Blue      : Heh, I don't need to be greedy like you! Go ahead and choose, RED!\n" + 
-					 		"\n" + 
-					 		"* - Upon attempting to leave:\n" + 
-					 		"\n" + 
-					 		"Oak       : Hey! Don't go away yet!";
+					 		rival.getName() + ": Heh, I don't need to be greedy like you! Go ahead and choose, " + 
+					 		player.getName() + "!";
 					 }
 				 else {
 					 text = "";

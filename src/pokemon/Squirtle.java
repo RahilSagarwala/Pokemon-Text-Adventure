@@ -5,13 +5,12 @@ import attacks.AttackSuper;
 
 public class Squirtle extends PokemonSuper {
 	
-	public Squirtle (ArrayList<AttackSuper> attackArrayList, int level, int experience, int hp,
-			int attack, int defense, int spattack, int spdefense) {
-	    super(attackArrayList, level, experience, hp, attack, defense, spattack, spdefense);
+	public Squirtle (String location) {
+		super(location);
 		englishName = "Squirtle";
 		japaneseName = "ゼニガメ";
 		type = "water";
-		hp = 20;
+		level = 5;
 //		attackArrayList.add()
 //		attackArrayList.add()
 	}

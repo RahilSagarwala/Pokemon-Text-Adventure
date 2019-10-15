@@ -185,7 +185,10 @@ public class MenuScreen extends JPanel {
 	    
 	    pokemonButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	
+            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
+            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+            	cards.add(partyPokemon, "partypokemon");
+                layout.show(cards, "partypokemon");
 
             	
             }

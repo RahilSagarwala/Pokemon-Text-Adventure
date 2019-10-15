@@ -54,8 +54,8 @@ public class UI implements ComponentListener {
     ItemSuper itemArray[];
     ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
     ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6); 
-	Player player = new Player("", itemArrayList, partyPokemonArrayList);
-	Rival rival = new Rival("", itemArrayList, partyPokemonArrayList);
+	Player player = new Player();
+	Rival rival = new Rival();
 	MapScreen mapScreen;
 
 
@@ -165,7 +165,9 @@ public class UI implements ComponentListener {
 //    	player.addItem(potion2);
 //    	player.addItem(potion3);
 //    	player.addItem(potion4);
-  
+    	
+    	Charmander charmander = new Charmander("");
+    	player.addPokemonToParty(charmander);
     	
         cards.setLayout(cl);
         cards.add(mg, "mainscreen");

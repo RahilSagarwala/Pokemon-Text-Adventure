@@ -17,12 +17,19 @@ public class Player extends TrainerSuper {
 	int i;
 	CardLayout cl;
 	JPanel cards;
+	int badgeNumber = 0;
 
 	
+	public Player() {
+		money = 0;	
+	}
 	
-	public Player(String name, ArrayList<ItemSuper> itemArrayList, ArrayList<PokemonSuper> partyPokemonArrayList) {
+	public int getBadeNumber() {
+		return badgeNumber;
+	}
 	
-		super(name, itemArrayList, partyPokemonArrayList);
+	public void incrementBadgeNumber() {
+		badgeNumber++;
 	}
 
 }

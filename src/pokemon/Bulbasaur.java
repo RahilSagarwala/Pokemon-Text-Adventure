@@ -6,13 +6,12 @@ import attacks.AttackSuper;
 public class Bulbasaur extends PokemonSuper {
 	//Bulbasaur is a grass type pokemon
 	
-	public Bulbasaur(ArrayList<AttackSuper> attackArrayList, int level, int experience, int hp,
-			int attack, int defense, int spattack, int spdefense) {
-	    super(attackArrayList, level, experience, hp, attack, defense, spattack, spdefense);
+	public Bulbasaur(String location) {
+		super(location);
 		englishName = "Bulbasaur";
 		japaneseName = "フシギダネ";
 		type = "grass";
-		hp = 20;
+		level = 5;
 //		attackArrayList.add()
 //		attackArrayList.add()
 	}

@@ -8,10 +8,8 @@ import java.util.*;
 
 public class Rival extends TrainerSuper {
 	
-	public Rival(String name, ArrayList<ItemSuper> itemArrayList, ArrayList<PokemonSuper> partyPokemonArrayList) {
-
-		super(name, itemArrayList, partyPokemonArrayList);
-		
+	public Rival() {
+		money = 1000;
 	}
 	
 

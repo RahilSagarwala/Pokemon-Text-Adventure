@@ -5,13 +5,12 @@ import attacks.AttackSuper;
 
 public class Charmander extends PokemonSuper {
 	
-	public Charmander(ArrayList<AttackSuper> attackArrayList, int level, int experience, int hp,
-			int attack, int defense, int spattack, int spdefense) {
-	    super(attackArrayList, level, experience, hp, attack, defense, spattack, spdefense);
+	public Charmander(String location) {
+		super(location);
 		englishName = "Charmander";
 		japaneseName = "ヒトカゲ";
 		type = "fire";
-		hp = 20;
+		level = 5;
 //		attackArrayList.add()
 //		attackArrayList.add()
 	}

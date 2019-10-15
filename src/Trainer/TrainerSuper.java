@@ -8,15 +8,19 @@ import java.util.*;
 public class TrainerSuper {
 	String name = "";
 	String language;
+	int money;
 	ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
 	ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6);
+	
 
-	public TrainerSuper(String name, ArrayList<ItemSuper> itemArray, ArrayList<PokemonSuper> partyPokemonArrayList ) {
-		this.name = name;
-		this.itemArrayList = itemArray;
-		this.partyPokemonArrayList = partyPokemonArrayList;
+	public TrainerSuper() {
 		
 	}
+	
+	public int getMoney() {
+		return money;
+	}
+	
 	
 	public String getName () {	
 		
@@ -38,6 +42,9 @@ public class TrainerSuper {
 		return itemArrayList.get(0).getItemName(language);
 
 	}
+	
+
+	
 	
 	public ArrayList<ItemSuper> getItems() {
 

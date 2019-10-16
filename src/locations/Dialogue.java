@@ -207,6 +207,7 @@ public class Dialogue extends JPanel {
 			 break;
 			 
 		 case "rivallab": 
+			 if (professorOakVisited == false) {
 			 if (language == "English") {
 				 text = "Yo " + player.getName() + "! Gramps isn't around!";
 				 }
@@ -214,6 +215,18 @@ public class Dialogue extends JPanel {
 				 text = rival.getName()+": なんだー " + player.getName() + "か！" + "\n" + 
 			 "オーキドの　じいさんなら　いねーよ";
 				 }
+			 }
+			 
+			 else {
+				 if (language == "English") {
+					 text = rival.getName() + ": Heh, I don't need to be greedy like you!" + "\n" + 
+				 "Go ahead and choose, " + player.getName() + "!";
+					 }
+				 else {
+					 text = rival.getName() + ": へへーんだ！　おれは　おとな　だから　がっ つかないのさ" + "\n" + player.getName() +
+							 "から　さきに　えらばせて　やるぜ！";
+					 }
+			 }
 			 break;
 			 
 		 case "professoroaklab": 
@@ -221,7 +234,7 @@ public class Dialogue extends JPanel {
 				 text = "Oak: If a wild POKEMON appears, your POKEMON can fight against it!";
 				 }
 			 else {
-				 text = "";
+				 text = "オーキド：　さあ　" + player.getName() + "どの　ポケモンに　する？";
 				 }
 			 break;
 			 
@@ -242,7 +255,8 @@ public class Dialogue extends JPanel {
 				 		"    Poke Balls have been placed, and next to which " + rival.getName() + " is present.*";
 				 }
 			 else {
-				 text = "";
+				 text = "オーキド： おーい！　まてー！　まつんじゃあ" + "\n" + "あぶない　とこだった　くさむらでは やせいの　ポケモンが　とびだす！"+ "\n" +
+			 "こちらも　ポケモンを　もって　いれば　たたかえるのだが。。。。。。" + "\n" + "そうじゃ！。。。。。。。　ちょうっと　わしに　ついて　さなさい！";
 				 }
 			 break;
 			 
@@ -259,10 +273,13 @@ public class Dialogue extends JPanel {
 					 		"\n" + 
 					 		rival.getName() + ": Hey! Gramps! What about me?\n" + 
 					 		"\n" + 
-					 		"Oak: Be patient! " +rival.getName() + ", you can have one too!";
+					 		"Oak: Be patient! " + rival.getName() + ", you can have one too!";
 					 }
 				 else {
-					 text = "";
+					 text = rival.getName() + ": じいさん！　まちくたびれたぞー！" + "\n" + "オーキド：　" + rival.getName() + 
+							 "か？　。。。。。。　。。。。。。　。。。。。。" + "\n" + "ああ　そうか　わしが　よんだのじゃった！ちょうと　まって　おれ！" + "\n" +
+							 "ほれ　" + player.getName() + "! そこに　３びき　ポケモンが　いる　じゃろう！　ほつほ！";
+							
 					 }
 				 break;
 			 case 2:
@@ -273,7 +290,12 @@ public class Dialogue extends JPanel {
 					 		player.getName() + "!";
 					 }
 				 else {
-					 text = "";
+					 text =  "モンスターボールの　なかに　ポケモンが" + "\n" +"いれて　あるんじゃ　すかしは" + "\n" + 
+							 "わしも　バリバリの　ポケモン" + "\n" +"トレーモーとして　ならした　もの" + "\n" + 
+							 "おいばれた　いまは　ポケモンも　３びき" + "\n" +"しか　のこっとらんが"
+						 		+ "おまえに　１ぴき" + "\n" +"やろう！。。。。。。　さあ　えらべ！" + "\n" + rival.getName() + ": あツ！　ずろい！　じいさん！"
+						 				+ "おれにも"+ "\n" + "くれよお！ オーキド：　まー！　あわてるな　"+ rival.getName() + "\n" + "!" + 
+						 				"おまえも　すきなものを　とれ！";
 					 }
 				 break;
 			 

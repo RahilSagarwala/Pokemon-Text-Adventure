@@ -70,9 +70,9 @@ public class UI implements ComponentListener {
     public void componentResized(ComponentEvent e) {
     		
     	
-            int width = window.getWidth();
-            font = new Font("SANS_SERIF", Font.BOLD, width/ 30);
-            titleSize = (float) (width/20);
+//            int width = window.getWidth();
+//            font = new Font("SANS_SERIF", Font.BOLD, width/ 30);
+//            titleSize = (float) (width/20);
             
        
 //            options = new Options(cl, cards, position, startScreenTextArea, "1", 
@@ -165,9 +165,9 @@ public class UI implements ComponentListener {
 //    	player.addItem(potion2);
 //    	player.addItem(potion3);
 //    	player.addItem(potion4);
-    	
-    	Charmander charmander = new Charmander("");
-    	player.addPokemonToParty(charmander);
+
+//    	Charmander charmander = new Charmander("");
+//    	player.addPokemonToParty(charmander);
     	
         cards.setLayout(cl);
         cards.add(mg, "mainscreen");

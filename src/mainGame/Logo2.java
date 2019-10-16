@@ -55,7 +55,7 @@ public class Logo2 extends JPanel {
 		 }
 		 
 		 
-		 logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("logo1full.png"));
+		 logoIcon = new ImageIcon(this.getClass().getClassLoader().getResource("logo1full.jpg"));
 		 logoLabel = new JLabel(logoIcon);
 		 
 		 setLayout(new GridBagLayout());

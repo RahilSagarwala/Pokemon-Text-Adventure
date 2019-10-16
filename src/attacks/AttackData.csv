@@ -1,0 +1,166 @@
+#   ,EngName        ,JapName    ,Type     ,Category ,Contest   ,PP ,Power ,Accuracy 
+1   ,Pound          ,ポンド        ,Normal   ,Physical ,Tough     ,35 ,40    ,100 
+2   ,Karate Chop    ,空手チョップ     ,Fighting ,Physical ,Tough     ,25 ,50    ,100 
+3   ,Double Slap    ,ダブルスラップ    ,Normal   ,Physical ,Cute      ,10 ,15    ,85 
+4   ,Comet Punch    ,彗星パンチ      ,Normal   ,Physical ,Tough     ,15 ,18    ,85 
+5   ,Mega Punch     ,メガパンチ      ,Normal   ,Physical ,Tough     ,20 ,80    ,85 
+6   ,Pay Day        ,給料日        ,Normal   ,Physical ,Clever    ,20 ,40    ,100 
+7   ,Fire Punch     ,ファイアパンチ    ,Fire     ,Physical ,Tough     ,15 ,75    ,100 
+8   ,Ice Punch      ,アイスパンチ     ,Ice      ,Physical ,Beautiful ,15 ,75    ,100 
+9   ,Thunder Punch  ,サンダーパンチ    ,Electric ,Physical ,Cool      ,15 ,75    ,100 
+10  ,Scratch        ,スクラッチ      ,Normal   ,Physical ,Tough     ,35 ,40    ,100 
+11  ,Vice Grip      ,副グリップ      ,Normal   ,Physical ,Tough     ,30 ,55    ,100 
+12  ,Guillotine     ,ギロチン       ,Normal   ,Physical ,Cool      ,5  ,      , 
+13  ,Razor Wind     ,かみそりの風     ,Normal   ,Special  ,Cool      ,10 ,80    ,100
+14  ,Swords Dance   ,ソードダンス     ,Normal   ,Status   ,Beautiful ,20 ,      ,
+15  ,Cut            ,切る         ,Normal   ,Physical ,Cool      ,30 ,50    ,95 
+16  ,Gust           ,突風         ,Flying   ,Special  ,Clever    ,35 ,40    ,100 
+17  ,Wing Attack    ,翼の攻撃       ,Flying   ,Physical ,Cool      ,35 ,60    ,100 
+18  ,Whirlwind      ,旋風         ,Normal   ,Status   ,Clever    ,20 ,      ,
+19  ,Fly            ,飛ぶ         ,Flying   ,Physical ,Clever    ,15 ,90    ,95 
+20  ,Bind           ,練る         ,Normal   ,Physical ,Tough     ,20 ,15    ,85 
+21  ,Slam           ,スラム        ,Normal   ,Physical ,Tough     ,20 ,80    ,75 
+22  ,Vine Whip      ,つるむち       ,Grass    ,Physical ,Cool      ,25 ,45    ,100 
+23  ,Stomp          ,ストンプ       ,Normal   ,Physical ,Tough     ,20 ,65    ,100 
+24  ,Double Kick    ,ダブルキック     ,Fighting ,Physical ,Cool      ,30 ,30    ,100 
+25  ,Mega Kick      ,メガキック      ,Normal   ,Physical ,Cool      ,5  ,120   ,75 
+26  ,Jump Kick      ,ジャンプキック    ,Fighting ,Physical ,Cool      ,10 ,100   ,95 
+27  ,Rolling Kick   ,ローリングキック   ,Fighting ,Physical ,Cool      ,15 ,60    ,85 
+28  ,Sand Attack    ,サンドアタック    ,Ground   ,Status   ,Cute      ,15 ,      ,100 
+29  ,Headbutt       ,頭突き        ,Normal   ,Physical ,Tough     ,15 ,70    ,100 
+30  ,Horn Attack    ,ホーンアタック    ,Normal   ,Physical ,Cool      ,25 ,65    ,100 
+31  ,Fury Attack    ,フューリーアタック  ,Normal   ,Physical ,Cool      ,20 ,15    ,85 
+32  ,Horn Drill     ,ホーンドリル     ,Normal   ,Physical ,Cool      ,5  ,      , 
+33  ,Tackle         ,タックル       ,Normal   ,Physical ,Tough     ,35 ,40    ,100
+34  ,Body Slam      ,ボディスラム     ,Normal   ,Physical ,Tough     ,15 ,85    ,100 
+35  ,Wrap           ,ラップ        ,Normal   ,Physical ,Tough     ,20 ,15    ,90
+36  ,Take Down      ,降ろす        ,Normal   ,Physical ,Tough     ,20 ,90    ,85 
+37  ,Thrash         ,スラッシュ      ,Normal   ,Physical ,Tough     ,10 ,120   ,100 
+38  ,Double-Edge    ,ダブルエッジ     ,Normal   ,Physical ,Tough     ,15 ,120   ,100 
+39  ,Tail Whip      ,テールホイップ    ,Normal   ,Status   ,Cute      ,30 ,      ,100 
+40  ,Poison Sting   ,毒刺         ,Poison   ,Physical ,Clever    ,35 ,15    ,100 
+41  ,Twineedle      ,トゥイニードル    ,Bug      ,Physical ,Cool      ,20 ,25    ,100 
+42  ,Pin Missile    ,ピンミサイル     ,Bug      ,Physical ,Cool      ,20 ,25    ,95
+43  ,Leer           ,レアー        ,Normal   ,Status   ,Cool      ,30 ,      ,100 
+44  ,Bite           ,一口         ,Dark     ,Physical ,Tough     ,25 ,60    ,100 
+45  ,Growl          ,うなり声       ,Normal   ,Status   ,Cute      ,40 ,      ,100 
+46  ,Roar           ,Ro音        ,Normal   ,Status   ,Cool      ,20 ,      ,
+47  ,Sing           ,歌う         ,Normal   ,Status   ,Cute      ,15 ,      ,55 
+48  ,Supersonic     ,超音速        ,Normal   ,Status   ,Clever    ,20 ,      ,55 
+49  ,Sonic Boom     ,ソニックブーム    ,Normal   ,Special  ,Cool      ,20 ,      ,90 
+50  ,Disable        ,無効にする      ,Normal   ,Status   ,Clever    ,20 ,      ,100
+51  ,Acid           ,酸          ,Poison   ,Special  ,Clever    ,30 ,40    ,100 
+52  ,Ember          ,エンバー       ,Fire     ,Special  ,Cute      ,25 ,40    ,100 
+53  ,Flamethrower   ,火炎放射器      ,Fire     ,Special  ,Beautiful ,15 ,90    ,100 
+54  ,Mist           ,靄          ,Ice      ,Status   ,Beautiful ,30 ,      ,
+55  ,Water Gun      ,水鉄砲        ,Water    ,Special  ,Cute      ,25 ,40    ,100 
+56  ,Hydro Pump     ,ハイドロポンプ    ,Water    ,Special  ,Beautiful ,5  ,110   ,80 
+57  ,Surf           ,サーフィン      ,Water    ,Special  ,Beautiful ,15 ,90    ,100 
+58  ,Ice Beam       ,アイスビーム     ,Ice      ,Special  ,Beautiful ,10 ,90    ,100 
+59  ,Blizzard       ,猛吹雪        ,Ice      ,Special  ,Beautiful ,5  ,110   ,70
+60  ,Psybeam        ,サイビーム      ,Psychic  ,Special  ,Beautiful ,20 ,65    ,100 
+61  ,Bubble Beam    ,バブルビーム     ,Water    ,Special  ,Beautiful ,20 ,65    ,100 
+62  ,Aurora Beam    ,オーロラビーム    ,Ice      ,Special  ,Beautiful ,20 ,65    ,100 
+63  ,Hyper Beam     ,ハイパービーム    ,Normal   ,Special  ,Cool      ,5  ,150   ,90 
+64  ,Peck           ,ペック        ,Flying   ,Physical ,Cool      ,35 ,35    ,100 
+65  ,Drill Peck     ,ドリルペック     ,Flying   ,Physical ,Cool      ,20 ,80    ,100 
+66  ,Submission     ,提出         ,Fighting ,Physical ,Cool      ,20 ,80    ,80 
+67  ,Low Kick       ,ローキック      ,Fighting ,Physical ,Tough     ,20 ,      ,100
+68  ,Counter        ,カウンタ       ,Fighting ,Physical ,Tough     ,20 ,      ,100 
+69  ,Seismic Toss   ,地震トス       ,Fighting ,Physical ,Tough     ,20 ,      ,100 
+70  ,Strength       ,力          ,Normal   ,Physical ,Tough     ,15 ,80    ,100 
+71  ,Absorb         ,吸収する       ,Grass    ,Special  ,Clever    ,15 ,40    ,100 
+72  ,Mega Drain     ,メガドレイン     ,Grass    ,Special  ,Clever    ,10 ,75    ,100 
+73  ,Leech Seed     ,リーチシード     ,Grass    ,Status   ,Clever    ,10 ,      ,90 
+74  ,Growth         ,成長         ,Normal   ,Status   ,Beautiful ,20 ,      ,
+75  ,Razor Leaf     ,かみそりの葉     ,Grass    ,Physical ,Cool      ,25 ,55    ,95 
+76  ,Solar Beam     ,太陽光線       ,Grass    ,Special  ,Cool      ,10 ,200   ,100 
+77  ,Poison Powder  ,毒粉         ,Poison   ,Status   ,Clever    ,35 ,      ,75 
+78  ,Stun Spore     ,スタン胞子      ,Grass    ,Status   ,Clever    ,30 ,      ,75 
+79  ,Sleep Powder   ,スリープパウダー   ,Grass    ,Status   ,Clever    ,15 ,      ,75 
+80  ,Petal Dance    ,花びらダンス     ,Grass    ,Special  ,Beautiful ,10 ,120   ,100 
+81  ,String Shot    ,ストリングショット  ,Bug      ,Status   ,Clever    ,40 ,      ,95 
+82  ,Dragon Rage    ,ドラゴンレイジ    ,Dragon   ,Special  ,Cool      ,10 ,      ,100 
+83  ,Fire Spin      ,火災スピン      ,Fire     ,Special  ,Beautiful ,15 ,35    ,85
+84  ,Thunder Shock  ,サンダーショック   ,Electric ,Special  ,Cool      ,30 ,40    ,100 
+85  ,Thunderbolt    ,落雷         ,Electric ,Special  ,Cool      ,15 ,90    ,100 
+86  ,Thunder Wave   ,サンダーウェーブ   ,Electric ,Status   ,Cool      ,20 ,      ,90
+87  ,Thunder        ,サンダー       ,Electric ,Special  ,Cool      ,10 ,110   ,70 
+88  ,Rock Throw     ,ロックスロー     ,Rock     ,Physical ,Tough     ,15 ,50    ,90
+89  ,Earthquake     ,地震         ,Ground   ,Physical ,Tough     ,10 ,100   ,100 
+90  ,Fissure        ,亀裂         ,Ground   ,Physical ,Tough     ,5  ,      , 
+91  ,Dig            ,掘る         ,Ground   ,Physical ,Tough     ,10 ,80    ,100 
+92  ,Toxic          ,毒性         ,Poison   ,Status   ,Clever    ,10 ,      ,90
+93  ,Confusion      ,混乱         ,Psychic  ,Special  ,Clever    ,25 ,50    ,100 
+94  ,Psychic        ,超能力のある     ,Psychic  ,Special  ,Clever    ,10 ,90    ,100 
+95  ,Hypnosis       ,催眠         ,Psychic  ,Status   ,Clever    ,20 ,      ,60
+96  ,Meditate       ,瞑想する       ,Psychic  ,Status   ,Beautiful ,40 ,      ,
+97  ,Agility        ,機敏         ,Psychic  ,Status   ,Cool      ,30 ,      ,
+98  ,Quick Attack   ,素早い攻撃      ,Normal   ,Physical ,Cool      ,30 ,40    ,100
+99  ,Rage           ,激怒         ,Normal   ,Physical ,Tough     ,20 ,20    ,100 
+100 ,Teleport       ,テレポート      ,Psychic  ,Status   ,Cool      ,20 ,      ,
+101 ,Night Shade    ,ナイトシェード    ,Ghost    ,Special  ,Clever    ,15 ,      ,100 
+102 ,Mimic          ,模倣する       ,Normal   ,Status   ,Cute      ,10 ,      ,
+103 ,Screech        ,スクリーチ      ,Normal   ,Status   ,Clever    ,40 ,      ,85 
+104 ,Double Team    ,ダブルチーム     ,Normal   ,Status   ,Cool      ,15 ,      ,
+105 ,Recover        ,回復する       ,Normal   ,Status   ,Clever    ,10 ,      ,
+106 ,Harden         ,硬化         ,Normal   ,Status   ,Tough     ,30 ,      ,
+107 ,Minimize       ,最小化        ,Normal   ,Status   ,Cute      ,10 ,      ,
+108 ,Smokescreen    ,煙幕         ,Normal   ,Status   ,Clever    ,20 ,      ,100 
+109 ,Confuse Ray    ,混乱レイ       ,Ghost    ,Status   ,Clever    ,10 ,      ,100 
+110 ,Withdraw       ,撤回         ,Water    ,Status   ,Cute      ,40 ,      ,
+111 ,Defense Curl   ,ディフェンスカール  ,Normal   ,Status   ,Cute      ,40 ,      ,
+112 ,Barrier        ,バリア        ,Psychic  ,Status   ,Cool      ,20 ,      ,
+113 ,Light Screen   ,ライトスクリーン   ,Psychic  ,Status   ,Beautiful ,30 ,      ,
+114 ,Haze           ,もや         ,Ice      ,Status   ,Beautiful ,30 ,      ,
+115 ,Reflect        ,反映する       ,Psychic  ,Status   ,Clever    ,20 ,      ,
+116 ,Focus Energy   ,フォーカスエネルギー ,Normal   ,Status   ,Cool      ,30 ,      ,
+117 ,Bide           ,ビデ         ,Normal   ,Physical ,Tough     ,10 ,      ,
+118 ,Metronome      ,メトロノーム     ,Normal   ,Status   ,Cute      ,10 ,      ,
+119 ,Mirror Move    ,鏡動き        ,Flying   ,Status   ,Clever    ,20 ,      ,
+120 ,Self-Destruct  ,自己破壊       ,Normal   ,Physical ,Beautiful ,5  ,200   ,100 
+121 ,Egg Bomb       ,卵爆弾        ,Normal   ,Physical ,Cute      ,10 ,100   ,75 
+122 ,Lick           ,なめる        ,Ghost    ,Physical ,Cute      ,30 ,30    ,100 
+123 ,Smog           ,スモッグ       ,Poison   ,Special  ,Tough     ,20 ,30    ,70 
+124 ,Sludge         ,汚泥         ,Poison   ,Special  ,Tough     ,20 ,65    ,100 
+125 ,Bone Club      ,骨クラブ       ,Ground   ,Physical ,Tough     ,20 ,65    ,85 
+126 ,Fire Blast     ,ファイアブラスト   ,Fire     ,Special  ,Beautiful ,5  ,110   ,85 
+127 ,Waterfall      ,滝          ,Water    ,Physical ,Tough     ,15 ,80    ,100 
+128 ,Clamp          ,クランプ       ,Water    ,Physical ,Tough     ,15 ,35    ,85
+129 ,Swift          ,迅速         ,Normal   ,Special  ,Cool      ,20 ,60    ,
+130 ,Skull Bash     ,スカルバッシュ    ,Normal   ,Physical ,Tough     ,10 ,130   ,100 
+131 ,Spike Cannon   ,スパイクキャノン   ,Normal   ,Physical ,Cool      ,15 ,20    ,100 
+132 ,Constrict      ,くびれ        ,Normal   ,Physical ,Tough     ,35 ,10    ,100 
+133 ,Amnesia        ,健忘症        ,Psychic  ,Status   ,Cute      ,20 ,      ,
+134 ,Kinesis        ,キネシス       ,Psychic  ,Status   ,Clever    ,15 ,      ,80 
+135 ,Soft-Boiled    ,半熟         ,Normal   ,Status   ,Cute      ,10 ,      ,
+136 ,High Jump Kick ,ハイジャンプキック  ,Fighting ,Physical ,Cool      ,10 ,130   ,90 
+137 ,Glare          ,グレア        ,Normal   ,Status   ,Tough     ,30 ,      ,100
+138 ,Dream Eater    ,ドリームイーター   ,Psychic  ,Special  ,Clever    ,15 ,100   ,100 
+139 ,Poison Gas     ,毒ガス        ,Poison   ,Status   ,Clever    ,40 ,      ,90
+140 ,Barrage        ,弾幕         ,Normal   ,Physical ,Cute      ,20 ,15    ,85 
+141 ,Leech Life     ,リーチライフ     ,Bug      ,Physical ,Clever    ,10 ,80    ,100 
+142 ,Lovely Kiss    ,ラブリーキス     ,Normal   ,Status   ,Beautiful ,10 ,      ,75 
+143 ,Sky Attack     ,スカイアタック    ,Flying   ,Physical ,Cool      ,5  ,200   ,90 
+144 ,Transform      ,変換する       ,Normal   ,Status   ,Clever    ,10 ,      ,
+145 ,Bubble         ,バブル        ,Water    ,Special  ,Cute      ,30 ,40    ,100 
+146 ,Dizzy Punch    ,めまいパンチ     ,Normal   ,Physical ,Cute      ,10 ,70    ,100 
+147 ,Spore          ,胞子         ,Grass    ,Status   ,Beautiful ,15 ,      ,100 
+148 ,Flash          ,閃光         ,Normal   ,Status   ,Beautiful ,20 ,      ,100
+149 ,Psywave        ,サイウェーブ     ,Psychic  ,Special  ,Clever    ,15 ,      ,100
+150 ,Splash         ,スプラッシュ     ,Normal   ,Status   ,Cute      ,40 ,      ,
+151 ,Acid Armor     ,アシッドアーマー   ,Poison   ,Status   ,Tough     ,20 ,      ,
+152 ,Crabhammer     ,クラブハンマー    ,Water    ,Physical ,Tough     ,10 ,100   ,90
+153 ,Explosion      ,爆発         ,Normal   ,Physical ,Beautiful ,5  ,250   ,100 
+154 ,Fury Swipes    ,激怒スワイプ     ,Normal   ,Physical ,Tough     ,15 ,18    ,80 
+155 ,Bonemerang     ,ボンメラン      ,Ground   ,Physical ,Tough     ,10 ,50    ,90 
+156 ,Rest           ,残り         ,Psychic  ,Status   ,Cute      ,10 ,      ,
+157 ,Rock Slide     ,ロックスライド    ,Rock     ,Physical ,Tough     ,10 ,75    ,90 
+158 ,Hyper Fang     ,ハイパーファング   ,Normal   ,Physical ,Cool      ,15 ,80    ,90 
+159 ,Sharpen        ,シャープ       ,Normal   ,Status   ,Cute      ,30 ,      ,
+160 ,Conversion     ,変換         ,Normal   ,Status   ,Beautiful ,30 ,      ,
+161 ,Tri Attack     ,トライアタック    ,Normal   ,Special  ,Beautiful ,10 ,80    ,100 
+162 ,Super Fang     ,スーパーファング   ,Normal   ,Physical ,Tough     ,10 ,      ,90 
+163 ,Slash          ,スラッシュ      ,Normal   ,Physical ,Cool      ,20 ,70    ,100 
+164 ,Substitute     ,代替         ,Normal   ,Status   ,Cute      ,10 ,      ,
+165 ,Struggle       ,闘争         ,Normal   ,Physical ,Tough     ,1  ,50    ,

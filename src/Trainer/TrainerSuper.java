@@ -9,8 +9,11 @@ public class TrainerSuper {
 	String name = "";
 	String language;
 	int money;
+	int level;
+	//ArrayList<PokemonToBox> pokemon = new ArrayList<PokemonToBox>(30);
 	ArrayList<ItemSuper> itemArrayList = new ArrayList<ItemSuper>(100);
 	ArrayList<PokemonSuper> partyPokemonArrayList = new ArrayList<PokemonSuper>(6);
+	
 	
 
 	public TrainerSuper() {
@@ -70,11 +73,17 @@ public class TrainerSuper {
 	}
 	
 	
-	
-	//Need to add Pokemon to 1 of 12 boxes that hold 30 Pokemon each
-	public void addPokemonToBox(PokemonSuper pokemon) {
-		
+	public void setLevel(int level) { 
+		this.level = level; 
 	}
 	
+	//Need to add Pokemon to 1 of 12 boxes that hold 30 Pokemon each
+	//public void addPokemonToBox(PokemonToBox p) { 
+	//	pokemon.add(p); 
+	//}
+	
+	//Need to remove Pokemon
+	//public void removePokemonToBox(PokemonToBox p) {
+	//	pokemon.remove(p);}
 	
 }

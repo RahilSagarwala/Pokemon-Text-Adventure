@@ -63,8 +63,7 @@ public class PokemonSuper {
 		if (theLanguage == "English") {
 			return englishName;
 		}
-		
-		else {
+		else if (theLanguage == "Japanese") {
 			return japaneseName;
 		}
 		else {

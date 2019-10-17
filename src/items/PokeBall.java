@@ -16,7 +16,7 @@ public class PokeBall extends ItemSuper{
 			player.addPokemonToParty(pokemon);
 		}
 		else {
-			player.addPokemonToBox(pokemon);
+//			player.addPokemonToBox(pokemon);
 		}
 	}
 

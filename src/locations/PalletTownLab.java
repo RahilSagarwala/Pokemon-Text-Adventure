@@ -336,12 +336,17 @@ public class PalletTownLab extends JPanel {
 	     
 	     choosePokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	if (choosePokemonButton.getText() == "") {
+	            	if (choosePokemonButton.getText() == "" || player.getPartyPokemonArrayList().size() == 1) {
 	            		
 	            	}
 	            	
+	            	
 	            	else {
-	            		
+	            		ChooseStarter chooseStarter = new ChooseStarter(layout, cards, 
+		            			textAreaFont, screen, language, textSpeed, 
+		            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable);
+		            	cards.add(chooseStarter, "choosestarter");
+		            	  layout.show(cards, "choosestarter");
 	            	}
 	            	
 	            }
@@ -353,6 +358,8 @@ public class PalletTownLab extends JPanel {
 	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() == 1) {
 	            		//To Dialogue and then Rival Battle. At end of battle, set labOutsideButtonEnable parameter
 	            		//for PalletTownLab to true
+	            		
+	            	
 	            	}
 	            	
 	            	else if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() != 1) {

@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/Trainer/TrainerSuper.java=UTF-8
 encoding//src/items/Map.java=UTF-8
+encoding//src/locations/ChooseStarter.java=UTF-8
+encoding//src/locations/ChooseStarterConfirmation.java=UTF-8
 encoding//src/locations/Dialogue.java=UTF-8
 encoding//src/locations/Inventory.java=UTF-8
 encoding//src/locations/MapScreen.java=UTF-8

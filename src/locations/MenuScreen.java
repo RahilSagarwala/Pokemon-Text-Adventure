@@ -171,11 +171,10 @@ public class MenuScreen extends JPanel {
             	
   
     	     JTextArea blankTextArea = new JTextArea();
-    	     
-    	
             	
             	options = new Options(cl,cards, "menu", blankTextArea, location, false, player, false, language, textSpeed, "",
-            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, labOutsideButtonEnable);
+            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
+            			labOutsideButtonEnable);
             	cards.add(options, "options");
                 layout.show(cards, "options");  
             	

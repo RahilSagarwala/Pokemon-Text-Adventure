@@ -55,7 +55,7 @@ public class TrainerSuper {
 
 	}
 
-	public String getPartyPokemonNames(String language) {
+	public String getPartyPokemonName1(String language) {
 	
 		
 		return partyPokemonArrayList.get(0).getPokemonName(language);

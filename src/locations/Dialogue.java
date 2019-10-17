@@ -302,6 +302,25 @@ public class Dialogue extends JPanel {
 			 
 			 }
 			 break;
+			 
+		 case "starterchosen": 
+			 if (language == "English") {
+				 text = "Oak: This POKEMON is really energetic!" + 
+				 		"\n" + "*" + player.getName() + 
+				 		" takes the Pokemon.*" + 
+				 		"\n" + 
+				 		rival.getName() + ": I'll take this one, then!" + 
+				 		"\n" + 
+				 		"*" + rival.getName() + " chooses whichever Pokemon has"
+				 				+ "\n" + " a type advantage over Red's selection.*";
+			 }
+			 
+			 else {
+				 text = "この　ポケモンは　ほんとに　げんきが　いいぞ！"+"\n"+player.getName()+"*は　オーキドから " +player.getPartyPokemonName1(language)+ 
+						 "を　もらった!*"+"\n" + rival.getName() + "：おれは　これ！" + rival.getName() + "は　オーキドから　"+"\n"+rival.getPartyPokemonName1(language) 
+						 +"を　もらった！";
+			 }
+			 break;
 		 }
 		 
 		 tm = new TimerClass(text, stopTimer, textSpeed , textArea);
@@ -405,6 +424,15 @@ public class Dialogue extends JPanel {
 			         	cards.add(dialogue, "dialogue");
 			             cl.show(cards, "dialogue"); 
 	            		}
+	            		break;
+	            	case "pallettownlab":
+	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab",
+		                		professorOakVisited, false);
+		            	cards.add(palletTownLab, "pallettownlab");
+		            	
+		                layout.show(cards, "pallettownlab");
+	            		break;
 	            	    
 	            		
 	            	}

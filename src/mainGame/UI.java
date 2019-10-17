@@ -13,6 +13,7 @@ import locations.PalletTownHouse3;
 import locations.PalletTownLab;
 import locations.Route1;
 import locations.Battle;
+import locations.ChooseStarter;
 import locations.Dialogue;
 import locations.Outside;
 import locations.MenuScreen;
@@ -119,7 +120,8 @@ public class UI implements ComponentListener {
     	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
-    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, labOutsideButtonEnable);
+    			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, 
+    			professorOakVisited, labOutsideButtonEnable);
     	trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
     	Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
@@ -135,6 +137,8 @@ public class UI implements ComponentListener {
         		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable);
     	outside = new Outside(cl, cards, font, 
         		"9", language, textSpeed, player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable);
+    	ChooseStarter chooseStarter = new ChooseStarter(cl, cards, font, 
+        		"9", language, textSpeed, player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable);
     	palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, font, 
         		"10", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable);
     	palletTownHouse3 = new PalletTownHouse3(cl, cards, font, 
@@ -187,6 +191,7 @@ public class UI implements ComponentListener {
         cards.add(mapScreen, "mapscreen");
         cards.add(logo, "logo");
         cards.add(logo2, "logo2");
+        cards.add(chooseStarter, "choosestarter");
       
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //		cards.setSize(screenSize.width, screenSize.height);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import attacks.AttackSuper;
 
 public class Squirtle extends PokemonSuper {
+	//Squirtle is a Water-type Pokémon
 	
 	public Squirtle (String location) {
 		super(location);

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import attacks.AttackSuper;
 
 public class Bulbasaur extends PokemonSuper {
-	//Bulbasaur is a grass type pokemon
+	//Bulbasaur is a dual-type Grass/Poison Pokémon
 	
 	public Bulbasaur(String location) {
 		super(location);
 		englishName = "Bulbasaur";
 		japaneseName = "フシギダネ";
+		russianName = "Бульбазавр";
 		type = "grass";
 		level = 5;
 //		attackArrayList.add()

@@ -9,6 +9,7 @@ import attacks.*;
 public class PokemonSuper {
 	String englishName;
 	String japaneseName;
+	String russianName;
 	String language;
 	String type;
 	int level, experience, hp, attack, defense, spAttack, spDefense;
@@ -66,12 +67,16 @@ public class PokemonSuper {
 		else {
 			return japaneseName;
 		}
+		else {
+			return russianName;
+		}
 		
 	}
 	
 	public void setPokemonName(String name) {
 		englishName = name;
 		japaneseName = name;
+		russianName = name;
 	}
 	
 	public int getHp() {

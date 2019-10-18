@@ -336,17 +336,17 @@ public class PalletTownLab extends JPanel {
 	     
 	     choosePokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	if (choosePokemonButton.getText() == "" || player.getPartyPokemonArrayList().size() == 1) {
-	            		
-	            	}
-	            	
-	            	
-	            	else {
+	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() < 1) {
 	            		ChooseStarter chooseStarter = new ChooseStarter(layout, cards, 
 		            			textAreaFont, screen, language, textSpeed, 
 		            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable);
 		            	cards.add(chooseStarter, "choosestarter");
 		            	  layout.show(cards, "choosestarter");
+	            	}
+	            	
+	            	
+	            	else {
+	            		return;
 	            	}
 	            	
 	            }
@@ -362,7 +362,7 @@ public class PalletTownLab extends JPanel {
 	            	
 	            	}
 	            	
-	            	else if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() != 1) {
+	            	else if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() < 1) {
 	            		return;
 	            	}
 	            	

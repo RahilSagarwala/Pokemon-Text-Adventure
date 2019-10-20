@@ -213,7 +213,10 @@ public class MenuScreen extends JPanel {
 	    
 	    playerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	
+            	TrainerInfo trainerInfo = new TrainerInfo(cl, cards, textAreaFont, "", language, textSpeed,
+            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+            	cards.add(trainerInfo, "trainerinfo");
+                layout.show(cards, "trainerinfo");
             	
             }
         });

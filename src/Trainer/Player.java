@@ -18,6 +18,7 @@ public class Player extends TrainerSuper {
 	CardLayout cl;
 	JPanel cards;
 	int badgeNumber = 0;
+	int id;
 
 	
 	public Player() {
@@ -30,6 +31,15 @@ public class Player extends TrainerSuper {
 	
 	public void incrementBadgeNumber() {
 		badgeNumber++;
+	}
+	
+	public void generateId() {
+		 Random random = new Random();
+		 id = Math.abs(random.nextInt());
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 }

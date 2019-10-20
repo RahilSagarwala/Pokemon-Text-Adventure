@@ -114,8 +114,11 @@ public class UI implements ComponentListener {
     	cl = new CardLayout();
    	   window = new JFrame("Pokémon Text Adventure");
 	   
-    	
+   	   
+   	   //Random ID for player at beginning of game
+    	player.generateId();
    
+   	   
    	   
     	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 

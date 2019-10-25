@@ -9,6 +9,7 @@ public class Leer extends AttackSuper {
 		japaneseName = "";
 		basePower = 0;
 		baseAccuracy = 100;
+		type = "ReduceDefense";
 	}
 
 }

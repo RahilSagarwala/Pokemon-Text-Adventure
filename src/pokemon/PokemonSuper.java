@@ -16,7 +16,7 @@ public class PokemonSuper {
 	double catchRate, ecounterRate;
 	ArrayList<AttackSuper> attackArrayList = new ArrayList<AttackSuper>(4);
 	String location;
-	 Random random = new Random();
+	Random random = new Random();
 	
 	public PokemonSuper(String location) {	
 		this.location = location;
@@ -41,6 +41,10 @@ public class PokemonSuper {
 	
 	public String getType() {
 	return type;
+	}
+	
+	public void setType(String type2) {
+	type = type2;
 	}
 	
 	
@@ -85,6 +89,45 @@ public class PokemonSuper {
 	public void setHp(int newHp) {
 		hp = newHp;
 	}
-
+	
+	public void setAttack (int newAttack) {
+		attack = newAttack;
+	}
+	
+	public int getAttack() {
+		return attack;
+	}
+	
+	public void setDefense (int newDefense) {
+		defense = newDefense;
+	}
+	
+	public int getDefense() {
+		return defense;
+	}
+	
+	public void setSpAttack (int newSpAttack) {
+		spAttack = newSpAttack;
+	}
+	
+	public int getSpAttack() {
+		return spAttack;
+	}
+	
+	public void setSpDefense (int newSpDefense) {
+		spDefense = newSpDefense;
+	}
+	
+	public int getSpDefense() {
+		return spDefense;
+	}
+	
+	public void setLevel (int newLevel) {
+		level = newLevel;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
 	
 }

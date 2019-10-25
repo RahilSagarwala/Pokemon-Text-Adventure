@@ -9,6 +9,7 @@ public class Growl extends AttackSuper {
 		japaneseName = "";
 		basePower = 0;
 		baseAccuracy = 100;
+		type = "ReduceAttack";
 	}
 
 }

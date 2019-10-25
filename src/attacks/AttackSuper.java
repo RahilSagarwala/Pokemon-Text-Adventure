@@ -1,8 +1,7 @@
 package attacks;
 
 public class AttackSuper {
-	String englishName;
-	String japaneseName;
+	String englishName, japaneseName, type;
 	double baseAccuracy;
 	int pp, basePower;
 	

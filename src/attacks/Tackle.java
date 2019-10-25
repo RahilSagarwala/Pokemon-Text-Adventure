@@ -9,6 +9,7 @@ public class Tackle extends AttackSuper {
 		japaneseName = "";
 		basePower = 35;
 		baseAccuracy = 100;
+		type = "Normal";
 	}
 
 }

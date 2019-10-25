@@ -11,7 +11,7 @@ public class Charmander extends PokemonSuper {
 		englishName = "Charmander";
 		japaneseName = "ヒトカゲ";
 		russianName = "Чармандер";
-		type = "fire";
+		type = "Fire";
 		level = 5;
 //		attackArrayList.add()
 //		attackArrayList.add()

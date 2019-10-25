@@ -34,7 +34,7 @@ public class PokemonSuper {
 			int randomSpAttack = random.nextInt(10) + 1;
 			spAttack = randomSpAttack;
 			int randomSpDefense = random.nextInt(10) + 1;
-			spDefense = randomSpDefense;	
+			spDefense = randomSpDefense;
 			
 		}
 	}

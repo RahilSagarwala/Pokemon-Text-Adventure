@@ -11,7 +11,7 @@ public class Squirtle extends PokemonSuper {
 		englishName = "Squirtle";
 		japaneseName = "ゼニガメ";
 		russianName = "Сквиртл";
-		type = "water";
+		type = "Water";
 		level = 5;
 //		attackArrayList.add()
 //		attackArrayList.add()

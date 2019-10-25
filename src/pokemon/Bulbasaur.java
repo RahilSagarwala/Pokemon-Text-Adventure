@@ -11,7 +11,7 @@ public class Bulbasaur extends PokemonSuper {
 		englishName = "Bulbasaur";
 		japaneseName = "フシギダネ";
 		russianName = "Бульбазавр";
-		type = "grass";
+		type = "Grass";
 		level = 5;
 //		attackArrayList.add()
 //		attackArrayList.add()

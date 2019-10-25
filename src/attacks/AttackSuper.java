@@ -5,7 +5,7 @@ import java.util.Random;
 import pokemon.*;
 
 public class AttackSuper {
-	String englishName, japaneseName, type;
+	String englishName, japaneseName, type, language;
 	double baseAccuracy;
 	int pp, basePower;
 	
@@ -27,7 +27,7 @@ public class AttackSuper {
 	public void useAttack(PokemonSuper attackingPokemon, PokemonSuper receivingPokemon ) {
 		switch (type) {
 		case "Normal": 
-			if (attackingPokemon.getType() == "Ghost") {
+			if (attackingPokemon.getType(language) == "Ghost" || attackingPokemon.getType(language) == "" ) {
 				return;
 		}
 			else {

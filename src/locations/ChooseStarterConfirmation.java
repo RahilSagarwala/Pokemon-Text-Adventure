@@ -152,10 +152,14 @@ public class ChooseStarterConfirmation extends JPanel {
 	            	case "charmander":
 	            		Charmander charmander = new Charmander("");
 	            		charmander.generateStats();
+	            		charmander.generateId();
+	            		charmander.generateOwner(player.getName());
 	            		player.addPokemonToParty(charmander);
 	            		
 	            		Squirtle squirtle = new Squirtle("");
 	            		squirtle.generateStats();
+	            		squirtle.generateId();
+	            		squirtle.generateOwner(player.getName());
 	            		rival.addPokemonToParty(squirtle);
 	            		
 
@@ -166,13 +170,18 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		
 	            		break;
 	            	case "squirtle":
+	            		squirtle = new Squirtle("");
+	            		squirtle.generateStats();
+	            		squirtle.generateId();
+	            		squirtle.generateOwner(player.getName());
+	            		player.addPokemonToParty(squirtle);
+	            		
 	            		Bulbasaur bulbasaur = new Bulbasaur("");
 	            		bulbasaur.generateStats();
-	            		player.addPokemonToParty(bulbasaur);
-	            		
-	            		charmander = new Charmander("");
-	            		charmander.generateStats();
-	            		rival.addPokemonToParty(charmander);
+	            		bulbasaur.generateId();
+	            		bulbasaur.generateOwner(player.getName());
+	            		rival.addPokemonToParty(bulbasaur);
+
 	            		
 	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
 		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, labOutsideButtonEnable);
@@ -182,13 +191,18 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		
 	            		break;
 	            	case "bulbasaur":
-	            		squirtle = new Squirtle("");
-	            		squirtle.generateStats();
-	            		player.addPokemonToParty(squirtle);
 	            		
 	            		bulbasaur = new Bulbasaur("");
 	            		bulbasaur.generateStats();
-	            		rival.addPokemonToParty(bulbasaur);
+	            		bulbasaur.generateId();
+	            		bulbasaur.generateOwner(player.getName());
+	            		player.addPokemonToParty(bulbasaur);
+	            		
+	            		charmander = new Charmander("");
+	            		charmander.generateStats();
+	            		charmander.generateId();
+	            		charmander.generateOwner(player.getName());
+	            		rival.addPokemonToParty(charmander);
 	            		
 	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
 		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, labOutsideButtonEnable);

@@ -148,7 +148,12 @@ public class PartyPokemon extends JPanel {
 	            		for (int i = 0; i<player.getPartyPokemonArrayList().size(); i++)
 	            		if (player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "Charmander" || 
 	            		player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "ヒトカゲ" ) {
-	            			//Show Pokemon stats screen
+	            			
+	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
+	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+	                    			player.getPartyPokemonArrayList().get(i));
+	                    	cards.add(pokemonStats, "pokemonstats");
+	                        layout.show(cards, "pokemonstats");
 	            		}
 	            	  
 		            	
@@ -163,6 +168,11 @@ public class PartyPokemon extends JPanel {
 		            		if (player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "Charmander" || 
 		            		player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "ヒトカゲ" ) {
 		            			//Show Pokemon stats screen
+		            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
+		                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+		                    			player.getPartyPokemonArrayList().get(i));
+		                    	cards.add(pokemonStats, "pokemonstats");
+		                        layout.show(cards, "pokemonstats");
 	            		}
 	            	  
 		            	
@@ -176,6 +186,12 @@ public class PartyPokemon extends JPanel {
 	            		if (player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "Squirtle" || 
 	            		player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "ゼニガメ" ) {
 	            			//Show Pokemon stats screen
+	            			
+	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
+	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+	                    			player.getPartyPokemonArrayList().get(i));
+	                    	cards.add(pokemonStats, "pokemonstats");
+	                        layout.show(cards, "pokemonstats");
 	            		}
 	            	  
 		            	
@@ -190,6 +206,11 @@ public class PartyPokemon extends JPanel {
 	            		if (player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "Squirtle" || 
 	            		player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "ゼニガメ" ) {
 	            			//Show Pokemon stats screen
+	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
+	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+	                    			player.getPartyPokemonArrayList().get(i));
+	                    	cards.add(pokemonStats, "pokemonstats");
+	                        layout.show(cards, "pokemonstats");
 	            		}
 	            	  
 		            	
@@ -204,19 +225,41 @@ public class PartyPokemon extends JPanel {
 	            		if (player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "Bulbasaur" || 
 	            		player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "フシギダネ" ) {
 	            			//Show Pokemon stats screen
+	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
+	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+	                    			player.getPartyPokemonArrayList().get(i));
+	                    	cards.add(pokemonStats, "pokemonstats");
+	                        layout.show(cards, "pokemonstats");
 	            		}
-	            	  
-		            	
 		            }
 		        });
 			 
 			 break;
 			 
+			 case "フシギダネ": button.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {  		
+	            		for (int i = 0; i<player.getPartyPokemonArrayList().size(); i++)
+	            		if (player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "Bulbasaur" || 
+	            		player.getPartyPokemonArrayList().get(i).getPokemonName(language) == "フシギダネ" ) {
+	            			//Show Pokemon stats screen
+	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
+	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+	                    			player.getPartyPokemonArrayList().get(i));
+	                    	cards.add(pokemonStats, "pokemonstats");
+	                        layout.show(cards, "pokemonstats");
+	            		}
+		            }
+		        });
+			 
+			 break;
+			
+			
 			 
 			 
 			 
 			 }
 		 }
+			 
 
 		 
 		 returnButton.addActionListener(new ActionListener() {

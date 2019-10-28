@@ -11,7 +11,9 @@ public class PokemonSuper {
 	String japaneseName;
 	String russianName;
 	String language;
-	String englishType, japaneseType, englishType2, japaneseType2, owner, number;
+	String englishType, japaneseType, englishType2, japaneseType2, owner, number, englishSpecies,japaneseSpecies, 
+	englishHeight, englishWeight, 
+	japaneseHeight, japaneseWeight, englishPokedex, japanesePokedex;
 	int level, experience, hp, attack, defense, special, speed, maxHp, id;
 	double catchRate, ecounterRate;
 	ArrayList<AttackSuper> attackArrayList = new ArrayList<AttackSuper>(4);
@@ -57,6 +59,47 @@ public class PokemonSuper {
 	public String getNumber() {
 		return number;
 	}
+	
+	public String getHeight(String theLanguage) {
+		if (theLanguage == "English") {
+			return englishHeight;
+		}
+		
+		else {
+			return japaneseHeight;
+		}
+	}
+	
+	public String getweight(String theLanguage) {
+		if (theLanguage == "English") {
+			return englishWeight;
+		}
+		
+		else {
+			return japaneseWeight;
+		}
+	}
+	
+	public String getSpecies(String theLanguage) {
+		if (theLanguage == "English") {
+			return englishSpecies;
+		}
+		
+		else {
+			return japaneseSpecies;
+		}
+	}
+	
+	public String getPokedex(String theLanguage) {
+		if (theLanguage == "English") {
+			return englishPokedex;
+		}
+		
+		else {
+			return japanesePokedex;
+		}
+	}
+	
 	
 	public String getStatus(String theLanguage) {
 		if (theLanguage == "English") {

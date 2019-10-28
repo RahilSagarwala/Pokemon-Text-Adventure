@@ -126,7 +126,7 @@ public class PokemonStats extends JPanel {
 	    	 typeLabel.setText("タイプ1/" + pokemon.getType(language));
 	    	 typeLabel2.setText("タイプ2/　" + pokemon.getType2(language));
 	    	 statusLabel.setText("じょうたい/" + pokemon.getStatus(language));
-	    	 pokedexButton.setText("");
+	    	 pokedexButton.setText("ずかん");
 
 	     }
 	     
@@ -204,6 +204,19 @@ public class PokemonStats extends JPanel {
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
             	  
+	            	
+	            }
+	        });
+		 
+		 pokedexButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {  		
+         		
+	            	Pokedex pokedex = new Pokedex(cl, cards, textAreaFont, "", language, textSpeed,
+                			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
+                			pokemon);
+                	cards.add(pokedex, "pokedex");
+                    layout.show(cards, "pokedex");
+         	  
 	            	
 	            }
 	        });

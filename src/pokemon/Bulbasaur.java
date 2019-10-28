@@ -19,6 +19,15 @@ public class Bulbasaur extends PokemonSuper {
 		number = "001";
 		englishStatus = "OK";
 		japaneseStatus = "ふつう";
+		englishSpecies = "SEED";
+		japaneseSpecies = "たねポケモン";
+		englishHeight = "HT    2' 04" + "\"";
+		englishWeight = "WT    15.0lb";
+		japaneseHeight = "たかさ　　　　0.7m";
+		japaneseWeight = "おもさ　　　　6.9kg";
+		englishPokedex = "A strange seed was planted on" + "\n" + "its back at birth. The plant" + "\n" + 
+		"sprouts and grows with this POKEMON";
+		japanesePokedex = "うまれたときから　せなかに　しょくぶつの"+"\n" + "チタネガ　あって　すこしづつ"+"\n"+"おおきく　そだつ。　";
 //		attackArrayList.add()
 //		attackArrayList.add()
 	}

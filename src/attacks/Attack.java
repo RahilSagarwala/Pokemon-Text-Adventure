@@ -92,8 +92,28 @@ public class Attack {
 	}
 	
 	//Attack constructors
+	public Attack() {
+		this.num = 0;
+		this.engName = "";
+		this.japName = "";
+		this.type = "";
+		this.category = "";
+		this.contest = "";
+		this.pp = 0;
+		this.power = 0;
+		this.accuracy = 0;
+	}
 	public Attack(int pp) {
+		this.num = 0;
+		this.engName = "";
+		this.japName = "";
+		this.type = "";
+		this.category = "";
+		this.contest = "";
 		this.pp = pp;
+		this.power = 0;
+		this.accuracy = 0;
+		
 	}
 	
 	// Attack constructor with number, and language

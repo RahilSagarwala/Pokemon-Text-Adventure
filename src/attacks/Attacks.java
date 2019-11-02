@@ -4,12 +4,12 @@ import java.util.Random;
 
 import pokemon.*;
 
-public class AttackSuper {
+public class Attacks {
 	String englishName, japaneseName, type, language;
 	double baseAccuracy;
 	int pp, basePower;
 	
-	public AttackSuper(int pp) {
+	public Attacks(int pp) {
 		this.pp = pp;
 	}
 	

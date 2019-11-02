@@ -16,7 +16,7 @@ public class PokemonSuper {
 	japaneseHeight, japaneseWeight, englishPokedex, japanesePokedex;
 	int level, experience, hp, attack, defense, special, speed, maxHp, id;
 	double catchRate, ecounterRate;
-	ArrayList<AttackSuper> attackArrayList = new ArrayList<AttackSuper>(4);
+	ArrayList<Attacks> attackArrayList = new ArrayList<Attacks>(4);
 	String location, englishStatus, japaneseStatus;
 	Random random = new Random();
 	
@@ -147,11 +147,11 @@ public class PokemonSuper {
 	
 	
 	
-	public ArrayList<AttackSuper> getAttacks() {
+	public ArrayList<Attacks> getAttacks() {
 		return attackArrayList;
 	}
 	
-	public void setAttacks(AttackSuper attack) {
+	public void setAttacks(Attacks attack) {
 		if(attackArrayList.size() < 4) {
 		attackArrayList.add(attack);
 		}

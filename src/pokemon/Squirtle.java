@@ -1,7 +1,7 @@
 package pokemon;
 
 import java.util.ArrayList;
-import attacks.AttackSuper;
+import attacks.Attacks;
 
 public class Squirtle extends PokemonSuper {
 	//Squirtle is a Water-type Pokémon

@@ -1,58 +1,41 @@
 package attacks;
 
-import java.util.Random;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import pokemon.*;
+import com.google.gson.Gson;
 
 public class Attacks {
-	String englishName, japaneseName, type, language;
-	double baseAccuracy;
-	int pp, basePower;
+	private final static Attacks INSTANCE = new Attacks();
+	List<Attack> attackList;
 	
-	public Attacks(int pp) {
-		this.pp = pp;
-	}
-	
-	public String getAttackName(String theLanguage) {
-		if (theLanguage == "English") {
-			return englishName;
-		}
-		
-		else {
-			return japaneseName;
-		}
-		
-	}
-	
-	public void useAttack(PokemonSuper attackingPokemon, PokemonSuper receivingPokemon ) {
-		switch (type) {
-		case "Normal": 
-			if (attackingPokemon.getType(language) == "Ghost" || attackingPokemon.getType(language) == "" ) {
-				return;
-		}
-			else {
-				int attackingPokemonAttackPower = attackingPokemon.getAttack();
-				int receivingPokemonDefensePower = receivingPokemon.getDefense();
-				Random random = new Random();
-				int critical = random.nextInt(10) + 1;
-				if (critical < 3) {
-					//Add bonus damage for critical
-					int damage = (basePower) * (attackingPokemonAttackPower/15) *
-							(receivingPokemonDefensePower/15) + 5;
-					receivingPokemon.setHp(receivingPokemon.getHp() - damage);
-				}
-				
-				else {
-					//Standard Damage
-					int damage = (basePower) * (attackingPokemonAttackPower/15) *
-							(receivingPokemonDefensePower/15);
-					receivingPokemon.setHp(receivingPokemon.getHp() - damage);
-				}
-
-			}
+	private Attacks() {
+		try {
+			String fileData = new String(Files.readAllBytes(Paths.get("AttackData.json")));
+			Attack[] attacks = new Gson().fromJson(fileData, Attack[].class);
+			attackList = Arrays.asList(attacks);
 			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
+		
 	}
-
+	
+	public static Attacks getAttacks() { return INSTANCE; }
+	
+	public Attack getAttack(int pAttackNumber) {
+		Attack attack = null;
+		List<Attack> result = attackList.stream()
+				.filter(item -> item.getNum() == pAttackNumber)
+				.collect(Collectors.toList());
+		if(result.isEmpty()) return attack;
+		attack = result.get(0);
+				
+		return attack;
+	}
 }

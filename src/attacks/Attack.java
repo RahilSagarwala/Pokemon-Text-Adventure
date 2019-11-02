@@ -1,14 +1,7 @@
 package attacks;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Random;
 import pokemon.*;
-import java.util.Arrays;
-import java.util.List;
-
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 public class Attack {
@@ -103,7 +96,7 @@ public class Attack {
 		this.pp = pp;
 	}
 	
-	// Attack constructor with number, and attack
+	// Attack constructor with number, and language
 	public Attack(int attackNumber, String theLanguage) {
 
 	}

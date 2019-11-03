@@ -1,7 +1,7 @@
 package pokemon;
 
 import java.util.ArrayList;
-import attacks.Attacks;
+//import attacks.Attacks;
 
 public class Bulbasaur extends PokemonSuper {
 	//Bulbasaur is a dual-type Grass/Poison Pokémon

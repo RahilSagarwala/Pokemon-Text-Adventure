@@ -4,6 +4,9 @@
   <artifactId>Pokemon-Text-Adventure</artifactId>
   <name>Pokemon-Text-Adventure</name>
   <description>Pokemon text adventure game</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>

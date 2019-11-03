@@ -1,7 +1,7 @@
 package pokemon;
 
 import java.util.ArrayList;
-import attacks.Attacks;
+//import attacks.Attacks;
 
 public class Charmander extends PokemonSuper {
 	//Charmander is a Fire-type Pokémon

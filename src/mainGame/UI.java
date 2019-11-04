@@ -112,7 +112,7 @@ public class UI implements ComponentListener {
 		
 		
     	cl = new CardLayout();
-   	   window = new JFrame("Pokémon Text Adventure");
+   	   window = new JFrame("Pokï¿½mon Text Adventure");
 	   
    	   
    	   //Random ID for player at beginning of game
@@ -151,7 +151,7 @@ public class UI implements ComponentListener {
     	route1 = new Route1(cl, cards, font, 
         		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited);
     	battle = new Battle(cl, cards, font, 
-        		"", language, textSpeed, player, rival, stopTimer, "battle");
+        		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable);
     	dialogue = new Dialogue(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "dialogue", false, professorOakVisited, true, 0, labOutsideButtonEnable); 	
     	menu = new MenuScreen(cl, cards, font, 

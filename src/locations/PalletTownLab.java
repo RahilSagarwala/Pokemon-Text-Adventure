@@ -359,6 +359,12 @@ public class PalletTownLab extends JPanel {
 	            		//To Dialogue and then Rival Battle. At end of battle, set labOutsideButtonEnable parameter
 	            		//for PalletTownLab to true
 	            		
+	            		Battle battle = new Battle(cl, cards, textAreaFont, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable);
+		            	cards.add(battle, "battle");
+		            	
+		                layout.show(cards, "battle");
+	            		
 	            	
 	            	}
 	            	

@@ -161,6 +161,13 @@ public class MenuScreen extends JPanel {
 		            	cards.add(route1, "route1");
 		                layout.show(cards, "route1");  
 		                break;
+		                
+	            	case "battle":
+	            		Battle battle = new Battle(cl, cards, textAreaFont, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable);
+		            	cards.add(battle, "battle");
+		                layout.show(cards, "battle");  
+		                break;
 	            	}
 	            	
 	            }

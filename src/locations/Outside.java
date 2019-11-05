@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
+import Trainer.TrainerSuper;
 
 public class Outside extends JPanel {
 	
@@ -22,6 +23,8 @@ public class Outside extends JPanel {
 	MenuScreen menu;
 	PalletTownYourHouse palletTownYourHouse;
 	int count = 0;
+	TrainerSuper trainer = new TrainerSuper();
+
 	
 	public Outside(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -169,7 +172,7 @@ public class Outside extends JPanel {
 			     }
 			     else {
 				 Route1 route1 = new Route1(cl, cards, textAreaFont, 
-	                		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited);
+	                		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited, trainer);
 	            	cards.add(route1, "route1");
 	            	
 	                layout.show(cards, "route1");
@@ -182,7 +185,7 @@ public class Outside extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownoutside", professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownoutside", professorOakVisited, labOutsideButtonEnable, trainer, 0);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

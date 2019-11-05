@@ -9,6 +9,7 @@ import Trainer.Player;
 import Trainer.Rival;
 import locations.PalletTownYourHouse;
 import mainGame.TimerClass;
+import Trainer.*;
 
 public class StartScreen extends JPanel {
 	
@@ -28,6 +29,8 @@ public class StartScreen extends JPanel {
     Options options;
     PalletTownYourHouse palletTownYourHouse;
     TimerClass timerClass;
+    TrainerSuper trainer = new TrainerSuper();
+
 
    
 	public StartScreen(final CardLayout layout, final JPanel cards, Font font, 
@@ -319,7 +322,7 @@ public class StartScreen extends JPanel {
 	            	options = new Options(cl, cards,"startscreen", startScreenText1, screen, 
 	            			nameOptionsBool, player, setVisible, language, textSpeed, fullText2,
 	            			rival, font, stopTimer, nameOptionsBool2, 55f, buttonWidth, buttonHeight, false, 
-	            			professorOakVisited, labOutsideButtonEnable);
+	            			professorOakVisited, labOutsideButtonEnable, trainer, 0);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

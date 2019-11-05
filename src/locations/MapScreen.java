@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
+import Trainer.*;
 
 public class MapScreen extends JPanel {
 	
@@ -19,10 +20,13 @@ public class MapScreen extends JPanel {
 	Rival rival;
 	ImageIcon mapIcon;
 	JLabel mapLabel;
+	TrainerSuper trainer;
+	int battleScreenText;
 	
 	public MapScreen(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Player player, Rival rival, Boolean stopTimer, String location2, 
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font = font;
@@ -34,6 +38,8 @@ public class MapScreen extends JPanel {
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.trainer = trainer;
+	     this.battleScreenText=battleScreenText;
 	     
 	     
 	     setBackground(Color.black);
@@ -70,7 +76,7 @@ public class MapScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
          		
 	            	Inventory inventory = new Inventory(cl, cards, font, "", language, textSpeed,
-	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
 	            	cards.add(inventory, "inventory");
 	                layout.show(cards, "inventory");
          	  

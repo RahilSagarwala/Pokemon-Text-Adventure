@@ -8,6 +8,8 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import items.*;
+import Trainer.TrainerSuper;
+import Trainer.*;
 
 public class Inventory extends JPanel {
 	
@@ -22,10 +24,13 @@ public class Inventory extends JPanel {
 	JLabel locationLabel;
 	Dialogue dialogue;
 	MenuScreen menu;
+	TrainerSuper trainer;
+	int battleScreenText;
 	
 	public Inventory (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -38,6 +43,8 @@ public class Inventory extends JPanel {
 	     this.location = location2;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.trainer = trainer;
+	     this.battleScreenText=battleScreenText;
 	     
 	     
 	     setBackground(Color.black);
@@ -155,7 +162,7 @@ public class Inventory extends JPanel {
 	            		for (int i = 0; i<player.getItems().size(); i++)
 	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
 	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
 	            		}
 	            	  
 		            	
@@ -167,7 +174,7 @@ public class Inventory extends JPanel {
 	            		for (int i = 0; i<player.getItems().size(); i++)
 	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
 	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
 	            		}
 	            	  
 		            	
@@ -183,8 +190,9 @@ public class Inventory extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {  		
             		
+	            	
             		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
             		cards.add(menu, "menu");
             	    layout.show(cards, "menu");
             	  

@@ -8,6 +8,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import items.*;
+import Trainer.*;
 
 public class TrainerInfo extends JPanel {
 	
@@ -22,10 +23,13 @@ public class TrainerInfo extends JPanel {
 	JLabel locationLabel;
 	Dialogue dialogue;
 	MenuScreen menu;
+	TrainerSuper trainer;
+	int battleScreenText;
 	
 	public TrainerInfo(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -38,6 +42,8 @@ public class TrainerInfo extends JPanel {
 	     this.location = location2;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.trainer = trainer;
+	     this.battleScreenText=battleScreenText;
 	     
 	     
 	     setBackground(Color.black);
@@ -165,7 +171,7 @@ public class TrainerInfo extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
             		
             		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
             		cards.add(menu, "menu");
             	    layout.show(cards, "menu");
             	  

@@ -321,6 +321,18 @@ public class Dialogue extends JPanel {
 						 +"を　もらった！";
 			 }
 			 break;
+			 
+		 case "rivalbattle1": 
+			 if (language == "English") {
+				 text = rival.getName() + ": Wait " + player.getName() + "!" + "\n" + "Let's check out our Pokémon!" + "\n"
+				 		+ "Come on, I'll take you on!";
+			 }
+			 
+			 else {
+				 text = rival.getName() + ": まてよ！　" + player.getName() + "!" + "\n" + "せっかく　じーさんに　ポケモン　もらったんだせ！" + "\n" +
+			 "。。。。。。ちょっと　おれの　あいて　してみろ！";
+			 }
+			 break;
 		 }
 		 
 		 tm = new TimerClass(text, stopTimer, textSpeed , textArea);
@@ -433,8 +445,19 @@ public class Dialogue extends JPanel {
 		            	
 		                layout.show(cards, "pallettownlab");
 	            		break;
+	            
 	            	    
 	            		
+	            	}
+	            	
+	            	switch (screen) {
+	            	case "rivalbattle1":
+	            		Battle battle = new Battle(cl, cards, textAreaFont, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, rival, 0);
+		            	cards.add(battle, "battle");
+		            	
+		                layout.show(cards, "battle");
+		                break;
 	            	}
 	            	
 	            	

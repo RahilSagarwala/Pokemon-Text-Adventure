@@ -8,6 +8,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import locations.PalletTownYourHouse;
+import Trainer.*;
 
 public class ChooseStarter extends JPanel {
 	
@@ -21,6 +22,7 @@ public class ChooseStarter extends JPanel {
 	Rival rival;
 	JButton menuButton;
 	JTextArea textArea;
+	TrainerSuper trainer = new TrainerSuper();
 
    
 	public ChooseStarter(final CardLayout layout, final JPanel cards, 
@@ -189,7 +191,7 @@ public class ChooseStarter extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "choosestarter", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable);
+	            			labOutsideButtonEnable, trainer, 0);
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	

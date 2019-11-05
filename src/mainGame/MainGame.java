@@ -9,6 +9,7 @@ import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
+import Trainer.*;
 
 
 public class MainGame extends JPanel {
@@ -34,6 +35,7 @@ public class MainGame extends JPanel {
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     Float titleSize;
     ImageIcon logoIcon, logoIcon2;
+    TrainerSuper trainer = new TrainerSuper();
     
     
     
@@ -266,7 +268,7 @@ public class MainGame extends JPanel {
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
 							false, stopTimer, titleSize, buttonWidth, buttonHeight, false,
-							professorOakVisited, labOutsideButtonEnable);
+							professorOakVisited, labOutsideButtonEnable, trainer, 0);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

@@ -9,6 +9,7 @@ import Trainer.Player;
 import Trainer.Rival;
 import items.*;
 import pokemon.*;
+import Trainer.*;
 
 public class Pokedex extends JPanel {
 	
@@ -24,11 +25,13 @@ public class Pokedex extends JPanel {
 	Dialogue dialogue;
 	MenuScreen menu;
 	PokemonSuper pokemon;
+	TrainerSuper trainer;
+	int battleScreenText;
 	
 	public Pokedex (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon) {
+			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, TrainerSuper trainer, int battleScreenText) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -43,6 +46,8 @@ public class Pokedex extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.pokedex = pokedex;
 	     this.pokemon = pokemon;
+	     this.trainer = trainer;
+	     this.battleScreenText=battleScreenText;
 	     
 	     
 	     setBackground(Color.black);
@@ -123,7 +128,7 @@ public class Pokedex extends JPanel {
             		
 	            	PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
                 			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-                			pokemon);
+                			pokemon, trainer, battleScreenText);
                 	cards.add(pokemonStats, "pokemonstats");
                     layout.show(cards, "pokemonstats");
             	  

@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
+import Trainer.TrainerSuper;
 
 
 public class PalletTownLab extends JPanel {
@@ -19,6 +20,8 @@ public class PalletTownLab extends JPanel {
 	int textSpeed;
 	Rival rival;
 	JButton lmenuButton;
+	TrainerSuper trainer;
+	int battleScreenText = 0;
 	
 	public PalletTownLab (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -223,7 +226,7 @@ public class PalletTownLab extends JPanel {
 	     menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, trainer, 0);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	
@@ -356,14 +359,16 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	//Player must have chosen Pokemon first
 	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() == 1) {
-	            		//To Dialogue and then Rival Battle. At end of battle, set labOutsideButtonEnable parameter
-	            		//for PalletTownLab to true
+	            		//To Dialogue and then Rival Battle. Enable outside button.
 	            		
-	            		Battle battle = new Battle(cl, cards, textAreaFont, 
-		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable);
-		            	cards.add(battle, "battle");
-		            	
-		                layout.show(cards, "battle");
+	            		
+	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivalbattle1", language, textSpeed,
+		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, true);
+		            	cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");
+	            		
+	            		
+	            		
 	            		
 	            	
 	            	}

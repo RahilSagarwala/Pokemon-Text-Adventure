@@ -7,6 +7,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import items.*;
+import Trainer.TrainerSuper;
 
 public class PalletTownRivalHouse extends JPanel {
 	
@@ -198,8 +199,10 @@ public class PalletTownRivalHouse extends JPanel {
 		 
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	TrainerSuper trainer = new TrainerSuper();
+
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable, trainer, 0);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

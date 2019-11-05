@@ -9,6 +9,7 @@ import Trainer.Player;
 import Trainer.Rival;
 import items.*;
 import pokemon.*;
+import Trainer.*;
 
 public class PokemonStats extends JPanel {
 	
@@ -24,11 +25,13 @@ public class PokemonStats extends JPanel {
 	Dialogue dialogue;
 	MenuScreen menu;
 	PokemonSuper pokemon;
+	TrainerSuper trainer;
+	int battleScreenText;
 	
 	public PokemonStats (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon) {
+			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, TrainerSuper trainer, int battleScreenText) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -43,6 +46,8 @@ public class PokemonStats extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.pokedex = pokedex;
 	     this.pokemon = pokemon;
+	     this.trainer = trainer;
+	     this.battleScreenText=battleScreenText;
 	     
 	     
 	     setBackground(Color.black);
@@ -200,7 +205,7 @@ public class PokemonStats extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
             		
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
             	  
@@ -213,7 +218,7 @@ public class PokemonStats extends JPanel {
          		
 	            	Pokedex pokedex = new Pokedex(cl, cards, textAreaFont, "", language, textSpeed,
                 			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-                			pokemon);
+                			pokemon, trainer, battleScreenText);
                 	cards.add(pokedex, "pokedex");
                     layout.show(cards, "pokedex");
          	  

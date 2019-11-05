@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
+import Trainer.*;
 
 public class Route1 extends JPanel {
 	
@@ -18,10 +19,12 @@ public class Route1 extends JPanel {
 	int textSpeed;
 	Rival rival;
 	JButton menuButton;
+	TrainerSuper trainer;
 
 	public Route1(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited) {
+			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
+			TrainerSuper trainer) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -34,6 +37,7 @@ public class Route1 extends JPanel {
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
 	     this.professorOakVisited = professorOakVisited;
+	     this.trainer = trainer;
 	     
 	     
 	     setBackground(Color.black);
@@ -60,7 +64,7 @@ public class Route1 extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "route1", professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "route1", professorOakVisited, labOutsideButtonEnable, trainer, 0);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

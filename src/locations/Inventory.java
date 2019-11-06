@@ -190,11 +190,24 @@ public class Inventory extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {  		
             		
-	            	
-            		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
-            		cards.add(menu, "menu");
-            	    layout.show(cards, "menu");
+	            	switch (location) {
+	            	case "battle":
+	            		Battle battle = new Battle(cl, cards, textAreaFont, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
+		                		labOutsideButtonEnable, rival, battleScreenText);
+		            	cards.add(battle, "battle");
+		            	
+		                layout.show(cards, "battle");
+		                break;
+	            	default:
+	            		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
+	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            		cards.add(menu, "menu");
+	            	    layout.show(cards, "menu");
+	            	    break;
+	            		
+	            	}
+            		
             	  
 	            	
 	            }

@@ -27,7 +27,7 @@ public class Battle extends JPanel {
 	public Battle (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, TrainerSuper trainer, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, Rival rival, int battleScreenText) {
+			Boolean labOutsideButtonEnable, Rival rival, int battleScreenText2) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -42,7 +42,7 @@ public class Battle extends JPanel {
 	     this.location = location2;
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable = labOutsideButtonEnable;
-	     this.battleScreenText = battleScreenText;
+	     this.battleScreenText = battleScreenText2;
 	     
 	     
 	     setBackground(Color.black);
@@ -160,6 +160,11 @@ public class Battle extends JPanel {
 			 
 			 }
 		 
+		 switch (battleScreenText) {
+		 case 999: text = "You cannot run" + "\n" + "from a trainer battle.";
+			 break;
+		 }
+		 
 		 TimerClass tm = new TimerClass(text, stopTimer, textSpeed , textArea);
 		 
 	    
@@ -237,7 +242,10 @@ public class Battle extends JPanel {
 	     
 	     pokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	  
+	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "battle", language, textSpeed,
+	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            	cards.add(partyPokemon, "partypokemon");
+	                layout.show(cards, "partypokemon");
 	            	
 	            }
 	        });
@@ -245,14 +253,22 @@ public class Battle extends JPanel {
 	     itemButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	  
-	            	
+	            	Inventory inventory = new Inventory(cl, cards, textAreaFont, "battle", language, textSpeed,
+	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            	cards.add(inventory, "inventory");
+	                layout.show(cards, "inventory");
 	            }
 	        });
 	     
 	     runButton.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	            	  
+	            public void actionPerformed(ActionEvent e) {	 
+	            	battleScreenText = 999;
+	            	Battle battle = new Battle(cl, cards, textAreaFont, 
+	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
+	                		labOutsideButtonEnable, rival, battleScreenText);
+	            	cards.add(battle, "battle");
 	            	
+	                layout.show(cards, "battle");
 	            }
 	        });
 	     

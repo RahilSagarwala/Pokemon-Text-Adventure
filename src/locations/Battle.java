@@ -161,7 +161,14 @@ public class Battle extends JPanel {
 			 }
 		 
 		 switch (battleScreenText) {
-		 case 999: text = "You cannot run" + "\n" + "from a trainer battle.";
+		 case 999: 
+			 if( language == "English") {
+				 text = "You cannot run" + "\n" + "from a trainer battle.";
+			 }
+			 
+			 if (language == "Japanese") {
+				 text = "ダメだ！　しょうぶの" + "\n" + "さいちゅうに　あいてに　せなかは" + "\n" + "みせられない！";
+			 }
 			 break;
 		 }
 		 

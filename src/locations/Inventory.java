@@ -183,14 +183,19 @@ public class Inventory extends JPanel {
 			 break;
 			 
 			 case "Potion": button.addActionListener(new ActionListener() {
-		            public void actionPerformed(ActionEvent e) {  		
+				 int buttonIndex = buttonList.indexOf(button);
+		            public void actionPerformed(ActionEvent e) { 
+		            	
 	            		for (int i = 0; i<player.getItems().size(); i++)
-	            		if (player.getItems().get(i).getItemName(language) == "Potion" || player.getItems().get(i).getItemName(language) ==  "") {
+	            		if (player.getItems().get(i).getItemName(language) == "Potion" || 
+	            		player.getItems().get(i).getItemName(language) ==  "") {
+	            			
 	            			Potion potion = new Potion(1);
 	            			potion.showPartyPokemon(cl, cards, font, screen, language, 
 	            					textSpeed, player, rival, 
 	            					stopTimer, location, professorOakVisited, 
-	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "");
+	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex);
+	            			      		
 	            		}
 	            	  
 		            	

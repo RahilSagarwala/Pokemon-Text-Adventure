@@ -18,7 +18,7 @@ public class PartyPokemon extends JPanel {
 	String screen, language, location, item;
 	Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
 	Player player;
-	int textSpeed;
+	int textSpeed, itemIndex;
 	Rival rival;
 	JLabel locationLabel;
 	Dialogue dialogue;
@@ -29,7 +29,7 @@ public class PartyPokemon extends JPanel {
 	public PartyPokemon (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, Boolean labOutsideButtonEnable,
-			TrainerSuper trainer, int battleScreenText, String item) {
+			TrainerSuper trainer, int battleScreenText, String item, int itemIndex) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -45,6 +45,7 @@ public class PartyPokemon extends JPanel {
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
 	     this.item = item;
+	     this.itemIndex = itemIndex;
 	     
 	     
 	     setBackground(Color.black);
@@ -279,7 +280,18 @@ public class PartyPokemon extends JPanel {
 		            public void actionPerformed(ActionEvent e) {
 		            	
 		            	Potion potion = new Potion(1);
-		            	potion.usePotion(player.getPartyPokemonArrayList().get(buttonIndex));	            	
+		            	potion.usePotion(player.getPartyPokemonArrayList().get(buttonIndex));
+		            	
+		        
+		            	System.out.println(itemIndex);
+		            	player.getItems().get(itemIndex).setCount(player.getItems().get(itemIndex).getCount()-1);
+		            	player.removeItems();
+		            	
+		            	//Run remove check for player's items
+//		            	for (int i = 0; i<player.getItems().size(); i++) {
+//		            	player.getItems().get(i).setCount(player.getItems().get(i).getCount()-1);
+//            			
+//		            	}
 		            }
 		        });
 			 }

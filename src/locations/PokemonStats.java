@@ -205,7 +205,7 @@ public class PokemonStats extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
             		
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, "");
+	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, "", 0);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
             	  

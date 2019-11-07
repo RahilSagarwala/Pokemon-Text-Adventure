@@ -40,7 +40,10 @@ public class PokemonSuper {
 			
 		}
 		
-		hp = maxHp - 4;
+//		hp = maxHp;
+		
+		//For testing 
+		hp = maxHp - 10;
 	} 
 	
 	public void generateId() {

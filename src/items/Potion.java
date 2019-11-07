@@ -16,7 +16,7 @@ public class Potion extends ItemSuper {
 	public Potion(int count) {
 		super(count);
 		englishName = "Potion";
-		japaneseName = "";
+		japaneseName = "キズぐすり";
 	}
 	
 	public void showPartyPokemon(CardLayout cl, JPanel cards, Font font, String screen, String language, int textSpeed, Player player, Rival rival, Boolean stopTimer, String location, Boolean professorOakVisited,

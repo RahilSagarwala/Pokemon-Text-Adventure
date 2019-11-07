@@ -169,7 +169,7 @@ public class Battle extends JPanel {
 			 }
 			 
 			 if (language == "Japanese") {
-				 text = "ダメだ！　しょうぶの" + "\n" + "さいちゅうに　あいてに　せなかは" + "\n" + "みせられない！";
+				 text = "ダメだ！　しょうぶの" + "\n" + "さいちゅうに　あいてに" + "\n" +"せなかは"  + "みせられない！";
 			 }
 			 break;
 		 }

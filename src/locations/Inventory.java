@@ -166,7 +166,7 @@ public class Inventory extends JPanel {
 	            		}
 	            		
 	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Potion" || 
-	    	            		player.getItems().get(buttonIndex).getItemName(language) ==  "") {
+	    	            		player.getItems().get(buttonIndex).getItemName(language) ==  "キズぐすり") {
 	    	            			
 	    	            			Potion potion = new Potion(1);
 	    	            			potion.showPartyPokemon(cl, cards, font, screen, language, 

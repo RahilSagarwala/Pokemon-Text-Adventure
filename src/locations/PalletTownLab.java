@@ -7,6 +7,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import Trainer.TrainerSuper;
+import items.*;
 
 
 public class PalletTownLab extends JPanel {
@@ -361,6 +362,8 @@ public class PalletTownLab extends JPanel {
 	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() == 1) {
 	            		//To Dialogue and then Rival Battle. Enable outside button.
 	            		
+	            		Potion potion = new Potion(1);
+	            		player.addItem(potion);
 	            		
 	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivalbattle1", language, textSpeed,
 		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, true);

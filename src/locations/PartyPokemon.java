@@ -15,7 +15,7 @@ public class PartyPokemon extends JPanel {
 	CardLayout cl;
 	JPanel cards;
 	Font textAreaFont;
-	String screen, language, location;
+	String screen, language, location, item;
 	Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
 	Player player;
 	int textSpeed;
@@ -29,7 +29,7 @@ public class PartyPokemon extends JPanel {
 	public PartyPokemon (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, Boolean labOutsideButtonEnable,
-			TrainerSuper trainer, int battleScreenText) {
+			TrainerSuper trainer, int battleScreenText, String item) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -44,6 +44,7 @@ public class PartyPokemon extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
+	     this.item = item;
 	     
 	     
 	     setBackground(Color.black);
@@ -146,7 +147,7 @@ public class PartyPokemon extends JPanel {
 		 
 		 
 		
-		 
+		 if (item == "") {
 		 for (JButton button : buttonList) {
 			 switch (button.getText()) {
 			 case "Charmander": button.addActionListener(new ActionListener() {
@@ -263,6 +264,24 @@ public class PartyPokemon extends JPanel {
 			 
 			 
 			 
+			 }
+			 
+			 
+		 }
+		 
+	
+		 }
+		 
+		 if (item == "potion") {
+			 for (JButton button : buttonList) {
+				 int buttonIndex = buttonList.indexOf(button);
+			 button.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		            	
+		            	Potion potion = new Potion(1);
+		            	potion.usePotion(player.getPartyPokemonArrayList().get(buttonIndex));	            	
+		            }
+		        });
 			 }
 		 }
 			 

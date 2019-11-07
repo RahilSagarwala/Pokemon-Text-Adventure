@@ -250,7 +250,7 @@ public class Battle extends JPanel {
 	     pokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "battle", language, textSpeed,
-	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, "");
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
 	            	

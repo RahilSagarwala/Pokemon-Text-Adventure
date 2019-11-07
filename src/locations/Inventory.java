@@ -104,7 +104,8 @@ public class Inventory extends JPanel {
 		 
 		 
 		 for (int i = 0; i < player.getItems().size(); i++) {
-		  buttonList.get(i).setText(player.getItems().get(i).getItemName(language));
+		  buttonList.get(i).setText(player.getItems().get(i).getItemName(language) + " x" + 
+		 player.getItems().get(i).getCount());
 		 }
 		
 		
@@ -153,59 +154,35 @@ public class Inventory extends JPanel {
 	     gb.gridy=7;
 		 add(nextPageButton, gb);
 		 
+		 for (JButton button : buttonList) {
+			 button.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) { 
+		            	int buttonIndex = buttonList.indexOf(button);
+	            		
+	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Map" || 
+	            		player.getItems().get(buttonIndex).getItemName(language) ==  "ちず") {
+	            			Map map = new Map(1);
+	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            		}
+	            		
+	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Potion" || 
+	    	            		player.getItems().get(buttonIndex).getItemName(language) ==  "") {
+	    	            			
+	    	            			Potion potion = new Potion(1);
+	    	            			potion.showPartyPokemon(cl, cards, font, screen, language, 
+	    	            					textSpeed, player, rival, 
+	    	            					stopTimer, location, professorOakVisited, 
+	    	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex);
+	    	            			      		
+	    	            		}
+	            	  
+		            	
+		            }
+		        });
+		 }
+		 
 		
 		 
-		 for (JButton button : buttonList) {
-			 switch (button.getText()) {
-			 case "Map": button.addActionListener(new ActionListener() {
-		            public void actionPerformed(ActionEvent e) {  		
-	            		for (int i = 0; i<player.getItems().size(); i++)
-	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
-	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
-	            		}
-	            	  
-		            	
-		            }
-		        });
-			 
-			 case "ちず": button.addActionListener(new ActionListener() {
-		            public void actionPerformed(ActionEvent e) {  		
-	            		for (int i = 0; i<player.getItems().size(); i++)
-	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
-	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
-	            		}
-	            	  
-		            	
-		            }
-		        });
-			 break;
-			 
-			 case "Potion": button.addActionListener(new ActionListener() {
-				 int buttonIndex = buttonList.indexOf(button);
-		            public void actionPerformed(ActionEvent e) { 
-		            	
-	            		for (int i = 0; i<player.getItems().size(); i++)
-	            		if (player.getItems().get(i).getItemName(language) == "Potion" || 
-	            		player.getItems().get(i).getItemName(language) ==  "") {
-	            			
-	            			Potion potion = new Potion(1);
-	            			potion.showPartyPokemon(cl, cards, font, screen, language, 
-	            					textSpeed, player, rival, 
-	            					stopTimer, location, professorOakVisited, 
-	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex);
-	            			      		
-	            		}
-	            	  
-		            	
-		            }
-		        });
-			 break;
-			 
-			 
-			 }
-		 }
 
 		 
 		 returnButton.addActionListener(new ActionListener() {

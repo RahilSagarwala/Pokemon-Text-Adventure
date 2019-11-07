@@ -282,16 +282,10 @@ public class PartyPokemon extends JPanel {
 		            	Potion potion = new Potion(1);
 		            	potion.usePotion(player.getPartyPokemonArrayList().get(buttonIndex));
 		            	
-		        
-		            	System.out.println(itemIndex);
+
 		            	player.getItems().get(itemIndex).setCount(player.getItems().get(itemIndex).getCount()-1);
 		            	player.removeItems();
 		            	
-		            	//Run remove check for player's items
-//		            	for (int i = 0; i<player.getItems().size(); i++) {
-//		            	player.getItems().get(i).setCount(player.getItems().get(i).getCount()-1);
-//            			
-//		            	}
 		            }
 		        });
 			 }

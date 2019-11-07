@@ -7,6 +7,7 @@ import javax.swing.*;
 import Trainer.TrainerSuper;
 import Trainer.Player;
 import Trainer.Rival;
+import mainGame.Options;
 import mainGame.TimerClass;
 
 
@@ -49,11 +50,11 @@ public class Battle extends JPanel {
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
-	     JButton menuButton = new JButton("Menu");
-	     menuButton.setPreferredSize(new Dimension(200,75));
-	     menuButton.setBackground(Color.DARK_GRAY);
-	     menuButton.setForeground(Color.cyan);
-	     menuButton.setFont(font);
+	     JButton optionsButton = new JButton("Options");
+	     optionsButton.setPreferredSize(new Dimension(200,75));
+	     optionsButton.setBackground(Color.DARK_GRAY);
+	     optionsButton.setForeground(Color.cyan);
+	     optionsButton.setFont(font);
 	     
 	     JButton fightButton = new JButton("FIGHT");
 	     fightButton.setPreferredSize(new Dimension(200,75));
@@ -130,11 +131,12 @@ public class Battle extends JPanel {
 	     }
 
 	     if (language == "Japanese") { 
-	    	 menuButton.setText("メニユー"); 
+	    	 optionsButton.setText("せっていを かえる");
 	    	 fightButton.setText("たたかう");
 	    	 runButton.setText("にげる");
 	    	 itemButton.setText("どうぐ");
 	    	 pokemonButton.setText("ポケモン");
+		     optionsButton.setPreferredSize(new Dimension(400,75));
 	    	 
 	    	 
 	    	 
@@ -179,7 +181,7 @@ public class Battle extends JPanel {
 	     gb.gridy=0;
 	     gb.weighty = 1;
 	     gb.insets = new Insets(-50,0,0,-400);
-	     add(menuButton, gb);
+	     add(optionsButton, gb);
 	     
 	     gb.gridx = 0;
 	     gb.gridy=1;
@@ -230,12 +232,15 @@ public class Battle extends JPanel {
 	     add(trainerPokemonHpLabel, gb);
 	     
     
-	     menuButton.addActionListener(new ActionListener() {
+	     optionsButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
-	            	cards.add(menu, "menu");
-	                layout.show(cards, "menu");  
+	            	JTextArea blankTextArea = new JTextArea();
+	            	
+	            	Options options = new Options(cl,cards, "battle", blankTextArea, location, false, player, false, language, textSpeed, "",
+	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
+	            			labOutsideButtonEnable, trainer, battleScreenText);
+	            	cards.add(options, "options");
+	                layout.show(cards, "options");  
 	            	
 	            }
 	        });

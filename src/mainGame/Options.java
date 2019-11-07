@@ -7,6 +7,7 @@ import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
+import locations.Battle;
 import locations.ChooseStarter;
 import locations.ChooseStarterConfirmation;
 import locations.MenuScreen;
@@ -305,6 +306,14 @@ public class Options extends JPanel {
 	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable);
 	            		cards.add(chooseStarter, "choosestarter");
 	            	    layout.show(cards, "choosestarter");
+	            	    break;
+	            	    
+	            	case "battle":	            		
+	            		Battle battle = new Battle(cl, cards, font1, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, rival, battleScreenText);
+		            	cards.add(battle, "battle");
+		            	
+		                layout.show(cards, "battle");
 	            	    break;
 	            		           	
 	            }

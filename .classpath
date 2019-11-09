@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+# With the Maven update on our project a modification in classpath with additional 
+# attributes maven.pomderived with value true.
+# This is how M2E marks classpath entries derived from contents of pom.xml file.
+# The classpath entries with this attribute set to true are removed and recreated
+# during project import and configuration update.
+# Entries that do not have this attribute are copied as-is in order to preserve manual classpath changes.
+-->
+
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>

@@ -183,7 +183,7 @@ public class MainGame extends JPanel {
 		 logoLabel = new JLabel(logoIcon);
 			logoIcon2 = new ImageIcon(this.getClass().getClassLoader().getResource("logo1.png"));
 			 logoLabel2 = new JLabel(logoIcon2);
-			 	logoIcon3 = new ImageIcon(this.getClass().getClassLoader().getResource("PTA3J logo.png"));
+			 	logoIcon3 = new ImageIcon(this.getClass().getClassLoader().getResource("PTA3 logo.png"));
 			 	logoLabel3 = new JLabel(logoIcon3);
 		  
 

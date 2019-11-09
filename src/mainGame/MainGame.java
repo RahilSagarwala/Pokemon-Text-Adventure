@@ -16,7 +16,7 @@ public class MainGame extends JPanel {
 
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel, mainScreenPanel;
     JButton feedbackButton, newGameButton, continueButton, creditsButton, optionsButton;
-    JLabel namesLabel, titleLabel, logoLabel, logoLabel2;
+    JLabel namesLabel, titleLabel, logoLabel, logoLabel2, logoLabel3;
 	Font titleFont, italicFont = new Font("SANS_SERIF", Font.ITALIC, 25), 
 			buttonFont = new Font("SANS_SERIF", Font.BOLD, 10), font;
 	final static String mainScreenString = "mainscreen";
@@ -34,7 +34,7 @@ public class MainGame extends JPanel {
     Rival rival;
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     Float titleSize;
-    ImageIcon logoIcon, logoIcon2;
+    ImageIcon logoIcon, logoIcon2, logoIcon3;
     TrainerSuper trainer = new TrainerSuper();
     
     
@@ -59,7 +59,7 @@ public class MainGame extends JPanel {
 	   
     	
 	    setLayout(new GridBagLayout());
-        setBackground(Color.black); 
+        setBackground(Color.cyan); 
      
 
          
@@ -91,10 +91,10 @@ public class MainGame extends JPanel {
     	
     	//Create GUI
 		titlePanel = new JPanel();
-		titlePanel.setBackground(Color.black);
+		titlePanel.setBackground(Color.cyan);
 		titleLabel = new JLabel();
-		titleLabel = new JLabel("Pokémon Text Adventure ");
-		titleLabel.setForeground(Color.LIGHT_GRAY);
+		titleLabel = new JLabel("Pokemon Text Adventure ");
+		titleLabel.setForeground(Color.cyan);
 		titleLabel.setFont(titleFont);	
 		titlePanel.add(titleLabel);
 
@@ -102,7 +102,7 @@ public class MainGame extends JPanel {
 		
 		namesPanel = new JPanel();
 		namesPanel.setLayout(new BorderLayout());
-		namesPanel.setBackground(Color.black);
+		namesPanel.setBackground(Color.cyan);
 		namesLabel = new JLabel("By: Rahil Sagarwala, Gary Ray, Chad Mendenhall, and Luis Siavchay");
 		namesLabel.setForeground(Color.LIGHT_GRAY);
 		namesLabel.setFont(italicFont);
@@ -116,41 +116,41 @@ public class MainGame extends JPanel {
 		
 		newGameButton = new JButton("New Game");
 		newGameButton.setBackground(Color.DARK_GRAY);
-		newGameButton.setForeground(Color.cyan);
+		newGameButton.setForeground(Color.white);
 		newGameButton.setFont(font);
 		
 		
 		continueButton = new JButton("Continue");
 		continueButton.setBackground(Color.DARK_GRAY);
-		continueButton.setForeground(Color.cyan);
+		continueButton.setForeground(Color.white);
 		continueButton.setFont(font);
 		
 		creditsButton = new JButton("Credits");
 		creditsButton.setBackground(Color.DARK_GRAY);
-		creditsButton.setForeground(Color.cyan);
+		creditsButton.setForeground(Color.white);
 		creditsButton.setFont(font);
 	
 		
 		optionsButton = new JButton("Options");
 		optionsButton.setBackground(Color.DARK_GRAY);
-		optionsButton.setForeground(Color.cyan);
+		optionsButton.setForeground(Color.white);
 		optionsButton.setFont(font);
 		
 		
 		feedbackButton = new JButton("Feedback");
 		feedbackButton.setBackground(Color.DARK_GRAY);
-		feedbackButton.setForeground(Color.cyan);
+		feedbackButton.setForeground(Color.white);
 		feedbackButton.setFont(font);
 		
 		JButton expandLogoButton = new JButton("Full Size");
 		expandLogoButton.setBackground(Color.DARK_GRAY);
-		expandLogoButton.setForeground(Color.cyan);
+		expandLogoButton.setForeground(Color.white);
 		expandLogoButton.setFont(font);
 		expandLogoButton.setPreferredSize(new Dimension(160,40));
 		
 		JButton expandLogoButton2 = new JButton("Full Size");
 		expandLogoButton2.setBackground(Color.DARK_GRAY);
-		expandLogoButton2.setForeground(Color.cyan);
+		expandLogoButton2.setForeground(Color.white);
 		expandLogoButton2.setFont(font);
 		expandLogoButton2.setPreferredSize(new Dimension(160,40));
 		
@@ -183,6 +183,8 @@ public class MainGame extends JPanel {
 		 logoLabel = new JLabel(logoIcon);
 			logoIcon2 = new ImageIcon(this.getClass().getClassLoader().getResource("logo1.png"));
 			 logoLabel2 = new JLabel(logoIcon2);
+			 	logoIcon3 = new ImageIcon(this.getClass().getClassLoader().getResource("PTA3J logo.png"));
+			 	logoLabel3 = new JLabel(logoIcon3);
 		  
 
 		
@@ -211,7 +213,13 @@ public class MainGame extends JPanel {
 		gb.insets = new Insets(0,-2110,-75,0);
 		add(expandLogoButton2,gb);
 
-
+		
+		gb.gridy=0;	
+		gb.gridx=0;
+		gb.insets = new Insets(0,225,0,0);
+		add(logoLabel3,gb);
+		
+		
 		gb.gridx=0;
 		gb.gridy=0;	
 		gb.insets = new Insets(0,225,0,0);

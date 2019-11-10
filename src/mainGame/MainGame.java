@@ -296,7 +296,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				 try {
-					    Desktop.getDesktop().browse(new URL("http://rsagarwala.infprojects.fhsu.edu/PokemonTextAdventure/").toURI());
+					    Desktop.getDesktop().browse(new URL("https://rahilsagarwala.github.io/Pokemon-Text-Adventure-Feedback/").toURI());
 					} catch (Exception ex) {}
 					
 	            }

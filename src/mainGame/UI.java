@@ -3,6 +3,11 @@ package mainGame;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -62,6 +67,27 @@ public class UI implements ComponentListener {
 	int battleScreenText = 0;
 	String color = "black";
 
+	
+	 public static synchronized void playSound(Clip c) {
+	  	  new Thread(new Runnable() {
+	  	    public void run() {
+	  	      try {
+	  	    	Clip clip = c;
+	  	        clip = AudioSystem.getClip();
+	  	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+	  	          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
+	  	        clip.open(inputStream);
+	  	        clip.start(); 
+	  	      } catch (Exception e) {
+	  	        System.err.println(e.getMessage());
+	  	      }
+	  	    }
+	  	  }).start();
+
+	  	}
+	 
+	    
+
 
     public void componentHidden(ComponentEvent e) {
 
@@ -84,9 +110,15 @@ public class UI implements ComponentListener {
 //        			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false);
 //            cards.add(options, "options");   
             
-      
+      	Clip clip = null;
+		try {
+			clip = AudioSystem.getClip();
+		} catch (LineUnavailableException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         	   mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, 
-        			   buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+        			   buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
                cards.add(mg, "mainscreen");
 //          
 //        	   cl.show(cards, "mainscreen");
@@ -103,14 +135,13 @@ public class UI implements ComponentListener {
 
     }
     
-	public UI() {
+	public UI() throws LineUnavailableException {
 		
 	
 		
 		
 		
 		cards = new JPanel();
-		
 	
 		
 		
@@ -122,9 +153,12 @@ public class UI implements ComponentListener {
     	player.generateId();
    
    	   
-   	   
+      	Clip clip = AudioSystem.getClip();
+    	playSound(clip);
     	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, 
-    			buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+    			buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
+    	
+    	
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
     			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, 
@@ -212,6 +246,8 @@ public class UI implements ComponentListener {
 //    	window.pack();
     	 window.addComponentListener(this);
     	cl.show(cards, "mainscreen");
+    	
+  
       
         
 	
@@ -220,8 +256,7 @@ public class UI implements ComponentListener {
 	}
 	
 	
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws LineUnavailableException {
 		new UI();
 		
 	}

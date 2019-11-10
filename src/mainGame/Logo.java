@@ -3,6 +3,10 @@ package mainGame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import Trainer.*;
 
@@ -83,8 +87,16 @@ public class Logo extends JPanel {
 		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	              	Clip clip = null;
+					try {
+						clip = AudioSystem.getClip();
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
-	            			titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+	            			titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, 
+	            			labOutsideButtonEnable, color, clip);
 	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 

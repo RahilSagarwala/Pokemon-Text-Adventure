@@ -1,15 +1,25 @@
 package mainGame;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
 import Trainer.*;
+import java.io.*;
+
+
+
 
 
 public class MainGame extends JPanel {
@@ -37,12 +47,31 @@ public class MainGame extends JPanel {
     ImageIcon logoIcon, logoIcon2, logoIcon3;
     TrainerSuper trainer = new TrainerSuper();
     String color;
+    Clip clip;
+    
+    public static synchronized void stopSound(Clip c) {
+	  	  new Thread(new Runnable() {
+	  	    public void run() {
+	  	      try {
+	  	    	Clip clip = c;
+	  	        clip = AudioSystem.getClip();
+	  	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+	  	          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
+	  	        clip.open(inputStream);
+	  	        clip.stop(); 
+	  	      } catch (Exception e) {
+	  	        System.err.println(e.getMessage());
+	  	      }
+	  	    }
+	  	  }).start();
+
+	  	}
     
     
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, 
     		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight, 
-    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
+    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color, Clip c) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
@@ -57,8 +86,9 @@ public class MainGame extends JPanel {
 	    this.professorOakVisited=professorOakVisited;
 	    this.labOutsideButtonEnable=labOutsideButtonEnable;
 	    this.color = color;
+	    this.clip = c;
 	    
-	   
+
     	
 	    setLayout(new GridBagLayout());
 	    if (color == "black") {
@@ -276,8 +306,8 @@ public class MainGame extends JPanel {
 		 newGameButton.addActionListener(new ActionListener() {
 			
 			 public void actionPerformed(ActionEvent e) {
-				
 				 
+				 	stopSound(clip);
 					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth,
 							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
 					 cards.add(newGame, "newgame");

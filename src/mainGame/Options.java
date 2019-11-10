@@ -3,6 +3,10 @@ package mainGame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -36,6 +40,7 @@ public class Options extends JPanel {
 	TrainerSuper trainer;
 	int battleScreenText;
 	String color;
+	
 	
 	
 	public Options (final CardLayout layout, final JPanel cards, String position,
@@ -352,8 +357,15 @@ public class Options extends JPanel {
 	            	
 	            	
 	            	case "mainscreen":
+	                  	Clip clip = null;
+						try {
+							clip = AudioSystem.getClip();
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 	            		 mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer, titleSize, buttonWidth, 
-		            	    		buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+		            	    		buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            		 cards.add(mg, "mainscreen");
 	            		  layout.show(cards, position);	  
 	            		  break;
@@ -614,8 +626,15 @@ public class Options extends JPanel {
 	            		textSpeed1 = 100;
 	    
 	            		stopTimer = false;
+	                  	Clip clip = null;
+						try {
+							clip = AudioSystem.getClip();
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 		            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, 
-		            			 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+		            			 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
 		            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
 		            			 nameOptionsBool, player,setVisible,language1, textSpeed1,
 		            			 fullText2, rival, false, true, buttonWidth, buttonHeight, professorOakVisited,
@@ -631,9 +650,15 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	textSpeed1 = 50;
 	            	stopTimer = false;
-	            	
+	              	Clip clip = null;
+					try {
+						clip = AudioSystem.getClip();
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, 
-	            			 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+	            			 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen,
 	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2,
 	            			 rival, false, true, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
@@ -646,8 +671,15 @@ public class Options extends JPanel {
 		 timerOffButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	 stopTimer = true;
+	               	Clip clip = null;
+					try {
+						clip = AudioSystem.getClip();
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, buttonWidth, buttonHeight
-	            			 , player, rival, professorOakVisited, labOutsideButtonEnable, color);
+	            			 , player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
 	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, 
 	            			 fullText2, rival, false, true, buttonWidth, buttonHeight, professorOakVisited, 

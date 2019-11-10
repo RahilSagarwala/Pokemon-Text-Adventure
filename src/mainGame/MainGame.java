@@ -492,8 +492,8 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				 if (fromUi == "yes") {
-					  musicMain = "off";
 					  clip.stop();
+					  
 
 					  }
 					  if (musicMain == "on") {					  

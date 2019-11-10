@@ -126,6 +126,7 @@ public class NewGame extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	try {
 						Clip clip = null;
+						//On instead of off for Music on as default
 						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
 								65f, buttonWidth, buttonHeight, player, rival, professorOakVisited, 
 								labOutsideButtonEnable, color, clip, "off", "no");

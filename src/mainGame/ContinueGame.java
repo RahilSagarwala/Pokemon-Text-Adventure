@@ -135,6 +135,7 @@ public class ContinueGame extends JPanel {
 	              	
 	            	try {
 						Clip clip = null;
+						//On instead of off for Music on as default
 						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
 								titleSize, buttonWidth, buttonHeight, player, rival,professorOakVisited,labOutsideButtonEnable, 
 								color, clip, "off", "no");

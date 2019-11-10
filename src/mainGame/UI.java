@@ -67,6 +67,8 @@ public class UI implements ComponentListener {
 	TrainerSuper trainer;
 	int battleScreenText = 0;
 	String color = "black";
+	
+	//On instead of off for Music on as default
 	String music = "off";
 
 	
@@ -115,6 +117,7 @@ public class UI implements ComponentListener {
       
         	   try {
 				Clip clip = null;
+				//On instead of off for Music on as default
 				mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, 
 						   buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color,
 						   clip, "off", "yes");

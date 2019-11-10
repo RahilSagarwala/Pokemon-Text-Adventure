@@ -194,12 +194,12 @@ public class Options extends JPanel {
 		
 		 
 		 if (language == "Japanese") {
-			 optionsLabel.setText("せっていを かえる");
-			 fontSizeLabel.setText("フォントサイズ       ");
+			 optionsLabel.setText("せっていを かえる ");
+			 fontSizeLabel.setText("フォントサイズ :     ");
 			 soundtrackLabel.setText("サウンドトラック");
-			 textToSpeechLabel.setText("テキストからスピーチ     ");   
-			 textSpeedLabel.setText("テキスト そくど      ");
-			 languageLabel.setText("げんご");
+			 textToSpeechLabel.setText("テキストからスピーチ:     ");   
+			 textSpeedLabel.setText("テキスト そくど :     ");
+			 languageLabel.setText("げんご: ");
 			 returnButton.setText("とじる");
 			 smallFontButton.setText("ちいさい");
 			 mediumFontButton.setText("なか");
@@ -213,7 +213,7 @@ public class Options extends JPanel {
 			 englishButton.setText("えいご");
 			 japaneseButton.setText("にほんご");
 			 timerOffButton.setText("けす");
-			 colorLabel.setText("はいけいいろ    ");
+			 colorLabel.setText("はいけいいろ:    ");
 			 blackButton.setText("くろい");
 			 cyanButton.setText("シアン");
 		 }
@@ -247,10 +247,21 @@ public class Options extends JPanel {
 
 	     
 	     //Column 2
+		 if (language == "English") {
 		 gb.gridx=1;
 	     gb.gridy=0;
 	     gb.weighty = 1;
 		 add(returnButton, gb);
+		 }
+		 
+		 if (language == "Japanese") {
+			 gb.insets = new Insets(0,50,0,0);
+			 gb.gridx=1;
+		     gb.gridy=0;
+		     gb.weighty = 1;
+			 add(returnButton, gb);
+			 gb.insets = new Insets(0,0,0,0);
+		 }
 		 gb.gridx=1;
 	     gb.gridy=1;
 		 add(optionsLabel, gb);
@@ -272,7 +283,15 @@ public class Options extends JPanel {
 		 gb.gridx=1;
 	     gb.gridy=6;
 		 add(englishButton,gb);
+		 
+		 if (language == "English") {
 		 gb.insets = new Insets(0,30,0,0);
+		 }
+		 
+		 if (language == "Japanese") {
+			 gb.insets = new Insets(0,-20,0,0);
+			 }
+		 
 		 
 		 //Column 3
 		 gb.gridx=2;
@@ -301,10 +320,21 @@ public class Options extends JPanel {
 	     gb.gridy=2;
 	     gb.insets = new Insets(0,15,0,0);
 		 add(largeFontButton,gb);
+		 
+		 if (language == "English") {
 		 gb.gridx=3;
 	     gb.gridy=5;
 	     gb.insets = new Insets(0,-10,0,0);
 		 add(timerOffButton,gb);
+		 }
+		 
+		 if (language == "Japanese") {
+			 gb.gridx=3;
+		     gb.gridy=5;
+		     gb.insets = new Insets(0,25,0,0);
+			 add(timerOffButton,gb);
+			 }
+		 
 		 }
 	
 

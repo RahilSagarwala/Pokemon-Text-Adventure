@@ -22,12 +22,13 @@ public class ChooseStarterConfirmation extends JPanel {
 	Rival rival;
 	JButton menuButton;
 	JTextArea textArea;
+	String color;
 
    
 	public ChooseStarterConfirmation(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideEnable, String pokemon) {
+			Boolean labOutsideEnable, String pokemon, String color) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.cl = layout;
@@ -43,10 +44,19 @@ public class ChooseStarterConfirmation extends JPanel {
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable = labOutsideEnable;
 	     this.pokemon = pokemon;
+	     this.color = color;
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
-		 setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 textArea = new JTextArea();		 
@@ -140,7 +150,7 @@ public class ChooseStarterConfirmation extends JPanel {
 	            	
 	            	ChooseStarter chooseStarter = new ChooseStarter(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
-	            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable, color);
 	            	cards.add(chooseStarter, "choosestarter");
 	            	  layout.show(cards, "choosestarter");            	
 	            }
@@ -164,7 +174,8 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		
 
 		            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, labOutsideButtonEnable);
+		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 
+		            			0, labOutsideButtonEnable, color);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		
@@ -184,7 +195,8 @@ public class ChooseStarterConfirmation extends JPanel {
 
 	            		
 	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, labOutsideButtonEnable);
+		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
+		            			labOutsideButtonEnable, color);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		
@@ -205,7 +217,8 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		rival.addPokemonToParty(charmander);
 	            		
 	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, labOutsideButtonEnable);
+		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
+		            			labOutsideButtonEnable, color);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		

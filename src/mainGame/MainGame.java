@@ -36,12 +36,13 @@ public class MainGame extends JPanel {
     Float titleSize;
     ImageIcon logoIcon, logoIcon2, logoIcon3;
     TrainerSuper trainer = new TrainerSuper();
+    String color;
     
     
     
     public MainGame(final CardLayout layout, final JPanel cards, Font font, 
     		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight, 
-    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
@@ -55,43 +56,50 @@ public class MainGame extends JPanel {
 	    this.rival = rival;
 	    this.professorOakVisited=professorOakVisited;
 	    this.labOutsideButtonEnable=labOutsideButtonEnable;
+	    this.color = color;
 	    
 	   
     	
 	    setLayout(new GridBagLayout());
-        setBackground(Color.cyan); 
+	    if (color == "black") {
+        setBackground(Color.black); 
+	    }
+	    
+	    if (color == "cyan") {
+	        setBackground(Color.cyan); 
+		    }
      
 
          
-        //Title Font
-        if (language == "English") {
-    	try {
-		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
-		            this.getClass().getClassLoader().getResourceAsStream("PokemonHollow.ttf")).deriveFont(titleSize);
-		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		    ge.registerFont(titleFont);
-		} catch (IOException e) {
-		    e.printStackTrace();
-		} catch(FontFormatException e) {
-		    e.printStackTrace();
-		}
-        }
-        else {
-        	try {
-    		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
-    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(60f);
-    		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    		    ge.registerFont(titleFont);
-    		} catch (IOException e) {
-    		    e.printStackTrace();
-    		} catch(FontFormatException e) {
-    		    e.printStackTrace();
-    		}
-        }
+//        //Title Font
+//        if (language == "English") {
+//    	try {
+//		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
+//		            this.getClass().getClassLoader().getResourceAsStream("PokemonHollow.ttf")).deriveFont(titleSize);
+//		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//		    ge.registerFont(titleFont);
+//		} catch (IOException e) {
+//		    e.printStackTrace();
+//		} catch(FontFormatException e) {
+//		    e.printStackTrace();
+//		}
+//        }
+//        else {
+//        	try {
+//    		    titleFont = Font.createFont(Font.TRUETYPE_FONT, 
+//    		            this.getClass().getClassLoader().getResourceAsStream("japanesetitle.otf")).deriveFont(60f);
+//    		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//    		    ge.registerFont(titleFont);
+//    		} catch (IOException e) {
+//    		    e.printStackTrace();
+//    		} catch(FontFormatException e) {
+//    		    e.printStackTrace();
+//    		}
+//        }
     	
     	//Create GUI
 		titlePanel = new JPanel();
-		titlePanel.setBackground(Color.cyan);
+		titlePanel.setBackground(Color.black);
 		titleLabel = new JLabel();
 		titleLabel = new JLabel("Pokemon Text Adventure ");
 		titleLabel.setForeground(Color.cyan);
@@ -155,11 +163,11 @@ public class MainGame extends JPanel {
 		expandLogoButton2.setPreferredSize(new Dimension(160,40));
 		
 		
-		feedbackButton.setPreferredSize(new Dimension(400,100));
-		newGameButton.setPreferredSize(new Dimension(400,100));
-		continueButton.setPreferredSize(new Dimension(400,100));
-		creditsButton.setPreferredSize(new Dimension(400,100));
-		optionsButton.setPreferredSize(new Dimension(400,100));
+		feedbackButton.setPreferredSize(new Dimension(400,80));
+		newGameButton.setPreferredSize(new Dimension(400,80));
+		continueButton.setPreferredSize(new Dimension(400,80));
+		creditsButton.setPreferredSize(new Dimension(400,80));
+		optionsButton.setPreferredSize(new Dimension(400,80));
 		
 		 if(language == "Japanese") {
 			 feedbackButton.setText("フィードバック");
@@ -173,6 +181,7 @@ public class MainGame extends JPanel {
 			 expandLogoButton2.setPreferredSize(new Dimension(171,40));
 			 Font f = new Font("SANS_SERIF", Font.BOLD, 26);
 			 expandLogoButton.setFont(f);
+			 expandLogoButton2.setFont(f);
 			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
 		 }
 		 
@@ -195,36 +204,36 @@ public class MainGame extends JPanel {
 		
 		gb.gridy=0;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,80,0,0);
+		gb.insets = new Insets(0,150,0,0);
 		add(logoLabel,gb);
 		
 		gb.gridy=0;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,-2110,0,0);
+		gb.insets = new Insets(0,-1750,0,0);
 		add(logoLabel2,gb);
 		
 		gb.gridy=1;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,80,-75,0);
+		gb.insets = new Insets(-50,150,0,0);
 		add(expandLogoButton,gb);
 		
 		gb.gridy=1;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,-2110,-75,0);
+		gb.insets = new Insets(-50,-1750,0,0);
 		add(expandLogoButton2,gb);
 
 		
 		gb.gridy=0;	
 		gb.gridx=0;
-		gb.insets = new Insets(0,225,0,0);
+		gb.insets = new Insets(0,300,0,0);
 		add(logoLabel3,gb);
 		
 		
-		gb.gridx=0;
-		gb.gridy=0;	
-		gb.insets = new Insets(0,225,0,0);
-//		gb.weighty = 1;
-		add(titlePanel,gb);
+//		gb.gridx=0;
+//		gb.gridy=0;	
+//		gb.insets = new Insets(0,225,0,0);
+////		gb.weighty = 1;
+//		add(titlePanel,gb);
 		
 		
 		
@@ -236,7 +245,7 @@ public class MainGame extends JPanel {
 		gb.weighty = 1;
 		gb.gridx=0;
 		gb.gridy=2;
-		gb.insets = new Insets(-100,250,-90,0);
+		gb.insets = new Insets(-100,300,-90,0);
 		add(newGameButton,gb);	
 		
 		gb.gridx=0;
@@ -262,7 +271,7 @@ public class MainGame extends JPanel {
 				
 				 
 					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth,
-							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
+							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 
@@ -276,7 +285,7 @@ public class MainGame extends JPanel {
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
 							false, stopTimer, titleSize, buttonWidth, buttonHeight, false,
-							professorOakVisited, labOutsideButtonEnable, trainer, 0);
+							professorOakVisited, labOutsideButtonEnable, trainer, 0, color);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -297,7 +306,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				    trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				 	cards.add(trade, "trade");
 					cl.show(cards, "trade");
 					
@@ -308,7 +317,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				    Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				 	cards.add(logo, "logo");
 					cl.show(cards, "logo");
 					
@@ -319,7 +328,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				    Logo2 logo2 = new Logo2(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				 	cards.add(logo2, "logo2");
 					cl.show(cards, "logo2");
 					
@@ -330,7 +339,7 @@ public class MainGame extends JPanel {
 				
 			 public void actionPerformed(ActionEvent e) {
 				 	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				    cards.add(continu, "continue");
 					cl.show(cards, "continue");
 					

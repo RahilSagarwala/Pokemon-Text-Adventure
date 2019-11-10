@@ -25,11 +25,12 @@ public class TrainerInfo extends JPanel {
 	MenuScreen menu;
 	TrainerSuper trainer;
 	int battleScreenText;
+	String color;
 	
 	public TrainerInfo(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -44,9 +45,18 @@ public class TrainerInfo extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
+	     this.color = color;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -171,7 +181,7 @@ public class TrainerInfo extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
             		
             		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color);
             		cards.add(menu, "menu");
             	    layout.show(cards, "menu");
             	  

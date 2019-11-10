@@ -25,12 +25,13 @@ public class ConfirmContinue extends JPanel{
     int buttonWidth;
     int buttonHeight;
     ContinueGame continu;
+    String color;
 
     
     
 	public ConfirmContinue (final CardLayout layout, final JPanel cards, String name, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
 		 this.saveName = name;
 		 this.cl = layout;
 	     this.cards = cards;
@@ -45,8 +46,17 @@ public class ConfirmContinue extends JPanel{
 	     this.buttonHeight = buttonHeight;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.color = color;
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 
@@ -101,7 +111,7 @@ public class ConfirmContinue extends JPanel{
 		 noButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	            	cards.add(continu, "continue");
 	                layout.show(cards, "continue");
 	            }

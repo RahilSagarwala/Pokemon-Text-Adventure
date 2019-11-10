@@ -20,9 +20,11 @@ public class Potion extends ItemSuper {
 	}
 	
 	public void showPartyPokemon(CardLayout cl, JPanel cards, Font font, String screen, String language, int textSpeed, Player player, Rival rival, Boolean stopTimer, String location, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String englishName, String japaneseName, int itemIndex) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String englishName, String japaneseName,
+			int itemIndex, String color) {
 		PartyPokemon partyPokemon = new PartyPokemon(cl, cards, font, "", language, textSpeed,
-    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, "potion", itemIndex);
+    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable,
+    			trainer, battleScreenText, "potion", itemIndex, color);
     	cards.add(partyPokemon, "partypokemon");
         cl.show(cards, "partypokemon");
 	}

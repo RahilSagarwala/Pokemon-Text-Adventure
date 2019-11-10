@@ -26,11 +26,12 @@ public class ContinueGame extends JPanel {
     int buttonWidth;
     int buttonHeight;
     Boolean professorOakVisited;
+    String color;
 
 	
 	public ContinueGame (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.language = language;
@@ -44,8 +45,17 @@ public class ContinueGame extends JPanel {
 	     this.buttonHeight = buttonHeight;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.color = color;
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 
@@ -118,7 +128,7 @@ public class ContinueGame extends JPanel {
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
-	            			titleSize, buttonWidth, buttonHeight, player, rival,professorOakVisited,labOutsideButtonEnable);
+	            			titleSize, buttonWidth, buttonHeight, player, rival,professorOakVisited,labOutsideButtonEnable, color);
 	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 	                
@@ -137,7 +147,7 @@ public class ContinueGame extends JPanel {
 	            	}
 	            	
 	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	                
@@ -161,7 +171,7 @@ public class ContinueGame extends JPanel {
 	            	
 	            	
 	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	              
@@ -180,7 +190,7 @@ public class ContinueGame extends JPanel {
 	            	}
 	            	
 	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	             

@@ -22,11 +22,13 @@ public class NewGame extends JPanel {
     int textSpeed, buttonWidth, buttonHeight;
     Rival rival;
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
+    String color;
 
     
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer,
-			int buttonWidth, int buttonHeight, Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			int buttonWidth, int buttonHeight, Player player, Rival rival, Boolean professorOakVisited, 
+			Boolean labOutsideButtonEnable, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
@@ -39,12 +41,21 @@ public class NewGame extends JPanel {
 	     this.rival = rival;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.color = color;
 	     
 
 	     
 		
 		 
-		 setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 
 		 
 		 JButton yesButton = new JButton("Yes");
@@ -118,7 +129,7 @@ public class NewGame extends JPanel {
 	         
 	         ss = new StartScreen(cl,cards,font, screenTextArea
 	        		 ,"1", false, player, true, language, textSpeed, "",
-	        		 rival, false, stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        		 rival, false, stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
             
 	         
              cards.add(ss, "startscreen");

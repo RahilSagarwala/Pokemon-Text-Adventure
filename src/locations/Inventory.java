@@ -26,6 +26,7 @@ public class Inventory extends JPanel {
 	MenuScreen menu;
 	TrainerSuper trainer;
 	int battleScreenText;
+	String color;
 	
 	public Inventory (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
@@ -47,7 +48,15 @@ public class Inventory extends JPanel {
 	     this.battleScreenText=battleScreenText;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -162,7 +171,8 @@ public class Inventory extends JPanel {
 	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Map" || 
 	            		player.getItems().get(buttonIndex).getItemName(language) ==  "ちず") {
 	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer,
+	            					location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color);
 	            		}
 	            		
 	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Potion" || 
@@ -172,7 +182,7 @@ public class Inventory extends JPanel {
 	    	            			potion.showPartyPokemon(cl, cards, font, screen, language, 
 	    	            					textSpeed, player, rival, 
 	    	            					stopTimer, location, professorOakVisited, 
-	    	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex);
+	    	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex, color);
 	    	            			      		
 	    	            		}
 	            	  
@@ -192,14 +202,15 @@ public class Inventory extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText);
+		                		labOutsideButtonEnable, rival, battleScreenText, color);
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");
 		                break;
 	            	default:
 	            		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer,
+	            				battleScreenText, color);
 	            		cards.add(menu, "menu");
 	            	    layout.show(cards, "menu");
 	            	    break;

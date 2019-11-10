@@ -23,12 +23,13 @@ public class ChooseStarter extends JPanel {
 	JButton menuButton;
 	JTextArea textArea;
 	TrainerSuper trainer = new TrainerSuper();
+	String color;
 
    
 	public ChooseStarter(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideEnable) {
+			Boolean labOutsideEnable, String color) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.cl = layout;
@@ -43,10 +44,19 @@ public class ChooseStarter extends JPanel {
 	     this.location = location2;
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable = labOutsideEnable;
+	     this.color = color;
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
-		 setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 textArea = new JTextArea("Choose a Pokémon");		 
@@ -137,7 +147,7 @@ public class ChooseStarter extends JPanel {
 	     returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "9", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color);
 	            	cards.add(palletTownLab, "pallettownlab");
 	                layout.show(cards, "pallettownlab"); 
 	           
@@ -152,7 +162,7 @@ public class ChooseStarter extends JPanel {
 	            	ChooseStarterConfirmation chooseStarterConfirmation = new ChooseStarterConfirmation(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
 	            			player, rival, stopTimer, "choosestartervonfirmation", professorOakVisited, labOutsideButtonEnable,
-	            			"charmander");
+	            			"charmander", color);
 	            	cards.add(chooseStarterConfirmation, "choosestarterconfirmation");
 	            	  layout.show(cards, "choosestarterconfirmation");
 	                
@@ -164,7 +174,7 @@ public class ChooseStarter extends JPanel {
 	            	ChooseStarterConfirmation chooseStarterConfirmation = new ChooseStarterConfirmation(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
 	            			player, rival, stopTimer, "choosestartervonfirmation", professorOakVisited, labOutsideButtonEnable,
-	            			"squirtle");
+	            			"squirtle", color);
 	            	cards.add(chooseStarterConfirmation, "choosestarterconfirmation");
 	            	  layout.show(cards, "choosestarterconfirmation");
 	                
@@ -176,7 +186,7 @@ public class ChooseStarter extends JPanel {
 	            	ChooseStarterConfirmation chooseStarterConfirmation = new ChooseStarterConfirmation(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
 	            			player, rival, stopTimer, "choosestartervonfirmation", professorOakVisited, labOutsideButtonEnable,
-	            			"bulbasaur");
+	            			"bulbasaur", color);
 	            	cards.add(chooseStarterConfirmation, "choosestarterconfirmation");
 	            	  layout.show(cards, "choosestarterconfirmation");
 	                
@@ -191,7 +201,7 @@ public class ChooseStarter extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "choosestarter", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 0);
+	            			labOutsideButtonEnable, trainer, 0, color);
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	

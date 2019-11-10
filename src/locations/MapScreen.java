@@ -22,11 +22,12 @@ public class MapScreen extends JPanel {
 	JLabel mapLabel;
 	TrainerSuper trainer;
 	int battleScreenText;
+	String color;
 	
 	public MapScreen(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, 
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font = font;
@@ -40,9 +41,18 @@ public class MapScreen extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
+	     this.color = color;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     

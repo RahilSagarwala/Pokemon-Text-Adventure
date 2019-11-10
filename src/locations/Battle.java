@@ -24,11 +24,12 @@ public class Battle extends JPanel {
 	Rival rival;
 	JButton lmenuButton;
 	int battleScreenText;
+	String color;
 	
 	public Battle (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, TrainerSuper trainer, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, Rival rival, int battleScreenText2) {
+			Boolean labOutsideButtonEnable, Rival rival, int battleScreenText2, String color) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -44,9 +45,18 @@ public class Battle extends JPanel {
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable = labOutsideButtonEnable;
 	     this.battleScreenText = battleScreenText2;
+	     this.color = color;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -238,7 +248,7 @@ public class Battle extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "battle", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, battleScreenText);
+	            			labOutsideButtonEnable, trainer, battleScreenText, color);
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	
@@ -255,7 +265,8 @@ public class Battle extends JPanel {
 	     pokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "battle", language, textSpeed,
-	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, "", 0);
+	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer,
+	            			battleScreenText, "", 0, color);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
 	            	
@@ -277,7 +288,7 @@ public class Battle extends JPanel {
 	            	battleScreenText = 999;
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, battleScreenText);
+	                		labOutsideButtonEnable, rival, battleScreenText, color);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");

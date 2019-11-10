@@ -115,16 +115,17 @@ public class MainGame extends JPanel {
 	    Clip clip2 = AudioSystem.getClip();
 	    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
 		          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
-	    if (musicMain == "on") {  
-	        clip2.open(inputStream);
-	        clip2.start();
-	    }
-	    if(musicMain == "off") {
-	  	        clip2.open(inputStream);
-	  	        clip2.stop();
-	  	        clip2.close();
-	  	        
-	    }
+	    clip2.open(inputStream);
+	    
+//	    if (musicMain == "on") {  
+//	       
+//	        clip2.start();
+//	    }
+//	    if(musicMain == "off") {
+//	  	        clip2.stop();
+//	  	        clip2.close();
+//	  	        
+//	    }
 	    
 	    	    
 	    

@@ -67,7 +67,7 @@ public class UI implements ComponentListener {
 	TrainerSuper trainer;
 	int battleScreenText = 0;
 	String color = "black";
-	String music = "on";
+	String music = "off";
 
 	
 	 public static synchronized void playSound(Clip c) {
@@ -150,14 +150,13 @@ public class UI implements ComponentListener {
 		Clip clip = AudioSystem.getClip();
 	    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
 		          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
+	    clip.open(inputStream);
 	    if (music == "on") {  
-	        clip.open(inputStream);
+	        
 	        clip.start();
 	    }
 	    if(music == "off") {
-	  	        clip.open(inputStream);
 	  	        clip.stop();
-	  	        clip.close();
 	  	        
 	    }
 		

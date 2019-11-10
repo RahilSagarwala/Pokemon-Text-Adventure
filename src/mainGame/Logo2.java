@@ -93,7 +93,7 @@ public class Logo2 extends JPanel {
 						Clip clip = null;
 						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
 								titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable,
-								color, clip, "on", "no");
+								color, clip, "off", "no");
 					} catch (LineUnavailableException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

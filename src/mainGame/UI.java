@@ -115,7 +115,7 @@ public class UI implements ComponentListener {
 		
 		
     	cl = new CardLayout();
-   	   window = new JFrame("Pok�mon Text Adventure");
+   	   window = new JFrame("Pokémon Text Adventure (ポケットモンスターテキストアドベンチャー)");
 	   
    	   
    	   //Random ID for player at beginning of game

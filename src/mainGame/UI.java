@@ -8,6 +8,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -66,6 +67,7 @@ public class UI implements ComponentListener {
 	TrainerSuper trainer;
 	int battleScreenText = 0;
 	String color = "black";
+	String music = "on";
 
 	
 	 public static synchronized void playSound(Clip c) {
@@ -110,15 +112,22 @@ public class UI implements ComponentListener {
 //        			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false);
 //            cards.add(options, "options");   
             
-      	Clip clip = null;
-		try {
-			clip = AudioSystem.getClip();
-		} catch (LineUnavailableException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        	   mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, 
-        			   buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
+      
+        	   try {
+				Clip clip = null;
+				mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, 
+						   buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color,
+						   clip, "off", "yes");
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (UnsupportedAudioFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
                cards.add(mg, "mainscreen");
 //          
 //        	   cl.show(cards, "mainscreen");
@@ -135,10 +144,22 @@ public class UI implements ComponentListener {
 
     }
     
-	public UI() throws LineUnavailableException {
+	public UI() throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		
 	
-		
+		Clip clip = AudioSystem.getClip();
+	    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+		          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
+	    if (music == "on") {  
+	        clip.open(inputStream);
+	        clip.start();
+	    }
+	    if(music == "off") {
+	  	        clip.open(inputStream);
+	  	        clip.stop();
+	  	        clip.close();
+	  	        
+	    }
 		
 		
 		cards = new JPanel();
@@ -153,10 +174,16 @@ public class UI implements ComponentListener {
     	player.generateId();
    
    	   
-      	Clip clip = AudioSystem.getClip();
-    	playSound(clip);
-    	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, 
-    			buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
+    	try {
+			mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, titleSize, buttonWidth, 
+					buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip, "off", "yes");
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
@@ -247,17 +274,13 @@ public class UI implements ComponentListener {
     	 window.addComponentListener(this);
     	cl.show(cards, "mainscreen");
     	
-  
-      
-        
-	
-		
 		
 	}
 	
 	
-	public static void main(String[] args) throws LineUnavailableException {
+	public static void main(String[] args) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		new UI();
+		
 		
 	}
 

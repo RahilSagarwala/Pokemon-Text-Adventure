@@ -2,7 +2,12 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
+
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -23,6 +28,7 @@ public class NewGame extends JPanel {
     Rival rival;
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     String color;
+    MainGame mg;
 
     
 	
@@ -116,10 +122,26 @@ public class NewGame extends JPanel {
 		 add(noButton, gb);
 		 
 		
-		 
 		 noButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	try {
+						Clip clip = null;
+						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
+								65f, buttonWidth, buttonHeight, player, rival, professorOakVisited, 
+								labOutsideButtonEnable, color, clip, "on", "no");
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
+
 	            }
 	        });
 		 

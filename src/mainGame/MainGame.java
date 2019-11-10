@@ -25,7 +25,7 @@ import java.io.*;
 public class MainGame extends JPanel {
 
     JPanel cards, namesPanel, titlePanel, frontBoxPanel, backBoxPanel, logoPanel, mainScreenPanel;
-    JButton feedbackButton, newGameButton, continueButton, creditsButton, optionsButton;
+    JButton feedbackButton, newGameButton, continueButton, creditsButton, optionsButton, musicOffButton, musicOnButton;
     JLabel namesLabel, titleLabel, logoLabel, logoLabel2, logoLabel3;
 	Font titleFont, italicFont = new Font("SANS_SERIF", Font.ITALIC, 25), 
 			buttonFont = new Font("SANS_SERIF", Font.BOLD, 10), font;
@@ -46,19 +46,39 @@ public class MainGame extends JPanel {
     Float titleSize;
     ImageIcon logoIcon, logoIcon2, logoIcon3;
     TrainerSuper trainer = new TrainerSuper();
-    String color;
+    String color, musicMain, fromUi;
     Clip clip;
     
-    public static synchronized void stopSound(Clip c) {
+    
+    
+    
+//    public static synchronized void stopSound() {
+//	  	  new Thread(new Runnable() {
+//	  	    public void run() {
+//	  	      try {
+//	  	        Clip clip = AudioSystem.getClip();
+//	  	       
+//	  	        clip.stop(); 
+//	  	        clip.close();       
+//	  	        clip.flush();
+//
+//	  	      } catch (Exception e) {
+//	  	        System.err.println(e.getMessage());
+//	  	      }
+//	  	    }
+//	  	  }).run();
+//
+//	  	}
+    
+    public static synchronized void startSound() {
 	  	  new Thread(new Runnable() {
 	  	    public void run() {
 	  	      try {
-	  	    	Clip clip = c;
-	  	        clip = AudioSystem.getClip();
+	  	        Clip clip = AudioSystem.getClip();
 	  	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
 	  	          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
 	  	        clip.open(inputStream);
-	  	        clip.stop(); 
+	  	        clip.start();
 	  	      } catch (Exception e) {
 	  	        System.err.println(e.getMessage());
 	  	      }
@@ -69,9 +89,11 @@ public class MainGame extends JPanel {
     
     
     
+    
     public MainGame(final CardLayout layout, final JPanel cards, Font font, 
     		String language, int textSpeed, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight, 
-    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color, Clip c) {
+    		Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color,
+    		Clip clip, String musicMain2, String fromUi) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
     	this.cl = layout;
 	    this.cards = cards;
 	    this.font = font;
@@ -86,9 +108,26 @@ public class MainGame extends JPanel {
 	    this.professorOakVisited=professorOakVisited;
 	    this.labOutsideButtonEnable=labOutsideButtonEnable;
 	    this.color = color;
-	    this.clip = c;
+	    this.clip = clip;
+	    this.musicMain = musicMain2;
+	    this.fromUi = fromUi;
 	    
-
+	    Clip clip2 = AudioSystem.getClip();
+	    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+		          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
+	    if (musicMain == "on") {  
+	        clip2.open(inputStream);
+	        clip2.start();
+	    }
+	    if(musicMain == "off") {
+	  	        clip2.open(inputStream);
+	  	        clip2.stop();
+	  	        clip2.close();
+	  	        
+	    }
+	    
+	    	    
+	    
     	
 	    setLayout(new GridBagLayout());
 	    if (color == "black") {
@@ -192,6 +231,18 @@ public class MainGame extends JPanel {
 		expandLogoButton2.setFont(font);
 		expandLogoButton2.setPreferredSize(new Dimension(160,40));
 		
+		musicOnButton = new JButton("Music On");
+		musicOnButton.setBackground(Color.DARK_GRAY);
+		musicOnButton.setForeground(Color.white);
+		musicOnButton.setFont(font);
+		musicOnButton.setPreferredSize(new Dimension(175,40));
+		
+		musicOffButton = new JButton("Music Off");
+		musicOffButton.setBackground(Color.DARK_GRAY);
+		musicOffButton.setForeground(Color.white);
+		musicOffButton.setFont(font);
+		musicOffButton.setPreferredSize(new Dimension(175,40));
+		
 		
 		feedbackButton.setPreferredSize(new Dimension(400,80));
 		newGameButton.setPreferredSize(new Dimension(400,80));
@@ -242,23 +293,34 @@ public class MainGame extends JPanel {
 		
 		gb.gridy=0;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,150,0,0);
+		gb.insets = new Insets(50,150,0,0);
 		add(logoLabel,gb);
 		
 		gb.gridy=0;	
 		gb.gridx=2;
-		gb.insets = new Insets(0,-1750,0,0);
+		gb.insets = new Insets(50,-1750,0,0);
 		add(logoLabel2,gb);
 		
 		gb.gridy=1;	
 		gb.gridx=2;
-		gb.insets = new Insets(-50,150,0,0);
+		gb.insets = new Insets(-25,150,0,0);
 		add(expandLogoButton,gb);
 		
 		gb.gridy=1;	
 		gb.gridx=2;
-		gb.insets = new Insets(-50,-1750,0,0);
+		gb.insets = new Insets(-500,150,0,0);
+		add(musicOffButton,gb);
+		
+		gb.gridy=1;	
+		gb.gridx=2;
+		gb.insets = new Insets(-25,-1750,0,0);
 		add(expandLogoButton2,gb);
+		
+		gb.gridy=1;	
+		gb.gridx=3;
+		gb.insets = new Insets(-500,-2060,0,0);
+		add(musicOnButton,gb);
+
 
 		
 		gb.gridy=0;	
@@ -306,8 +368,13 @@ public class MainGame extends JPanel {
 		 newGameButton.addActionListener(new ActionListener() {
 			
 			 public void actionPerformed(ActionEvent e) {
-				 
-				 	stopSound(clip);
+				 	
+				  if (fromUi == "yes") {
+				  clip.stop();
+				  }
+				  if (musicMain == "on") {
+				  clip2.stop();
+				  }
 					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth,
 							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
 					 cards.add(newGame, "newgame");
@@ -320,6 +387,12 @@ public class MainGame extends JPanel {
 		 optionsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  clip.stop();
+					  }
+					  if (musicMain == "on") {
+					  clip2.stop();
+					  }
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
 							false, stopTimer, titleSize, buttonWidth, buttonHeight, false,
@@ -333,6 +406,12 @@ public class MainGame extends JPanel {
 		 feedbackButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  clip.stop();
+					  }
+					  if (musicMain == "on") {
+					  clip2.stop();
+					  }
 				 try {
 					    Desktop.getDesktop().browse(new URL("https://rahilsagarwala.github.io/Pokemon-Text-Adventure-Feedback/").toURI());
 					} catch (Exception ex) {}
@@ -343,6 +422,12 @@ public class MainGame extends JPanel {
 		 creditsButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  clip.stop();
+					  }
+					  if (musicMain == "on") {
+					  clip2.stop();
+					  }
 				    trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				 	cards.add(trade, "trade");
@@ -354,6 +439,12 @@ public class MainGame extends JPanel {
 		 expandLogoButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  clip.stop();
+					  }
+					  if (musicMain == "on") {
+					  clip2.stop();
+					  }
 				    Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				 	cards.add(logo, "logo");
@@ -365,6 +456,12 @@ public class MainGame extends JPanel {
 		 expandLogoButton2.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  clip.stop();
+					  }
+					  if (musicMain == "on") {
+					  clip2.stop();
+					  }
 				    Logo2 logo2 = new Logo2(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				 	cards.add(logo2, "logo2");
@@ -376,10 +473,54 @@ public class MainGame extends JPanel {
 		 continueButton.addActionListener(new ActionListener() {
 				
 			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  clip.stop();
+					  }
+					  if (musicMain == "on") {
+					  clip2.stop();
+					  }
 				 	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 				    cards.add(continu, "continue");
 					cl.show(cards, "continue");
+					
+	            }
+	        });
+		 
+		 musicOffButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+				 if (fromUi == "yes") {
+					  musicMain = "off";
+					  clip.stop();
+
+					  }
+					  if (musicMain == "on") {					  
+					  clip2.stop();
+					  musicMain = "off";
+					  }
+				 	
+					
+	            }
+	        });
+		 
+		 musicOnButton.addActionListener(new ActionListener() {
+				
+			 public void actionPerformed(ActionEvent e) {
+
+					  if (musicMain == "off") {
+						  
+					  clip2.start();
+					  musicMain = "on";
+					  
+					  }
+					  
+					  if (fromUi == "yes") {
+						  clip.start();
+						  musicMain = "on";
+
+						  }
+				 	
 					
 	            }
 	        });

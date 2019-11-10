@@ -363,7 +363,7 @@ public class Options extends JPanel {
 	            		 try {
 							Clip clip = null;
 							mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer, titleSize, buttonWidth, 
-							    		buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip, "on", "no");
+							    		buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip, "off", "no");
 						} catch (LineUnavailableException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

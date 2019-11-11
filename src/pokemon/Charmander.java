@@ -27,8 +27,10 @@ public class Charmander extends PokemonSuper {
 		"said to spout from the tip" + "\n" + "of its tail";
 		japanesePokedex = "うまれたときから　しっぽに　ほのおが" + "\n" + "ともっている。　ほのおが　きえたとき　その" + "\n" + "いのちは　おわって　しまう。";
 		
-//		attackArrayList.add()
-//		attackArrayList.add()
+		Scratch scratch = new Scratch(35);
+		attackArrayList.add(scratch);
+		Leer leer = new Leer(35);
+		attackArrayList.add(leer);
 	}
 
 }

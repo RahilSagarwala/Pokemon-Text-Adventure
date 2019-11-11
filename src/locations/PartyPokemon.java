@@ -310,7 +310,7 @@ public class PartyPokemon extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color);
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "");
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");

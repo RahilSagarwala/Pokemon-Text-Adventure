@@ -3,6 +3,9 @@ package pokemon;
 import java.util.ArrayList;
 //import attacks.Attacks;
 
+import attacks.Growl;
+import attacks.Tackle;
+
 public class Squirtle extends PokemonSuper {
 	//Squirtle is a Water-type Pokémon
 	
@@ -26,8 +29,11 @@ public class Squirtle extends PokemonSuper {
 		englishPokedex = "After birth, its back" + "\n" + "swells and hardens into a" + "\n" + "shell. Powerfully sprays foam"
 				+ "\n" + "from its mouth";
 		japanesePokedex = "ばがい　くびを　こうちのなかに　ひっこめるとき" + "\n" + "いきおいよく　みずでっぽうを　はっしゃする。";
-//		attackArrayList.add()
-//		attackArrayList.add()
+
+		Tackle tackle = new Tackle(35);
+		attackArrayList.add(tackle);
+		Growl growl = new Growl(35);
+		attackArrayList.add(growl);
 	}
 
 }

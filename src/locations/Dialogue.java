@@ -465,7 +465,7 @@ public class Dialogue extends JPanel {
 	            	case "rivalbattle1":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, 0, color);
+		                		labOutsideButtonEnable, rival, 0, color, false, "", "", "");
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");

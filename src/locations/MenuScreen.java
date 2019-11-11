@@ -180,7 +180,7 @@ public class MenuScreen extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, trainer, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color);
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "");
 		            	cards.add(battle, "battle");
 		                layout.show(cards, "battle");  
 		                break;

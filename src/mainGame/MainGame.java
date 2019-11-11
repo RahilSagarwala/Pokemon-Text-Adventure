@@ -262,9 +262,16 @@ public class MainGame extends JPanel {
 			 expandLogoButton2.setText("フルサイズ");
 			 expandLogoButton2.setPreferredSize(new Dimension(171,40));
 			 Font f = new Font("SANS_SERIF", Font.BOLD, 26);
+			 Font f2 = new Font("SANS_SERIF", Font.BOLD, 21);
 			 expandLogoButton.setFont(f);
 			 expandLogoButton2.setFont(f);
 			 titleLabel.setText("<html>ポケットモンスターテキスト<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp アドベンチャー<html>");
+			 musicOnButton.setText("おんがくをおんにする");
+			 musicOffButton.setText("おんがくをけす");
+			 musicOnButton.setPreferredSize(new Dimension(260,40));
+			 musicOnButton.setFont(f2);
+			 musicOffButton.setPreferredSize(new Dimension(200,40));
+			 musicOffButton.setFont(f2);
 		 }
 		 
 		
@@ -297,37 +304,82 @@ public class MainGame extends JPanel {
 		gb.insets = new Insets(50,150,0,0);
 		add(logoLabel,gb);
 		
+		if (language == "English") {
 		gb.gridy=0;	
 		gb.gridx=2;
 		gb.insets = new Insets(50,-1750,0,0);
 		add(logoLabel2,gb);
+		}
+		
+		if (language == "Japanese") {
+			gb.gridy=0;	
+			gb.gridx=2;
+			gb.insets = new Insets(50,-1890,0,0);
+			add(logoLabel2,gb);
+			}
 		
 		gb.gridy=1;	
 		gb.gridx=2;
 		gb.insets = new Insets(-25,150,0,0);
 		add(expandLogoButton,gb);
 		
+		if (language == "English") {
 		gb.gridy=1;	
 		gb.gridx=2;
 		gb.insets = new Insets(-500,150,0,0);
 		add(musicOffButton,gb);
+		}
 		
+		if (language == "Japanese") {
+			gb.gridy=1;	
+			gb.gridx=2;
+			gb.insets = new Insets(-530,175,0,0);
+			add(musicOffButton,gb);
+			}
+		
+		if (language == "English") {
 		gb.gridy=1;	
 		gb.gridx=2;
 		gb.insets = new Insets(-25,-1750,0,0);
 		add(expandLogoButton2,gb);
+		}
 		
+		if (language == "Japanese") {
+			gb.gridy=1;	
+			gb.gridx=2;
+			gb.insets = new Insets(-25,-1890,0,0);
+			add(expandLogoButton2,gb);
+			}
+		
+		if (language == "English") {
 		gb.gridy=1;	
 		gb.gridx=3;
 		gb.insets = new Insets(-500,-2060,0,0);
 		add(musicOnButton,gb);
-
-
+		}
 		
+		if (language == "Japanese") {
+			gb.gridy=1;	
+			gb.gridx=3;
+			gb.insets = new Insets(-530,-2255,0,0);
+			add(musicOnButton,gb);
+			}
+		
+
+
+		if (language == "English") {
 		gb.gridy=0;	
 		gb.gridx=0;
 		gb.insets = new Insets(0,300,0,0);
 		add(logoLabel3,gb);
+		}
+		
+		if (language == "Japanese") {
+			gb.gridy=0;	
+			gb.gridx=0;
+			gb.insets = new Insets(0,350,0,0);
+			add(logoLabel3,gb);
+			}
 		
 		
 //		gb.gridx=0;
@@ -343,10 +395,16 @@ public class MainGame extends JPanel {
 //		gb.insets = new Insets(-8,0,0,0);
 //		add(namesPanel,gb);
 		
+		
 		gb.weighty = 1;
 		gb.gridx=0;
 		gb.gridy=2;
+		if (language == "English") {
 		gb.insets = new Insets(-100,300,-90,0);
+		}
+		if (language == "Japanese") {
+			gb.insets = new Insets(-100,350,-90,0);
+		}
 		add(newGameButton,gb);	
 		
 		gb.gridx=0;

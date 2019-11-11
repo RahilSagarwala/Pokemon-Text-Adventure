@@ -69,7 +69,7 @@ public class UI implements ComponentListener {
 	String color = "black";
 	
 	//On instead of off for Music on as default
-	String music = "off";
+	String music = "on";
 
 	
 	 public static synchronized void playSound(Clip c) {

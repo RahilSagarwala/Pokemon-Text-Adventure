@@ -84,7 +84,7 @@ public class Trade extends JPanel {
 						//On instead of off for Music on as default
 						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
 								titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, 
-								labOutsideButtonEnable, color, clip, "off", "no");
+								labOutsideButtonEnable, color, clip, "on", "no");
 					} catch (LineUnavailableException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

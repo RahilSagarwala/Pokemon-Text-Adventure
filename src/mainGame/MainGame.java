@@ -117,15 +117,15 @@ public class MainGame extends JPanel {
 		          this.getClass().getClassLoader().getResource("PTAmusic.wav"));
 	    clip2.open(inputStream);
 	    
-//	    if (musicMain == "on") {  
-//	       
-//	        clip2.start();
-//	    }
-//	    if(musicMain == "off") {
-//	  	        clip2.stop();
-//	  	        clip2.close();
-//	  	        
-//	    }
+	    if (musicMain == "on") {  
+	       
+	        clip2.start();
+	    }
+	    if(musicMain == "off") {
+	  	        clip2.stop();
+	  	        clip2.close();
+	  	        
+	    }
 	    
 	    	    
 	    

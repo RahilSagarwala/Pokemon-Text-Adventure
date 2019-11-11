@@ -171,11 +171,15 @@ public class Battle extends JPanel {
 		 
 		 if (trainer.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 	 			battleScreenText = 1;
+	 			//disable all buttons
+	 			//enable next button to direct to dialogue which then directs to previous location before battle
 	 			
 	 		}
 		 
 	     if (player.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 			battleScreenText = 2;
+			//disable all buttons
+ 			//enable next button to direct to dialogue which then directs to previous location before battle
 			
 		}
 		 
@@ -183,7 +187,8 @@ public class Battle extends JPanel {
 		 case 3: 
 			 if( language == "English") {
 				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used "  + "\n"
-			 + playerAttack + ". " + "\n" +  trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used " + "\n" + trainerAttack;
+			 + playerAttack + ". " + "\n" +  trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + 
+						 " used " + "\n" + trainerAttack + ".";
 			 }
 			 
 			 if (language == "Japanese") {
@@ -207,7 +212,12 @@ public class Battle extends JPanel {
 			 
 		 case 1: 
 			 if( language == "English") {
-				 text = "You win! ";
+				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used "  + "\n"
+						 + playerAttack + ". " + "\n" +  
+						 trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used " + "\n" +
+						 trainerAttack + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" 
+						 + "fainted.";
+						 
 			 }
 			 
 			 if (language == "Japanese") {
@@ -218,7 +228,11 @@ public class Battle extends JPanel {
 			 
 		 case 2: 
 			 if( language == "English") {
-				 text = "You lose...";
+				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used "  + "\n"
+						 + playerAttack + ". " + "\n" +  
+						 trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used " + "\n" +
+						 trainerAttack + "\n" + player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" 
+						 + "fainted.";
 			 }
 			 
 			 if (language == "Japanese") {
@@ -384,13 +398,18 @@ public class Battle extends JPanel {
 		            public void actionPerformed(ActionEvent e) { 
 		            	int buttonIndex = buttonList.indexOf(button);
 	            		
+		            	//Need to add separate statement for leer and growl, they have separate methods
+		            	//Need to add Japanese language names
 	            		if (player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
-	            				== "Scratch") {
+	            				== "Scratch" || player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "Tackle") { 
 	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
 	            			.useAttack(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
 	            			
 	            			playerAttack = player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);
 	            			
+	            			
+	            			//Need to randomize index value for random attack
 	            			trainer.getPartyPokemonArrayList().get(0).getAttacks().get(0).
 	            			useAttack(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0) );
 	            			

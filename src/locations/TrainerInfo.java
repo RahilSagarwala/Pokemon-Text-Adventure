@@ -181,7 +181,8 @@ public class TrainerInfo extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
             		
             		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color);
+            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, 
+            				trainer, battleScreenText, color, "");
             		cards.add(menu, "menu");
             	    layout.show(cards, "menu");
             	  

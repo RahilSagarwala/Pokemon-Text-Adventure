@@ -186,12 +186,12 @@ public class UI implements ComponentListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
+
     	
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
     			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, 
-    			professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color);
+    			professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, "");
     	trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
     	Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
@@ -222,10 +222,11 @@ public class UI implements ComponentListener {
     	dialogue = new Dialogue(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "dialogue", false, professorOakVisited, true, 0, labOutsideButtonEnable, color); 	
     	menu = new MenuScreen(cl, cards, font, 
-        		"", language, textSpeed, player, rival, stopTimer, "menu", professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color);
+        		"", language, textSpeed, player, rival, stopTimer, "menu", professorOakVisited, labOutsideButtonEnable, 
+        		trainer, battleScreenText, color, "");
     	mapScreen = new MapScreen(cl, cards, font, 
         		"14", language, textSpeed, player, rival, stopTimer, "mapscreen", professorOakVisited, labOutsideButtonEnable,
-        		trainer, battleScreenText, color);
+        		trainer, battleScreenText, color, "");
     	
     	
     

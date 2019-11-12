@@ -25,12 +25,12 @@ public class MenuScreen extends JPanel {
 	JButton returnButton, optionsButton, pokemonButton, itemButton, saveButton, playerButton;
 	Options options;
 	int battleScreenText;
-	String color;
+	String color, previousLocation;
 	
 	public MenuScreen (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color, String previousLocation) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -46,6 +46,7 @@ public class MenuScreen extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.battleScreenText = battleScreenText;
 	     this.color = color;
+	     this.previousLocation=previousLocation;
 	     
 	     returnButton = new JButton();
 	     returnButton.setBackground(Color.DARK_GRAY);
@@ -180,7 +181,7 @@ public class MenuScreen extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, trainer, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "");
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
 		            	cards.add(battle, "battle");
 		                layout.show(cards, "battle");  
 		                break;
@@ -197,7 +198,7 @@ public class MenuScreen extends JPanel {
             	
             	options = new Options(cl,cards, "menu", blankTextArea, location, false, player, false, language, textSpeed, "",
             			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-            			labOutsideButtonEnable, trainer, battleScreenText, color);
+            			labOutsideButtonEnable, trainer, battleScreenText, color, "");
             	cards.add(options, "options");
                 layout.show(cards, "options");  
             	
@@ -208,7 +209,8 @@ public class MenuScreen extends JPanel {
 	    pokemonButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
-            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, "", 0, color);
+            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, 
+            			battleScreenText, "", 0, color, "");
             	cards.add(partyPokemon, "partypokemon");
                 layout.show(cards, "partypokemon");
 
@@ -220,7 +222,8 @@ public class MenuScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
             	
             	Inventory inventory = new Inventory(cl, cards, textAreaFont, "", language, textSpeed,
-            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, 
+            			trainer, battleScreenText, "");
             	cards.add(inventory, "inventory");
                 layout.show(cards, "inventory");
             	

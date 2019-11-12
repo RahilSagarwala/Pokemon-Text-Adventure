@@ -210,7 +210,7 @@ public class PalletTownYourHouse extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 0, color);
+	            			labOutsideButtonEnable, trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

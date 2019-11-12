@@ -1,5 +1,7 @@
 package attacks;
 
+import pokemon.PokemonSuper;
+
 public class Growl extends AttackSuper {
 
 	public Growl(int pp) {
@@ -11,5 +13,7 @@ public class Growl extends AttackSuper {
 		baseAccuracy = 100;
 		type = "Normal";
 	}
+	
+	
 
 }

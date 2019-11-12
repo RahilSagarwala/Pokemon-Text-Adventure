@@ -214,7 +214,8 @@ public class PalletTownRivalHouse extends JPanel {
 	            	TrainerSuper trainer = new TrainerSuper();
 
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable, trainer, 0, color);
+	            			player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, 
+	            			labOutsideButtonEnable, trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

@@ -29,12 +29,13 @@ public class Battle extends JPanel {
 	int battleScreenText;
 	String color;
 	Boolean showAttacks;
+	String previousLocation;
 	
 	public Battle (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, TrainerSuper trainer, Boolean stopTimer, String location2, Boolean professorOakVisited,
 			Boolean labOutsideButtonEnable, Rival rival, int battleScreenText2, String color, Boolean showAttacks, String text,
-			String playerAttack2, String trainerAttack2) {
+			String playerAttack2, String trainerAttack2, String previousLocation) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -54,6 +55,7 @@ public class Battle extends JPanel {
 	     this.showAttacks = showAttacks;
 	     this.playerAttack = playerAttack2;
 	     this.trainerAttack = trainerAttack2;
+	     this.previousLocation = previousLocation;
 	     
 	     
 //	     if (color == "black") {
@@ -169,16 +171,36 @@ public class Battle extends JPanel {
 			 
 			 }
 		 
+		 
+		 JButton nextButton = new JButton("Next");
+		 nextButton.setPreferredSize(new Dimension(250,75));
+		 nextButton.setBackground(Color.DARK_GRAY);
+		 nextButton.setForeground(Color.cyan);
+		 nextButton.setFont(font);
+		 nextButton.setVisible(false);
+		 
 		 if (trainer.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 	 			battleScreenText = 1;
 	 			//disable all buttons
+	 			fightButton.setVisible(false);
+	 			itemButton.setVisible(false);
+	 			pokemonButton.setVisible(false);
+	 			runButton.setVisible(false);
+	 			optionsButton.setVisible(false);
 	 			//enable next button to direct to dialogue which then directs to previous location before battle
-	 			
+	 			nextButton.setVisible(true);
 	 		}
 		 
 	     if (player.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 			battleScreenText = 2;
 			//disable all buttons
+			fightButton.setVisible(false);
+ 			itemButton.setVisible(false);
+ 			pokemonButton.setVisible(false);
+ 			runButton.setVisible(false);
+ 			optionsButton.setVisible(false);
+ 			nextButton.setVisible(true);
+ 			
  			//enable next button to direct to dialogue which then directs to previous location before battle
 			
 		}
@@ -280,6 +302,7 @@ public class Battle extends JPanel {
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font);
+		
 		 
 		 buttonList.add(attack1Button);
 		 buttonList.add(attack2Button);
@@ -304,7 +327,8 @@ public class Battle extends JPanel {
 	    	 itemButton.setText("どうぐ");
 	    	 pokemonButton.setText("ポケモン");
 		     optionsButton.setPreferredSize(new Dimension(400,75));
-		     returnButton.setText("とじる"); 	 
+		     returnButton.setText("とじる"); 
+		     nextButton.setText("つぎ");
 	    	 
 	     }
 	    
@@ -371,6 +395,11 @@ public class Battle extends JPanel {
 	     }
 	     
 	     gb.gridx = 1;
+	     gb.gridy=5;
+	     gb.insets = new Insets(0,0,0,0);
+	     add(nextButton, gb);
+	     
+	     gb.gridx = 1;
 	     gb.gridy=4;
 	     gb.insets = new Insets(-200,0,0,0);
 	     add(textArea, gb);
@@ -406,26 +435,86 @@ public class Battle extends JPanel {
 	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
 	            			.useAttack(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
 	            			
-	            			playerAttack = player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);
+	            			playerAttack = player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);	
 	            			
+	            		}
+	            		
+	            		if (player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "Leer") { 
+	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
+	            			.useLeer(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
+	            			
+	            			playerAttack = player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);	
+	            			
+	            		}
+	            		
+	            		if (player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "Growl") { 
+	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
+	            			.useGrowl(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
+	            			
+	            			playerAttack = player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);	
+	            			
+	            		}
 	            			
 	            			//Need to randomize index value for random attack
-	            			trainer.getPartyPokemonArrayList().get(0).getAttacks().get(0).
-	            			useAttack(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0) );
+	            		    int x = (int)(Math.random() * (((trainer.getPartyPokemonArrayList().get(0).getAttacks().size() - 1) - 0) + 1)) + 0;
+	            		    if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Tackle" ||
+	            		    		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Scratch")
+	            		    trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).
+	            			useAttack(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
 	            			
-	            			trainerAttack = trainer.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);
+	            			trainerAttack = trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language);
 	            			
 	            			Battle battle = new Battle(cl, cards, textAreaFont, 
 	    	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack);
+	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation);
 	    	            	cards.add(battle, "battle");
 	    	            	
 	    	                layout.show(cards, "battle");
+	    	                
+	    	                if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Growl") {
+	            		    trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).
+	            			useGrowl(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
+	            			
+	            			trainerAttack = trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language);
+	            			
+	            			battle = new Battle(cl, cards, textAreaFont, 
+	    	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
+	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation);
+	    	            	cards.add(battle, "battle");
+	    	            	
+	    	                layout.show(cards, "battle");
+	    	                
+	    	                
+	    	                }
+	    	                
+	    	                if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Leer") {
+		            		    trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).
+		            			useLeer(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
+		            			
+		            			trainerAttack = trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language);
+		            			
+		            			battle = new Battle(cl, cards, textAreaFont, 
+		    	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
+		    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation);
+		    	            	cards.add(battle, "battle");
+		    	            	
+		    	                layout.show(cards, "battle");
+		    	                
+		    	                
+		    	                }
 	            		}
+		            
+		            
+		            
+		            
+	            		
+	            		
 	            		
 	            		
 		            	
-		            }
+		            
 		        });
 		 }
 	     
@@ -436,7 +525,7 @@ public class Battle extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "battle", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 4, color);
+	            			labOutsideButtonEnable, trainer, 4, color,previousLocation);
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	
@@ -447,7 +536,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, 4, color, true, "", "", "");
+	                		labOutsideButtonEnable, rival, 4, color, true, "", "", "", previousLocation);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");
@@ -459,7 +548,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "");
+	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "", previousLocation);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");
@@ -467,11 +556,31 @@ public class Battle extends JPanel {
 	            }
 	        });
 	     
+	     nextButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	switch (previousLocation) {
+	            	case "pallettownlab":
+	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, 
+		                		labOutsideButtonEnable, color);
+		            	cards.add(palletTownLab, "pallettownlab");
+		            	
+		                layout.show(cards, "pallettownlab");
+	            		break;
+	            
+	            	}
+	            	
+	            	
+	            }
+	        });
+	     
+	     
 	     pokemonButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "battle", language, textSpeed,
 	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer,
-	            			4, "", 0, color);
+	            			4, "", 0, color, previousLocation);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
 	            	
@@ -482,7 +591,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	  
 	            	Inventory inventory = new Inventory(cl, cards, textAreaFont, "battle", language, textSpeed,
-	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, 4);
+	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, 4, previousLocation);
 	            	cards.add(inventory, "inventory");
 	                layout.show(cards, "inventory");
 	            }
@@ -493,7 +602,7 @@ public class Battle extends JPanel {
 	            	battleScreenText = 999;
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "");
+	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "", previousLocation);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");

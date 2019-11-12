@@ -455,7 +455,7 @@ public class MainGame extends JPanel {
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
 							false, stopTimer, titleSize, buttonWidth, buttonHeight, false,
-							professorOakVisited, labOutsideButtonEnable, trainer, 0, color);
+							professorOakVisited, labOutsideButtonEnable, trainer, 0, color, "");
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

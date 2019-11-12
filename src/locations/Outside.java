@@ -197,7 +197,8 @@ public class Outside extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownoutside", professorOakVisited, labOutsideButtonEnable, trainer, 0, color);
+	            			player, rival, stopTimer, "pallettownoutside", professorOakVisited, 
+	            			labOutsideButtonEnable, trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

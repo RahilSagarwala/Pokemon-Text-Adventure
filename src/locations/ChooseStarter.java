@@ -201,7 +201,7 @@ public class ChooseStarter extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "choosestarter", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 0, color);
+	            			labOutsideButtonEnable, trainer, 0, color, "");
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	

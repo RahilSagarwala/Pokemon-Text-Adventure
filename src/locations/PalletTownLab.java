@@ -237,7 +237,7 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, 
-	            			trainer, 0, color);
+	            			trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

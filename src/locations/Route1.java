@@ -74,7 +74,8 @@ public class Route1 extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "route1", professorOakVisited, labOutsideButtonEnable, trainer, 0, color);
+	            			player, rival, stopTimer, "route1", professorOakVisited, 
+	            			labOutsideButtonEnable, trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

@@ -331,7 +331,7 @@ public class StartScreen extends JPanel {
 	            	options = new Options(cl, cards,"startscreen", startScreenText1, screen, 
 	            			nameOptionsBool, player, setVisible, language, textSpeed, fullText2,
 	            			rival, font, stopTimer, nameOptionsBool2, 55f, buttonWidth, buttonHeight, false, 
-	            			professorOakVisited, labOutsideButtonEnable, trainer, 0, color);
+	            			professorOakVisited, labOutsideButtonEnable, trainer, 0, color, "");
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					

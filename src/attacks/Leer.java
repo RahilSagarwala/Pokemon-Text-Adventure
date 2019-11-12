@@ -1,5 +1,7 @@
 package attacks;
 
+import pokemon.PokemonSuper;
+
 public class Leer extends AttackSuper {
 
 	public Leer(int pp) {
@@ -10,5 +12,7 @@ public class Leer extends AttackSuper {
 		basePower = 0;
 		baseAccuracy = 100;
 	}
+	
+	
 
 }

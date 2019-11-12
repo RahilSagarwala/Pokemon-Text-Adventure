@@ -27,12 +27,13 @@ public class Pokedex extends JPanel {
 	PokemonSuper pokemon;
 	TrainerSuper trainer;
 	int battleScreenText;
-	String color;
+	String color, previousLocation;
 	
 	public Pokedex (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, TrainerSuper trainer, int battleScreenText, String color) {
+			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, 
+			TrainerSuper trainer, int battleScreenText, String color, String previousLocation) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -50,6 +51,7 @@ public class Pokedex extends JPanel {
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
 	     this.color=color;
+	     this.previousLocation=previousLocation;
 	     
 	     
 //	     if (color == "black") {
@@ -138,7 +140,7 @@ public class Pokedex extends JPanel {
             		
 	            	PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
                 			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-                			pokemon, trainer, battleScreenText, color);
+                			pokemon, trainer, battleScreenText, color, previousLocation);
                 	cards.add(pokemonStats, "pokemonstats");
                     layout.show(cards, "pokemonstats");
             	  

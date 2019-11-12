@@ -25,12 +25,12 @@ public class PartyPokemon extends JPanel {
 	MenuScreen menu;
 	TrainerSuper trainer;
 	int battleScreenText;
-	String color;
+	String color, previousLocation;
 	
 	public PartyPokemon (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, Boolean labOutsideButtonEnable,
-			TrainerSuper trainer, int battleScreenText, String item, int itemIndex, String color) {
+			TrainerSuper trainer, int battleScreenText, String item, int itemIndex, String color, String previousLocation) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -48,6 +48,7 @@ public class PartyPokemon extends JPanel {
 	     this.item = item;
 	     this.itemIndex = itemIndex;
 	     this.color = color;
+	     this.previousLocation=previousLocation;
 	     
 	     
 //	     if (color == "black") {
@@ -169,7 +170,7 @@ public class PartyPokemon extends JPanel {
 	            			
 	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
 	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color);
+	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color, previousLocation);
 	                    	cards.add(pokemonStats, "pokemonstats");
 	                        layout.show(cards, "pokemonstats");
 	            		}
@@ -188,7 +189,7 @@ public class PartyPokemon extends JPanel {
 		            			//Show Pokemon stats screen
 		            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
 		                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-		                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color);
+		                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color, previousLocation);
 		                    	cards.add(pokemonStats, "pokemonstats");
 		                        layout.show(cards, "pokemonstats");
 	            		}
@@ -207,7 +208,7 @@ public class PartyPokemon extends JPanel {
 	            			
 	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
 	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color);
+	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color, previousLocation);
 	                    	cards.add(pokemonStats, "pokemonstats");
 	                        layout.show(cards, "pokemonstats");
 	            		}
@@ -226,7 +227,7 @@ public class PartyPokemon extends JPanel {
 	            			//Show Pokemon stats screen
 	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
 	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color);
+	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color, previousLocation);
 	                    	cards.add(pokemonStats, "pokemonstats");
 	                        layout.show(cards, "pokemonstats");
 	            		}
@@ -245,7 +246,7 @@ public class PartyPokemon extends JPanel {
 	            			//Show Pokemon stats screen
 	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
 	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color);
+	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color, previousLocation);
 	                    	cards.add(pokemonStats, "pokemonstats");
 	                        layout.show(cards, "pokemonstats");
 	            		}
@@ -262,7 +263,7 @@ public class PartyPokemon extends JPanel {
 	            			//Show Pokemon stats screen
 	            			PokemonStats pokemonStats = new PokemonStats(cl, cards, textAreaFont, "", language, textSpeed,
 	                    			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color);
+	                    			player.getPartyPokemonArrayList().get(i), trainer, battleScreenText, color, previousLocation);
 	                    	cards.add(pokemonStats, "pokemonstats");
 	                        layout.show(cards, "pokemonstats");
 	            		}
@@ -310,7 +311,7 @@ public class PartyPokemon extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "");
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");
@@ -318,7 +319,7 @@ public class PartyPokemon extends JPanel {
 	            	default:
 	            		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
 	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer,
-	            				battleScreenText, color);
+	            				battleScreenText, color, "");
 	            		cards.add(menu, "menu");
 	            	    layout.show(cards, "menu");
 	            	    break;

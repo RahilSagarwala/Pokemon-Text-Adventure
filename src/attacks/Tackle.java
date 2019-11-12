@@ -7,7 +7,7 @@ public class Tackle extends AttackSuper {
 		pp = 30;
 		englishName = "Tackle";
 		japaneseName = "";
-		basePower = 35;
+		basePower = 40;
 		baseAccuracy = 100;
 	}
 

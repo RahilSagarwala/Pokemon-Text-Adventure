@@ -7,7 +7,7 @@ public class Scratch extends AttackSuper {
 		pp = 30;
 		englishName = "Scratch";
 		japaneseName = "";
-		basePower = 35;
+		basePower = 40;
 		baseAccuracy = 100;
 		type = "Normal";
 	}

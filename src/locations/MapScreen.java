@@ -23,11 +23,13 @@ public class MapScreen extends JPanel {
 	TrainerSuper trainer;
 	int battleScreenText;
 	String color;
+	String previousLocation;
 	
 	public MapScreen(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, 
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, TrainerSuper trainer, 
+			int battleScreenText, String color, String previousLocation) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font = font;
@@ -42,6 +44,7 @@ public class MapScreen extends JPanel {
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
 	     this.color = color;
+	     this.previousLocation=previousLocation;
 	     
 	     
 //	     if (color == "black") {
@@ -86,7 +89,8 @@ public class MapScreen extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
          		
 	            	Inventory inventory = new Inventory(cl, cards, font, "", language, textSpeed,
-	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, 
+	            			battleScreenText, previousLocation);
 	            	cards.add(inventory, "inventory");
 	                layout.show(cards, "inventory");
          	  

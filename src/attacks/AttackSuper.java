@@ -70,7 +70,6 @@ public class AttackSuper {
 		float damage3 = ((damage2 + 2) * X) * (Y/10);
 		float damage4 = (damage3 * Z) / 255;
 		int damage5 = (int)damage4;
-		System.out.println(damage5);
 		
 		receivingPokemon.setHp(receivingPokemon.getHp() - damage5);
 		

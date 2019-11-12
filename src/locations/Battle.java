@@ -179,6 +179,7 @@ public class Battle extends JPanel {
 		 nextButton.setFont(font);
 		 nextButton.setVisible(false);
 		 
+		 //Win
 		 if (trainer.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 	 			battleScreenText = 1;
 	 			//disable all buttons
@@ -189,8 +190,10 @@ public class Battle extends JPanel {
 	 			optionsButton.setVisible(false);
 	 			//enable next button to direct to dialogue which then directs to previous location before battle
 	 			nextButton.setVisible(true);
+	 			player.setMoney(player.getMoney() + 1000);
 	 		}
 		 
+		 //Lose
 	     if (player.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 			battleScreenText = 2;
 			//disable all buttons

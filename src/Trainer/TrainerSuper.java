@@ -26,6 +26,10 @@ public class TrainerSuper {
 		return money;
 	}
 	
+	public void setMoney(int newMoney) {
+		money = newMoney;
+	}
+	
 	
 	public String getName () {	
 		

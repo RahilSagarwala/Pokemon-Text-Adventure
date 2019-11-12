@@ -193,6 +193,8 @@ public class Battle extends JPanel {
 	 			player.setMoney(player.getMoney() + 1000);
 	 		}
 		 
+	
+		 
 		 //Lose
 	     if (player.getPartyPokemonArrayList().get(0).getHp() <= 0) {
 			battleScreenText = 2;
@@ -202,9 +204,14 @@ public class Battle extends JPanel {
  			pokemonButton.setVisible(false);
  			runButton.setVisible(false);
  			optionsButton.setVisible(false);
- 			nextButton.setVisible(true);
- 			
  			//enable next button to direct to dialogue which then directs to previous location before battle
+ 			nextButton.setVisible(true);
+ 			player.setMoney(player.getMoney() - 1000);
+ 			if (player.getMoney() < 0) {
+ 				player.setMoney(0);
+ 			}
+ 			
+ 			
 			
 		}
 		 
@@ -212,12 +219,15 @@ public class Battle extends JPanel {
 		 case 3: 
 			 if( language == "English") {
 				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used "  + "\n"
-			 + playerAttack + ". " + "\n" +  trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + 
-						 " used " + "\n" + trainerAttack + ".";
+			 + playerAttack + "! " + "\n" + "Enemy" + "\n" +  trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + 
+						 " used " + "\n" + trainerAttack + "!";
 			 }
 			 
 			 if (language == "Japanese") {
-				 text = "";
+				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "の" + "\n" + playerAttack + "!" + "\n" +
+			 "てきの" + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + trainerAttack +
+			 "!";
+
 			 }
 			 break;
 			 
@@ -234,34 +244,40 @@ public class Battle extends JPanel {
 			 }
 			 break;
 			 
-			 
+		//win	 
 		 case 1: 
 			 if( language == "English") {
 				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used "  + "\n"
-						 + playerAttack + ". " + "\n" +  
+						 + playerAttack + "! " + "\n" + "Enemy" + "\n" + 
 						 trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used " + "\n" +
-						 trainerAttack + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" 
-						 + "fainted.";
+						 trainerAttack + "!" + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" 
+						 + "fainted." + "\n" + player.getName() + "\n" + " received ￥1000."; 
 						 
 			 }
 			 
 			 if (language == "Japanese") {
-				 text = "";
+				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "の" + "\n" + playerAttack + "!" + "\n" +
+						 "てきの" + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + trainerAttack +
+						 "!" + "\n" + "きての　" + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" +
+						 "たおれた！" + "\n" + player.getName() + " １０００￥　を" + "\n" +"かくとく　しました。";
 			 }
 			 break;
 			 
-			 
+		//lose 
 		 case 2: 
 			 if( language == "English") {
 				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used "  + "\n"
-						 + playerAttack + ". " + "\n" +  
+						 + playerAttack + "! " + "\n" +  "Enemy" + "\n" +
 						 trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + " used " + "\n" +
-						 trainerAttack + "\n" + player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" 
-						 + "fainted.";
+						 trainerAttack + "!" + "\n" + player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" 
+						 + "fainted." + "\n" + player.getName() + "\n" + " lost ￥1000.";
 			 }
 			 
 			 if (language == "Japanese") {
-				 text = "";
+				 text = player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "の" + "\n" + playerAttack + "!" + "\n" +
+						 "てきの" + "\n" + trainer.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" + trainerAttack +
+						 "!"+ "\n" + "きての　" + "\n" + player.getPartyPokemonArrayList().get(0).getPokemonName(language) + "\n" +
+						 "たおれた！" + "\n" + player.getName() + " １０００￥　を" + "\n" +"かくとく　うしないました。";
 			 }
 			 break;
 			 
@@ -429,12 +445,15 @@ public class Battle extends JPanel {
 			 button.addActionListener(new ActionListener() {
 		            public void actionPerformed(ActionEvent e) { 
 		            	int buttonIndex = buttonList.indexOf(button);
+		            	
 	            		
 		            	//Need to add separate statement for leer and growl, they have separate methods
 		            	//Need to add Japanese language names
 	            		if (player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
 	            				== "Scratch" || player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
-	            				== "Tackle") { 
+	            				== "Tackle" || player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "たいあたリ" || player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "ひつかく") { 
 	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
 	            			.useAttack(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
 	            			
@@ -443,16 +462,18 @@ public class Battle extends JPanel {
 	            		}
 	            		
 	            		if (player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
-	            				== "Leer") { 
+	            				== "Tail Whip" || player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "しつぽをふる") { 
 	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
-	            			.useLeer(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
+	            			.useTailWhip(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
 	            			
 	            			playerAttack = player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language);	
 	            			
 	            		}
 	            		
 	            		if (player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
-	            				== "Growl") { 
+	            				== "Growl" || player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex).getAttackName(language) 
+	            				== "なきごえ") { 
 	            			player.getPartyPokemonArrayList().get(0).getAttacks().get(buttonIndex)
 	            			.useGrowl(player.getPartyPokemonArrayList().get(0), trainer.getPartyPokemonArrayList().get(0));
 	            			
@@ -463,7 +484,9 @@ public class Battle extends JPanel {
 	            			//Need to randomize index value for random attack
 	            		    int x = (int)(Math.random() * (((trainer.getPartyPokemonArrayList().get(0).getAttacks().size() - 1) - 0) + 1)) + 0;
 	            		    if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Tackle" ||
-	            		    		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Scratch")
+	            		    		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Scratch" ||
+	            		    		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "たいあたリ" ||
+	            		    		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "ひつかく")
 	            		    trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).
 	            			useAttack(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
 	            			
@@ -476,7 +499,8 @@ public class Battle extends JPanel {
 	    	            	
 	    	                layout.show(cards, "battle");
 	    	                
-	    	                if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Growl") {
+	    	                if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Growl" ||
+	    	                		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "なきごえ") {
 	            		    trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).
 	            			useGrowl(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
 	            			
@@ -492,9 +516,10 @@ public class Battle extends JPanel {
 	    	                
 	    	                }
 	    	                
-	    	                if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Leer") {
+	    	                if (trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "Tail Whip" ||
+	    	                		trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language) == "しつぽをふる") {
 		            		    trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).
-		            			useLeer(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
+		            			useTailWhip(trainer.getPartyPokemonArrayList().get(0), player.getPartyPokemonArrayList().get(0));
 		            			
 		            			trainerAttack = trainer.getPartyPokemonArrayList().get(0).getAttacks().get(x).getAttackName(language);
 		            			

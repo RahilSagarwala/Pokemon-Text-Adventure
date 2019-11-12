@@ -29,8 +29,8 @@ public class Charmander extends PokemonSuper {
 		
 		Scratch scratch = new Scratch(35);
 		attackArrayList.add(scratch);
-		Leer leer = new Leer(35);
-		attackArrayList.add(leer);
+		Growl growl = new Growl (40);
+		attackArrayList.add(growl);
 	}
 
 }

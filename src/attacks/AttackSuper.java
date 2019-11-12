@@ -40,7 +40,7 @@ public class AttackSuper {
 		receivingPokemon.setAttack(receivingPokemon.getAttack() - 1);
 	}
 	
-	public void useLeer(PokemonSuper attackingPokemon, PokemonSuper receivingPokemon) {
+	public void useTailWhip(PokemonSuper attackingPokemon, PokemonSuper receivingPokemon) {
 		receivingPokemon.setAttack(receivingPokemon.getDefense() - 1);
 	}
 	

@@ -4,9 +4,9 @@ public class Tackle extends AttackSuper {
 
 	public Tackle(int pp) {
 		super(pp);
-		pp = 30;
+		pp = 35;
 		englishName = "Tackle";
-		japaneseName = "";
+		japaneseName = "たいあたリ";
 		basePower = 40;
 		baseAccuracy = 100;
 	}

@@ -630,7 +630,7 @@ public class Battle extends JPanel {
 	            	battleScreenText = 999;
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "", previousLocation);
+	                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");

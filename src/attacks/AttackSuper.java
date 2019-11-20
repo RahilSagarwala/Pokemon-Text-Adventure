@@ -41,7 +41,7 @@ public class AttackSuper {
 	}
 	
 	public void useTailWhip(PokemonSuper attackingPokemon, PokemonSuper receivingPokemon) {
-		receivingPokemon.setAttack(receivingPokemon.getDefense() - 1);
+		receivingPokemon.setDefense(receivingPokemon.getDefense() - 1);
 	}
 	
 	public void useAttack(PokemonSuper attackingPokemon, PokemonSuper receivingPokemon ) {

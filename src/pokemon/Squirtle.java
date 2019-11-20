@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import attacks.Growl;
 import attacks.Tackle;
+import attacks.TailWhip;
 
 public class Squirtle extends PokemonSuper {
 	//Squirtle is a Water-type Pokémon
@@ -32,8 +33,8 @@ public class Squirtle extends PokemonSuper {
 
 		Tackle tackle = new Tackle(35);
 		attackArrayList.add(tackle);
-		Growl growl = new Growl(35);
-		attackArrayList.add(growl);
+		TailWhip tailWhip = new TailWhip(35);
+		attackArrayList.add(tailWhip);
 	}
 
 }

@@ -43,7 +43,7 @@ public class UI implements ComponentListener {
     Boolean stopTimer = false, professorOakVisited = false, labOutsideButtonEnable = true;
     MainGame mg;
     Options options;
-    Trade trade;
+    Credits credits;
     NewGame newGame;
     ContinueGame continu;
     StartScreen startScreen;
@@ -192,7 +192,7 @@ public class UI implements ComponentListener {
     			false, player, true, "English", textSpeed, fullText2, rival, 
     			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, 
     			professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, "");
-    	trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+    	credits = new Credits(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
     	Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
@@ -250,7 +250,7 @@ public class UI implements ComponentListener {
         cards.add(options, "options");
         cards.add(newGame, "newgame");
         cards.add(continu, "continue");
-        cards.add(trade, "trade");
+        cards.add(credits, "trade");
         cards.add(startScreen, "startscreen"); 
         cards.add(palletTownYourHouse, "pallettownyourhouse");
         cards.add(palletTownRivalHouse, "pallettownrivalhouse");

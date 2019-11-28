@@ -32,7 +32,7 @@ public class MainGame extends JPanel {
 	final static String mainScreenString = "mainscreen";
     CardLayout cl;
     Options options;
-    Trade trade;
+    Credits credits;
     NewGame newGame;
     ContinueGame continu;
     StartScreen startScreen;
@@ -487,9 +487,9 @@ public class MainGame extends JPanel {
 					  if (musicMain == "on") {
 					  clip2.stop();
 					  }
-				    trade = new Trade(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
+				    credits = new Credits(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
-				 	cards.add(trade, "trade");
+				 	cards.add(credits, "trade");
 					cl.show(cards, "trade");
 					
 	            }

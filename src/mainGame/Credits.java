@@ -12,7 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import Trainer.*;
 
-public class Trade extends JPanel {
+public class Credits extends JPanel {
 	
 	JButton returnButton;
 	CardLayout cl;
@@ -30,7 +30,7 @@ public class Trade extends JPanel {
     int buttonHeight;
     String color;
 	
-	public Trade (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
+	public Credits (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
 			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
 		 this.cl = layout;
@@ -64,16 +64,100 @@ public class Trade extends JPanel {
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font);
 		 
+		 JLabel nameLabel1 = new JLabel("Rahil Sagarwala:   ");
+		 nameLabel1.setForeground(Color.LIGHT_GRAY);
+		 nameLabel1.setFont(font);
+		 
+		 JLabel nameLabel2 = new JLabel("Luis Siavichay:      ");
+		 nameLabel2.setForeground(Color.LIGHT_GRAY);
+		 nameLabel2.setFont(font);
+		 
+		 JLabel nameLabel3 = new JLabel("Chad Mendenhall: ");
+		 nameLabel3.setForeground(Color.LIGHT_GRAY);
+		 nameLabel3.setFont(font);
+		 
+		 JLabel nameLabel4 = new JLabel("Gary Ray:              ");
+		 nameLabel4.setForeground(Color.LIGHT_GRAY);
+		 nameLabel4.setFont(font);
+		 
+		 Font font2 = new Font("SANS_SERIF", Font.BOLD, 20);
+		 
+		 JTextArea nameText1 = new JTextArea("Right logo, Graphical User Interface, " + "\n" + 
+		 "Mathematical battle methods, Language swap," + "\n" + "Music integration, Options integration, Japanese integration,"
+				 + "\n" + "Debug and formatting (syntax, runtime, and compile errors)," + "\n" + 
+		 "Feedback website survey, Demo, Report," + "\n" + "Powerpoint, Brochure, Group coordination");		 
+		 nameText1.setForeground(Color.cyan);
+		 nameText1.setBackground(Color.black);
+		 nameText1.setFont(font2);
+		 
+		 JTextArea nameText2 = new JTextArea("Left logo, Menu screen ideas and design, Menu Music concept" + "\n" 
+		 + "idea, Feedback website design, Demo, Report" + "\n" +  "Powerpoint, Brochure, Group coordination");		 
+		 nameText2.setForeground(Color.cyan);
+		 nameText2.setBackground(Color.black);
+		 nameText2.setFont(font2);
+		 
+		 JTextArea nameText3 = new JTextArea("Attack test cases, Attack class file, Maven integration, Debug" + "\n"
+		 + "and formatting (syntax errors), Demo, Report," + "\n" + "Group coordination");		 
+		 nameText3.setForeground(Color.cyan);
+		 nameText3.setBackground(Color.black);
+		 nameText3.setFont(font2);
+		 
+		 JTextArea nameText4 = new JTextArea("Demo, Report, Group coordination "
+		 		+ "                                                ");		 
+		 nameText4.setForeground(Color.cyan);
+		 nameText4.setBackground(Color.black);
+		 nameText4.setFont(font2);
+		 
+		 
+		 
 		 if(language == "Japanese") {
 			 returnButton.setText("とじる");
 		 }
 		 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
-		 gb.gridx = 0;
+		 gb.gridx = 1;
 		 gb.gridy = 0;
+		 gb.weighty = 1;
+		 gb.insets = new Insets(0, 0,0,0);
 		 add(returnButton, gb);
 		 
+		 gb.gridx = 0;
+		 gb.gridy = 1;
+		 gb.insets = new Insets(0,0,0,0);
+		 add(nameLabel1, gb);
+		 
+		 gb.gridx = 0;
+		 gb.gridy = 2;
+		 add(nameLabel2, gb);
+		 
+		 gb.gridx = 0;
+		 gb.gridy = 3;
+		 add(nameLabel3, gb);
+		 
+		 gb.gridx = 0;
+		 gb.gridy = 4;
+		 add(nameLabel4, gb);
+		 
+		 
+		 
+		 
+		 gb.gridx = 2;
+		 gb.gridy = 1;
+		 gb.insets = new Insets(0,-175,0,0);
+		 add(nameText1, gb);
+		 
+		 gb.gridx = 2;
+		 gb.gridy = 2;
+		 add(nameText2, gb);
+		 
+		 gb.gridx = 2;
+		 gb.gridy = 3;
+		 add(nameText3, gb);
+		 
+		 gb.gridx = 2;
+		 gb.gridy = 4;
+		 add(nameText4, gb);
 		 
 		 
 		 

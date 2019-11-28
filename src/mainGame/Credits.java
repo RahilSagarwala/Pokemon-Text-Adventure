@@ -84,7 +84,8 @@ public class Credits extends JPanel {
 		 
 		 JTextArea nameText1 = new JTextArea("Right logo, Graphical User Interface, " + "\n" + 
 		 "Mathematical battle methods, Language swap," + "\n" + "Music integration, Options integration, Japanese integration,"
-				 + "\n" + "Debug and formatting (syntax, runtime, and compile errors)," + "\n" + 
+				 + "\n" + "Debug and formatting (syntax, runtime, and compile errors)," + "\n" + "Button action listeners, Trainer Objects and Properties,"
+				 		+ "\n" + "Attack Objects and Properties" + "\n" + "Pokémon Objects, Properties, and Stats," + "\n" + 
 		 "Feedback website survey, Demo, Report," + "\n" + "Powerpoint, Brochure, Group coordination");		 
 		 nameText1.setForeground(Color.cyan);
 		 nameText1.setBackground(Color.black);

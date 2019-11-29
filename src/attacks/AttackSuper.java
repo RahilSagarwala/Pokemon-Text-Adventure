@@ -1,3 +1,7 @@
+// written by: Rahil Sagarwala 
+// tested by: Rahil Sagarwala and Chad Mendenhall
+// debugged by: Rahil Sagarwala 
+
 package attacks;
 
 import java.util.Random;

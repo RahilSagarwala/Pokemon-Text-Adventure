@@ -1,3 +1,7 @@
+// written by: Rahil Sagarwala 
+// tested by: Rahil Sagarwala and Luis Siavichay
+// debugged by: Rahil Sagarwala and Luis Siavichay
+
 package mainGame;
 
 import java.io.IOException;

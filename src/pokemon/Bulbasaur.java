@@ -1,3 +1,7 @@
+// written by: Rahil Sagarwala 
+// tested by: Rahil Sagarwala 
+// debugged by: Rahil Sagarwala and Luis Siavichay
+
 package pokemon;
 
 import java.util.ArrayList;

@@ -1,3 +1,7 @@
+// written by: Rahil Sagarwala 
+// tested by: Rahil Sagarwala 
+// debugged by: Rahil Sagarwala 
+
 package mainGame;
 
 import java.awt.event.ActionEvent;
@@ -84,7 +88,7 @@ public class Credits extends JPanel {
 		 
 		 JTextArea nameText1 = new JTextArea("Right logo, Graphical User Interface, " + "\n" + 
 		 "Mathematical battle methods, Language swap," + "\n" + "Music integration, Options integration, Japanese integration,"
-				  + "\n" + "Debug and formatting (syntax, runtime, and compile errors)," + "\n" + "Button action listeners, Trainer Objects and Properties,"
+				  + "\n" + "Debug and formatting, testing," + "\n" + "Button action listeners, Trainer Objects and Properties,"
 				 		+ "\n" + "Attack Objects and Properties" + "\n" + "Item objects with potion and map integration," + "\n" + "Pokémon Objects, Properties, and Stats," + "\n" + 
 		 "Feedback website survey, Demo, Report," + "\n" + "Powerpoint, Brochure, Group coordination");		 
 		 nameText1.setForeground(Color.cyan);
@@ -92,19 +96,20 @@ public class Credits extends JPanel {
 		 nameText1.setFont(font2);
 		 
 		 JTextArea nameText2 = new JTextArea("Left logo, Menu screen ideas and design, Menu Music concept" + "\n" 
-		 + "idea, Feedback website design, Demo, Report" + "\n" +  "Powerpoint, Brochure, Group coordination");		 
+		 + "idea, Feedback website design, Demo, Report" + "\n" + "Initial sound class, Initial Russian language addition" + 
+				 "\n" +  "Debug and formatting, Testing, Powerpoint," + "\n" + "Brochure, Group coordination");		 
 		 nameText2.setForeground(Color.cyan);
 		 nameText2.setBackground(Color.black);
 		 nameText2.setFont(font2);
 		 
 		 JTextArea nameText3 = new JTextArea("Attack test cases, Attack class file, Maven integration, Debug" + "\n"
-		 + "and formatting (syntax errors), Demo, Report," + "\n" + "Group coordination");		 
+		 + "and formatting, Testing, Demo, Report," + "\n" + "Group coordination");		 
 		 nameText3.setForeground(Color.cyan);
 		 nameText3.setBackground(Color.black);
 		 nameText3.setFont(font2);
 		 
-		 JTextArea nameText4 = new JTextArea("Demo, Report, Group coordination "
-		 		+ "                                                ");		 
+		 JTextArea nameText4 = new JTextArea("Demo, Report, Group coordination, Testing "
+		 		+ "                                 ");		 
 		 nameText4.setForeground(Color.cyan);
 		 nameText4.setBackground(Color.black);
 		 nameText4.setFont(font2);

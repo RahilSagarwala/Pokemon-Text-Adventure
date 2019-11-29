@@ -1,3 +1,7 @@
+// written by: Rahil Sagarwala 
+// tested by: Rahil Sagarwala 
+// debugged by: Rahil Sagarwala 
+
 package attacks;
 
 public class Tackle extends AttackSuper {

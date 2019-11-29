@@ -1,3 +1,7 @@
+// written by: Chad Mendenhall
+// tested by: Chad Mendenhall
+// debugged by: Chad Mendenhall
+
 package attacks;
 
 import java.io.File;

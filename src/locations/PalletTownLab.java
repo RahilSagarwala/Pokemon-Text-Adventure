@@ -7,6 +7,7 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import Trainer.TrainerSuper;
+import items.*;
 
 
 public class PalletTownLab extends JPanel {
@@ -22,11 +23,11 @@ public class PalletTownLab extends JPanel {
 	JButton lmenuButton;
 	TrainerSuper trainer;
 	int battleScreenText = 0;
-	
+	String color;
 	public PalletTownLab (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable) {
+			Boolean labOutsideButtonEnable, String color) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -40,9 +41,18 @@ public class PalletTownLab extends JPanel {
 	     this.location = location2;
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable = labOutsideButtonEnable;
+	     this.color = color;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -226,7 +236,8 @@ public class PalletTownLab extends JPanel {
 	     menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, trainer, 0);
+	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, 
+	            			trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	
@@ -237,7 +248,8 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid1lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -247,7 +259,8 @@ public class PalletTownLab extends JPanel {
 	     oakAid2Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid2lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -257,7 +270,8 @@ public class PalletTownLab extends JPanel {
 	     oakAid3Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid3lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -268,7 +282,8 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "poster1lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -277,7 +292,8 @@ public class PalletTownLab extends JPanel {
 	     poster2Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "poster2lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	
@@ -288,7 +304,8 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "computerlab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, 
+	            			true, 0, labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -298,7 +315,8 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "booklab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -309,7 +327,8 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pokeballlab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -319,7 +338,8 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivallab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            }
@@ -330,7 +350,8 @@ public class PalletTownLab extends JPanel {
 	            	if (professorOakButton.getText() == "Prof. Oak" || professorOakButton.getText() == "オーキド") {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "professoroaklab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, labOutsideButtonEnable);
+	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+	            			labOutsideButtonEnable, color);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  
 	            	}
@@ -342,7 +363,7 @@ public class PalletTownLab extends JPanel {
 	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() < 1) {
 	            		ChooseStarter chooseStarter = new ChooseStarter(layout, cards, 
 		            			textAreaFont, screen, language, textSpeed, 
-		            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable);
+		            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable, color);
 		            	cards.add(chooseStarter, "choosestarter");
 		            	  layout.show(cards, "choosestarter");
 	            	}
@@ -361,9 +382,11 @@ public class PalletTownLab extends JPanel {
 	            	if (labOutsideButtonEnable == false && player.getPartyPokemonArrayList().size() == 1) {
 	            		//To Dialogue and then Rival Battle. Enable outside button.
 	            		
+	            		Potion potion = new Potion(1);
+	            		player.addItem(potion);
 	            		
 	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivalbattle1", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, true);
+		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, true, color);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		
@@ -380,7 +403,7 @@ public class PalletTownLab extends JPanel {
 	            	else {
 	            	  	Outside outside = new Outside(layout, cards, 
 		            			textAreaFont, screen, language, textSpeed, 
-		            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable);
+		            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color);
 		            	cards.add(outside, "outside");
 		            	  layout.show(cards, "outside");
 	            	}

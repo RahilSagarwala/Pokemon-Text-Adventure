@@ -26,11 +26,12 @@ public class Inventory extends JPanel {
 	MenuScreen menu;
 	TrainerSuper trainer;
 	int battleScreenText;
+	String color, previousLocation;
 	
 	public Inventory (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String previousLocation) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -45,9 +46,18 @@ public class Inventory extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
+	     this.previousLocation = previousLocation;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -104,7 +114,8 @@ public class Inventory extends JPanel {
 		 
 		 
 		 for (int i = 0; i < player.getItems().size(); i++) {
-		  buttonList.get(i).setText(player.getItems().get(i).getItemName(language));
+		  buttonList.get(i).setText(player.getItems().get(i).getItemName(language) + " x" + 
+		 player.getItems().get(i).getCount());
 		 }
 		
 		
@@ -153,38 +164,36 @@ public class Inventory extends JPanel {
 	     gb.gridy=7;
 		 add(nextPageButton, gb);
 		 
+		 for (JButton button : buttonList) {
+			 button.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) { 
+		            	int buttonIndex = buttonList.indexOf(button);
+	            		
+	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Map" || 
+	            		player.getItems().get(buttonIndex).getItemName(language) ==  "ちず") {
+	            			Map map = new Map(1);
+	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer,
+	            					location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            		}
+	            		
+	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Potion" || 
+	    	            		player.getItems().get(buttonIndex).getItemName(language) ==  "キズぐすり") {
+	    	            			
+	    	            			Potion potion = new Potion(1);
+	    	            			potion.showPartyPokemon(cl, cards, font, screen, language, 
+	    	            					textSpeed, player, rival, 
+	    	            					stopTimer, location, professorOakVisited, 
+	    	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex, color, previousLocation);
+	    	            			      		
+	    	            		}
+	            	  
+		            	
+		            }
+		        });
+		 }
+		 
 		
 		 
-		 for (JButton button : buttonList) {
-			 switch (button.getText()) {
-			 case "Map": button.addActionListener(new ActionListener() {
-		            public void actionPerformed(ActionEvent e) {  		
-	            		for (int i = 0; i<player.getItems().size(); i++)
-	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
-	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
-	            		}
-	            	  
-		            	
-		            }
-		        });
-			 
-			 case "ちず": button.addActionListener(new ActionListener() {
-		            public void actionPerformed(ActionEvent e) {  		
-	            		for (int i = 0; i<player.getItems().size(); i++)
-	            		if (player.getItems().get(i).getItemName(language) == "Map" || player.getItems().get(i).getItemName(language) ==  "ちず") {
-	            			Map map = new Map(1);
-	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
-	            		}
-	            	  
-		            	
-		            }
-		        });
-			 break;
-			 
-			 
-			 }
-		 }
 
 		 
 		 returnButton.addActionListener(new ActionListener() {
@@ -194,14 +203,15 @@ public class Inventory extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText);
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");
 		                break;
 	            	default:
 	            		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
-	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer,
+	            				battleScreenText, color, "");
 	            		cards.add(menu, "menu");
 	            	    layout.show(cards, "menu");
 	            	    break;

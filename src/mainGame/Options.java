@@ -2,11 +2,18 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
 import Trainer.Rival;
+import locations.Battle;
 import locations.ChooseStarter;
 import locations.ChooseStarterConfirmation;
 import locations.MenuScreen;
@@ -17,10 +24,10 @@ public class Options extends JPanel {
 	
 	JButton returnButton, smallFontButton, mediumFontButton, largeFontButton, onSoundtrackButton, offSoundtrackButton, 
 	onTextToSpeechButton, offTextToSpeechButton, slowTextSpeedButton, fastTextSpeedButton, englishButton, japaneseButton,
-	timerOffButton;
+	timerOffButton, blackButton, cyanButton;
 	CardLayout cl;
     JPanel cards;
-    JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel, languageLabel;
+    JLabel optionsLabel, fontSizeLabel, soundtrackLabel, textToSpeechLabel, textSpeedLabel, languageLabel, colorLabel;
     Font buttonFont = new Font("SANS_SERIF", Font.BOLD, 30), font1;
     StartScreen startScreen;
     JTextArea startScreenTextArea = new JTextArea();
@@ -34,6 +41,8 @@ public class Options extends JPanel {
 	Float titleSize;
 	TrainerSuper trainer;
 	int battleScreenText;
+	String color, previousLocation;
+	
 	
 	
 	public Options (final CardLayout layout, final JPanel cards, String position,
@@ -41,7 +50,7 @@ public class Options extends JPanel {
 			Player player2, Boolean setVisible, String language, int textSpeed, String fullText,
 			Rival rival2, Font font, Boolean stopTimer1, Boolean nameOptionsBool2, Float titleSize2,
 			int buttonWidth2, int buttonHeight2, Boolean isMenu2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color2, String previousLocation) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -65,13 +74,23 @@ public class Options extends JPanel {
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
+	     this.color = color2;
+	     this.previousLocation = previousLocation;
 	 
 	     
 	     
 	     //Create GUI
 	     JButton returnButton = new JButton("Return");
 		 returnButton.setPreferredSize(new Dimension(150,75));
-		 setBackground(Color.black);
+//		 if (color == "black") {
+//		        setBackground(Color.black); 
+//			    }
+//			    
+//			    if (color == "cyan") {
+//			        setBackground(Color.cyan); 
+//				    }
+		 
+		 setBackground(Color.black); 
 		 returnButton.setBackground(Color.DARK_GRAY);
 		 returnButton.setForeground(Color.cyan);
 		 returnButton.setFont(font1);
@@ -129,6 +148,20 @@ public class Options extends JPanel {
 		 japaneseButton.setBackground(Color.DARK_GRAY);
 		 japaneseButton.setForeground(Color.cyan);
 		 
+		 colorLabel = new JLabel("Background Color:      ");
+		 colorLabel.setFont(font1);
+		 colorLabel.setForeground(Color.cyan);
+		 blackButton = new JButton("Black");
+		 blackButton.setFont(font1);
+		 blackButton.setPreferredSize(new Dimension(400,100));
+		 blackButton.setBackground(Color.DARK_GRAY);
+		 blackButton.setForeground(Color.cyan);
+		 cyanButton = new JButton("Cyan");
+		 cyanButton.setFont(font1);
+		 cyanButton.setPreferredSize(new Dimension(400,100));
+		 cyanButton.setBackground(Color.DARK_GRAY);
+		 cyanButton.setForeground(Color.cyan);
+		 
 		 JLabel textToSpeechLabel = new JLabel("Text To Speech:    ");
 		 textToSpeechLabel.setFont(font1);
 		 textToSpeechLabel.setForeground(Color.cyan);
@@ -169,12 +202,12 @@ public class Options extends JPanel {
 		
 		 
 		 if (language == "Japanese") {
-			 optionsLabel.setText("せっていを かえる");
-			 fontSizeLabel.setText("フォントサイズ");
+			 optionsLabel.setText("せっていを かえる ");
+			 fontSizeLabel.setText("フォントサイズ :     ");
 			 soundtrackLabel.setText("サウンドトラック");
-			 textToSpeechLabel.setText("テキストからスピーチ     ");   
-			 textSpeedLabel.setText("テキスト そくど");
-			 languageLabel.setText("げんご");
+			 textToSpeechLabel.setText("テキストからスピーチ:     ");   
+			 textSpeedLabel.setText("テキスト そくど :     ");
+			 languageLabel.setText("げんご: ");
 			 returnButton.setText("とじる");
 			 smallFontButton.setText("ちいさい");
 			 mediumFontButton.setText("なか");
@@ -188,6 +221,9 @@ public class Options extends JPanel {
 			 englishButton.setText("えいご");
 			 japaneseButton.setText("にほんご");
 			 timerOffButton.setText("けす");
+			 colorLabel.setText("はいけいいろ:    ");
+			 blackButton.setText("くろい");
+			 cyanButton.setText("シアン");
 		 }
 		 
 		 
@@ -200,6 +236,9 @@ public class Options extends JPanel {
 		 gb.gridx=0;
 	     gb.gridy=2;
 		 add(fontSizeLabel, gb);
+		 gb.gridx=0;
+	     gb.gridy=3;
+		 add(colorLabel, gb);
 //		 gb.gridx=0;
 //	     gb.gridy=3;
 //		 add(soundtrackLabel,gb);
@@ -216,16 +255,30 @@ public class Options extends JPanel {
 
 	     
 	     //Column 2
+		 if (language == "English") {
 		 gb.gridx=1;
 	     gb.gridy=0;
 	     gb.weighty = 1;
 		 add(returnButton, gb);
+		 }
+		 
+		 if (language == "Japanese") {
+			 gb.insets = new Insets(0,50,0,0);
+			 gb.gridx=1;
+		     gb.gridy=0;
+		     gb.weighty = 1;
+			 add(returnButton, gb);
+			 gb.insets = new Insets(0,0,0,0);
+		 }
 		 gb.gridx=1;
 	     gb.gridy=1;
 		 add(optionsLabel, gb);
 		 gb.gridx=1;
 	     gb.gridy=2;
 		 add(smallFontButton,gb);
+		 gb.gridx=1;
+	     gb.gridy=3;
+		 add(blackButton,gb);
 //		 gb.gridx=1;
 //	     gb.gridy=3;
 //		 add(onSoundtrackButton,gb);
@@ -238,12 +291,23 @@ public class Options extends JPanel {
 		 gb.gridx=1;
 	     gb.gridy=6;
 		 add(englishButton,gb);
+		 
+		 if (language == "English") {
 		 gb.insets = new Insets(0,30,0,0);
+		 }
+		 
+		 if (language == "Japanese") {
+			 gb.insets = new Insets(0,-20,0,0);
+			 }
+		 
 		 
 		 //Column 3
 		 gb.gridx=2;
 	     gb.gridy=2;
 		 add(mediumFontButton,gb);
+		 gb.gridx=2;
+	     gb.gridy=3;
+		 add(cyanButton,gb);
 //		 gb.gridx=2;
 //	     gb.gridy=3;
 //		 add(offSoundtrackButton,gb);
@@ -264,10 +328,21 @@ public class Options extends JPanel {
 	     gb.gridy=2;
 	     gb.insets = new Insets(0,15,0,0);
 		 add(largeFontButton,gb);
+		 
+		 if (language == "English") {
 		 gb.gridx=3;
 	     gb.gridy=5;
 	     gb.insets = new Insets(0,-10,0,0);
 		 add(timerOffButton,gb);
+		 }
+		 
+		 if (language == "Japanese") {
+			 gb.gridx=3;
+		     gb.gridy=5;
+		     gb.insets = new Insets(0,25,0,0);
+			 add(timerOffButton,gb);
+			 }
+		 
 		 }
 	
 
@@ -278,15 +353,28 @@ public class Options extends JPanel {
 	            	case "startscreen":
 	            		 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, nameOptionsBool,
 	            				 player,setVisible,language1, textSpeed1, fullText2, rival, nameOptionsBool2,
-	            				 stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);	          
+	            				 stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);	          
 		            	    cards.add(startScreen, "startscreen");
 		            	    layout.show(cards, "startscreen");
 		            	    break;
 	            	
 	            	
 	            	case "mainscreen":
-	            		 mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer, titleSize, buttonWidth, 
-		            	    		buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
+
+	            		 try {
+							Clip clip = null;
+							mg = new MainGame(cl, cards, font1, language1, textSpeed1, stopTimer, titleSize, buttonWidth, 
+							    		buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip, "on", "no");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 	            		 cards.add(mg, "mainscreen");
 	            		  layout.show(cards, position);	  
 	            		  break;
@@ -294,7 +382,8 @@ public class Options extends JPanel {
 	            	case "menu":	            		
 	            		
 	            		MenuScreen menu = new MenuScreen(cl, cards, font1, screen, language1, textSpeed1, player,
-	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, trainer,
+	            				battleScreenText, color, "");
 	            		cards.add(menu, "menu");
 	            	    layout.show(cards, "menu");
 	            	    break;
@@ -302,9 +391,18 @@ public class Options extends JPanel {
 	            	case "choosestarter":	            		
 	            		
 	            		ChooseStarter chooseStarter = new ChooseStarter(cl, cards, font1, screen, language1, textSpeed1, player,
-	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable);
+	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, color);
 	            		cards.add(chooseStarter, "choosestarter");
 	            	    layout.show(cards, "choosestarter");
+	            	    break;
+	            	    
+	            	case "battle":	            		
+	            		Battle battle = new Battle(cl, cards, font1, 
+		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
+		            	cards.add(battle, "battle");
+		            	
+		                layout.show(cards, "battle");
 	            	    break;
 	            		           	
 	            }
@@ -328,7 +426,7 @@ public class Options extends JPanel {
 	            	   Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, 
-	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -349,7 +447,7 @@ public class Options extends JPanel {
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-	            	    		labOutsideButtonEnable, trainer, battleScreenText);
+	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -372,7 +470,7 @@ public class Options extends JPanel {
 	            	    Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-	            	    		labOutsideButtonEnable, trainer, battleScreenText);
+	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -415,7 +513,7 @@ public class Options extends JPanel {
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-	            	    		labOutsideButtonEnable, trainer, battleScreenText);
+	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -463,7 +561,7 @@ public class Options extends JPanel {
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, 
-	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -502,6 +600,34 @@ public class Options extends JPanel {
 	            			}
 				 		);
 		 
+		 blackButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	              color = "black";
+	              Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
+          	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
+          	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
+          	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+
+          	    cards.add(options, "options");
+          	    layout.show(cards, "options");
+	            				}	
+	            			}
+				 		);
+		 
+		 cyanButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	              color = "cyan";
+	              Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
+          	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
+          	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
+          	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+
+          	    cards.add(options, "options");
+          	    layout.show(cards, "options");
+	            				}	
+	            			}
+				 		);
+		 
 		 //The higher the number, the slower the speed
 		 //Initialized in UI Class as default
 		 slowTextSpeedButton.addActionListener(new ActionListener() {
@@ -509,11 +635,26 @@ public class Options extends JPanel {
 	            		textSpeed1 = 100;
 	    
 	            		stopTimer = false;
-		            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, 
-		            			 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
+	                  	
+		            	 try {
+							Clip clip = null;
+							mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, 
+									 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable,
+									 color, clip, "on", "no");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 		            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
 		            			 nameOptionsBool, player,setVisible,language1, textSpeed1,
-		            			 fullText2, rival, false, true, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+		            			 fullText2, rival, false, true, buttonWidth, buttonHeight, professorOakVisited,
+		            			 labOutsideButtonEnable, color);
 		            	 cards.add(mg, "mainscreen");
 		            	 cards.add(startScreen, "startscreen");
 		            	
@@ -525,12 +666,19 @@ public class Options extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	textSpeed1 = 50;
 	            	stopTimer = false;
-	            	
-	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, 
-	            			 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
+	              	
+	            	 try {
+						Clip clip = null;
+						mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, 
+								 buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color,
+								 clip, "on", "no");
+					} catch (LineUnavailableException | UnsupportedAudioFileException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen,
 	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, fullText2,
-	            			 rival, false, true, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	            			 rival, false, true, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            	
@@ -540,11 +688,20 @@ public class Options extends JPanel {
 		 timerOffButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	 stopTimer = true;
-	            	 mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, buttonWidth, buttonHeight
-	            			 , player, rival, professorOakVisited, labOutsideButtonEnable);
+
+	            	 try {
+						Clip clip = null;
+						//On instead of off for Music on as default
+						mg = new MainGame(cl, cards, font, language, textSpeed1, stopTimer, titleSize, buttonWidth, buttonHeight
+								 , player, rival, professorOakVisited, labOutsideButtonEnable, color, clip, "off", "no");
+					} catch (LineUnavailableException | UnsupportedAudioFileException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	 startScreen = new StartScreen(cl, cards, font1, startScreenTextArea,screen, 
 	            			 nameOptionsBool, player,setVisible,language1, textSpeed1, 
-	            			 fullText2, rival, false, true, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	            			 fullText2, rival, false, true, buttonWidth, buttonHeight, professorOakVisited, 
+	            			 labOutsideButtonEnable, color);
 	            	 cards.add(mg, "mainscreen");
 	            	 cards.add(startScreen, "startscreen");
 	            				}	

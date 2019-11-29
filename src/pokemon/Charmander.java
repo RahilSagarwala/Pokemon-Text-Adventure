@@ -1,7 +1,7 @@
 package pokemon;
 
 import java.util.ArrayList;
-//import attacks.Attacks;
+import attacks.*;
 
 public class Charmander extends PokemonSuper {
 	//Charmander is a Fire-type Pokémon
@@ -26,8 +26,11 @@ public class Charmander extends PokemonSuper {
 		englishPokedex = "Obviously prefers hot places." + "\n" + "When it rains, steam is" + "\n" + 
 		"said to spout from the tip" + "\n" + "of its tail";
 		japanesePokedex = "うまれたときから　しっぽに　ほのおが" + "\n" + "ともっている。　ほのおが　きえたとき　その" + "\n" + "いのちは　おわって　しまう。";
-//		attackArrayList.add()
-//		attackArrayList.add()
+		
+		Scratch scratch = new Scratch(35);
+		attackArrayList.add(scratch);
+		Growl growl = new Growl (40);
+		attackArrayList.add(growl);
 	}
 
 }

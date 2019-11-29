@@ -2,7 +2,13 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import Trainer.*;
 
@@ -26,11 +32,12 @@ public class ContinueGame extends JPanel {
     int buttonWidth;
     int buttonHeight;
     Boolean professorOakVisited;
+    String color;
 
 	
 	public ContinueGame (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.language = language;
@@ -44,8 +51,16 @@ public class ContinueGame extends JPanel {
 	     this.buttonHeight = buttonHeight;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.color = color;
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
 	     
-	     setBackground(Color.black);
+	     setBackground(Color.black); 
 		 setLayout(new GridBagLayout());
 		 GridBagConstraints gb = new GridBagConstraints();
 		 
@@ -117,8 +132,23 @@ public class ContinueGame extends JPanel {
 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
-	            			titleSize, buttonWidth, buttonHeight, player, rival,professorOakVisited,labOutsideButtonEnable);
+	              	
+	            	try {
+						Clip clip = null;
+						//On instead of off for Music on as default
+						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
+								titleSize, buttonWidth, buttonHeight, player, rival,professorOakVisited,labOutsideButtonEnable, 
+								color, clip, "off", "no");
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 	                
@@ -137,7 +167,7 @@ public class ContinueGame extends JPanel {
 	            	}
 	            	
 	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	                
@@ -161,7 +191,7 @@ public class ContinueGame extends JPanel {
 	            	
 	            	
 	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	              
@@ -180,7 +210,7 @@ public class ContinueGame extends JPanel {
 	            	}
 	            	
 	                confirmContinue = new ConfirmContinue(cl, cards,saveText, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
 	                cards.add(confirmContinue, "confirmcontinue");
 	                layout.show(cards, "confirmcontinue");    
 	             

@@ -3,7 +3,9 @@ package Trainer;
 import items.*;
 import pokemon.*;
 import java.io.*; 
-import java.util.*; 
+import java.util.*;
+
+import javax.swing.JButton; 
 
 public class TrainerSuper {
 	String name = "";
@@ -24,6 +26,10 @@ public class TrainerSuper {
 		return money;
 	}
 	
+	public void setMoney(int newMoney) {
+		money = newMoney;
+	}
+	
 	
 	public String getName () {	
 		
@@ -37,6 +43,14 @@ public class TrainerSuper {
 	
 	public void addItem(ItemSuper item) {
 		itemArrayList.add(item);
+	}
+	
+	public void removeItems () {
+		for (int i = 0; i<itemArrayList.size(); i++) {
+			if(itemArrayList.get(i).getCount() == 0) {
+				itemArrayList.remove(i);
+			}
+		}
 	}
 	
 	public String getItemNames(String language) {

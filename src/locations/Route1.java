@@ -20,11 +20,12 @@ public class Route1 extends JPanel {
 	Rival rival;
 	JButton menuButton;
 	TrainerSuper trainer;
+	String color;
 
 	public Route1(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			TrainerSuper trainer) {
+			TrainerSuper trainer, String color) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -38,9 +39,18 @@ public class Route1 extends JPanel {
 	     this.location = location2;
 	     this.professorOakVisited = professorOakVisited;
 	     this.trainer = trainer;
+	     this.color = color;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -64,7 +74,8 @@ public class Route1 extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MenuScreen menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, "route1", professorOakVisited, labOutsideButtonEnable, trainer, 0);
+	            			player, rival, stopTimer, "route1", professorOakVisited, 
+	            			labOutsideButtonEnable, trainer, 0, color, "");
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
 	            	

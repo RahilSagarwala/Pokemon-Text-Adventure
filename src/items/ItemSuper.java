@@ -14,6 +14,10 @@ public class ItemSuper {
 		return count;
 	}
 	
+	public void setCount(int num) {
+		this.count = num;
+	}
+	
 	public String getItemName(String theLanguage) {
 		if (theLanguage == "English") {
 			return englishName;

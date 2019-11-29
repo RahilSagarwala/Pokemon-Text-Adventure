@@ -2,7 +2,12 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
+
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import locations.StartScreen;
 import Trainer.Player;
@@ -22,11 +27,14 @@ public class NewGame extends JPanel {
     int textSpeed, buttonWidth, buttonHeight;
     Rival rival;
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
+    String color;
+    MainGame mg;
 
     
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer,
-			int buttonWidth, int buttonHeight, Player player, Rival rival, Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			int buttonWidth, int buttonHeight, Player player, Rival rival, Boolean professorOakVisited, 
+			Boolean labOutsideButtonEnable, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
@@ -39,12 +47,21 @@ public class NewGame extends JPanel {
 	     this.rival = rival;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.color = color;
 	     
 
 	     
 		
 		 
-		 setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 
 		 
 		 JButton yesButton = new JButton("Yes");
@@ -105,10 +122,27 @@ public class NewGame extends JPanel {
 		 add(noButton, gb);
 		 
 		
-		 
 		 noButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+	            	try {
+						Clip clip = null;
+						//On instead of off for Music on as default
+						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
+								65f, buttonWidth, buttonHeight, player, rival, professorOakVisited, 
+								labOutsideButtonEnable, color, clip, "off", "no");
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
+
 	            }
 	        });
 		 
@@ -118,7 +152,7 @@ public class NewGame extends JPanel {
 	         
 	         ss = new StartScreen(cl,cards,font, screenTextArea
 	        		 ,"1", false, player, true, language, textSpeed, "",
-	        		 rival, false, stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable);
+	        		 rival, false, stopTimer, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
             
 	         
              cards.add(ss, "startscreen");

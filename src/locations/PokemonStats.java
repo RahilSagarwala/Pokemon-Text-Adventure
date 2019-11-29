@@ -27,11 +27,13 @@ public class PokemonStats extends JPanel {
 	PokemonSuper pokemon;
 	TrainerSuper trainer;
 	int battleScreenText;
+	String color, previousLocation;
 	
 	public PokemonStats (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, TrainerSuper trainer, int battleScreenText) {
+			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, TrainerSuper trainer, 
+			int battleScreenText, String color, String previousLocation) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -48,9 +50,19 @@ public class PokemonStats extends JPanel {
 	     this.pokemon = pokemon;
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
+	     this.color = color;
+	     this.previousLocation=previousLocation;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 	     
@@ -205,7 +217,8 @@ public class PokemonStats extends JPanel {
 	            public void actionPerformed(ActionEvent e) {  		
             		
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
-	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText);
+	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer,
+	            			battleScreenText, "", 0, color, previousLocation);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
             	  
@@ -218,7 +231,7 @@ public class PokemonStats extends JPanel {
          		
 	            	Pokedex pokedex = new Pokedex(cl, cards, textAreaFont, "", language, textSpeed,
                 			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-                			pokemon, trainer, battleScreenText);
+                			pokemon, trainer, battleScreenText, color, previousLocation);
                 	cards.add(pokedex, "pokedex");
                     layout.show(cards, "pokedex");
          	  

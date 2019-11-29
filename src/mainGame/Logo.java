@@ -2,7 +2,13 @@ package mainGame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import Trainer.*;
 
@@ -24,10 +30,11 @@ public class Logo extends JPanel {
     int buttonHeight;
     ImageIcon logoIcon;
     JLabel logoLabel;
+    String color;
 	
 	public Logo (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.language = language;
@@ -41,9 +48,17 @@ public class Logo extends JPanel {
 	     this.buttonHeight = buttonHeight;
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
+	     this.color = color;
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
 	     
+	     setBackground(Color.black); 
 	     JButton returnButton = new JButton("Return");
 	     returnButton.setPreferredSize(new Dimension(50,75));
 		 returnButton.setBackground(Color.DARK_GRAY);
@@ -74,8 +89,22 @@ public class Logo extends JPanel {
 		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
-	            			titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable);
+	            	try {
+						Clip clip = null;
+						//On instead of off for Music on as default
+						mg = new MainGame(cl,cards, font,language, textSpeed, stopTimer, 
+								titleSize, buttonWidth, buttonHeight, player, rival, professorOakVisited, 
+								labOutsideButtonEnable, color, clip, "on", "no");
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            	cards.add(mg, "mainscreen");
 	                layout.show(cards, "mainscreen");
 

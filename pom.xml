@@ -1,22 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>Pokemon-Text-Adventure</groupId>
-  <artifactId>Pokemon-Text-Adventure</artifactId>
-  <description>Pokemon text adventure game</description>
-  <version>0.0.1</version>
-  <packaging>jar</packaging>
-
-  <name>pokemonadventure</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
+  
+   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.jupiter.version>5.5.2</junit.jupiter.version>
     <junit.platform.version>1.2.0</junit.platform.version> 
     <maven.surefire.version>2.21.0</maven.surefire.version>    
   </properties>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>Pokemon-Text-Adventure</groupId>
+  <artifactId>Pokemon-Text-Adventure</artifactId>
+  <description>Pokemon text adventure game</description>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>pokemonadventure</name>
+  <url>http://maven.apache.org</url>
+
 
   <dependencies>
    <dependency>
@@ -77,10 +78,28 @@
 		        </dependency>            	
             </dependencies>  			 			
   		</plugin>
+		<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>mainGame.UI</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
   	</plugins>
   	<resources>
       <resource>
         <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+	  <resource>
+        <directory>sounds</directory>
         <excludes>
           <exclude>**/*.java</exclude>
         </excludes>

@@ -3,6 +3,10 @@ package pokemon;
 import java.util.ArrayList;
 //import attacks.Attacks;
 
+import attacks.AttackSuper;
+import attacks.Growl;
+import attacks.Tackle;
+
 public class Bulbasaur extends PokemonSuper {
 	//Bulbasaur is a dual-type Grass/Poison Pokémon
 	
@@ -28,8 +32,10 @@ public class Bulbasaur extends PokemonSuper {
 		englishPokedex = "A strange seed was planted on" + "\n" + "its back at birth. The plant" + "\n" + 
 		"sprouts and grows with this POKEMON";
 		japanesePokedex = "うまれたときから　せなかに　しょくぶつの"+"\n" + "チタネガ　あって　すこしづつ"+"\n"+"おおきく　そだつ。　";
-//		attackArrayList.add()
-//		attackArrayList.add()
+		Tackle tackle = new Tackle(35);
+		attackArrayList.add(tackle);
+		Growl growl = new Growl(35);
+		attackArrayList.add(growl);
 	}
 
 }

@@ -18,10 +18,11 @@ public class PalletTownHouse3 extends JPanel {
 	int textSpeed;
 	Rival rival;
 	JButton locationButton;
+	String color;
 	
 	public PalletTownHouse3 (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2) {
+			Player player, Rival rival, Boolean stopTimer, String location2, String color) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -33,9 +34,18 @@ public class PalletTownHouse3 extends JPanel {
 	     this.rival = rival;
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
+	     this.color = color;
 	     
 	     
-	     setBackground(Color.black);
+//	     if (color == "black") {
+//	         setBackground(Color.black); 
+//	 	    }
+//	 	    
+//	 	    if (color == "cyan") {
+//	 	        setBackground(Color.cyan); 
+//	 		    }
+	     
+	     setBackground(Color.black); 
 	     setLayout(new GridBagLayout());
 	     GridBagConstraints gb = new GridBagConstraints();
 		

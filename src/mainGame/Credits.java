@@ -96,7 +96,7 @@ public class Credits extends JPanel {
 		 nameText1.setFont(font2);
 		 
 		 JTextArea nameText2 = new JTextArea("Left logo, Menu screen ideas and design, Menu Music concept" + "\n" 
-		 + "idea, Feedback website design, Demo, Report" + "\n" + "Initial sound class, Initial Russian language addition" + 
+		 + "idea, Feedback website design, Demo, Video editing, Report" + "\n" + "Initial sound class, Initial Russian language addition" + 
 				 "\n" +  "Debug and formatting, Testing, Powerpoint," + "\n" + "Brochure, Group coordination");		 
 		 nameText2.setForeground(Color.cyan);
 		 nameText2.setBackground(Color.black);

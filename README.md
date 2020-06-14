@@ -1,8 +1,8 @@
 # Pokemon Text Adventure
 RUNNING FROM JAR FILE
-1. Download Pokemon Text Adventure v1.0.zip from the releases page
+1. Download Pokemon Text Adventure v1.0.zip from the release page
 2. Extract with 7zip, winrar, or other extraction software to obtain .jar file
-2. Run the .jar program
+2. Run the .jar executable program
  
 RUNNING FROM ECLIPSE
 1. Start Eclipse IDE

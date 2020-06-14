@@ -1,4 +1,7 @@
 # Pokemon Text Adventure
+RUNING FROM JAR FILE
+1. Download Pokemon-Text-Adventure-1.0.0.jar
+2. Run the program
  
 RUNNING FROM ECLIPSE
 1. Start Eclipse IDE

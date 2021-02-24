@@ -41,7 +41,7 @@ public class UI implements ComponentListener {
     JTextArea startScreenTextArea = new JTextArea(); 
     final static String mainScreenString = "mainscreen";
     CardLayout cl;
-    Font font = new Font("SANS_SERIF", Font.BOLD, 30);
+    Font font = new Font("SANS_SERIF", Font.BOLD, 15);
     String language = "English", position = "mainscreen", fullText2="", chosenSave = "";
     int textSpeed = 50, buttonWidth = 150, buttonHeight = 75;
     Boolean stopTimer = false, professorOakVisited = false, labOutsideButtonEnable = true;

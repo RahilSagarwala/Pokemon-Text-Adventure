@@ -387,17 +387,30 @@ public class Options extends JPanel {
 	            		  
 	            	case "menu":	            		
 	            		
-	            		MenuScreen menu = new MenuScreen(cl, cards, font1, screen, language1, textSpeed1, player,
-	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, trainer,
-	            				battleScreenText, color, "");
-	            		cards.add(menu, "menu");
-	            	    layout.show(cards, "menu");
+	            		MenuScreen menu;
+						try {
+							menu = new MenuScreen(cl, cards, font1, screen, language1, textSpeed1, player,
+									rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, trainer,
+									battleScreenText, color, "", clip);
+							cards.add(menu, "menu");
+		            	    layout.show(cards, "menu");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+	            		
 	            	    break;
 	            	    
 	            	case "choosestarter":	            		
 	            		
 	            		ChooseStarter chooseStarter = new ChooseStarter(cl, cards, font1, screen, language1, textSpeed1, player,
-	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, color);
+	            				rival, stopTimer, screen, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            		cards.add(chooseStarter, "choosestarter");
 	            	    layout.show(cards, "choosestarter");
 	            	    break;
@@ -405,7 +418,7 @@ public class Options extends JPanel {
 	            	case "battle":	            		
 	            		Battle battle = new Battle(cl, cards, font1, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation, clip);
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");
@@ -432,7 +445,7 @@ public class Options extends JPanel {
 	            	   Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, 
-	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -453,7 +466,7 @@ public class Options extends JPanel {
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -476,7 +489,7 @@ public class Options extends JPanel {
 	            	    Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -519,7 +532,7 @@ public class Options extends JPanel {
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -567,7 +580,7 @@ public class Options extends JPanel {
 	            	 Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
 	            	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
 	            	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, 
-	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            	    		professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
 	            	    cards.add(options, "options");
 	            	    layout.show(cards, "options");
@@ -612,7 +625,7 @@ public class Options extends JPanel {
 	              Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
           	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
           	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-          	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+          	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
           	    cards.add(options, "options");
           	    layout.show(cards, "options");
@@ -626,7 +639,7 @@ public class Options extends JPanel {
 	              Options options = new Options(cl, cards, position, startScreenTextArea, screen, nameOptionsBool,
           	    		player, setVisible, language1, textSpeed1, fullText2, rival, font1, stopTimer,
           	    		nameOptionsBool2, titleSize, buttonWidth, buttonHeight, false, professorOakVisited, 
-          	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+          	    		labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 
           	    cards.add(options, "options");
           	    layout.show(cards, "options");

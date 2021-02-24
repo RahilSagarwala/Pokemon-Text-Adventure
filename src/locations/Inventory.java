@@ -185,7 +185,7 @@ public class Inventory extends JPanel {
 	            		player.getItems().get(buttonIndex).getItemName(language) ==  "ちず") {
 	            			Map map = new Map(1);
 	            			map.showMap(cl, cards, font, screen, language, textSpeed, player, rival, stopTimer,
-	            					location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation);
+	            					location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, previousLocation, clip);
 	            		}
 	            		
 	            		if (player.getItems().get(buttonIndex).getItemName(language) == "Potion" || 
@@ -195,7 +195,7 @@ public class Inventory extends JPanel {
 	    	            			potion.showPartyPokemon(cl, cards, font, screen, language, 
 	    	            					textSpeed, player, rival, 
 	    	            					stopTimer, location, professorOakVisited, 
-	    	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex, color, previousLocation);
+	    	            					labOutsideButtonEnable, trainer, battleScreenText, "potion", "", buttonIndex, color, previousLocation, clip);
 	    	            			      		
 	    	            		}
 	            	  

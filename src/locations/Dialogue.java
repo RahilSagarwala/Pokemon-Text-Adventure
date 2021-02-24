@@ -6,6 +6,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -38,11 +39,11 @@ public class Dialogue extends JPanel {
 	Boolean professorOakVisited, returnVisible, labOutsideButtonEnable;
 	String color;
 	Clip clip;
-	
-	public Dialogue (final CardLayout layout, final JPanel cards, 
+
+	  	  public Dialogue (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean nextVisible, Boolean professorOakVisited2,
-			Boolean returnVisible, int screenNumber2, Boolean labOutsideButtonEnable, String color, Clip clip) {
+			Boolean returnVisible, int screenNumber2, Boolean labOutsideButtonEnable, String color, Clip clip) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -60,6 +61,22 @@ public class Dialogue extends JPanel {
 	     this.labOutsideButtonEnable = labOutsideButtonEnable;
 	     this.color = color;
 	     this.clip = clip;
+	     
+	     Clip clip4 = AudioSystem.getClip();
+	     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+		          this.getClass().getClassLoader().getResource("route1beforeoak.wav"));
+		 
+	    clip4.open(inputStream);
+	    
+	     if (location == "route1oak" && !professorOakVisited && screenNumber == 0 || screenNumber== 1  || screenNumber== 2) {
+		 
+	    clip4.start();
+	     }
+	   
+		
+	     
+	    
+	     
 	     
 //	     if (color == "black") {
 //	         setBackground(Color.black); 
@@ -79,7 +96,7 @@ public class Dialogue extends JPanel {
 		 returnButton.setVisible(returnVisible);
 		 
 		 JButton nextButton = new JButton("Next");
-		 nextButton.setPreferredSize(new Dimension(150,75));
+		 nextButton.setPreferredSize(new Dimension(75,75));
 		 nextButton.setBackground(Color.DARK_GRAY);
 		 nextButton.setForeground(Color.cyan);
 		 nextButton.setFont(font);
@@ -95,7 +112,12 @@ public class Dialogue extends JPanel {
 			 nextButton.setText("つぎ");
 		 }
 		 
+		 
+		 
+		 
 		 switch (screen) {
+		 
+		 
 		 case "playsnes": 
 			 if (language == "English") {
 				 text = player.getName() + " is playing the SNES! ...Okay! It's time to go!";
@@ -250,7 +272,8 @@ public class Dialogue extends JPanel {
 			 }
 			 break;
 			 
-		 case "professoroaklab": 
+		 case "professoroaklab":   
+			
 			 if (language == "English") {
 				 text = "Oak: If a wild POKEMON appears, your POKEMON can fight against it!";
 				 }
@@ -260,8 +283,7 @@ public class Dialogue extends JPanel {
 			 break;
 			 
 		 case "route1oak": 
-			 switch(screenNumber) {
-			 case 0:
+
 			 if (language == "English") {
 				 text = "*When trying to leave town via the grassy path to the north* \n" + 
 				 		"\n" + 
@@ -273,55 +295,39 @@ public class Dialogue extends JPanel {
 				 		"            POKEMON for your protection. I know! Here, come with me!\n" + 
 				 		"\n" + 
 				 		"*He takes " + player.getName() + " to his laboratory. They approach a table upon which three\n" + 
-				 		"    Poke Balls have been placed, and next to which " + rival.getName() + " is present.*";
-				 }
-			 else {
-				 text = "オーキド： おーい！　まてー！　まつんじゃあ" + "\n" + "あぶない　とこだった　くさむらでは やせいの　ポケモンが　とびだす！"+ "\n" +
-			 "こちらも　ポケモンを　もって　いれば　たたかえるのだが。。。。。。" + "\n" + "そうじゃ！。。。。。。。　ちょうっと　わしに　ついて　さなさい！";
-				 }
-			 break;
-			 
-			 case 1:
-				 if (language == "English") {
-					 text = rival.getName() + ": Gramps! I'm fed up with waiting!\n" + 
-					 		"\n" + 
-					 		"Oak: " + rival.getName() + "? Let me think... Oh, that's right, I told you to come!\n" + 
-					 		"            Just wait!\n" + 
-					 		"\n" + 
-					 		"            Here," + player.getName() + "! There are 3 POKEMON here! Haha! They are inside the\n" + 
-					 		"            POKE BALLS. When I was young, I was a serious POKEMON trainer.\n" + 
-					 		"            In my old age, I have only 3 left, but you can have one! Choose!\n" + 
-					 		"\n" + 
-					 		rival.getName() + ": Hey! Gramps! What about me?\n" + 
-					 		"\n" + 
-					 		"Oak: Be patient! " + rival.getName() + ", you can have one too!";
-					 }
-				 else {
-					 text = rival.getName() + ": じいさん！　まちくたびれたぞー！" + "\n" + "オーキド：　" + rival.getName() + 
-							 "か？　。。。。。。　。。。。。。　。。。。。。" + "\n" + "ああ　そうか　わしが　よんだのじゃった！ちょうと　まって　おれ！" + "\n" +
-							 "ほれ　" + player.getName() + "! そこに　３びき　ポケモンが　いる　じゃろう！　ほつほ！";
-							
-					 }
-				 break;
-			 case 2:
-				 if (language == "English") {
-					 text = "Oak: Now, " + player.getName() + ", which POKEMON do you want?\n" + 
+				 		"    Poke Balls have been placed, and next to which " + rival.getName() + " is present.*" + 
+				 		rival.getName() + ": Gramps! I'm fed up with waiting!\n" + 
+				 		"\n" + 
+				 		"Oak: " + rival.getName() + "? Let me think... Oh, that's right, I told you to come!\n" + 
+				 		"            Just wait!\n" + 
+				 		"\n" + 
+				 		"            Here," + player.getName() + "! There are 3 POKEMON here! Haha! They are inside the\n" + 
+				 		"            POKE BALLS. When I was young, I was a serious POKEMON trainer.\n" + 
+				 		"            In my old age, I have only 3 left, but you can have one! Choose!\n" + 
+				 		"\n" + 
+				 		rival.getName() + ": Hey! Gramps! What about me?\n" + 
+				 		"\n" + 
+				 		"Oak: Be patient! " + rival.getName() + ", you can have one too!" +
+				 		 "Oak: Now, " + player.getName() + ", which POKEMON do you want?\n" + 
 					 		"\n" + 
 					 		rival.getName() + ": Heh, I don't need to be greedy like you! Go ahead and choose, " + 
 					 		player.getName() + "!";
-					 }
-				 else {
-					 text =  "モンスターボールの　なかに　ポケモンが" + "\n" +"いれて　あるんじゃ　すかしは" + "\n" + 
-							 "わしも　バリバリの　ポケモン" + "\n" +"トレーモーとして　ならした　もの" + "\n" + 
-							 "おいばれた　いまは　ポケモンも　３びき" + "\n" +"しか　のこっとらんが"
-						 		+ "おまえに　１ぴき" + "\n" +"やろう！。。。。。。　さあ　えらべ！" + "\n" + rival.getName() + ": あツ！　ずろい！　じいさん！"
-						 				+ "おれにも"+ "\n" + "くれよお！ オーキド：　まー！　あわてるな　"+ rival.getName() + "\n" + "!" + 
-						 				"おまえも　すきなものを　とれ！";
-					 }
-				 break;
+				 }
+			 else {
+				 text = "オーキド： おーい！　まてー！　まつんじゃあ" + "\n" + "あぶない　とこだった　くさむらでは やせいの　ポケモンが　とびだす！"+ "\n" +
+			 "こちらも　ポケモンを　もって　いれば　たたかえるのだが。。。。。。" + "\n" + "そうじゃ！。。。。。。。　ちょうっと　わしに　ついて　さなさい！" +
+			 rival.getName() + ": じいさん！　まちくたびれたぞー！" + "\n" + "オーキド：　" + rival.getName() + 
+			 "か？　。。。。。。　。。。。。。　。。。。。。" + "\n" + "ああ　そうか　わしが　よんだのじゃった！ちょうと　まって　おれ！" + "\n" +
+			 "ほれ　" + player.getName() + "! そこに　３びき　ポケモンが　いる　じゃろう！　ほつほ！" + 
+			 "モンスターボールの　なかに　ポケモンが" + "\n" +"いれて　あるんじゃ　すかしは" + "\n" + 
+			 "わしも　バリバリの　ポケモン" + "\n" +"トレーモーとして　ならした　もの" + "\n" + 
+			 "おいばれた　いまは　ポケモンも　３びき" + "\n" +"しか　のこっとらんが"
+		 		+ "おまえに　１ぴき" + "\n" +"やろう！。。。。。。　さあ　えらべ！" + "\n" + rival.getName() + ": あツ！　ずろい！　じいさん！"
+		 				+ "おれにも"+ "\n" + "くれよお！ オーキド：　まー！　あわてるな　"+ rival.getName() + "\n" + "!" + 
+		 				"おまえも　すきなものを　とれ！";
+				 }
+
 			 
-			 
-			 }
 			 break;
 			 
 		 case "starterchosen": 
@@ -434,12 +440,14 @@ public class Dialogue extends JPanel {
 	     nextButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	
 	            	switch (location) {
 	            	
 	            	case "route1oak":
+	           		 clip4.stop();
 	            		
-	            		if (screenNumber == 2) {
+	            	
+	            			
+
 	            			professorOakVisited = true;
 	            			PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
 	    	                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, 
@@ -448,22 +456,15 @@ public class Dialogue extends JPanel {
 	    	            	
 	    	                layout.show(cards, "pallettownlab");
 	    	                cl.show(cards, "pallettownlab"); 
-	            		}
+	    	               
 	            		
-	            		
-	            		else {
-	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "route1oak", language, textSpeed,
-			         			player, rival, stopTimer, "route1oak", true, professorOakVisited, false, screenNumber +1,
-			         			labOutsideButtonEnable, color, clip);
-			         	cards.add(dialogue, "dialogue");
-			             cl.show(cards, "dialogue"); 
-	            		}
+	            	
 	            		break;
 	            	case "pallettownlab":
-	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
+	            		PalletTownLab palletTownLab2 = new PalletTownLab(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab",
 		                		professorOakVisited, false, color, clip);
-		            	cards.add(palletTownLab, "pallettownlab");
+		            	cards.add(palletTownLab2, "pallettownlab");
 		            	
 		                layout.show(cards, "pallettownlab");
 	            		break;

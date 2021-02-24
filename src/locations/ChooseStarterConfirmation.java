@@ -6,6 +6,8 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import mainGame.*;
 import java.awt.*;
 import javax.swing.*;
@@ -185,11 +187,24 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		rival.addPokemonToParty(squirtle);
 	            		
 
-		            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 
-		            			0, labOutsideButtonEnable, color, clip);
-		            	cards.add(dialogue, "dialogue");
-		                layout.show(cards, "dialogue");
+		            	Dialogue dialogue;
+						try {
+							dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
+									player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 
+									0, labOutsideButtonEnable, color, clip);
+							cards.add(dialogue, "dialogue");
+			                layout.show(cards, "dialogue");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		            
 	            		
 	            		break;
 	            	case "squirtle":
@@ -206,11 +221,23 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		rival.addPokemonToParty(bulbasaur);
 
 	            		
-	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
-		            			labOutsideButtonEnable, color, clip);
-		            	cards.add(dialogue, "dialogue");
-		                layout.show(cards, "dialogue");
+	            		try {
+							dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
+									player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
+									labOutsideButtonEnable, color, clip);
+							cards.add(dialogue, "dialogue");
+			                layout.show(cards, "dialogue");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		            	
 	            		
 	            		
 	            		break;
@@ -228,11 +255,23 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		charmander.generateOwner(player.getName());
 	            		rival.addPokemonToParty(charmander);
 	            		
-	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
-		            			labOutsideButtonEnable, color, clip);
-		            	cards.add(dialogue, "dialogue");
-		                layout.show(cards, "dialogue");
+	            		try {
+							dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
+									player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
+									labOutsideButtonEnable, color, clip);
+							cards.add(dialogue, "dialogue");
+			                layout.show(cards, "dialogue");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		            	
 	            		
 	            		
 	            		break;

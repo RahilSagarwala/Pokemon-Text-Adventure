@@ -6,6 +6,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -189,10 +190,23 @@ public class Outside extends JPanel {
 		 route1Button.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 			     if (professorOakVisited == false) {
-			    	 Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "route1oak", language, textSpeed,
-		         			player, rival, stopTimer, "route1oak", true, professorOakVisited, false, 0, labOutsideButtonEnable, color, clip);
-		         	cards.add(dialogue, "dialogue");
-		             cl.show(cards, "dialogue"); 
+			    	 Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "route1oak", language, textSpeed,
+								player, rival, stopTimer, "route1oak", true, professorOakVisited, false, 0, labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+			             cl.show(cards, "dialogue"); 
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		         
 			     }
 			     else {
 			    	 try {

@@ -16,6 +16,11 @@ import Trainer.Player;
 import Trainer.Rival;
 import mainGame.Options;
 import mainGame.TimerClass;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 
 public class Battle extends JPanel {
@@ -34,12 +39,13 @@ public class Battle extends JPanel {
 	String color;
 	Boolean showAttacks;
 	String previousLocation;
+	Clip clip;
 	
 	public Battle (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, TrainerSuper trainer, Boolean stopTimer, String location2, Boolean professorOakVisited,
 			Boolean labOutsideButtonEnable, Rival rival, int battleScreenText2, String color, Boolean showAttacks, String text,
-			String playerAttack2, String trainerAttack2, String previousLocation) {
+			String playerAttack2, String trainerAttack2, String previousLocation, Clip clip) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -60,6 +66,7 @@ public class Battle extends JPanel {
 	     this.playerAttack = playerAttack2;
 	     this.trainerAttack = trainerAttack2;
 	     this.previousLocation = previousLocation;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -498,7 +505,7 @@ public class Battle extends JPanel {
 	            			
 	            			Battle battle = new Battle(cl, cards, textAreaFont, 
 	    	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation);
+	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation, clip);
 	    	            	cards.add(battle, "battle");
 	    	            	
 	    	                layout.show(cards, "battle");
@@ -512,7 +519,7 @@ public class Battle extends JPanel {
 	            			
 	            			battle = new Battle(cl, cards, textAreaFont, 
 	    	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation);
+	    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation, clip);
 	    	            	cards.add(battle, "battle");
 	    	            	
 	    	                layout.show(cards, "battle");
@@ -529,7 +536,7 @@ public class Battle extends JPanel {
 		            			
 		            			battle = new Battle(cl, cards, textAreaFont, 
 		    	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation);
+		    	                		labOutsideButtonEnable, rival, 3, color, false, "", playerAttack, trainerAttack, previousLocation, clip);
 		    	            	cards.add(battle, "battle");
 		    	            	
 		    	                layout.show(cards, "battle");
@@ -557,7 +564,7 @@ public class Battle extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "battle", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 4, color,previousLocation);
+	            			labOutsideButtonEnable, trainer, 4, color,previousLocation, clip);
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	
@@ -568,7 +575,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, 4, color, true, "", "", "", previousLocation);
+	                		labOutsideButtonEnable, rival, 4, color, true, "", "", "", previousLocation, clip);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");
@@ -580,7 +587,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "", previousLocation);
+	                		labOutsideButtonEnable, rival, 4, color, false, "", "", "", previousLocation, clip);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");
@@ -595,7 +602,7 @@ public class Battle extends JPanel {
 	            	case "pallettownlab":
 	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, 
-		                		labOutsideButtonEnable, color);
+		                		labOutsideButtonEnable, color, clip);
 		            	cards.add(palletTownLab, "pallettownlab");
 		            	
 		                layout.show(cards, "pallettownlab");
@@ -612,7 +619,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "battle", language, textSpeed,
 	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer,
-	            			4, "", 0, color, previousLocation);
+	            			4, "", 0, color, previousLocation, clip);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
 	            	
@@ -623,7 +630,7 @@ public class Battle extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	  
 	            	Inventory inventory = new Inventory(cl, cards, textAreaFont, "battle", language, textSpeed,
-	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, 4, previousLocation);
+	            			player, rival, stopTimer, "battle", professorOakVisited, labOutsideButtonEnable, trainer, 4, previousLocation, clip);
 	            	cards.add(inventory, "inventory");
 	                layout.show(cards, "inventory");
 	            }
@@ -634,7 +641,7 @@ public class Battle extends JPanel {
 	            	battleScreenText = 999;
 	            	Battle battle = new Battle(cl, cards, textAreaFont, 
 	                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-	                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
+	                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation, clip);
 	            	cards.add(battle, "battle");
 	            	
 	                layout.show(cards, "battle");

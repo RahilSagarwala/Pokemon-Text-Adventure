@@ -10,6 +10,12 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class PalletTownHouse3 extends JPanel {
 	
@@ -23,10 +29,11 @@ public class PalletTownHouse3 extends JPanel {
 	Rival rival;
 	JButton locationButton;
 	String color;
+	Clip clip;
 	
 	public PalletTownHouse3 (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
-			Player player, Rival rival, Boolean stopTimer, String location2, String color) {
+			Player player, Rival rival, Boolean stopTimer, String location2, String color, Clip clip) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -39,6 +46,7 @@ public class PalletTownHouse3 extends JPanel {
 	     this.stopTimer = stopTimer;
 	     this.location = location2;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {

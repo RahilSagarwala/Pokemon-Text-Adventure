@@ -21,6 +21,7 @@ import Trainer.Player;
 import Trainer.Rival;
 import Trainer.*;
 import java.io.*;
+import javax.sound.*;
 
 
 
@@ -439,7 +440,7 @@ public class MainGame extends JPanel {
 				  clip2.stop();
 				  }
 					newGame = new NewGame(cl, cards, font, language, textSpeed, stopTimer, buttonWidth,
-							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+							buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
 					 cards.add(newGame, "newgame");
 					cl.show(cards, "newgame");
 				 
@@ -459,7 +460,7 @@ public class MainGame extends JPanel {
 					options = new Options(cl, cards,"mainscreen", startScreenTextArea, "1",
 							false, player, true, language, textSpeed, fullText2, rival, font,
 							false, stopTimer, titleSize, buttonWidth, buttonHeight, false,
-							professorOakVisited, labOutsideButtonEnable, trainer, 0, color, "");
+							professorOakVisited, labOutsideButtonEnable, trainer, 0, color, "", clip);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -492,7 +493,7 @@ public class MainGame extends JPanel {
 					  clip2.stop();
 					  }
 				    credits = new Credits(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip);
 				 	cards.add(credits, "trade");
 					cl.show(cards, "trade");
 					
@@ -509,7 +510,7 @@ public class MainGame extends JPanel {
 					  clip2.stop();
 					  }
 				    Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip);
 				 	cards.add(logo, "logo");
 					cl.show(cards, "logo");
 					
@@ -543,7 +544,7 @@ public class MainGame extends JPanel {
 					  clip2.stop();
 					  }
 				 	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
+				 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip);
 				    cards.add(continu, "continue");
 					cl.show(cards, "continue");
 					

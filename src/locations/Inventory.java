@@ -14,6 +14,12 @@ import Trainer.Rival;
 import items.*;
 import Trainer.TrainerSuper;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class Inventory extends JPanel {
 	
@@ -31,11 +37,12 @@ public class Inventory extends JPanel {
 	TrainerSuper trainer;
 	int battleScreenText;
 	String color, previousLocation;
+	Clip clip;
 	
 	public Inventory (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String previousLocation) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String previousLocation, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -51,6 +58,7 @@ public class Inventory extends JPanel {
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
 	     this.previousLocation = previousLocation;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -207,17 +215,22 @@ public class Inventory extends JPanel {
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation, clip);
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");
 		                break;
 	            	default:
+	            		try {
 	            		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
 	            				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer,
-	            				battleScreenText, color, "");
+	            				battleScreenText, color, "", clip);
 	            		cards.add(menu, "menu");
 	            	    layout.show(cards, "menu");
+	            		}
+	            		catch (Exception a) {
+	            			a.getMessage();
+	            		}
 	            	    break;
 	            		
 	            	}

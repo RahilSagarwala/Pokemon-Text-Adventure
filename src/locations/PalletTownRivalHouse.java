@@ -12,6 +12,12 @@ import Trainer.Player;
 import Trainer.Rival;
 import items.*;
 import Trainer.TrainerSuper;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class PalletTownRivalHouse extends JPanel {
 	
@@ -29,11 +35,12 @@ public class PalletTownRivalHouse extends JPanel {
 	PalletTownYourHouse palletTownYourHouse;
 	int count = 0;
 	String color;
+	Clip clip;
 	
 	public PalletTownRivalHouse (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, String color) {
+			Boolean labOutsideButtonEnable, String color, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -47,6 +54,7 @@ public class PalletTownRivalHouse extends JPanel {
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -149,7 +157,7 @@ public class PalletTownRivalHouse extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	Outside outside = new Outside(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
-	            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color);
+	            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	cards.add(outside, "outside");
 	            	  layout.show(cards, "outside");
 	            	        
@@ -161,7 +169,7 @@ public class PalletTownRivalHouse extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "talktorivalsister", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownrivalhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color);
+	            			labOutsideButtonEnable, color, clip);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue"); 
 	            	
@@ -205,7 +213,7 @@ public class PalletTownRivalHouse extends JPanel {
 	            	
 	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pickupmap", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownrivalhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color);
+	            			labOutsideButtonEnable, color, clip);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue"); 
 	            	 	
@@ -216,12 +224,16 @@ public class PalletTownRivalHouse extends JPanel {
 		 menuButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	TrainerSuper trainer = new TrainerSuper();
-
+	            	try {
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 0, color, "");
+	            			labOutsideButtonEnable, trainer, 0, color, "", clip);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
+	            	}
+	            	catch (Exception a) {
+            			a.getMessage();
+            		}
 	            	
 	            }
 	        });

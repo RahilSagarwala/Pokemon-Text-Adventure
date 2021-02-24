@@ -13,6 +13,12 @@ import Trainer.Player;
 import Trainer.Rival;
 import locations.PalletTownYourHouse;
 import pokemon.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class ChooseStarterConfirmation extends JPanel {
 	
@@ -27,12 +33,13 @@ public class ChooseStarterConfirmation extends JPanel {
 	JButton menuButton;
 	JTextArea textArea;
 	String color;
+	Clip clip;
 
    
 	public ChooseStarterConfirmation(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideEnable, String pokemon, String color) {
+			Boolean labOutsideEnable, String pokemon, String color, Clip clip) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.cl = layout;
@@ -49,6 +56,7 @@ public class ChooseStarterConfirmation extends JPanel {
 	     this.labOutsideButtonEnable = labOutsideEnable;
 	     this.pokemon = pokemon;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
@@ -154,7 +162,7 @@ public class ChooseStarterConfirmation extends JPanel {
 	            	
 	            	ChooseStarter chooseStarter = new ChooseStarter(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
-	            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable, color);
+	            			player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	cards.add(chooseStarter, "choosestarter");
 	            	  layout.show(cards, "choosestarter");            	
 	            }
@@ -179,7 +187,7 @@ public class ChooseStarterConfirmation extends JPanel {
 
 		            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
 		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 
-		            			0, labOutsideButtonEnable, color);
+		            			0, labOutsideButtonEnable, color, clip);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		
@@ -200,7 +208,7 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		
 	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
 		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
-		            			labOutsideButtonEnable, color);
+		            			labOutsideButtonEnable, color, clip);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		
@@ -222,7 +230,7 @@ public class ChooseStarterConfirmation extends JPanel {
 	            		
 	            		dialogue = new Dialogue(cl, cards, textAreaFont, "starterchosen", language, textSpeed,
 		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, 
-		            			labOutsideButtonEnable, color);
+		            			labOutsideButtonEnable, color, clip);
 		            	cards.add(dialogue, "dialogue");
 		                layout.show(cards, "dialogue");
 	            		

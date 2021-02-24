@@ -14,6 +14,12 @@ import Trainer.Rival;
 import items.*;
 import pokemon.*;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class PokemonStats extends JPanel {
 	
@@ -32,12 +38,13 @@ public class PokemonStats extends JPanel {
 	TrainerSuper trainer;
 	int battleScreenText;
 	String color, previousLocation;
+	Clip clip;
 	
 	public PokemonStats (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
 			Boolean labOutsideButtonEnable, Boolean pokedex, PokemonSuper pokemon, TrainerSuper trainer, 
-			int battleScreenText, String color, String previousLocation) {
+			int battleScreenText, String color, String previousLocation, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -56,6 +63,7 @@ public class PokemonStats extends JPanel {
 	     this.battleScreenText=battleScreenText;
 	     this.color = color;
 	     this.previousLocation=previousLocation;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -222,7 +230,7 @@ public class PokemonStats extends JPanel {
             		
 	            	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
 	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer,
-	            			battleScreenText, "", 0, color, previousLocation);
+	            			battleScreenText, "", 0, color, previousLocation, clip);
 	            	cards.add(partyPokemon, "partypokemon");
 	                layout.show(cards, "partypokemon");
             	  
@@ -235,7 +243,7 @@ public class PokemonStats extends JPanel {
          		
 	            	Pokedex pokedex = new Pokedex(cl, cards, textAreaFont, "", language, textSpeed,
                 			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, false, 
-                			pokemon, trainer, battleScreenText, color, previousLocation);
+                			pokemon, trainer, battleScreenText, color, previousLocation, clip);
                 	cards.add(pokedex, "pokedex");
                     layout.show(cards, "pokedex");
          	  

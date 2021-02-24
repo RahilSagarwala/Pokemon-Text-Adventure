@@ -13,6 +13,12 @@ import Trainer.Player;
 import Trainer.Rival;
 import items.*;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class TrainerInfo extends JPanel {
 	
@@ -30,11 +36,12 @@ public class TrainerInfo extends JPanel {
 	TrainerSuper trainer;
 	int battleScreenText;
 	String color;
+	Clip clip;
 	
 	public TrainerInfo(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -50,6 +57,7 @@ public class TrainerInfo extends JPanel {
 	     this.trainer = trainer;
 	     this.battleScreenText=battleScreenText;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -183,12 +191,16 @@ public class TrainerInfo extends JPanel {
 		 
 		 returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {  		
-            		
+            		try {
             		MenuScreen menu = new MenuScreen(cl, cards, font, screen, language, textSpeed, player,
             				rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, 
-            				trainer, battleScreenText, color, "");
+            				trainer, battleScreenText, color, "", clip);
             		cards.add(menu, "menu");
             	    layout.show(cards, "menu");
+            		}
+            		catch (Exception a) {
+            			a.getMessage();
+            		}
             	  
 	            	
 	            }

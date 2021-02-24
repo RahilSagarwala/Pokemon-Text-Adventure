@@ -33,10 +33,11 @@ public class Credits extends JPanel {
     int buttonWidth;
     int buttonHeight;
     String color;
+    Clip clip;
 	
 	public Credits (final CardLayout layout, final JPanel cards, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.language = language;
@@ -51,6 +52,7 @@ public class Credits extends JPanel {
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 //	     if (color == "black") {
 //	         setBackground(Color.black); 

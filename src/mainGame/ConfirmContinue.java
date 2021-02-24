@@ -10,6 +10,12 @@ import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 
 public class ConfirmContinue extends JPanel{
@@ -30,12 +36,13 @@ public class ConfirmContinue extends JPanel{
     int buttonHeight;
     ContinueGame continu;
     String color;
+    Clip clip;
 
     
     
 	public ConfirmContinue (final CardLayout layout, final JPanel cards, String name, String language, Font font, int textSpeed,
 			Player player, Rival rival, Boolean stopTimer, Float titleSize, int buttonWidth, int buttonHeight,
-			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color) {
+			Boolean professorOakVisited, Boolean labOutsideButtonEnable, String color, Clip clip) {
 		 this.saveName = name;
 		 this.cl = layout;
 	     this.cards = cards;
@@ -51,6 +58,7 @@ public class ConfirmContinue extends JPanel{
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 //	     if (color == "black") {
 //	         setBackground(Color.black); 
@@ -115,7 +123,7 @@ public class ConfirmContinue extends JPanel{
 		 noButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
+	        	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	cards.add(continu, "continue");
 	                layout.show(cards, "continue");
 	            }

@@ -71,20 +71,14 @@ public class Route1 extends JPanel {
 	     this.color = color;
 	     this.clip = clip;
 	     
-	
+	     if (location == "route1" && professorOakVisited) 
+	     {
 	     Clip clip3 = AudioSystem.getClip();
 		    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
 			          this.getClass().getClassLoader().getResource("route1.wav"));
 		    clip3.open(inputStream);
 		    
-		    if (location == "route1" && professorOakVisited ) {
 		    		 clip3.start();
-		    }
-
-	     
-	     else {
-	    	 
-	    	 clip3.close();
 	     }
 	     
 	     

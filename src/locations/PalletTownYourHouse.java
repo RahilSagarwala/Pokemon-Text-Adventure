@@ -6,6 +6,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -177,21 +178,45 @@ public class PalletTownYourHouse extends JPanel {
 		 talkToMomButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	dialogue = new Dialogue(cl, cards, textAreaFont, "talktomom", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  	                
+	            	try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "talktomom", language, textSpeed,
+								player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  	        
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	        
 	            }
 	        });
 		 
 		 watchTvButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	dialogue = new Dialogue(cl, cards, textAreaFont, "watchtv", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  	
+	            	try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "watchtv", language, textSpeed,
+								player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            		
 	            	
 	            }
 	        });
@@ -199,11 +224,23 @@ public class PalletTownYourHouse extends JPanel {
 		 playSnesButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	dialogue = new Dialogue(cl, cards, textAreaFont, "playsnes", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  	
+	            	try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "playsnes", language, textSpeed,
+								player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  	
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            
 	            }
 	        });
 		 

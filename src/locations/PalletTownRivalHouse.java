@@ -6,6 +6,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -167,11 +168,24 @@ public class PalletTownRivalHouse extends JPanel {
 		 //Go to Dialogue
 		 talkToRivalSisterButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "talktorivalsister", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownrivalhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue"); 
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "talktorivalsister", language, textSpeed,
+								player, rival, stopTimer, "pallettownrivalhouse", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue"); 
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            	
 	            }
 	        });
@@ -211,11 +225,24 @@ public class PalletTownRivalHouse extends JPanel {
 	            
 	            	
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pickupmap", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownrivalhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue"); 
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "pickupmap", language, textSpeed,
+								player, rival, stopTimer, "pallettownrivalhouse", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue"); 
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            
 	            	 	
 	            }
 	        });

@@ -67,6 +67,7 @@ public class Battle extends JPanel {
 	     this.trainerAttack = trainerAttack2;
 	     this.previousLocation = previousLocation;
 	     this.clip = clip;
+	    
 	     
 	     
 //	     if (color == "black") {

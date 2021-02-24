@@ -6,6 +6,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -265,33 +266,71 @@ public class PalletTownLab extends JPanel {
 	     oakAid1Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid1lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	try {
+						Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid1lab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            	
 	            }
 	        });
 	     
 	     oakAid2Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid2lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid2lab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            
 	            	
 	            }
 	        });
 	     
 	     oakAid3Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid3lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "oakaid3lab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            
 	            	
 	            }
 	        });
@@ -299,21 +338,47 @@ public class PalletTownLab extends JPanel {
 	     poster1Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "poster1lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "poster1lab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            }
 	        });
 	     
 	     poster2Button.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "poster2lab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "poster2lab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            
 	            	
 	            }
 	        });
@@ -321,22 +386,46 @@ public class PalletTownLab extends JPanel {
 	     computerButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "computerlab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, 
-	            			true, 0, labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	try {
+						Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "computerlab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, 
+								true, 0, labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            }
 	        });
 	     
 	     bookButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "booklab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	try {
+						Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "booklab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            }
 	        });
 	     
@@ -344,22 +433,47 @@ public class PalletTownLab extends JPanel {
 	     pokeballButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pokeballlab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	try {
+						Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "pokeballlab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            }
 	        });
 	     
 	     rivalButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivallab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "rivallab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            	
 	            }
 	        });
 	     
@@ -367,11 +481,24 @@ public class PalletTownLab extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	if (professorOakButton.getText() == "Prof. Oak" || professorOakButton.getText() == "オーキド") {
 	            	
-	            	Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "professoroaklab", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color, clip);
-	            	cards.add(dialogue, "dialogue");
-	                layout.show(cards, "dialogue");  
+	            	Dialogue dialogue;
+					try {
+						dialogue = new Dialogue(cl, cards, textAreaFont, "professoroaklab", language, textSpeed,
+								player, rival, stopTimer, "pallettownlab", false, professorOakVisited, true, 0, 
+								labOutsideButtonEnable, color, clip);
+						cards.add(dialogue, "dialogue");
+		                layout.show(cards, "dialogue");  
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	            
 	            	}
 	            }
 	        });
@@ -403,10 +530,23 @@ public class PalletTownLab extends JPanel {
 	            		Potion potion = new Potion(1);
 	            		player.addItem(potion);
 	            		
-	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "rivalbattle1", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, true, color, clip);
-		            	cards.add(dialogue, "dialogue");
-		                layout.show(cards, "dialogue");
+	            		Dialogue dialogue;
+						try {
+							dialogue = new Dialogue(cl, cards, textAreaFont, "rivalbattle1", language, textSpeed,
+									player, rival, stopTimer, "pallettownlab", true, professorOakVisited, false, 0, true, color, clip);
+							cards.add(dialogue, "dialogue");
+			                layout.show(cards, "dialogue");
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		            
 	            		
 	            		
 	            		

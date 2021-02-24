@@ -33,12 +33,13 @@ public class NewGame extends JPanel {
     Boolean stopTimer, professorOakVisited, labOutsideButtonEnable;
     String color;
     MainGame mg;
+    Clip clip;
 
     
 	
 	public NewGame(final CardLayout layout, final JPanel cards, Font font, String language, int textSpeed, Boolean stopTimer,
 			int buttonWidth, int buttonHeight, Player player, Rival rival, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, String color) {
+			Boolean labOutsideButtonEnable, String color, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font=font;
@@ -52,6 +53,7 @@ public class NewGame extends JPanel {
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 
 	     

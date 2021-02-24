@@ -14,6 +14,11 @@ import Trainer.Rival;
 import locations.PalletTownYourHouse;
 import mainGame.TimerClass;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class StartScreen extends JPanel {
 	
@@ -35,6 +40,7 @@ public class StartScreen extends JPanel {
     TimerClass timerClass;
     TrainerSuper trainer = new TrainerSuper();
     String color;
+    Clip clip;
 
 
    
@@ -64,6 +70,7 @@ public class StartScreen extends JPanel {
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
@@ -335,7 +342,7 @@ public class StartScreen extends JPanel {
 	            	options = new Options(cl, cards,"startscreen", startScreenText1, screen, 
 	            			nameOptionsBool, player, setVisible, language, textSpeed, fullText2,
 	            			rival, font, stopTimer, nameOptionsBool2, 55f, buttonWidth, buttonHeight, false, 
-	            			professorOakVisited, labOutsideButtonEnable, trainer, 0, color, "");
+	            			professorOakVisited, labOutsideButtonEnable, trainer, 0, color, "", clip);
 					cards.add(options, "options");
 					cl.show(cards, "options");
 					
@@ -422,7 +429,7 @@ public class StartScreen extends JPanel {
 		            public void actionPerformed(ActionEvent e) {
 		            	palletTownYourHouse = new PalletTownYourHouse(cl, cards, textAreaFont, 
 		                		"8", language, textSpeed, player, rival, stopTimer, "My House",
-		                		professorOakVisited, labOutsideButtonEnable, color);
+		                		professorOakVisited, labOutsideButtonEnable, color, clip);
 		            	cards.add(palletTownYourHouse, "pallettownyourhouse");
 		            	
 		                layout.show(cards, "pallettownyourhouse");

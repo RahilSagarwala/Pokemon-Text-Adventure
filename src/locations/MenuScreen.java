@@ -6,6 +6,7 @@ package locations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import Trainer.Player;
@@ -13,6 +14,12 @@ import Trainer.Rival;
 import mainGame.Options;
 import Trainer.TrainerSuper;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 
 public class MenuScreen extends JPanel {
@@ -30,11 +37,12 @@ public class MenuScreen extends JPanel {
 	Options options;
 	int battleScreenText;
 	String color, previousLocation;
+	Clip clip;
 	
 	public MenuScreen (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color, String previousLocation) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color, String previousLocation, Clip clip)  throws LineUnavailableException, UnsupportedAudioFileException, IOException {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -51,6 +59,7 @@ public class MenuScreen extends JPanel {
 	     this.battleScreenText = battleScreenText;
 	     this.color = color;
 	     this.previousLocation=previousLocation;
+	     this.clip = clip;
 	     
 	     returnButton = new JButton();
 	     returnButton.setBackground(Color.DARK_GRAY);
@@ -149,43 +158,49 @@ public class MenuScreen extends JPanel {
 	            	switch (location) {
 	            	case "pallettownyourhouse":
 	            	PalletTownYourHouse palletTownYourHouse = new PalletTownYourHouse(cl, cards, textAreaFont, "8", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color);
+	            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	cards.add(palletTownYourHouse, "pallettownyourhouse");
 	                layout.show(cards, "pallettownyourhouse");  
 	                break;
 	                
 	            	case "pallettownoutside":
 		            	Outside outside = new Outside(cl, cards, textAreaFont, "9", language, textSpeed,
-		            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color);
+		            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color, clip);
 		            	cards.add(outside, "outside");
 		                layout.show(cards, "outside"); 
 		                break;
 		                
 	            	case "pallettownrivalhouse":
 	            		PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, textAreaFont, "8", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color);
+		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color, clip);
 		            	cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 		                layout.show(cards, "pallettownrivalhouse");  
 		                break;
 		                
 	            	case "pallettownlab":
 	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "12", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color);
+		            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color, clip);
 		            	cards.add(palletTownLab, "pallettownlab");
 		                layout.show(cards, "pallettownlab");  
 		                break;
 		                
 	            	case "route1":
+	            		try {
 	            		Route1 route1 = new Route1(cl, cards, textAreaFont, "13", language, textSpeed,
-		            			player, rival, stopTimer, "route1", professorOakVisited, trainer, color);
+		            			player, rival, stopTimer, "route1", professorOakVisited, trainer, color, clip);
 		            	cards.add(route1, "route1");
 		                layout.show(cards, "route1");  
+	            		}
+	            		 catch (Exception a) {
+	         	  	        System.err.println(a.getMessage());
+	            			
+	            		}
 		                break;
 		                
 	            	case "battle":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, trainer, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation);
+		                		labOutsideButtonEnable, rival, battleScreenText, color, false, "", "", "", previousLocation, clip);
 		            	cards.add(battle, "battle");
 		                layout.show(cards, "battle");  
 		                break;
@@ -202,7 +217,7 @@ public class MenuScreen extends JPanel {
             	
             	options = new Options(cl,cards, "menu", blankTextArea, location, false, player, false, language, textSpeed, "",
             			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-            			labOutsideButtonEnable, trainer, battleScreenText, color, "");
+            			labOutsideButtonEnable, trainer, battleScreenText, color, "", clip);
             	cards.add(options, "options");
                 layout.show(cards, "options");  
             	
@@ -214,7 +229,7 @@ public class MenuScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
             	PartyPokemon partyPokemon = new PartyPokemon(cl, cards, textAreaFont, "", language, textSpeed,
             			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, 
-            			battleScreenText, "", 0, color, "");
+            			battleScreenText, "", 0, color, "", clip);
             	cards.add(partyPokemon, "partypokemon");
                 layout.show(cards, "partypokemon");
 
@@ -227,7 +242,7 @@ public class MenuScreen extends JPanel {
             	
             	Inventory inventory = new Inventory(cl, cards, textAreaFont, "", language, textSpeed,
             			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, 
-            			trainer, battleScreenText, "");
+            			trainer, battleScreenText, "", clip);
             	cards.add(inventory, "inventory");
                 layout.show(cards, "inventory");
             	
@@ -244,7 +259,7 @@ public class MenuScreen extends JPanel {
 	    playerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	TrainerInfo trainerInfo = new TrainerInfo(cl, cards, textAreaFont, "", language, textSpeed,
-            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color);
+            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, clip);
             	cards.add(trainerInfo, "trainerinfo");
                 layout.show(cards, "trainerinfo");
             	

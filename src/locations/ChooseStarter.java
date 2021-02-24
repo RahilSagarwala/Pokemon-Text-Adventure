@@ -13,6 +13,12 @@ import Trainer.Player;
 import Trainer.Rival;
 import locations.PalletTownYourHouse;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class ChooseStarter extends JPanel {
 	
@@ -28,12 +34,13 @@ public class ChooseStarter extends JPanel {
 	JTextArea textArea;
 	TrainerSuper trainer = new TrainerSuper();
 	String color;
+	Clip clip;
 
    
 	public ChooseStarter(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideEnable, String color) {
+			Boolean labOutsideEnable, String color, Clip clip) {
 		
 		 //Attributes passed on from screen to screen, couple of them not needed anymore, player 2 has its name set in case 4
 		 this.cl = layout;
@@ -49,6 +56,7 @@ public class ChooseStarter extends JPanel {
 	     this.professorOakVisited = professorOakVisited;
 	     this.labOutsideButtonEnable = labOutsideEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 	     //Extension of JFrame, set layout and attributes for layout
@@ -151,7 +159,7 @@ public class ChooseStarter extends JPanel {
 	     returnButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "9", language, textSpeed,
-	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color);
+	            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	cards.add(palletTownLab, "pallettownlab");
 	                layout.show(cards, "pallettownlab"); 
 	           
@@ -166,7 +174,7 @@ public class ChooseStarter extends JPanel {
 	            	ChooseStarterConfirmation chooseStarterConfirmation = new ChooseStarterConfirmation(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
 	            			player, rival, stopTimer, "choosestartervonfirmation", professorOakVisited, labOutsideButtonEnable,
-	            			"charmander", color);
+	            			"charmander", color, clip);
 	            	cards.add(chooseStarterConfirmation, "choosestarterconfirmation");
 	            	  layout.show(cards, "choosestarterconfirmation");
 	                
@@ -178,7 +186,7 @@ public class ChooseStarter extends JPanel {
 	            	ChooseStarterConfirmation chooseStarterConfirmation = new ChooseStarterConfirmation(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
 	            			player, rival, stopTimer, "choosestartervonfirmation", professorOakVisited, labOutsideButtonEnable,
-	            			"squirtle", color);
+	            			"squirtle", color, clip);
 	            	cards.add(chooseStarterConfirmation, "choosestarterconfirmation");
 	            	  layout.show(cards, "choosestarterconfirmation");
 	                
@@ -190,7 +198,7 @@ public class ChooseStarter extends JPanel {
 	            	ChooseStarterConfirmation chooseStarterConfirmation = new ChooseStarterConfirmation(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
 	            			player, rival, stopTimer, "choosestartervonfirmation", professorOakVisited, labOutsideButtonEnable,
-	            			"bulbasaur", color);
+	            			"bulbasaur", color, clip);
 	            	cards.add(chooseStarterConfirmation, "choosestarterconfirmation");
 	            	  layout.show(cards, "choosestarterconfirmation");
 	                
@@ -205,7 +213,7 @@ public class ChooseStarter extends JPanel {
 	            	
 	            	Options options = new Options(cl,cards, "choosestarter", blankTextArea, location, false, player, false, language, textSpeed, "",
 	            			rival, font, false, false, 65f, 0,0, true, professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 0, color, "");
+	            			labOutsideButtonEnable, trainer, 0, color, "", clip);
 	            	cards.add(options, "options");
 	                layout.show(cards, "options");  
 	            	

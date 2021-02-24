@@ -11,6 +11,12 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import Trainer.*;
+import javax.sound.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class PalletTownYourHouse extends JPanel {
 	
@@ -29,12 +35,13 @@ public class PalletTownYourHouse extends JPanel {
 	Outside outside;
 	TrainerSuper trainer = new TrainerSuper();
 	String color;
+	Clip clip;
 
 	
 	public PalletTownYourHouse(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean professorOakVisited,
-			Boolean labOutsideButtonEnable, String color) {
+			Boolean labOutsideButtonEnable, String color, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.textAreaFont = font;
@@ -48,6 +55,7 @@ public class PalletTownYourHouse extends JPanel {
 	     this.professorOakVisited=professorOakVisited;
 	     this.labOutsideButtonEnable=labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -171,7 +179,7 @@ public class PalletTownYourHouse extends JPanel {
 	            	
 	            	dialogue = new Dialogue(cl, cards, textAreaFont, "talktomom", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color);
+	            			labOutsideButtonEnable, color, clip);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  	                
 	            }
@@ -181,7 +189,7 @@ public class PalletTownYourHouse extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	dialogue = new Dialogue(cl, cards, textAreaFont, "watchtv", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color);
+	            			labOutsideButtonEnable, color, clip);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  	
 	            	
@@ -193,7 +201,7 @@ public class PalletTownYourHouse extends JPanel {
 	            	
 	            	dialogue = new Dialogue(cl, cards, textAreaFont, "playsnes", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownyourhouse", false, professorOakVisited, true, 0, 
-	            			labOutsideButtonEnable, color);
+	            			labOutsideButtonEnable, color, clip);
 	            	cards.add(dialogue, "dialogue");
 	                layout.show(cards, "dialogue");  	
 	            }
@@ -203,20 +211,25 @@ public class PalletTownYourHouse extends JPanel {
 	            public void actionPerformed(ActionEvent e) {
 	            	outside = new Outside(layout, cards, 
 	            			textAreaFont, screen, language, textSpeed, 
-	            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color);
+	            			player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color, clip);
 	            	cards.add(outside, "outside");
 	            	  layout.show(cards, "outside");  
 	            	
 	            }
 	        });
 		 
-		 menuButton.addActionListener(new ActionListener() {
+		 menuButton.addActionListener(new ActionListener() { 
 	            public void actionPerformed(ActionEvent e) {
+	            	try {
 	            	menu = new MenuScreen(cl, cards, textAreaFont, "", language, textSpeed,
 	            			player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, 
-	            			labOutsideButtonEnable, trainer, 0, color, "");
+	            			labOutsideButtonEnable, trainer, 0, color, "", clip);
 	            	cards.add(menu, "menu");
 	                layout.show(cards, "menu");  
+	            	}
+	            	catch (Exception a) {
+            			a.getMessage();
+            		}
 	            	
 	            }
 	        });

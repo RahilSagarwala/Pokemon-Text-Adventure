@@ -11,6 +11,12 @@ import javax.swing.*;
 import Trainer.Player;
 import Trainer.Rival;
 import Trainer.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.*;
 
 public class MapScreen extends JPanel {
 	
@@ -28,12 +34,13 @@ public class MapScreen extends JPanel {
 	int battleScreenText;
 	String color;
 	String previousLocation;
+	Clip clip;
 	
 	public MapScreen(final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, 
 			Boolean professorOakVisited, Boolean labOutsideButtonEnable, TrainerSuper trainer, 
-			int battleScreenText, String color, String previousLocation) {
+			int battleScreenText, String color, String previousLocation, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.font = font;
@@ -49,6 +56,7 @@ public class MapScreen extends JPanel {
 	     this.battleScreenText=battleScreenText;
 	     this.color = color;
 	     this.previousLocation=previousLocation;
+	     this.clip = clip;
 	     
 	     
 //	     if (color == "black") {
@@ -94,7 +102,7 @@ public class MapScreen extends JPanel {
          		
 	            	Inventory inventory = new Inventory(cl, cards, font, "", language, textSpeed,
 	            			player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, trainer, 
-	            			battleScreenText, previousLocation);
+	            			battleScreenText, previousLocation, clip);
 	            	cards.add(inventory, "inventory");
 	                layout.show(cards, "inventory");
          	  

@@ -73,7 +73,7 @@ public class UI implements ComponentListener {
 	String color = "black";
 	
 	//On instead of off for Music on as default
-	String music = "on";
+	String music = "off";
 
 	
 	 public static synchronized void playSound(Clip c) {
@@ -195,42 +195,42 @@ public class UI implements ComponentListener {
     	options = new Options(cl, cards, position, startScreenTextArea, "1", 
     			false, player, true, "English", textSpeed, fullText2, rival, 
     			font, stopTimer, false, titleSize, buttonWidth, buttonHeight, false, 
-    			professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, "");
+    			professorOakVisited, labOutsideButtonEnable, trainer, battleScreenText, color, "", clip);
     	credits = new Credits(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
+	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip);
     	Logo logo = new Logo(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
+	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip);
     	Logo2 logo2 = new Logo2(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
 	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);
     	continu = new ContinueGame(cl, cards, language, font, textSpeed, player, rival, stopTimer, titleSize, 
-	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color); 
-     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color);
+	 			buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color, clip); 
+     	newGame = new NewGame(cl, cards, font,language, textSpeed, stopTimer, buttonWidth, buttonHeight, player, rival, professorOakVisited, labOutsideButtonEnable, color, clip);
     	startScreen = new StartScreen(cl,cards,font, startScreenTextArea, "1", false, player, true, 
     			"English", textSpeed, fullText2, rival, false, false, buttonWidth, buttonHeight, professorOakVisited, labOutsideButtonEnable, color);   	
     	palletTownYourHouse = new PalletTownYourHouse(cl, cards, font, 
-        		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color);
+        		"8", language, textSpeed, player, rival, stopTimer, "pallettownyourhouse", professorOakVisited, labOutsideButtonEnable, color, clip);
     	outside = new Outside(cl, cards, font, 
-        		"9", language, textSpeed, player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color);
+        		"9", language, textSpeed, player, rival, stopTimer, "outside", professorOakVisited, labOutsideButtonEnable, color, clip);
     	ChooseStarter chooseStarter = new ChooseStarter(cl, cards, font, 
-        		"9", language, textSpeed, player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable, color);
+        		"9", language, textSpeed, player, rival, stopTimer, "choosestarter", professorOakVisited, labOutsideButtonEnable, color, clip);
     	palletTownRivalHouse = new PalletTownRivalHouse(cl, cards, font, 
-        		"10", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable, color);
+        		"10", language, textSpeed, player, rival, stopTimer, "pallettownrivalhouse", professorOakVisited, labOutsideButtonEnable, color, clip);
     	palletTownHouse3 = new PalletTownHouse3(cl, cards, font, 
-        		"11", language, textSpeed, player, rival, stopTimer, "pallettownhouse3", color);
+        		"11", language, textSpeed, player, rival, stopTimer, "pallettownhouse3", color, clip);
     	palletTownLab = new PalletTownLab(cl, cards, font, 
-        		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color);
+        		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color, clip);
     	route1 = new Route1(cl, cards, font, 
-        		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited, trainer, color);
+        		"13", language, textSpeed, player, rival, stopTimer, "route1", professorOakVisited, trainer, color, clip);
 //    	battle = new Battle(cl, cards, font, 
 //        		"12", language, textSpeed, player, trainer, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, rival);
     	dialogue = new Dialogue(cl, cards, font, 
-        		"", language, textSpeed, player, rival, stopTimer, "dialogue", false, professorOakVisited, true, 0, labOutsideButtonEnable, color); 	
+        		"", language, textSpeed, player, rival, stopTimer, "dialogue", false, professorOakVisited, true, 0, labOutsideButtonEnable, color, clip); 	
     	menu = new MenuScreen(cl, cards, font, 
         		"", language, textSpeed, player, rival, stopTimer, "menu", professorOakVisited, labOutsideButtonEnable, 
-        		trainer, battleScreenText, color, "");
+        		trainer, battleScreenText, color, "", clip);
     	mapScreen = new MapScreen(cl, cards, font, 
         		"14", language, textSpeed, player, rival, stopTimer, "mapscreen", professorOakVisited, labOutsideButtonEnable,
-        		trainer, battleScreenText, color, "");
+        		trainer, battleScreenText, color, "", clip);
     	
     	
     

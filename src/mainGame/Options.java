@@ -46,6 +46,7 @@ public class Options extends JPanel {
 	TrainerSuper trainer;
 	int battleScreenText;
 	String color, previousLocation;
+	Clip clip;
 	
 	
 	
@@ -54,7 +55,7 @@ public class Options extends JPanel {
 			Player player2, Boolean setVisible, String language, int textSpeed, String fullText,
 			Rival rival2, Font font, Boolean stopTimer1, Boolean nameOptionsBool2, Float titleSize2,
 			int buttonWidth2, int buttonHeight2, Boolean isMenu2, Boolean professorOakVisited, 
-			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color2, String previousLocation) {
+			Boolean labOutsideButtonEnable, TrainerSuper trainer, int battleScreenText, String color2, String previousLocation, Clip clip) {
 		 this.cl = layout;
 	     this.cards = cards;
 	     this.position = position;
@@ -80,6 +81,7 @@ public class Options extends JPanel {
 	     this.battleScreenText=battleScreenText;
 	     this.color = color2;
 	     this.previousLocation = previousLocation;
+	     this.clip = clip;
 	 
 	     
 	     

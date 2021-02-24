@@ -13,6 +13,11 @@ import Trainer.Rival;
 import mainGame.MainGame;
 import mainGame.Options;
 import mainGame.TimerClass;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 
 public class Dialogue extends JPanel {
@@ -32,11 +37,12 @@ public class Dialogue extends JPanel {
 	String text = "";
 	Boolean professorOakVisited, returnVisible, labOutsideButtonEnable;
 	String color;
+	Clip clip;
 	
 	public Dialogue (final CardLayout layout, final JPanel cards, 
 			Font font, String screen, String language, int textSpeed, 
 			Player player, Rival rival, Boolean stopTimer, String location2, Boolean nextVisible, Boolean professorOakVisited2,
-			Boolean returnVisible, int screenNumber2, Boolean labOutsideButtonEnable, String color) {
+			Boolean returnVisible, int screenNumber2, Boolean labOutsideButtonEnable, String color, Clip clip) {
 		
 		 this.cl = layout;
 	     this.cards = cards;
@@ -53,6 +59,7 @@ public class Dialogue extends JPanel {
 	     this.screenNumber = screenNumber2;
 	     this.labOutsideButtonEnable = labOutsideButtonEnable;
 	     this.color = color;
+	     this.clip = clip;
 	     
 //	     if (color == "black") {
 //	         setBackground(Color.black); 
@@ -397,7 +404,7 @@ public class Dialogue extends JPanel {
 	            		
 	            		palletTownYourHouse = new PalletTownYourHouse(layout, cards, 
 	            				font, screen, language, textSpeed, 
-	            				player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, color);
+	            				player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            		cards.add(palletTownYourHouse, "pallettownyourhouse");
 	            	    layout.show(cards, "pallettownyourhouse");
 	            	    break;
@@ -406,14 +413,14 @@ public class Dialogue extends JPanel {
 	            		
 	            		PalletTownRivalHouse palletTownRivalHouse = new PalletTownRivalHouse(layout, cards, 
 	            				font, screen, language, textSpeed, 
-	            				player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, color);
+	            				player, rival, stopTimer, location, professorOakVisited, labOutsideButtonEnable, color, clip);
 	            		cards.add(palletTownRivalHouse, "pallettownrivalhouse");
 	            	    layout.show(cards, "pallettownrivalhouse");
 	            	    break;
 	            	    
 	            	case "pallettownlab":
 	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, "12", language, textSpeed,
-		            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color);
+		            			player, rival, stopTimer, "pallettownlab", professorOakVisited, labOutsideButtonEnable, color, clip);
 		            	cards.add(palletTownLab, "pallettownlab");
 		                layout.show(cards, "pallettownlab");  
 		                break;
@@ -436,7 +443,7 @@ public class Dialogue extends JPanel {
 	            			professorOakVisited = true;
 	            			PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
 	    	                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab", professorOakVisited, 
-	    	                		false, color);
+	    	                		false, color, clip);
 	    	            	cards.add(palletTownLab, "pallettownlab");
 	    	            	
 	    	                layout.show(cards, "pallettownlab");
@@ -447,7 +454,7 @@ public class Dialogue extends JPanel {
 	            		else {
 	            		Dialogue dialogue = new Dialogue(cl, cards, textAreaFont, "route1oak", language, textSpeed,
 			         			player, rival, stopTimer, "route1oak", true, professorOakVisited, false, screenNumber +1,
-			         			labOutsideButtonEnable, color);
+			         			labOutsideButtonEnable, color, clip);
 			         	cards.add(dialogue, "dialogue");
 			             cl.show(cards, "dialogue"); 
 	            		}
@@ -455,7 +462,7 @@ public class Dialogue extends JPanel {
 	            	case "pallettownlab":
 	            		PalletTownLab palletTownLab = new PalletTownLab(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "pallettownlab",
-		                		professorOakVisited, false, color);
+		                		professorOakVisited, false, color, clip);
 		            	cards.add(palletTownLab, "pallettownlab");
 		            	
 		                layout.show(cards, "pallettownlab");
@@ -469,7 +476,7 @@ public class Dialogue extends JPanel {
 	            	case "rivalbattle1":
 	            		Battle battle = new Battle(cl, cards, textAreaFont, 
 		                		"12", language, textSpeed, player, rival, stopTimer, "battle", professorOakVisited, 
-		                		labOutsideButtonEnable, rival, 0, color, false, "", "", "", "pallettownlab");
+		                		labOutsideButtonEnable, rival, 0, color, false, "", "", "", "pallettownlab", clip);
 		            	cards.add(battle, "battle");
 		            	
 		                layout.show(cards, "battle");

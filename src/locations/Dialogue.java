@@ -63,15 +63,15 @@ public class Dialogue extends JPanel {
 	     this.clip = clip;
 	     
 	     Clip clip4 = AudioSystem.getClip();
-	     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-		          this.getClass().getClassLoader().getResource("route1beforeoak.wav"));
-		 
-	    clip4.open(inputStream);
-	    
-	     if (location == "route1oak" && !professorOakVisited && screenNumber == 0 || screenNumber== 1  || screenNumber== 2) {
-		 
-	    clip4.start();
-	     }
+//	     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+//		          this.getClass().getClassLoader().getResource("route1beforeoak.wav"));
+//		 
+//	    clip4.open(inputStream);
+//	    
+//	     if (location == "route1oak" && !professorOakVisited && screenNumber == 0 || screenNumber== 1  || screenNumber== 2) {
+//		 
+//	    clip4.start();
+//	     }
 	   
 		
 	     
